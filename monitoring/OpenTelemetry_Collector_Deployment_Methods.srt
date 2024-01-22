@@ -1,0 +1,5127 @@
+﻿1
+00:00:00,000 --> 00:00:06,480
+Welcome to the, hey everybody, sorry, we started a little bit earlier before it was actually live.
+
+2
+00:00:00,000 --> 00:00:06,480
+<font color="#ffff54">안녕하세요, 여러분, 생방송이 시작되기 전에 조금 일찍 시작해서 죄송합니다.</font>
+
+3
+00:00:06,480 --> 00:00:12,160
+So, hey everybody, good evening, good morning, wherever you are around the globe.
+
+4
+00:00:06,480 --> 00:00:12,160
+<font color="#ffff54">여러분, 전 세계 어디에서든 좋은 저녁, 좋은 아침입니다.</font>
+
+5
+00:00:12,160 --> 00:00:18,719
+This is the third episode of the OpenTelemetry Bootcamp with me today as always.
+
+6
+00:00:12,160 --> 00:00:18,719
+<font color="#ffff54">오늘도 어김없이 저와 함께 오픈텔레메트리 부트캠프의 세 번째 에피소드입니다.</font>
+
+7
+00:00:18,719 --> 00:00:20,400
+Michael, hey Michael, how are you?
+
+8
+00:00:18,719 --> 00:00:20,400
+<font color="#ffff54">마이클, 안녕하세요?</font>
+
+9
+00:00:21,400 --> 00:00:22,760
+I'm good, hi everybody.
+
+10
+00:00:21,400 --> 00:00:22,760
+<font color="#ffff54">난 괜찮아, 모두들 안녕.</font>
+
+11
+00:00:23,520 --> 00:00:29,840
+So, for today, you know, we are going to go much deeper with OpenTelemetry.
+
+12
+00:00:23,520 --> 00:00:29,840
+<font color="#ffff54">오늘은 오픈텔레메트리에 대해 좀 더 자세히 알아보도록 하겠습니다.</font>
+
+13
+00:00:29,840 --> 00:00:38,560
+If the first two episodes were like kind of an introduction, today we're going to deep dive into different components.
+
+14
+00:00:29,840 --> 00:00:38,560
+<font color="#ffff54">처음 두 에피소드가 일종의 소개였다면, 오늘은 다양한 구성 요소에 대해 자세히 알아보겠습니다.</font>
+
+15
+00:00:38,560 --> 00:00:46,680
+Actually trying to get ready to deploy, trying to actually get OpenTelemetry into production.
+
+16
+00:00:38,560 --> 00:00:46,680
+<font color="#ffff54">실제로 배포할 준비를 하고, OpenTelemetry를 실제로 프로덕션에 적용하려고 합니다.</font>
+
+17
+00:00:47,679 --> 00:00:56,679
+This episode, I think it's really interesting because we are hearing a lot of folks debating themselves around OpenTelemetry.
+
+18
+00:00:47,679 --> 00:00:56,679
+<font color="#ffff54">이번 에피소드에서는 OpenTelemetry에 대해 많은 사람들이 토론하는 것을 들을 수 있어서 정말 흥미로웠습니다.</font>
+
+19
+00:00:56,679 --> 00:01:02,679
+If the product is mature enough, is it okay to take it to production?
+
+20
+00:00:56,679 --> 00:01:02,679
+<font color="#ffff54">제품이 충분히 성숙해지면 생산 단계로 넘어가도 괜찮을까요?</font>
+
+21
+00:01:02,679 --> 00:01:14,680
+We actually see a lot of folks that are doing it and I hope that today would give you some more comfort or some better understanding of what are the actual limitations,
+
+22
+00:01:02,679 --> 00:01:14,680
+<font color="#ffff54">실제로 많은 사람들이 그렇게 하고 있으며, 오늘을 통해 실제 한계가 무엇인지에 대해 조금이나마 위안이 되거나 더 잘 이해할 수 있기를 바랍니다,</font>
+
+23
+00:01:14,680 --> 00:01:18,680
+how actually it looks like to deploy something in production.
+
+24
+00:01:14,680 --> 00:01:18,680
+<font color="#ffff54">프로덕션 환경에서 실제로 배포하는 것이 어떤 모습인지에 대한 이해를 돕고자 합니다.</font>
+
+25
+00:01:18,680 --> 00:01:22,680
+So, without further ado, I'm going to hand it over to Michael.
+
+26
+00:01:18,680 --> 00:01:22,680
+<font color="#ffff54">이제 더 이상 고민하지 않고 마이클에게 넘기겠습니다.</font>
+
+27
+00:01:22,680 --> 00:01:29,680
+Please feel free, whatever the platform you're using, we are in YouTube, Twitch, just send us questions.
+
+28
+00:01:22,680 --> 00:01:29,680
+<font color="#ffff54">유튜브, 트위치 등 어떤 플랫폼을 사용하시든 자유롭게 질문을 보내주세요.</font>
+
+29
+00:01:29,680 --> 00:01:33,680
+We will try to answer each one of them.
+
+30
+00:01:29,680 --> 00:01:33,680
+<font color="#ffff54">하나하나 답변해드리도록 노력하겠습니다.</font>
+
+31
+00:01:33,680 --> 00:01:35,680
+So, Michael, go ahead.
+
+32
+00:01:33,680 --> 00:01:35,680
+<font color="#ffff54">마이클, 계속하세요.</font>
+
+33
+00:01:37,680 --> 00:01:39,680
+Cool, cool, thank you very much.
+
+34
+00:01:37,680 --> 00:01:39,680
+<font color="#ffff54">좋아, 좋아, 고마워.</font>
+
+35
+00:01:39,680 --> 00:01:46,680
+So, yeah, we are starting the third episode of the OpenTelemetry Bootcamp.
+
+36
+00:01:39,680 --> 00:01:46,680
+<font color="#ffff54">자, 이제 오픈텔레메트리 부트캠프의 세 번째 에피소드를 시작하겠습니다.</font>
+
+37
+00:01:46,680 --> 00:01:48,680
+Let me just introduce myself.
+
+38
+00:01:46,680 --> 00:01:48,680
+<font color="#ffff54">제 소개부터 하겠습니다.</font>
+
+39
+00:01:48,680 --> 00:01:53,680
+So, I'm Michael, Michael Habermann, the co-founder and CTO at the Spectre.
+
+40
+00:01:48,680 --> 00:01:53,680
+<font color="#ffff54">저는 스펙터의 공동 창업자이자 CTO인 마이클 하버만입니다.</font>
+
+41
+00:01:53,680 --> 00:02:02,680
+I've been working with microservices for about five years and very specifically with OpenTelemetry for two years.
+
+42
+00:01:53,680 --> 00:02:02,680
+<font color="#ffff54">저는 마이크로서비스 분야에서 약 5년 동안 일해왔고, 특히 OpenTelemetry 분야에서 2년 동안 일해왔습니다.</font>
+
+43
+00:02:02,680 --> 00:02:15,680
+Basically, what I'm trying to say that I gained some experience in this world, both managing in production, having a problem with it, taking decisions, how to integrate it into an organization.
+
+44
+00:02:02,680 --> 00:02:15,680
+<font color="#ffff54">기본적으로 제가 말씀드리고 싶은 것은 프로덕션에서 관리하고, 문제를 해결하고, 결정을 내리고, 조직에 통합하는 방법 등 이 분야에서 경험을 쌓았다는 것입니다.</font>
+
+45
+00:02:15,680 --> 00:02:28,680
+And based on that experience, we want to share it with you to kind of help you not make the same mistake or at least learn from the mistake that I have had before.
+
+46
+00:02:15,680 --> 00:02:28,680
+<font color="#ffff54">그리고 그 경험을 바탕으로 여러분과 공유하여 여러분이 같은 실수를 하지 않도록 돕거나 적어도 제가 겪었던 실수로부터 배울 수 있도록 돕고 싶습니다.</font>
+
+47
+00:02:28,680 --> 00:02:36,680
+So, the Bootcamp is a six-episode series, and we're in the third one in the middle.
+
+48
+00:02:28,680 --> 00:02:36,680
+<font color="#ffff54">부트캠프는 6개의 에피소드로 구성된 시리즈이며, 현재 세 번째 에피소드를 촬영 중입니다.</font>
+
+49
+00:02:36,680 --> 00:02:42,680
+The first one, we discussed what is OpenTelemetry in general and how it works.
+
+50
+00:02:36,680 --> 00:02:42,680
+<font color="#ffff54">첫 번째 에피소드에서는 오픈텔레메트리가 일반적으로 무엇이며 어떻게 작동하는지에 대해 논의했습니다.</font>
+
+51
+00:02:42,680 --> 00:02:54,680
+The second episode, we discussed the client side of OpenTelemetry, the side that collects data from your services, and then it's shipped somewhere.
+
+52
+00:02:42,680 --> 00:02:54,680
+<font color="#ffff54">두 번째 에피소드에서는 서비스에서 데이터를 수집한 다음 어딘가로 전송하는 클라이언트 측에 대해 논의했습니다.</font>
+
+53
+00:02:54,680 --> 00:02:57,680
+And today we're going to focus on that somewhere.
+
+54
+00:02:54,680 --> 00:02:57,680
+<font color="#ffff54">오늘은 그 부분을 집중적으로 살펴보겠습니다.</font>
+
+55
+00:02:57,680 --> 00:03:01,680
+We're going to focus on the back end of OpenTelemetry.
+
+56
+00:02:57,680 --> 00:03:01,680
+<font color="#ffff54">오픈텔레메트리의 백엔드에 대해 집중적으로 살펴보겠습니다.</font>
+
+57
+00:03:01,680 --> 00:03:07,680
+Today we're going to have a whole OpenTelemetry stack working.
+
+58
+00:03:01,680 --> 00:03:07,680
+<font color="#ffff54">오늘은 전체 OpenTelemetry 스택이 작동하도록 하겠습니다.</font>
+
+59
+00:03:07,680 --> 00:03:11,680
+We will be in the position that we will be able to deploy to production.
+
+60
+00:03:07,680 --> 00:03:11,680
+<font color="#ffff54">프로덕션에 배포할 수 있는 위치에 도달할 것입니다.</font>
+
+61
+00:03:11,680 --> 00:03:16,680
+We'll get to know all the details, all the configuration that you need to know.
+
+62
+00:03:11,680 --> 00:03:16,680
+<font color="#ffff54">이제 여러분이 알아야 할 모든 세부 사항과 구성을 알게 될 것입니다.</font>
+
+63
+00:03:16,680 --> 00:03:26,680
+And the next episode would be about once you deploy it and you're going to have a lot of traffic and you need to maintain a high scale.
+
+64
+00:03:16,680 --> 00:03:26,680
+<font color="#ffff54">다음 에피소드는 배포한 후 트래픽이 많아지고 높은 규모를 유지해야 하는 경우에 대한 내용입니다.</font>
+
+65
+00:03:26,680 --> 00:03:30,680
+What that means, what you need to do, how you need to get prepared for that.
+
+66
+00:03:26,680 --> 00:03:30,680
+<font color="#ffff54">그것이 무엇을 의미하는지, 무엇을 해야 하는지, 어떻게 준비해야 하는지 설명합니다.</font>
+
+67
+00:03:30,680 --> 00:03:34,680
+So, this is a live session.
+
+68
+00:03:30,680 --> 00:03:34,680
+<font color="#ffff54">이건 라이브 세션입니다.</font>
+
+69
+00:03:34,680 --> 00:03:39,680
+So, if you have any questions, feel free to shoot us a question.
+
+70
+00:03:34,680 --> 00:03:39,680
+<font color="#ffff54">궁금한 점이 있으시면 언제든지 질문해 주세요.</font>
+
+71
+00:03:39,680 --> 00:03:43,680
+We have two main resources that you should check out.
+
+72
+00:03:39,680 --> 00:03:43,680
+<font color="#ffff54">확인해야 할 두 가지 주요 리소스가 있습니다.</font>
+
+73
+00:03:43,680 --> 00:03:48,680
+One is the GitHub repository, OpenTelemetry Bootcamp.
+
+74
+00:03:43,680 --> 00:03:48,680
+<font color="#ffff54">하나는 오픈텔레메트리 부트캠프의 GitHub 리포지토리입니다.</font>
+
+75
+00:03:48,680 --> 00:03:56,680
+There you will find all the code examples, all the additional resources that you should read in the presentation that you see right here.
+
+76
+00:03:48,680 --> 00:03:56,680
+<font color="#ffff54">여기에서 모든 코드 예제와 바로 여기에 표시된 프레젠테이션에서 읽어야 할 모든 추가 리소스를 찾을 수 있습니다.</font>
+
+77
+00:03:56,680 --> 00:04:01,680
+Also, we have a CNCF Slack channel called OpenTelemetry Bootcamp.
+
+78
+00:03:56,680 --> 00:04:01,680
+<font color="#ffff54">또한 OpenTelemetry Bootcamp라는 CNCF Slack 채널이 있습니다.</font>
+
+79
+00:04:01,680 --> 00:04:03,680
+And you can join there.
+
+80
+00:04:01,680 --> 00:04:03,680
+<font color="#ffff54">거기서 참여할 수 있습니다.</font>
+
+81
+00:04:03,680 --> 00:04:05,680
+Everybody who is attending are there.
+
+82
+00:04:03,680 --> 00:04:05,680
+<font color="#ffff54">참석하신 모든 분들이 그곳에 있습니다.</font>
+
+83
+00:04:05,680 --> 00:04:12,680
+So, questions, follow ups, all of those things are welcome.
+
+84
+00:04:05,680 --> 00:04:12,680
+<font color="#ffff54">질문, 후속 조치 등 모든 것을 환영합니다.</font>
+
+85
+00:04:12,680 --> 00:04:16,680
+So, let's get started with today's episode.
+
+86
+00:04:12,680 --> 00:04:16,680
+<font color="#ffff54">그럼 오늘의 에피소드를 시작하겠습니다.</font>
+
+87
+00:04:16,680 --> 00:04:21,680
+So, today we're going to focus mainly about the collector.
+
+88
+00:04:16,680 --> 00:04:21,680
+<font color="#ffff54">오늘은 주로 컬렉터에 대해 이야기해 보겠습니다.</font>
+
+89
+00:04:21,680 --> 00:04:28,680
+The collector, the OpenTelemetry collector, that's the component that is going to get the data from the OpenTelemetry SDK.
+
+90
+00:04:21,680 --> 00:04:28,680
+<font color="#ffff54">수집기, 즉 OpenTelemetry 수집기는 OpenTelemetry SDK에서 데이터를 가져오는 컴포넌트입니다.</font>
+
+91
+00:04:28,680 --> 00:04:34,680
+If you haven't saw the second episode, the second episode discuss a lot about the OpenTelemetry SDK.
+
+92
+00:04:28,680 --> 00:04:34,680
+<font color="#ffff54">아직 두 번째 에피소드를 보지 않으셨다면, 두 번째 에피소드에서 OpenTelemetry SDK에 대해 많이 설명합니다.</font>
+
+93
+00:04:34,680 --> 00:04:45,680
+And today we are going to see how the collector gets the data, processes this data, then export it to somewhere else, somewhere such as database.
+
+94
+00:04:34,680 --> 00:04:45,680
+<font color="#ffff54">오늘은 수집기가 어떻게 데이터를 가져오고, 이 데이터를 처리한 다음 데이터베이스와 같은 다른 곳으로 내보내는지 살펴보겠습니다.</font>
+
+95
+00:04:45,680 --> 00:04:52,680
+So, in the first episode, I actually showed you this diagram where I described what is the OpenTelemetry stack.
+
+96
+00:04:45,680 --> 00:04:52,680
+<font color="#ffff54">첫 번째 에피소드에서 실제로 이 다이어그램을 보여드리면서 OpenTelemetry 스택이 무엇인지 설명드렸습니다.</font>
+
+97
+00:04:52,680 --> 00:05:02,680
+And we saw that we have the first layer, your application, you have service A with OpenTelemetry installed and service B and service C.
+
+98
+00:04:52,680 --> 00:05:02,680
+<font color="#ffff54">첫 번째 레이어인 애플리케이션에는 OpenTelemetry가 설치된 서비스 A가 있고, 서비스 B와 서비스 C가 있는 것을 보았습니다.</font>
+
+99
+00:05:02,680 --> 00:05:10,680
+All of those are going to ship data to OpenTelemetry collector, which is kind of your backend, the collector with a database.
+
+100
+00:05:02,680 --> 00:05:10,680
+<font color="#ffff54">이 모든 데이터는 일종의 백엔드, 즉 데이터베이스가 있는 수집기로 데이터를 전송할 것입니다.</font>
+
+101
+00:05:10,680 --> 00:05:21,680
+And also we're going to have some virtualization layer, which you already saw in both the first episode where we discussed most the area on how to display those.
+
+102
+00:05:10,680 --> 00:05:21,680
+<font color="#ffff54">또한 첫 번째 에피소드에서 이미 가상화 계층을 표시하는 방법에 대해 설명한 바 있는 가상화 계층이 있을 것입니다.</font>
+
+103
+00:05:21,680 --> 00:05:32,680
+So, today we are going to take a look into actually how to set the backend and the visualization layer.
+
+104
+00:05:21,680 --> 00:05:32,680
+<font color="#ffff54">오늘은 실제로 백엔드와 시각화 레이어를 설정하는 방법을 살펴보겠습니다.</font>
+
+105
+00:05:32,680 --> 00:05:36,680
+So, let's talk a bit about the collector.
+
+106
+00:05:32,680 --> 00:05:36,680
+<font color="#ffff54">이제 수집기에 대해 조금 알아보겠습니다.</font>
+
+107
+00:05:36,680 --> 00:05:49,680
+So, when we're talking about any kind of data stream, data pipeline architecture, we usually have a stream of events being sent to some central place.
+
+108
+00:05:36,680 --> 00:05:49,680
+<font color="#ffff54">모든 종류의 데이터 스트림, 데이터 파이프라인 아키텍처에 대해 이야기할 때 일반적으로 이벤트 스트림이 중앙의 한 곳으로 전송됩니다.</font>
+
+109
+00:05:49,680 --> 00:05:56,680
+And that central place is going to get this data, get this event and persist it somewhere.
+
+110
+00:05:49,680 --> 00:05:56,680
+<font color="#ffff54">그리고 그 중앙 위치는 이 데이터를 가져오고, 이 이벤트를 가져와서 어딘가에 보존합니다.</font>
+
+111
+00:05:56,680 --> 00:06:01,680
+We want to protect the data that we're getting. It doesn't have to be telemetry data.
+
+112
+00:05:56,680 --> 00:06:01,680
+<font color="#ffff54">우리는 우리가 받는 데이터를 보호하고 싶습니다. 꼭 텔레메트리 데이터일 필요는 없습니다.</font>
+
+113
+00:06:01,680 --> 00:06:05,680
+It could be a click stream for an e-commerce website.
+
+114
+00:06:01,680 --> 00:06:05,680
+<font color="#ffff54">이커머스 웹사이트의 클릭 스트림일 수도 있습니다.</font>
+
+115
+00:06:05,680 --> 00:06:10,680
+It could be click stream for an ad tech company.
+
+116
+00:06:05,680 --> 00:06:10,680
+<font color="#ffff54">광고 기술 회사의 클릭 스트림일 수 있습니다.</font>
+
+117
+00:06:10,680 --> 00:06:17,680
+You could also think about logs. Logs are in some way a stream of data that you're getting and persisting.
+
+118
+00:06:10,680 --> 00:06:17,680
+<font color="#ffff54">로그에 대해서도 생각해 볼 수 있습니다. 로그는 어떤 식으로든 수집되고 지속되는 데이터 스트림입니다.</font>
+
+119
+00:06:17,680 --> 00:06:24,680
+And the OpenTelemetry collector is a component from the data pipeline world.
+
+120
+00:06:17,680 --> 00:06:24,680
+<font color="#ffff54">그리고 OpenTelemetry 수집기는 데이터 파이프라인 세계의 구성 요소입니다.</font>
+
+121
+00:06:24,680 --> 00:06:30,680
+And basically we're talking about getting a stream of telemetry in OpenTelemetry perspective.
+
+122
+00:06:24,680 --> 00:06:30,680
+<font color="#ffff54">그리고 기본적으로 우리는 오픈 텔레메트리 관점에서 텔레메트리 스트림을 가져오는 것에 대해 이야기하고 있습니다.</font>
+
+123
+00:06:30,680 --> 00:06:35,680
+We're talking specifically about traces, logs and metrics.
+
+124
+00:06:30,680 --> 00:06:35,680
+<font color="#ffff54">특히 추적, 로그, 메트릭에 대해 이야기하고 있습니다.</font>
+
+125
+00:06:35,680 --> 00:06:39,680
+And we're going to get those and we're going to save them in the database.
+
+126
+00:06:35,680 --> 00:06:39,680
+<font color="#ffff54">그리고 우리는 그것들을 가져와서 데이터베이스에 저장할 것입니다.</font>
+
+127
+00:06:39,680 --> 00:06:47,680
+Now, that may sound like a very simple task, but usually those things are starting to get more and more complex.
+
+128
+00:06:39,680 --> 00:06:47,680
+<font color="#ffff54">아주 간단한 작업처럼 들릴지 모르지만, 보통 이런 작업은 점점 더 복잡해지기 시작합니다.</font>
+
+129
+00:06:47,680 --> 00:06:49,680
+How you how you're going to receive it?
+
+130
+00:06:47,680 --> 00:06:49,680
+<font color="#ffff54">어떻게 받을 건가요?</font>
+
+131
+00:06:49,680 --> 00:06:55,680
+You need to configure how you're going to receive it in what protocol, in what fashion.
+
+132
+00:06:49,680 --> 00:06:55,680
+<font color="#ffff54">어떤 프로토콜로, 어떤 방식으로 수신할 것인지 설정해야 합니다.</font>
+
+133
+00:06:55,680 --> 00:06:57,680
+Then you're getting a lot of data and you need to process it.
+
+134
+00:06:55,680 --> 00:06:57,680
+<font color="#ffff54">그러면 많은 데이터가 들어오고 있고 이를 처리해야 합니다.</font>
+
+135
+00:06:57,680 --> 00:07:00,680
+You need to process it in the right way.
+
+136
+00:06:57,680 --> 00:07:00,680
+<font color="#ffff54">올바른 방법으로 처리해야 합니다.</font>
+
+137
+00:07:00,680 --> 00:07:07,680
+And once you're processing it, you want to persist it somewhere.
+
+138
+00:07:00,680 --> 00:07:07,680
+<font color="#ffff54">그리고 일단 처리하고 나면 어딘가에 지속시켜야 합니다.</font>
+
+139
+00:07:07,680 --> 00:07:09,680
+Then you need to decide where you're going to export it.
+
+140
+00:07:07,680 --> 00:07:09,680
+<font color="#ffff54">그런 다음 어디로 내보낼지 결정해야 합니다.</font>
+
+141
+00:07:09,680 --> 00:07:13,680
+You can export it to some database. You can export it to some other component.
+
+142
+00:07:09,680 --> 00:07:13,680
+<font color="#ffff54">어떤 데이터베이스로 내보낼 수 있습니다. 다른 컴포넌트로 내보낼 수 있습니다.</font>
+
+143
+00:07:13,680 --> 00:07:21,680
+And eventually you can also decide that you're going to pass it along to some vendor that it's going to take the heavy lifting for you.
+
+144
+00:07:13,680 --> 00:07:21,680
+<font color="#ffff54">그리고 결국에는 무거운 작업을 대신 처리해 줄 공급업체에 넘겨주기로 결정할 수도 있습니다.</font>
+
+145
+00:07:21,680 --> 00:07:27,680
+We are going to discuss two types of deployments.
+
+146
+00:07:21,680 --> 00:07:27,680
+<font color="#ffff54">두 가지 유형의 배포에 대해 설명하겠습니다.</font>
+
+147
+00:07:27,680 --> 00:07:31,680
+I would say right now that I'm going to show you both.
+
+148
+00:07:27,680 --> 00:07:31,680
+<font color="#ffff54">지금 바로 두 가지를 모두 보여드리겠습니다.</font>
+
+149
+00:07:31,680 --> 00:07:34,680
+And I'm not sure there is a correct and not correct one.
+
+150
+00:07:31,680 --> 00:07:34,680
+<font color="#ffff54">그리고 맞는 것과 맞지 않는 것이 있는지 잘 모르겠어요.</font>
+
+151
+00:07:34,680 --> 00:07:37,680
+It's kind of pros and cons that you can choose from.
+
+152
+00:07:34,680 --> 00:07:37,680
+<font color="#ffff54">장단점이 있어서 선택할 수 있는 거죠.</font>
+
+153
+00:07:37,680 --> 00:07:40,680
+This is why I chose to describe both to you.
+
+154
+00:07:37,680 --> 00:07:40,680
+<font color="#ffff54">그래서 두 가지를 모두 설명하기로 했어요.</font>
+
+155
+00:07:40,680 --> 00:07:46,680
+So you will be able to understand how they work, how they operate and take your own decision.
+
+156
+00:07:40,680 --> 00:07:46,680
+<font color="#ffff54">그래야만 어떻게 작동하는지, 어떻게 운영되는지 이해하고 스스로 결정을 내릴 수 있습니다.</font>
+
+157
+00:07:46,680 --> 00:07:51,680
+OK, so let's talk about option number one.
+
+158
+00:07:46,680 --> 00:07:51,680
+<font color="#ffff54">좋아요, 그럼 첫 번째 옵션에 대해 이야기해 봅시다.</font>
+
+159
+00:07:51,680 --> 00:07:59,680
+In option number one, in the left side of the screen, you can see that we have probably contained.
+
+160
+00:07:51,680 --> 00:07:59,680
+<font color="#ffff54">1번 옵션의 경우, 화면 왼쪽에서 우리가 포함시킨 것을 볼 수 있습니다.</font>
+
+161
+00:07:59,680 --> 00:08:05,680
+It doesn't have to be a container, but I'm assuming that most of you are running containers, serverless, something of that sort.
+
+162
+00:07:59,680 --> 00:08:05,680
+<font color="#ffff54">꼭 컨테이너일 필요는 없지만, 대부분의 사용자가 컨테이너, 서버리스 등을 실행하고 있다고 가정합니다.</font>
+
+163
+00:08:06,680 --> 00:08:12,680
+And we're talking about an application that's running with open telemetry.
+
+164
+00:08:06,680 --> 00:08:12,680
+<font color="#ffff54">그리고 오픈 텔레메트리로 실행되는 애플리케이션에 대해 이야기하고 있습니다.</font>
+
+165
+00:08:12,680 --> 00:08:16,680
+You probably have some kind of host that is hosting it.
+
+166
+00:08:12,680 --> 00:08:16,680
+<font color="#ffff54">아마도 이 애플리케이션을 호스팅하는 호스트가 있을 것입니다.</font>
+
+167
+00:08:16,680 --> 00:08:23,680
+And you can ship the traces, the logs, the metrics directly to open telemetry.
+
+168
+00:08:16,680 --> 00:08:23,680
+<font color="#ffff54">그리고 추적, 로그, 메트릭을 오픈 텔레메트리로 직접 전송할 수 있습니다.</font>
+
+169
+00:08:23,680 --> 00:08:33,680
+And I'm referring to it as open telemetry gateway as opposed that we will see in a second that we have both a gateway and and an agent.
+
+170
+00:08:23,680 --> 00:08:33,680
+<font color="#ffff54">제가 오픈 텔레메트리 게이트웨이라고 부르는 이유는 게이트웨이와 에이전트가 모두 있다는 것을 곧 알게 될 것이기 때문입니다.</font>
+
+171
+00:08:33,680 --> 00:08:38,680
+So the data is sent directly to the collector.
+
+172
+00:08:33,680 --> 00:08:38,680
+<font color="#ffff54">따라서 데이터가 수집기로 직접 전송됩니다.</font>
+
+173
+00:08:38,680 --> 00:08:54,680
+That means that the application is responsible on collecting, accumulating the data that you want to send and on sending it as well as doing whatever it's doing from the business logic perspective.
+
+174
+00:08:38,680 --> 00:08:54,680
+<font color="#ffff54">즉, 애플리케이션은 전송하려는 데이터를 수집하고, 축적하고, 전송하는 것은 물론 비즈니스 로직 관점에서 수행하는 모든 작업을 책임집니다.</font>
+
+175
+00:08:54,680 --> 00:08:57,680
+So that means that we have some traffic.
+
+176
+00:08:54,680 --> 00:08:57,680
+<font color="#ffff54">트래픽이 있다는 뜻입니다.</font>
+
+177
+00:08:57,680 --> 00:09:00,680
+We have some DNS resolving to do.
+
+178
+00:08:57,680 --> 00:09:00,680
+<font color="#ffff54">DNS 확인을 해야 합니다.</font>
+
+179
+00:09:00,680 --> 00:09:02,680
+We are outside of our host.
+
+180
+00:09:00,680 --> 00:09:02,680
+<font color="#ffff54">호스트 외부에 있습니다.</font>
+
+181
+00:09:02,680 --> 00:09:08,680
+It means that we have more to do, but it's a fairly simple deployment, right?
+
+182
+00:09:02,680 --> 00:09:08,680
+<font color="#ffff54">할 일이 더 많다는 뜻이지만, 꽤 간단한 배치죠?</font>
+
+183
+00:09:08,680 --> 00:09:15,680
+You have your service just put the open telemetry SDK there and also deploy an open telemetry collector gateway.
+
+184
+00:09:08,680 --> 00:09:15,680
+<font color="#ffff54">서비스에 오픈 텔레메트리 SDK를 넣고 오픈 텔레메트리 수집기 게이트웨이도 배포하기만 하면 됩니다.</font>
+
+185
+00:09:15,680 --> 00:09:18,680
+And then you're good to go.
+
+186
+00:09:15,680 --> 00:09:18,680
+<font color="#ffff54">이제 준비가 끝났습니다.</font>
+
+187
+00:09:18,680 --> 00:09:23,680
+So this kind of deployment is very, very simple to do.
+
+188
+00:09:18,680 --> 00:09:23,680
+<font color="#ffff54">이런 종류의 배포는 매우 간단합니다.</font>
+
+189
+00:09:23,680 --> 00:09:27,680
+You basically don't need to do any code changes.
+
+190
+00:09:23,680 --> 00:09:27,680
+<font color="#ffff54">기본적으로 코드를 변경할 필요가 없습니다.</font>
+
+191
+00:09:27,680 --> 00:09:32,680
+I'm sorry, you need to do only coaches and you don't need to do infrastructure changes.
+
+192
+00:09:27,680 --> 00:09:32,680
+<font color="#ffff54">죄송합니다만, 코치만 하면 되고 인프라 변경은 할 필요가 없습니다.</font>
+
+193
+00:09:32,680 --> 00:09:38,680
+So you add your SDK, point it to your collector, and that is it.
+
+194
+00:09:32,680 --> 00:09:38,680
+<font color="#ffff54">SDK를 추가하고 수집기를 가리키면 끝입니다.</font>
+
+195
+00:09:38,680 --> 00:09:46,680
+It is a kind of a deployment that is going to put a bit more load on your on your on your application.
+
+196
+00:09:38,680 --> 00:09:46,680
+<font color="#ffff54">이것은 일종의 배포로, 여러분의 애플리케이션에 조금 더 많은 부하를 줄 것입니다.</font>
+
+197
+00:09:46,680 --> 00:09:53,680
+Talking about the second architecture and its second type of deployment, which is a bit more complex.
+
+198
+00:09:46,680 --> 00:09:53,680
+<font color="#ffff54">두 번째 아키텍처와 조금 더 복잡한 두 번째 유형의 배포에 대해 이야기하고 있습니다.</font>
+
+199
+00:09:53,680 --> 00:09:59,680
+This is where we have two types of deployments to the two types of collectors.
+
+200
+00:09:53,680 --> 00:09:59,680
+<font color="#ffff54">여기에는 두 가지 유형의 수집기에 대한 두 가지 유형의 배포가 있습니다.</font>
+
+201
+00:09:59,680 --> 00:10:06,680
+We have the open telemetry collector, the agent, and we have open telemetry collector, the gateway.
+
+202
+00:09:59,680 --> 00:10:06,680
+<font color="#ffff54">개방형 텔레메트리 수집기인 에이전트가 있고, 개방형 텔레메트리 수집기인 게이트웨이가 있습니다.</font>
+
+203
+00:10:06,680 --> 00:10:09,680
+And here we have a host.
+
+204
+00:10:06,680 --> 00:10:09,680
+<font color="#ffff54">그리고 여기 호스트가 있습니다.</font>
+
+205
+00:10:09,680 --> 00:10:11,680
+And usually you don't have a single host.
+
+206
+00:10:09,680 --> 00:10:11,680
+<font color="#ffff54">보통 호스트가 하나도 없습니다.</font>
+
+207
+00:10:11,680 --> 00:10:12,680
+You have a multiple host.
+
+208
+00:10:11,680 --> 00:10:12,680
+<font color="#ffff54">호스트가 여러 개 있습니다.</font>
+
+209
+00:10:12,680 --> 00:10:16,680
+So you will find yourself having a lot of hosts.
+
+210
+00:10:12,680 --> 00:10:16,680
+<font color="#ffff54">따라서 호스트가 많다는 것을 알 수 있습니다.</font>
+
+211
+00:10:16,680 --> 00:10:21,680
+And then that means you have a single collector gateway, but a lot of host.
+
+212
+00:10:16,680 --> 00:10:21,680
+<font color="#ffff54">즉, 수집기 게이트웨이는 하나이지만 호스트는 많다는 뜻입니다.</font>
+
+213
+00:10:21,680 --> 00:10:25,680
+So you have a single collector gateway, but a lot of agent.
+
+214
+00:10:21,680 --> 00:10:25,680
+<font color="#ffff54">수집기 게이트웨이는 하나지만 에이전트가 많다는 뜻입니다.</font>
+
+215
+00:10:25,680 --> 00:10:33,680
+In some sense, you can decide that your agent could be at the host level or it could be at the container level.
+
+216
+00:10:25,680 --> 00:10:33,680
+<font color="#ffff54">어떤 의미에서 에이전트가 호스트 레벨에 있을 수도 있고 컨테이너 레벨에 있을 수도 있습니다.</font>
+
+217
+00:10:33,680 --> 00:10:37,680
+And in this situation, what we are doing is we're saying something like that.
+
+218
+00:10:33,680 --> 00:10:37,680
+<font color="#ffff54">이 상황에서 우리가 하는 일은 바로 이런 말을 하는 것입니다.</font>
+
+219
+00:10:37,680 --> 00:10:43,680
+We have the application that is very much worried about doing what the application is supposed to do,
+
+220
+00:10:37,680 --> 00:10:43,680
+<font color="#ffff54">우리는 애플리케이션이 해야 할 일을 하는 것에 대해 매우 걱정하는 애플리케이션을 가지고 있습니다,</font>
+
+221
+00:10:43,680 --> 00:10:51,680
+as well as collecting and accumulating the traces and then writing them to the collector agent.
+
+222
+00:10:43,680 --> 00:10:51,680
+<font color="#ffff54">뿐만 아니라 추적을 수집하고 축적 한 다음 수집기 에이전트에게 기록합니다.</font>
+
+223
+00:10:51,680 --> 00:10:58,680
+The fact that they are very, very close to one another allows you to have better performance.
+
+224
+00:10:51,680 --> 00:10:58,680
+<font color="#ffff54">서로 매우 가깝기 때문에 더 나은 성능을 얻을 수 있습니다.</font>
+
+225
+00:10:58,680 --> 00:11:09,680
+The amount of time that you are able to send data from one to another is much shorter than sending it to some remote collector gateway.
+
+226
+00:10:58,680 --> 00:11:09,680
+<font color="#ffff54">한 서버에서 다른 서버로 데이터를 전송할 수 있는 시간이 원격 수집 게이트웨이로 데이터를 전송하는 것보다 훨씬 짧습니다.</font>
+
+227
+00:11:09,680 --> 00:11:13,680
+The fact that they are in the same host means that they don't need to do DNS resolving, right?
+
+228
+00:11:09,680 --> 00:11:13,680
+<font color="#ffff54">같은 호스트에 있다는 사실은 DNS 확인을 할 필요가 없다는 것을 의미하겠죠?</font>
+
+229
+00:11:13,680 --> 00:11:19,680
+They can do local host and some specific port and it will always be sent to there.
+
+230
+00:11:13,680 --> 00:11:19,680
+<font color="#ffff54">로컬 호스트와 특정 포트를 지정하면 항상 해당 포트로 전송됩니다.</font>
+
+231
+00:11:19,680 --> 00:11:22,680
+Moreover, it allows me to do things like you would do with logs.
+
+232
+00:11:19,680 --> 00:11:22,680
+<font color="#ffff54">또한 로그와 같은 작업을 수행할 수 있습니다.</font>
+
+233
+00:11:22,680 --> 00:11:30,680
+I can write my trace logs and metrics to some file, not directly to write it to the collector agent.
+
+234
+00:11:22,680 --> 00:11:30,680
+<font color="#ffff54">추적 로그와 메트릭을 수집기 에이전트에 직접 쓰지 않고 일부 파일에 쓸 수 있습니다.</font>
+
+235
+00:11:30,680 --> 00:11:36,680
+And then the collector agent can pick it up and send it like you would do with Fluentd or Filebit.
+
+236
+00:11:30,680 --> 00:11:36,680
+<font color="#ffff54">그러면 수집기 에이전트가 플루언티드나 파일비트를 사용할 때처럼 이를 받아서 전송할 수 있습니다.</font>
+
+237
+00:11:36,680 --> 00:11:40,680
+Those are kind of solutions that you used to see in log solutions.
+
+238
+00:11:36,680 --> 00:11:40,680
+<font color="#ffff54">로그 솔루션에서 흔히 볼 수 있는 솔루션입니다.</font>
+
+239
+00:11:40,680 --> 00:11:48,680
+So basically, these architectures are mostly around more performance,
+
+240
+00:11:40,680 --> 00:11:48,680
+<font color="#ffff54">기본적으로 이러한 아키텍처는 대부분 성능 향상에 중점을 두고 있습니다,</font>
+
+241
+00:11:48,680 --> 00:11:57,680
+as well as another gate between the application and the collector, which is going to allow you to do more things.
+
+242
+00:11:48,680 --> 00:11:57,680
+<font color="#ffff54">뿐만 아니라 애플리케이션과 수집기 사이에 또 다른 게이트가 있어 더 많은 작업을 수행할 수 있습니다.</font>
+
+243
+00:11:57,680 --> 00:12:04,680
+Let's say that you have your application in multiple regions in your cloud account.
+
+244
+00:11:57,680 --> 00:12:04,680
+<font color="#ffff54">클라우드 계정의 여러 지역에 애플리케이션이 있다고 가정해 보겠습니다.</font>
+
+245
+00:12:04,680 --> 00:12:07,680
+So you want to know where your application is running.
+
+246
+00:12:04,680 --> 00:12:07,680
+<font color="#ffff54">애플리케이션이 어디에서 실행되고 있는지 알고 싶습니다.</font>
+
+247
+00:12:07,680 --> 00:12:18,680
+You may know that from the collector agent and the collector agent can manipulate the data and say, hey, this is the US region and this is the European region.
+
+248
+00:12:07,680 --> 00:12:18,680
+<font color="#ffff54">수집 에이전트에서 수집 에이전트가 데이터를 조작하여 여기는 미국 지역이고 여기는 유럽 지역이라고 말할 수 있습니다.</font>
+
+249
+00:12:18,680 --> 00:12:23,680
+And the agent can mark that for you. So it's not only performance.
+
+250
+00:12:18,680 --> 00:12:23,680
+<font color="#ffff54">에이전트가 이를 표시할 수 있습니다. 성능뿐만이 아닙니다.</font>
+
+251
+00:12:23,680 --> 00:12:25,680
+It allows you more things to do.
+
+252
+00:12:23,680 --> 00:12:25,680
+<font color="#ffff54">더 많은 일을 할 수 있습니다.</font>
+
+253
+00:12:25,680 --> 00:12:32,680
+So the pros are that you're getting an addition layer of configuration that we'll see in a second.
+
+254
+00:12:25,680 --> 00:12:32,680
+<font color="#ffff54">장점은 곧 살펴볼 구성 계층이 추가된다는 것입니다.</font>
+
+255
+00:12:32,680 --> 00:12:39,680
+It's going to help us with sampling. It's going to allow us to add metadata to the data that we just collected.
+
+256
+00:12:32,680 --> 00:12:39,680
+<font color="#ffff54">샘플링에 도움이 될 것입니다. 방금 수집한 데이터에 메타데이터를 추가할 수 있게 해줄 것입니다.</font>
+
+257
+00:12:39,680 --> 00:12:45,680
+And it is going to allow you to have more performance optimization that you could do.
+
+258
+00:12:39,680 --> 00:12:45,680
+<font color="#ffff54">그리고 이를 통해 더 많은 성능 최적화를 수행할 수 있습니다.</font>
+
+259
+00:12:45,680 --> 00:12:50,680
+However, it's much more complicated. It consumes more cloud resources.
+
+260
+00:12:45,680 --> 00:12:50,680
+<font color="#ffff54">하지만 훨씬 더 복잡합니다. 더 많은 클라우드 리소스를 소비합니다.</font>
+
+261
+00:12:50,680 --> 00:12:56,680
+And that means that you need to change the infrastructure. You need to change the way that you're deploying your application.
+
+262
+00:12:50,680 --> 00:12:56,680
+<font color="#ffff54">즉, 인프라를 변경해야 합니다. 애플리케이션을 배포하는 방식을 변경해야 합니다.</font>
+
+263
+00:12:56,680 --> 00:13:00,680
+And this means that you could have some trouble.
+
+264
+00:12:56,680 --> 00:13:00,680
+<font color="#ffff54">이는 문제가 발생할 수 있음을 의미합니다.</font>
+
+265
+00:13:00,680 --> 00:13:03,680
+You could have more problems getting there.
+
+266
+00:13:00,680 --> 00:13:03,680
+<font color="#ffff54">더 많은 문제가 발생할 수 있습니다.</font>
+
+267
+00:13:03,680 --> 00:13:15,680
+So I think that if I were to kind of explain the difference between option one and option two, I would say start with option one and get to know how things are working.
+
+268
+00:13:03,680 --> 00:13:15,680
+<font color="#ffff54">그래서 옵션 1과 옵션 2의 차이점을 설명하자면, 옵션 1부터 시작해서 어떻게 작동하는지 알아보라고 말하고 싶습니다.</font>
+
+269
+00:13:15,680 --> 00:13:22,680
+And if you are getting the maturity with open telemetry, you probably want to go with option number two.
+
+270
+00:13:15,680 --> 00:13:22,680
+<font color="#ffff54">개방형 텔레메트리로 만기를 설정하는 경우라면 2번 옵션을 선택하는 것이 좋습니다.</font>
+
+271
+00:13:22,680 --> 00:13:37,680
+What we will do today is we'll start with option number one, then make things a bit more complicated with option number two, and eventually we'll wrap it up and understand what we saw in this session.
+
+272
+00:13:22,680 --> 00:13:37,680
+<font color="#ffff54">오늘은 1번 옵션부터 시작해서 2번 옵션으로 조금 더 복잡하게 만들고, 마지막으로 이 세션에서 본 내용을 정리하고 이해하도록 하겠습니다.</font>
+
+273
+00:13:37,680 --> 00:13:41,680
+My goal for today is to get this architecture going.
+
+274
+00:13:37,680 --> 00:13:41,680
+<font color="#ffff54">오늘의 목표는 이 아키텍처를 실행하는 것입니다.</font>
+
+275
+00:13:41,680 --> 00:13:48,680
+So the overall best approach that I can think of looks like that.
+
+276
+00:13:41,680 --> 00:13:48,680
+<font color="#ffff54">제가 생각할 수 있는 최선의 접근 방식은 전반적으로 이렇게 보입니다.</font>
+
+277
+00:13:48,680 --> 00:13:53,680
+And again, we'll simplify it and keeping it without going into all the specific details.
+
+278
+00:13:48,680 --> 00:13:53,680
+<font color="#ffff54">다시 한 번 말씀드리지만, 구체적인 세부 사항은 다루지 않고 단순화하여 유지하겠습니다.</font>
+
+279
+00:13:53,680 --> 00:14:03,680
+But we're talking about an application that is going to send data directly to the open telemetry collector agent.
+
+280
+00:13:53,680 --> 00:14:03,680
+<font color="#ffff54">하지만 우리는 오픈 텔레메트리 수집기 에이전트에 직접 데이터를 전송하는 애플리케이션에 대해 이야기하고 있습니다.</font>
+
+281
+00:14:03,680 --> 00:14:10,680
+Then the open telemetry collector agent is going to ship data to the open telemetry gateway.
+
+282
+00:14:03,680 --> 00:14:10,680
+<font color="#ffff54">그런 다음 개방형 텔레메트리 수집기 에이전트가 개방형 텔레메트리 게이트웨이로 데이터를 전송합니다.</font>
+
+283
+00:14:10,680 --> 00:14:16,680
+And from that, it's going to be written to Elasticsearch and Prometheus is going to scrape metrics.
+
+284
+00:14:10,680 --> 00:14:16,680
+<font color="#ffff54">그리고 거기서부터 데이터가 Elasticsearch에 기록되고 Prometheus가 메트릭을 스크래핑할 것입니다.</font>
+
+285
+00:14:16,680 --> 00:14:22,680
+So in Elasticsearch, at least what I'm going to show in this demo, we'll write on the traces.
+
+286
+00:14:16,680 --> 00:14:22,680
+<font color="#ffff54">따라서 적어도 이 데모에서 보여드릴 Elasticsearch에서는 추적에 기록할 것입니다.</font>
+
+287
+00:14:22,680 --> 00:14:25,680
+We won't write the metrics both to Elastic and Prometheus.
+
+288
+00:14:22,680 --> 00:14:25,680
+<font color="#ffff54">이 메트릭을 Elastic과 Prometheus 모두에 기록하지는 않겠습니다.</font>
+
+289
+00:14:25,680 --> 00:14:29,680
+However, that's possible if you choose to.
+
+290
+00:14:25,680 --> 00:14:29,680
+<font color="#ffff54">그러나 사용자가 원한다면 가능합니다.</font>
+
+291
+00:14:29,680 --> 00:14:40,680
+And our Yeager is going to fetch those traces from Elastic and with that will be our visualization layer that will display traces.
+
+292
+00:14:29,680 --> 00:14:40,680
+<font color="#ffff54">그리고 우리 예거는 Elastic에서 이러한 추적을 가져올 것이며, 이를 통해 추적을 표시하는 시각화 레이어가 될 것입니다.</font>
+
+293
+00:14:40,680 --> 00:14:42,680
+And with Prometheus, we will display metrics.
+
+294
+00:14:40,680 --> 00:14:42,680
+<font color="#ffff54">그리고 Prometheus를 통해 메트릭을 표시합니다.</font>
+
+295
+00:14:42,680 --> 00:14:50,680
+And of course, if you want to have more things on top of Prometheus, such as Grafana, you can always do that.
+
+296
+00:14:42,680 --> 00:14:50,680
+<font color="#ffff54">물론, 프로메테우스 위에 그라파나 같은 더 많은 것을 추가하고 싶다면 언제든지 그렇게 할 수 있습니다.</font>
+
+297
+00:14:50,680 --> 00:14:53,680
+So that's our goal for today.
+
+298
+00:14:50,680 --> 00:14:53,680
+<font color="#ffff54">이것이 오늘의 목표입니다.</font>
+
+299
+00:14:53,680 --> 00:14:57,680
+And let's start with what we have currently.
+
+300
+00:14:53,680 --> 00:14:57,680
+<font color="#ffff54">그리고 현재 가지고 있는 것부터 시작하겠습니다.</font>
+
+301
+00:14:57,680 --> 00:15:09,680
+So currently what we are doing is when I say currently, I mean the application that we finished with in the last episode, we didn't have open telemetry collector at all.
+
+302
+00:14:57,680 --> 00:15:09,680
+<font color="#ffff54">현재 우리가 하고 있는 것은 지난 에피소드에서 완료한 애플리케이션을 말하는 것으로, 오픈 텔레메트리 수집기가 전혀 없었습니다.</font>
+
+303
+00:15:09,680 --> 00:15:21,680
+What we had is we had a container, not a container, a process actually, with open telemetry in it, sending directly data to Yeager.
+
+304
+00:15:09,680 --> 00:15:21,680
+<font color="#ffff54">컨테이너가 아니라 실제로 오픈 텔레메트리가 포함된 프로세스가 예거에 직접 데이터를 전송하는 컨테이너가 있었습니다.</font>
+
+305
+00:15:21,680 --> 00:15:34,680
+So no database involved, no collector involved, and Prometheus scraped directly the application, which is a bit of problematic when you're talking about a lot of scale.
+
+306
+00:15:21,680 --> 00:15:34,680
+<font color="#ffff54">따라서 데이터베이스나 수집기가 개입되지 않았고, Prometheus가 애플리케이션을 직접 스크래핑했는데, 이는 규모가 큰 경우 약간 문제가 될 수 있습니다.</font>
+
+307
+00:15:34,680 --> 00:15:37,680
+So this is step one.
+
+308
+00:15:34,680 --> 00:15:37,680
+<font color="#ffff54">이것이 1단계입니다.</font>
+
+309
+00:15:37,680 --> 00:15:38,680
+This is what we will start.
+
+310
+00:15:37,680 --> 00:15:38,680
+<font color="#ffff54">이것이 우리가 시작할 것입니다.</font>
+
+311
+00:15:38,680 --> 00:15:42,680
+And by step one, I mean also option number one.
+
+312
+00:15:38,680 --> 00:15:42,680
+<font color="#ffff54">1단계는 1번 옵션을 의미합니다.</font>
+
+313
+00:15:42,680 --> 00:15:45,680
+So as you can see, you don't have an agent here.
+
+314
+00:15:42,680 --> 00:15:45,680
+<font color="#ffff54">보시다시피 여기에는 에이전트가 없습니다.</font>
+
+315
+00:15:45,680 --> 00:15:47,680
+We have only an open telemetry gateway.
+
+316
+00:15:45,680 --> 00:15:47,680
+<font color="#ffff54">열린 텔레메트리 게이트웨이만 있습니다.</font>
+
+317
+00:15:47,680 --> 00:15:54,680
+So the open telemetry container is going to write directly to the open telemetry gateway.
+
+318
+00:15:47,680 --> 00:15:54,680
+<font color="#ffff54">따라서 개방형 텔레메트리 컨테이너는 개방형 텔레메트리 게이트웨이에 직접 쓰게 됩니다.</font>
+
+319
+00:15:54,680 --> 00:16:01,680
+Well, by at least in the start, going to write directly to Yeager all in one.
+
+320
+00:15:54,680 --> 00:16:01,680
+<font color="#ffff54">적어도 시작 단계에서는 예거에 직접 쓰면 되겠네요.</font>
+
+321
+00:16:01,680 --> 00:16:09,680
+Yeager all in one is Yeager that can accept the traces, store them internally in memory and present them.
+
+322
+00:16:01,680 --> 00:16:09,680
+<font color="#ffff54">예거 올인원은 흔적을 받아들이고, 메모리에 저장하고, 제시할 수 있는 예거입니다.</font>
+
+323
+00:16:09,680 --> 00:16:11,680
+Of course, in memory is very limited.
+
+324
+00:16:09,680 --> 00:16:11,680
+<font color="#ffff54">물론 메모리는 매우 제한적입니다.</font>
+
+325
+00:16:11,680 --> 00:16:18,680
+It's not doesn't wouldn't work very well in production.
+
+326
+00:16:11,680 --> 00:16:18,680
+<font color="#ffff54">프로덕션에서는 잘 작동하지 않습니다.</font>
+
+327
+00:16:18,680 --> 00:16:22,680
+And Prometheus is going to scrape from the gateway.
+
+328
+00:16:18,680 --> 00:16:22,680
+<font color="#ffff54">그리고 프로메테우스는 게이트웨이에서 긁어낼 거야.</font>
+
+329
+00:16:22,680 --> 00:16:27,680
+That is going to be step number one.
+
+330
+00:16:22,680 --> 00:16:27,680
+<font color="#ffff54">그게 첫 번째 단계가 될 겁니다.</font>
+
+331
+00:16:27,680 --> 00:16:38,680
+OK, so let's start by going into the configuration and the way that open telemetry collector works.
+
+332
+00:16:27,680 --> 00:16:38,680
+<font color="#ffff54">자, 이제 구성과 오픈 텔레메트리 수집기의 작동 방식부터 살펴보겠습니다.</font>
+
+333
+00:16:38,680 --> 00:16:47,680
+So open telemetry collector, as we saw in this diagram, the first thing that it's doing is going to receive telemetry data.
+
+334
+00:16:38,680 --> 00:16:47,680
+<font color="#ffff54">이 다이어그램에서 보았듯이, 오픈 텔레메트리 수집기가 가장 먼저 하는 일은 텔레메트리 데이터를 수신하는 것입니다.</font>
+
+335
+00:16:47,680 --> 00:16:50,680
+And for that, we have a receiver.
+
+336
+00:16:47,680 --> 00:16:50,680
+<font color="#ffff54">이를 위해 수신기가 있습니다.</font>
+
+337
+00:16:50,680 --> 00:17:04,680
+The receiver is defining how data is received in what protocol, in what format, in everything that you can imagine, whether it's encoded or not encrypted or not encrypted.
+
+338
+00:16:50,680 --> 00:17:04,680
+<font color="#ffff54">수신기는 데이터가 어떤 프로토콜, 어떤 형식으로 수신되는지, 암호화되어 있는지, 암호화되지 않았는지 등 여러분이 상상할 수 있는 모든 것을 정의합니다.</font>
+
+339
+00:17:04,680 --> 00:17:07,680
+So all of those are defined right here.
+
+340
+00:17:04,680 --> 00:17:07,680
+<font color="#ffff54">이 모든 것이 바로 여기에 정의되어 있습니다.</font>
+
+341
+00:17:07,680 --> 00:17:14,680
+We will use the OTP and we will see both usages for HTTP and gRPC.
+
+342
+00:17:07,680 --> 00:17:14,680
+<font color="#ffff54">OTP를 사용하며 HTTP와 gRPC에 대한 사용법을 모두 볼 수 있습니다.</font>
+
+343
+00:17:14,680 --> 00:17:19,680
+And you're basically going to define the port that you're listening on.
+
+344
+00:17:14,680 --> 00:17:19,680
+<font color="#ffff54">그리고 기본적으로 수신 중인 포트를 정의해야 합니다.</font>
+
+345
+00:17:19,680 --> 00:17:25,680
+And let me jump to the code and kind of show you how it looks.
+
+346
+00:17:19,680 --> 00:17:25,680
+<font color="#ffff54">이제 코드로 넘어가서 어떻게 보이는지 보여드리겠습니다.</font>
+
+347
+00:17:25,680 --> 00:17:30,680
+All those crazy things that I'm talking about, how they look in real life.
+
+348
+00:17:25,680 --> 00:17:30,680
+<font color="#ffff54">제가 말씀드린 그 모든 이상한 것들이 실제로 어떻게 보이는지 보여드리겠습니다.</font>
+
+349
+00:17:30,680 --> 00:17:34,680
+So that was the Docker compose that we had till now.
+
+350
+00:17:30,680 --> 00:17:34,680
+<font color="#ffff54">이것이 지금까지의 도커 컴포즈입니다.</font>
+
+351
+00:17:34,680 --> 00:17:42,680
+The only one Prometheus looking at this configuration and ready for the application that it required.
+
+352
+00:17:34,680 --> 00:17:42,680
+<font color="#ffff54">프로메테우스만이 이 구성을 보고 필요한 애플리케이션을 준비했습니다.</font>
+
+353
+00:17:42,680 --> 00:17:50,680
+So the first thing that I'm going to do is I'm going to add the open telemetry gateway.
+
+354
+00:17:42,680 --> 00:17:50,680
+<font color="#ffff54">가장 먼저 할 일은 개방형 텔레메트리 게이트웨이를 추가하는 것입니다.</font>
+
+355
+00:17:50,680 --> 00:17:53,680
+So let me fetch that real quick.
+
+356
+00:17:50,680 --> 00:17:53,680
+<font color="#ffff54">그럼 빨리 가져올게요.</font>
+
+357
+00:17:53,680 --> 00:18:01,680
+I'll paste it and go back to our Docker compose and let's review what I did here.
+
+358
+00:17:53,680 --> 00:18:01,680
+<font color="#ffff54">이 파일을 붙여넣고 Docker 컴포즈로 돌아가서 여기서 한 일을 검토해 보겠습니다.</font>
+
+359
+00:18:01,680 --> 00:18:10,680
+So first of all, I gave the service a name, Open Telemetry Agent, and that's the wrong name.
+
+360
+00:18:01,680 --> 00:18:10,680
+<font color="#ffff54">우선 서비스 이름을 Open Telemetry Agent로 지정했는데, 이는 잘못된 이름입니다.</font>
+
+361
+00:18:10,680 --> 00:18:14,680
+So let's call it the gateway because it's our gateway.
+
+362
+00:18:10,680 --> 00:18:14,680
+<font color="#ffff54">그럼 게이트웨이라고 부르기로 하죠. 게이트웨이는 우리의 관문이니까요.</font>
+
+363
+00:18:14,680 --> 00:18:18,680
+And the image that I'm using is Open Telemetry Collector.
+
+364
+00:18:14,680 --> 00:18:18,680
+<font color="#ffff54">그리고 제가 사용하고 있는 이미지는 오픈 텔레메트리 컬렉터입니다.</font>
+
+365
+00:18:18,680 --> 00:18:20,680
+And I'm using a specific version.
+
+366
+00:18:18,680 --> 00:18:20,680
+<font color="#ffff54">그리고 특정 버전을 사용하고 있습니다.</font>
+
+367
+00:18:20,680 --> 00:18:29,680
+The reason that I'm using this specific version is that if within, I don't know, a month you will come back to this course and pull this image.
+
+368
+00:18:20,680 --> 00:18:29,680
+<font color="#ffff54">제가 이 특정 버전을 사용하는 이유는 한 달 안에 여러분이 이 코스로 돌아와서 이 이미지를 가져올 것이기 때문입니다.</font>
+
+369
+00:18:29,680 --> 00:18:31,680
+Maybe there'll be something different.
+
+370
+00:18:29,680 --> 00:18:31,680
+<font color="#ffff54">뭔가 다른 게 있을지도 모르죠.</font>
+
+371
+00:18:31,680 --> 00:18:34,680
+So I want to make sure that everything works.
+
+372
+00:18:31,680 --> 00:18:34,680
+<font color="#ffff54">그래서 모든 것이 제대로 작동하는지 확인하고 싶어요.</font>
+
+373
+00:18:34,680 --> 00:18:45,680
+And when we are starting the Open Telemetry Collector, we need to define basically the configuration, how it behaves, how it performs.
+
+374
+00:18:34,680 --> 00:18:45,680
+<font color="#ffff54">그리고 오픈 텔레메트리 수집기를 시작할 때 기본적으로 구성, 작동 방식, 성능 등을 정의해야 합니다.</font>
+
+375
+00:18:45,680 --> 00:18:49,680
+So we are specifying the configuration at this path.
+
+376
+00:18:45,680 --> 00:18:49,680
+<font color="#ffff54">따라서 이 경로에서 구성을 지정합니다.</font>
+
+377
+00:18:49,680 --> 00:18:57,680
+And you can see that we are also mapping this path to some local configuration, which we still don't have, right?
+
+378
+00:18:49,680 --> 00:18:57,680
+<font color="#ffff54">그리고 이 경로를 아직 없는 로컬 구성에 매핑하고 있다는 것을 알 수 있죠?</font>
+
+379
+00:18:57,680 --> 00:19:01,680
+In config, we expect to have Collector Gateway YAML, which is not present.
+
+380
+00:18:57,680 --> 00:19:01,680
+<font color="#ffff54">구성에는 수집기 게이트웨이 YAML이 있어야 하는데, 존재하지 않습니다.</font>
+
+381
+00:19:01,680 --> 00:19:03,680
+We will edit it in a second.
+
+382
+00:19:01,680 --> 00:19:03,680
+<font color="#ffff54">잠시 후에 수정하겠습니다.</font>
+
+383
+00:19:03,680 --> 00:19:13,680
+And also exporting a bunch of ports to the world that we will go one by one, understand who they are and what they do.
+
+384
+00:19:03,680 --> 00:19:13,680
+<font color="#ffff54">그리고 우리가 하나씩 가서 그들이 누구이고 무엇을 하는지 이해할 수 있는 수많은 항구를 전 세계에 수출할 것입니다.</font>
+
+385
+00:19:13,680 --> 00:19:16,680
+So let's add this file.
+
+386
+00:19:13,680 --> 00:19:16,680
+<font color="#ffff54">그럼 이 파일을 추가해 봅시다.</font>
+
+387
+00:19:16,680 --> 00:19:24,680
+So our file is called Collector and Gateway YAML.
+
+388
+00:19:16,680 --> 00:19:24,680
+<font color="#ffff54">그래서 우리의 파일은 수집기 및 게이트웨이 YAML이라고 불립니다.</font>
+
+389
+00:19:24,680 --> 00:19:26,680
+Cool.
+
+390
+00:19:24,680 --> 00:19:26,680
+<font color="#ffff54">멋지네요.</font>
+
+391
+00:19:26,680 --> 00:19:30,680
+And let's start adding piece by piece everything that we need.
+
+392
+00:19:26,680 --> 00:19:30,680
+<font color="#ffff54">이제 필요한 모든 것을 하나씩 추가해 봅시다.</font>
+
+393
+00:19:30,680 --> 00:19:36,680
+So as we said, the first thing that we are going to add is going to be the receiver.
+
+394
+00:19:30,680 --> 00:19:36,680
+<font color="#ffff54">앞서 말했듯이 가장 먼저 추가할 것은 리시버입니다.</font>
+
+395
+00:19:36,680 --> 00:19:40,680
+And let's see how receiver looks.
+
+396
+00:19:36,680 --> 00:19:40,680
+<font color="#ffff54">이제 리시버가 어떻게 생겼는지 봅시다.</font>
+
+397
+00:19:40,680 --> 00:19:44,680
+So when you define a receiver, let's review it.
+
+398
+00:19:40,680 --> 00:19:44,680
+<font color="#ffff54">이제 리시버를 정의한 것을 살펴봅시다.</font>
+
+399
+00:19:44,680 --> 00:19:48,680
+So first of all, we are talking about a list of receivers, right?
+
+400
+00:19:44,680 --> 00:19:48,680
+<font color="#ffff54">우선, 우리는 수신자 목록에 대해 이야기하고 있죠?</font>
+
+401
+00:19:48,680 --> 00:19:51,680
+I can have multiple of them.
+
+402
+00:19:48,680 --> 00:19:51,680
+<font color="#ffff54">여러 개를 가질 수 있어요.</font>
+
+403
+00:19:51,680 --> 00:19:55,680
+Maybe I want to receive some data as an OTL pin.
+
+404
+00:19:51,680 --> 00:19:55,680
+<font color="#ffff54">일부 데이터를 OTL 핀으로 받고 싶을 수도 있습니다.</font>
+
+405
+00:19:55,680 --> 00:20:00,680
+Maybe I have some receiver that is working in other protocol.
+
+406
+00:19:55,680 --> 00:20:00,680
+<font color="#ffff54">다른 프로토콜로 작동하는 수신기가 있는 것 같습니다.</font>
+
+407
+00:20:00,680 --> 00:20:08,680
+Or maybe I am going to pull it from some other source and it's not going to be sent directly to me.
+
+408
+00:20:00,680 --> 00:20:08,680
+<font color="#ffff54">아니면 다른 소스에서 가져와서 나에게 직접 보내지 않는 것일 수도 있습니다.</font>
+
+409
+00:20:08,680 --> 00:20:13,680
+Then we are defining the protocols that we are going to listen to.
+
+410
+00:20:08,680 --> 00:20:13,680
+<font color="#ffff54">그런 다음 수신할 프로토콜을 정의합니다.</font>
+
+411
+00:20:13,680 --> 00:20:17,680
+As we said, HTTP and gRPC are available.
+
+412
+00:20:13,680 --> 00:20:17,680
+<font color="#ffff54">앞서 말했듯이 HTTP와 gRPC를 사용할 수 있습니다.</font>
+
+413
+00:20:17,680 --> 00:20:20,680
+We are going to use HTTP.
+
+414
+00:20:17,680 --> 00:20:20,680
+<font color="#ffff54">HTTP를 사용하겠습니다.</font>
+
+415
+00:20:20,680 --> 00:20:24,680
+And we are listening to port 4318.
+
+416
+00:20:20,680 --> 00:20:24,680
+<font color="#ffff54">그리고 포트 4318을 수신하고 있습니다.</font>
+
+417
+00:20:24,680 --> 00:20:32,680
+And that's the port for the default port for HTTP in OpenTelemetry Collector.
+
+418
+00:20:24,680 --> 00:20:32,680
+<font color="#ffff54">이 포트는 OpenTelemetry Collector에서 HTTP의 기본 포트입니다.</font>
+
+419
+00:20:32,680 --> 00:20:34,680
+Cool.
+
+420
+00:20:32,680 --> 00:20:34,680
+<font color="#ffff54">멋지네요.</font>
+
+421
+00:20:34,680 --> 00:20:41,680
+So that means that we can start receiving OpenTelemetry data in HTTP and the specific port.
+
+422
+00:20:34,680 --> 00:20:41,680
+<font color="#ffff54">즉, HTTP와 특정 포트에서 OpenTelemetry 데이터를 수신하기 시작할 수 있다는 뜻입니다.</font>
+
+423
+00:20:41,680 --> 00:20:46,680
+After we are receiving this data, eventually we want it to be shipped somewhere.
+
+424
+00:20:41,680 --> 00:20:46,680
+<font color="#ffff54">이 데이터를 수신한 후에는 결국 데이터를 어딘가로 전송해야 합니다.</font>
+
+425
+00:20:46,680 --> 00:20:49,680
+However, we want to process it.
+
+426
+00:20:46,680 --> 00:20:49,680
+<font color="#ffff54">하지만 우리는 이 데이터를 처리하고 싶습니다.</font>
+
+427
+00:20:49,680 --> 00:20:53,680
+What do I mean when I say that we are going to process it?
+
+428
+00:20:49,680 --> 00:20:53,680
+<font color="#ffff54">처리할 거라는 게 무슨 뜻인가요?</font>
+
+429
+00:20:53,680 --> 00:20:58,680
+Basically, when you receive data, eventually it needs to end up in an exporter.
+
+430
+00:20:53,680 --> 00:20:58,680
+<font color="#ffff54">기본적으로 데이터를 받으면 결국 내보내기로 끝나야 합니다.</font>
+
+431
+00:20:58,680 --> 00:21:05,680
+In between the receiver and the exporter, we may want to do some changes or to change the behavior.
+
+432
+00:20:58,680 --> 00:21:05,680
+<font color="#ffff54">수신자와 내보내기의 중간에서 일부 변경을 수행하거나 동작을 변경하고 싶을 수 있습니다.</font>
+
+433
+00:21:05,680 --> 00:21:08,680
+For instance, maybe we want to sample.
+
+434
+00:21:05,680 --> 00:21:08,680
+<font color="#ffff54">예를 들어 샘플링을 하고 싶을 수도 있습니다.</font>
+
+435
+00:21:08,680 --> 00:21:16,680
+I don't want to write all the different spends and logs and metrics that I'm getting into my database.
+
+436
+00:21:08,680 --> 00:21:16,680
+<font color="#ffff54">다양한 지출과 로그, 메트릭을 모두 데이터베이스에 기록하고 싶지 않습니다.</font>
+
+437
+00:21:16,680 --> 00:21:19,680
+I want to put only 10% out of them.
+
+438
+00:21:16,680 --> 00:21:19,680
+<font color="#ffff54">그중 10%만 입력하고 싶습니다.</font>
+
+439
+00:21:19,680 --> 00:21:25,680
+That means that I received 100%, but I don't want to export 100%.
+
+440
+00:21:19,680 --> 00:21:25,680
+<font color="#ffff54">즉, 100%를 받았지만 100%를 내보내고 싶지 않다는 뜻입니다.</font>
+
+441
+00:21:25,680 --> 00:21:31,680
+So I'm going to have a processor in the middle, basically something part of them.
+
+442
+00:21:25,680 --> 00:21:31,680
+<font color="#ffff54">그래서 저는 중간에 프로세서를 넣으려고 합니다.</font>
+
+443
+00:21:31,680 --> 00:21:34,680
+Maybe I want to change or to alter my data.
+
+444
+00:21:31,680 --> 00:21:34,680
+<font color="#ffff54">내 데이터를 변경하거나 변경하고 싶을지도 모르죠.</font>
+
+445
+00:21:34,680 --> 00:21:37,680
+I want to add some data. I want to remove some data.
+
+446
+00:21:34,680 --> 00:21:37,680
+<font color="#ffff54">일부 데이터를 추가하고 싶습니다. 일부 데이터를 제거하고 싶습니다.</font>
+
+447
+00:21:37,680 --> 00:21:42,680
+Or maybe I just want to improve my performance by doing batches.
+
+448
+00:21:37,680 --> 00:21:42,680
+<font color="#ffff54">아니면 일괄 처리를 통해 성능을 개선하고 싶을 수도 있습니다.</font>
+
+449
+00:21:42,680 --> 00:21:46,680
+All of those are possible using processors.
+
+450
+00:21:42,680 --> 00:21:46,680
+<font color="#ffff54">이 모든 것이 프로세서를 사용하면 가능합니다.</font>
+
+451
+00:21:46,680 --> 00:21:50,680
+Some processors are, by definition, going to change the data.
+
+452
+00:21:46,680 --> 00:21:50,680
+<font color="#ffff54">일부 프로세서는 정의에 따라 데이터를 변경합니다.</font>
+
+453
+00:21:50,680 --> 00:21:53,680
+They are allowed to change the data.
+
+454
+00:21:50,680 --> 00:21:53,680
+<font color="#ffff54">데이터를 변경할 수 있습니다.</font>
+
+455
+00:21:53,680 --> 00:21:57,680
+And some of them are not allowed to change the data.
+
+456
+00:21:53,680 --> 00:21:57,680
+<font color="#ffff54">일부는 데이터 변경이 허용되지 않습니다.</font>
+
+457
+00:21:57,680 --> 00:22:04,680
+This could be extremely important for you to understand whether they are allowed or not allowed to do it.
+
+458
+00:21:57,680 --> 00:22:04,680
+<font color="#ffff54">데이터 변경이 허용되는지 허용되지 않는지 이해하는 것이 매우 중요할 수 있습니다.</font>
+
+459
+00:22:04,680 --> 00:22:06,680
+And let me explain why.
+
+460
+00:22:04,680 --> 00:22:06,680
+<font color="#ffff54">그 이유를 설명해드리죠.</font>
+
+461
+00:22:06,680 --> 00:22:13,680
+So you're allowed for a specific receiver to have multiple processors.
+
+462
+00:22:06,680 --> 00:22:13,680
+<font color="#ffff54">특정 수신기에 여러 개의 프로세서를 가질 수 있습니다.</font>
+
+463
+00:22:13,680 --> 00:22:19,680
+You can have the same receiver basically sending data to two different processors.
+
+464
+00:22:13,680 --> 00:22:19,680
+<font color="#ffff54">기본적으로 동일한 수신기가 두 개의 다른 프로세서로 데이터를 보낼 수 있습니다.</font>
+
+465
+00:22:19,680 --> 00:22:27,680
+If the processor is, by definition, it cannot change the data,
+
+466
+00:22:19,680 --> 00:22:27,680
+<font color="#ffff54">프로세서는 정의상 데이터를 변경할 수 없습니다,</font>
+
+467
+00:22:27,680 --> 00:22:32,680
+that means the exact same data is going to be sent for both of them,
+
+468
+00:22:27,680 --> 00:22:32,680
+<font color="#ffff54">즉, 둘 다 똑같은 데이터가 전송된다는 뜻입니다,</font>
+
+469
+00:22:32,680 --> 00:22:40,680
+because there isn't a risk here of having one specific processor changing the data and one isn't.
+
+470
+00:22:32,680 --> 00:22:40,680
+<font color="#ffff54">특정 프로세서가 데이터를 변경하고 다른 프로세서는 변경하지 않을 위험이 없기 때문입니다.</font>
+
+471
+00:22:40,680 --> 00:22:45,680
+If you are using a processor that can change the data,
+
+472
+00:22:40,680 --> 00:22:45,680
+<font color="#ffff54">데이터를 변경할 수 있는 프로세서를 사용하는 경우,</font>
+
+473
+00:22:45,680 --> 00:22:50,680
+what the collaborative is going to do for you, basically, when it's doing a fan out,
+
+474
+00:22:45,680 --> 00:22:50,680
+<font color="#ffff54">기본적으로 팬아웃을 할 때 협업이 무엇을 할 것인지 알 수 있습니다,</font>
+
+475
+00:22:50,680 --> 00:22:54,680
+the fan out is the process that they can from the receiver to the processor,
+
+476
+00:22:50,680 --> 00:22:54,680
+<font color="#ffff54">팬 아웃은 리시버에서 프로세서로 전송하는 과정입니다,</font>
+
+477
+00:22:54,680 --> 00:22:57,680
+it's going to clone your data.
+
+478
+00:22:54,680 --> 00:22:57,680
+<font color="#ffff54">데이터를 복제할 것입니다.</font>
+
+479
+00:22:57,680 --> 00:22:59,680
+And you can read more about it.
+
+480
+00:22:57,680 --> 00:22:59,680
+<font color="#ffff54">자세한 내용을 읽어보세요.</font>
+
+481
+00:22:59,680 --> 00:23:05,680
+It's referred to as exclusive ownership versus assured ownership.
+
+482
+00:22:59,680 --> 00:23:05,680
+<font color="#ffff54">배타적 소유권과 보장된 소유권이라고 합니다.</font>
+
+483
+00:23:05,680 --> 00:23:11,680
+And in this situation, if you're using a processor that if you would look at the code,
+
+484
+00:23:05,680 --> 00:23:11,680
+<font color="#ffff54">그리고 이 상황에서, 만약 여러분이 코드를 보면</font>
+
+485
+00:23:11,680 --> 00:23:15,680
+you would see that there is some capabilities section there.
+
+486
+00:23:11,680 --> 00:23:15,680
+<font color="#ffff54">에 일부 기능 섹션이 있는 것을 볼 수 있습니다.</font>
+
+487
+00:23:15,680 --> 00:23:19,680
+If you see that it mutates data true and you have two of them,
+
+488
+00:23:15,680 --> 00:23:19,680
+<font color="#ffff54">데이터를 참으로 변경하고 그 중 두 개가 있는 것을 볼 수 있습니다,</font>
+
+489
+00:23:19,680 --> 00:23:23,680
+you are going to duplicate all of your data, which is fine.
+
+490
+00:23:19,680 --> 00:23:23,680
+<font color="#ffff54">모든 데이터를 복제하는 것이므로 괜찮습니다.</font>
+
+491
+00:23:23,680 --> 00:23:27,680
+But you just need to be aware of that.
+
+492
+00:23:23,680 --> 00:23:27,680
+<font color="#ffff54">하지만 그 점만 알아두면 됩니다.</font>
+
+493
+00:23:27,680 --> 00:23:32,680
+Michael, you might touch it right now, but there are limitations for that.
+
+494
+00:23:27,680 --> 00:23:32,680
+<font color="#ffff54">마이클, 지금 당장 만져볼 수도 있지만 거기에는 한계가 있어요.</font>
+
+495
+00:23:32,680 --> 00:23:36,680
+Like, can I have as many processors as I want?
+
+496
+00:23:32,680 --> 00:23:36,680
+<font color="#ffff54">내가 원하는 만큼의 프로세서를 가질 수 있나요?</font>
+
+497
+00:23:36,680 --> 00:23:40,680
+Is it going to harm my performance in any way?
+
+498
+00:23:36,680 --> 00:23:40,680
+<font color="#ffff54">성능에 어떤 식으로든 해가 되나요?</font>
+
+499
+00:23:40,680 --> 00:23:45,680
+Yeah, so definitely you can have as many as you want,
+
+500
+00:23:40,680 --> 00:23:45,680
+<font color="#ffff54">네, 그럼 당연히 원하는 만큼 먹어도 되죠,</font>
+
+501
+00:23:45,680 --> 00:23:50,680
+depending on the type of processor that you are going to implement.
+
+502
+00:23:45,680 --> 00:23:50,680
+<font color="#ffff54">구현하려는 프로세서 유형에 따라 다릅니다.</font>
+
+503
+00:23:50,680 --> 00:23:55,680
+It's either going to degrade your performance or improve your performance.
+
+504
+00:23:50,680 --> 00:23:55,680
+<font color="#ffff54">성능이 저하되거나 성능이 향상될 수 있습니다.</font>
+
+505
+00:23:55,680 --> 00:24:01,680
+If you're doing sampling in batches, so you're only with sampling,
+
+506
+00:23:55,680 --> 00:24:01,680
+<font color="#ffff54">샘플링을 일괄적으로 수행하는 경우 샘플링만 수행합니다,</font>
+
+507
+00:24:01,680 --> 00:24:04,680
+reducing the amount of data that you are processing and with batching,
+
+508
+00:24:01,680 --> 00:24:04,680
+<font color="#ffff54">처리 중인 데이터의 양을 줄이고 일괄 처리하는 경우,</font>
+
+509
+00:24:04,680 --> 00:24:06,680
+you're working with batching.
+
+510
+00:24:04,680 --> 00:24:06,680
+<font color="#ffff54">일괄 처리 중입니다.</font>
+
+511
+00:24:06,680 --> 00:24:08,680
+That means you're more efficient.
+
+512
+00:24:06,680 --> 00:24:08,680
+<font color="#ffff54">더 효율적이라는 뜻입니다.</font>
+
+513
+00:24:08,680 --> 00:24:11,680
+So in that case, you will only improve your performance.
+
+514
+00:24:08,680 --> 00:24:11,680
+<font color="#ffff54">따라서 이 경우에는 성능이 향상될 뿐입니다.</font>
+
+515
+00:24:11,680 --> 00:24:16,680
+Other types of processors which are going to read your entire data
+
+516
+00:24:11,680 --> 00:24:16,680
+<font color="#ffff54">전체 데이터를 읽는 다른 유형의 프로세서</font>
+
+517
+00:24:16,680 --> 00:24:21,680
+and remove sensitive data, that means that they are going to add more computing.
+
+518
+00:24:16,680 --> 00:24:21,680
+<font color="#ffff54">민감한 데이터를 제거한다는 것은 더 많은 컴퓨팅을 추가한다는 것을 의미합니다.</font>
+
+519
+00:24:21,680 --> 00:24:24,680
+Would that affect your performance in a bad way?
+
+520
+00:24:21,680 --> 00:24:24,680
+<font color="#ffff54">성능에 나쁜 영향을 미칠까요?</font>
+
+521
+00:24:24,680 --> 00:24:28,680
+Are there any other types of conflicts between them
+
+522
+00:24:24,680 --> 00:24:28,680
+<font color="#ffff54">그 사이에 다른 유형의 충돌이 있나요?</font>
+
+523
+00:24:28,680 --> 00:24:33,680
+that can happen besides the data alteration?
+
+524
+00:24:28,680 --> 00:24:33,680
+<font color="#ffff54">데이터 변경 외에 일어날 수 있는 충돌이 있나요?</font>
+
+525
+00:24:33,680 --> 00:24:42,680
+So because a processor that is going to change the data
+
+526
+00:24:33,680 --> 00:24:42,680
+<font color="#ffff54">데이터를 변경할 프로세서가 있기 때문에</font>
+
+527
+00:24:42,680 --> 00:24:46,680
+is going to cause it to be cloned, then the data is cloned
+
+528
+00:24:42,680 --> 00:24:46,680
+<font color="#ffff54">이 데이터를 복제하도록 만들 것이기 때문에, 데이터가 복제됩니다.</font>
+
+529
+00:24:46,680 --> 00:24:48,680
+and you're going to have two versions of the same data,
+
+530
+00:24:46,680 --> 00:24:48,680
+<font color="#ffff54">동일한 데이터의 두 가지 버전을 갖게 됩니다,</font>
+
+531
+00:24:48,680 --> 00:24:51,680
+and then they are not affecting one another.
+
+532
+00:24:48,680 --> 00:24:51,680
+<font color="#ffff54">그리고 서로 영향을 주지 않습니다.</font>
+
+533
+00:24:51,680 --> 00:24:56,680
+So that's good from making sure that your data is accurate, but it's double.
+
+534
+00:24:51,680 --> 00:24:56,680
+<font color="#ffff54">데이터가 정확한지 확인하는 것은 좋지만 두 배로 늘어납니다.</font>
+
+535
+00:24:56,680 --> 00:24:58,680
+Got it.
+
+536
+00:24:56,680 --> 00:24:58,680
+<font color="#ffff54">알았어.</font>
+
+537
+00:24:58,680 --> 00:25:05,680
+Okay, so let's see when I'm saying a processor how it looks in real life.
+
+538
+00:24:58,680 --> 00:25:05,680
+<font color="#ffff54">자, 이제 프로세서를 말할 때 실제 어떻게 보이는지 봅시다.</font>
+
+539
+00:25:05,680 --> 00:25:15,680
+So let me grab those, for example, and let's add them to our configuration.
+
+540
+00:25:05,680 --> 00:25:15,680
+<font color="#ffff54">예를 들어 이것들을 가져와서 구성에 추가해 보겠습니다.</font>
+
+541
+00:25:15,680 --> 00:25:20,680
+And let's read what it said because it's kind of straightforward.
+
+542
+00:25:15,680 --> 00:25:20,680
+<font color="#ffff54">그리고 그 내용을 읽어보겠습니다. 간단한 내용이니까요.</font>
+
+543
+00:25:20,680 --> 00:25:22,680
+So again, I can have a list.
+
+544
+00:25:20,680 --> 00:25:22,680
+<font color="#ffff54">다시 목록을 만들 수 있습니다.</font>
+
+545
+00:25:22,680 --> 00:25:26,680
+The first one that I'm using is the patch processor,
+
+546
+00:25:22,680 --> 00:25:26,680
+<font color="#ffff54">제가 사용하는 첫 번째는 패치 프로세서입니다,</font>
+
+547
+00:25:26,680 --> 00:25:29,680
+and I'm setting a time of one second.
+
+548
+00:25:26,680 --> 00:25:29,680
+<font color="#ffff54">그리고 시간을 1초로 설정하고 있습니다.</font>
+
+549
+00:25:29,680 --> 00:25:32,680
+I can put it in a higher value.
+
+550
+00:25:29,680 --> 00:25:32,680
+<font color="#ffff54">더 높은 값으로 설정할 수 있습니다.</font>
+
+551
+00:25:32,680 --> 00:25:37,680
+If it was post-production, I would definitely look into higher numbers in one second.
+
+552
+00:25:32,680 --> 00:25:37,680
+<font color="#ffff54">포스트 프로덕션이었다면 1초 안에 더 높은 수치를 찾았을 겁니다.</font>
+
+553
+00:25:37,680 --> 00:25:41,680
+It is a demo, and I don't want you guys to wait for 10 seconds just to see what I'm doing.
+
+554
+00:25:37,680 --> 00:25:41,680
+<font color="#ffff54">이건 데모인데, 제가 하는 걸 보려고 10초 동안 기다리게 하고 싶지 않아요.</font>
+
+555
+00:25:41,680 --> 00:25:46,680
+So for the purpose of that, it's one second.
+
+556
+00:25:41,680 --> 00:25:46,680
+<font color="#ffff54">그러니까 1초예요.</font>
+
+557
+00:25:46,680 --> 00:25:49,680
+And the second processor that I used called resource.
+
+558
+00:25:46,680 --> 00:25:49,680
+<font color="#ffff54">그리고 제가 사용한 두 번째 프로세서는 자원이라고 불렀습니다.</font>
+
+559
+00:25:49,680 --> 00:25:55,680
+It basically is going to alter the data that is being sent.
+
+560
+00:25:49,680 --> 00:25:55,680
+<font color="#ffff54">기본적으로 전송되는 데이터를 변경합니다.</font>
+
+561
+00:25:55,680 --> 00:26:05,680
+So I am going to add one more attribute here, which is the test key and test value.
+
+562
+00:25:55,680 --> 00:26:05,680
+<font color="#ffff54">여기에 테스트 키와 테스트 값이라는 속성을 하나 더 추가하겠습니다.</font>
+
+563
+00:26:05,680 --> 00:26:08,680
+I'm choosing here to do an insert action.
+
+564
+00:26:05,680 --> 00:26:08,680
+<font color="#ffff54">여기서 삽입 작업을 수행하도록 선택하겠습니다.</font>
+
+565
+00:26:08,680 --> 00:26:13,680
+You can do all kinds of action like insert will just add another one,
+
+566
+00:26:08,680 --> 00:26:13,680
+<font color="#ffff54">삽입과 같은 모든 종류의 액션을 할 수 있습니다,</font>
+
+567
+00:26:13,680 --> 00:26:20,680
+upsert will update an insert, and delete would remove it, and you have a bunch of those action.
+
+568
+00:26:13,680 --> 00:26:20,680
+<font color="#ffff54">업서트는 삽입을 업데이트하고 삭제는 삭제하는 등 다양한 작업을 수행할 수 있습니다.</font>
+
+569
+00:26:20,680 --> 00:26:25,680
+Everything is well documented in the OpenClam 3 collector.
+
+570
+00:26:20,680 --> 00:26:25,680
+<font color="#ffff54">모든 것이 OpenClam 3 콜렉터에 잘 문서화되어 있습니다.</font>
+
+571
+00:26:25,680 --> 00:26:27,680
+So now we have a processor.
+
+572
+00:26:25,680 --> 00:26:27,680
+<font color="#ffff54">이제 프로세서가 생겼습니다.</font>
+
+573
+00:26:27,680 --> 00:26:36,680
+So our data is basically received, processed, and eventually it needs to be exported.
+
+574
+00:26:27,680 --> 00:26:36,680
+<font color="#ffff54">이제 데이터를 기본적으로 수신하고 처리한 다음 내보내야 합니다.</font>
+
+575
+00:26:36,680 --> 00:26:39,680
+The exporter is usually quite simple.
+
+576
+00:26:36,680 --> 00:26:39,680
+<font color="#ffff54">내보내기는 보통 아주 간단합니다.</font>
+
+577
+00:26:39,680 --> 00:26:42,680
+It's a destination to send the data to.
+
+578
+00:26:39,680 --> 00:26:42,680
+<font color="#ffff54">데이터를 보낼 대상입니다.</font>
+
+579
+00:26:42,680 --> 00:26:51,680
+So we have all kinds of exporter like OpenClam 3, again, GPC and HTTP.
+
+580
+00:26:42,680 --> 00:26:51,680
+<font color="#ffff54">그래서 우리는 OpenClam 3와 같은 모든 종류의 내보내기, 다시 말해서 GPC와 HTTP를 가지고 있습니다.</font>
+
+581
+00:26:51,680 --> 00:26:57,680
+When the two collectors, the collector agent, the collector gate, we're going to communicate with one another.
+
+582
+00:26:51,680 --> 00:26:57,680
+<font color="#ffff54">두 개의 수집기, 수집기 에이전트, 수집기 게이트가 서로 통신할 때 우리는 서로 통신할 것입니다.</font>
+
+583
+00:26:57,680 --> 00:27:00,680
+We are going to use that exporter as well.
+
+584
+00:26:57,680 --> 00:27:00,680
+<font color="#ffff54">우리는 그 내보내기도 사용할 것입니다.</font>
+
+585
+00:27:00,680 --> 00:27:03,680
+So our seeder is OTP and our exporter will be OTP.
+
+586
+00:27:00,680 --> 00:27:03,680
+<font color="#ffff54">따라서 시더는 OTP이고 내보내기도 OTP가 됩니다.</font>
+
+587
+00:27:04,680 --> 00:27:10,680
+But then we'll see at the collector that we want to export the data elsewhere.
+
+588
+00:27:04,680 --> 00:27:10,680
+<font color="#ffff54">하지만 수집기에서 데이터를 다른 곳으로 내보내고 싶다는 것을 알 수 있습니다.</font>
+
+589
+00:27:10,680 --> 00:27:13,680
+We want to export it to Jäger.
+
+590
+00:27:10,680 --> 00:27:13,680
+<font color="#ffff54">Jäger로 내보내고 싶습니다.</font>
+
+591
+00:27:13,680 --> 00:27:15,680
+We want to export it to Prometheus.
+
+592
+00:27:13,680 --> 00:27:15,680
+<font color="#ffff54">프로메테우스로 내보내고 싶습니다.</font>
+
+593
+00:27:15,680 --> 00:27:17,680
+We'll see different types of exporters.
+
+594
+00:27:15,680 --> 00:27:17,680
+<font color="#ffff54">다양한 유형의 내보내기를 볼 수 있습니다.</font>
+
+595
+00:27:17,680 --> 00:27:25,680
+And the exporter could also send it to vendors like any vendor that you can think of or cloud provider,
+
+596
+00:27:17,680 --> 00:27:25,680
+<font color="#ffff54">또한 내보내기는 여러분이 생각할 수 있는 모든 벤더 또는 클라우드 제공업체와 같은 벤더에게 보낼 수도 있습니다,</font>
+
+597
+00:27:25,680 --> 00:27:32,680
+open sources and also tools that are going to persist the data like Kafka, Kinesis and those.
+
+598
+00:27:25,680 --> 00:27:32,680
+<font color="#ffff54">오픈 소스, 그리고 카프카, 키네시스 같은 데이터를 지속시키는 도구도 있습니다.</font>
+
+599
+00:27:32,680 --> 00:27:38,680
+And let's see how it looks in real life.
+
+600
+00:27:32,680 --> 00:27:38,680
+<font color="#ffff54">실제 생활에서 어떻게 보이는지 살펴봅시다.</font>
+
+601
+00:27:38,680 --> 00:27:45,680
+So in real life, you could see that I'm going to copy three exporters.
+
+602
+00:27:38,680 --> 00:27:45,680
+<font color="#ffff54">실제로는 세 개의 내보내기를 복사하는 것을 볼 수 있습니다.</font>
+
+603
+00:27:45,680 --> 00:27:50,680
+And let's review those.
+
+604
+00:27:45,680 --> 00:27:50,680
+<font color="#ffff54">그리고 그것들을 검토해 봅시다.</font>
+
+605
+00:27:50,680 --> 00:27:56,680
+The first one is Prometheus, which is responsible in the metrics.
+
+606
+00:27:50,680 --> 00:27:56,680
+<font color="#ffff54">첫 번째는 메트릭을 담당하는 Prometheus입니다.</font>
+
+607
+00:27:56,680 --> 00:28:02,680
+So you can see that they have specific exporters for metrics, specific exporter for traces.
+
+608
+00:27:56,680 --> 00:28:02,680
+<font color="#ffff54">따라서 메트릭에 대한 특정 내보내기가 있고 추적에 대한 특정 내보내기가 있다는 것을 알 수 있습니다.</font>
+
+609
+00:28:02,680 --> 00:28:08,680
+And again, listening to a port specifying all kind of configuration.
+
+610
+00:28:02,680 --> 00:28:08,680
+<font color="#ffff54">그리고 다시, 모든 종류의 구성을 지정하는 포트를 수신하고 있습니다.</font>
+
+611
+00:28:08,680 --> 00:28:12,680
+I chose to work with logging exporter.
+
+612
+00:28:08,680 --> 00:28:12,680
+<font color="#ffff54">로깅 내보내기를 선택했습니다.</font>
+
+613
+00:28:12,680 --> 00:28:22,680
+So most interaction would be logged to the console just for the purpose of having it and having an easy way to debug things doesn't work.
+
+614
+00:28:12,680 --> 00:28:22,680
+<font color="#ffff54">그래서 대부분의 상호작용이 콘솔에 기록되고 디버깅을 쉽게 할 수 있는 방법이 작동하지 않습니다.</font>
+
+615
+00:28:22,680 --> 00:28:28,680
+It is referred to as exporter because it exports stuff to our console.
+
+616
+00:28:22,680 --> 00:28:28,680
+<font color="#ffff54">콘솔로 무언가를 내보내기 때문에 익스포터라고 합니다.</font>
+
+617
+00:28:28,680 --> 00:28:37,680
+And we have Jäger and we would need to spin this Jäger because you see it expected to have it in our Docker compose.
+
+618
+00:28:28,680 --> 00:28:37,680
+<font color="#ffff54">그리고 예거가 있는데, 이 예거를 도커 컴포즈에 넣을 것으로 예상되므로 이 예거를 회전시켜야 합니다.</font>
+
+619
+00:28:37,680 --> 00:28:42,680
+Our next thing would be to make sure that we do have Jäger in place.
+
+620
+00:28:37,680 --> 00:28:42,680
+<font color="#ffff54">다음으로 해야 할 일은 Jäger가 제자리에 있는지 확인하는 것입니다.</font>
+
+621
+00:28:42,680 --> 00:28:46,680
+So just let's see, don't get composed.
+
+622
+00:28:42,680 --> 00:28:46,680
+<font color="#ffff54">어디 보자, 침착해.</font>
+
+623
+00:28:46,680 --> 00:28:50,680
+We have Jäger and we're listening to the port that was specified.
+
+624
+00:28:46,680 --> 00:28:50,680
+<font color="#ffff54">예거가 있고 지정한 포트를 수신 중입니다.</font>
+
+625
+00:28:50,680 --> 00:28:52,680
+So everything is good.
+
+626
+00:28:50,680 --> 00:28:52,680
+<font color="#ffff54">모든 것이 정상입니다.</font>
+
+627
+00:28:52,680 --> 00:28:58,680
+And we're using insecure because we don't have to worry about security in this situation.
+
+628
+00:28:52,680 --> 00:28:58,680
+<font color="#ffff54">이 상황에서는 보안에 대해 걱정할 필요가 없기 때문에 안전하지 않은 것을 사용하고 있습니다.</font>
+
+629
+00:28:58,680 --> 00:29:03,680
+We can decide that we're doing it.
+
+630
+00:28:58,680 --> 00:29:03,680
+<font color="#ffff54">우리는 우리가 하고 있다고 결정할 수 있습니다.</font>
+
+631
+00:29:03,680 --> 00:29:08,680
+But again, not in the demo case.
+
+632
+00:29:03,680 --> 00:29:08,680
+<font color="#ffff54">하지만 다시 말하지만 데모 케이스는 아닙니다.</font>
+
+633
+00:29:08,680 --> 00:29:09,680
+Okay.
+
+634
+00:29:08,680 --> 00:29:09,680
+<font color="#ffff54">알았어요.</font>
+
+635
+00:29:09,680 --> 00:29:15,680
+So we define we have a receiver, processor, exporter.
+
+636
+00:29:09,680 --> 00:29:15,680
+<font color="#ffff54">수신자, 프로세서, 내보내기가 있다고 정의합니다.</font>
+
+637
+00:29:15,680 --> 00:29:32,680
+But all of those together need to be tied in a way that describes how to actually process the data, how to use which receiver is connected to which processors in what order and eventually how it's connected to the data.
+
+638
+00:29:15,680 --> 00:29:32,680
+<font color="#ffff54">하지만 이 모든 것이 실제로 데이터를 처리하는 방법, 어떤 수신기가 어떤 프로세서에 어떤 순서로 연결되는지, 그리고 최종적으로 데이터에 어떻게 연결되는지를 설명하는 방식으로 연결되어야 합니다.</font>
+
+639
+00:29:32,680 --> 00:29:35,680
+And eventually how it's being exported.
+
+640
+00:29:32,680 --> 00:29:35,680
+<font color="#ffff54">그리고 최종적으로 어떻게 내보내는지.</font>
+
+641
+00:29:35,680 --> 00:29:45,680
+So to get that done, I'm going to copy an additional portion, which is called a service.
+
+642
+00:29:35,680 --> 00:29:45,680
+<font color="#ffff54">이를 위해 서비스라고 하는 부분을 추가로 복사하겠습니다.</font>
+
+643
+00:29:45,680 --> 00:29:49,680
+Service is going to define.
+
+644
+00:29:45,680 --> 00:29:49,680
+<font color="#ffff54">서비스가 정의할 것입니다.</font>
+
+645
+00:29:49,680 --> 00:29:55,680
+Let me put it in comment because we haven't spoke about it, but we will speak about extension in a second.
+
+646
+00:29:49,680 --> 00:29:55,680
+<font color="#ffff54">확장에 대해 이야기하지 않았기 때문에 주석으로 남겨두지만, 잠시 후에 확장에 대해 이야기하겠습니다.</font>
+
+647
+00:29:55,680 --> 00:30:00,680
+Service is going to define how all of those interact together.
+
+648
+00:29:55,680 --> 00:30:00,680
+<font color="#ffff54">서비스는 이 모든 것들이 어떻게 상호 작용하는지를 정의할 것입니다.</font>
+
+649
+00:30:00,680 --> 00:30:05,680
+So a service basically, as I said, collector is a data pipeline thing.
+
+650
+00:30:00,680 --> 00:30:05,680
+<font color="#ffff54">따라서 서비스는 기본적으로 앞서 말했듯이 수집기가 데이터 파이프라인에 해당합니다.</font>
+
+651
+00:30:05,680 --> 00:30:07,680
+So we have two pipelines.
+
+652
+00:30:05,680 --> 00:30:07,680
+<font color="#ffff54">그래서 두 개의 파이프라인이 있습니다.</font>
+
+653
+00:30:07,680 --> 00:30:10,680
+The first pipeline is traces.
+
+654
+00:30:07,680 --> 00:30:10,680
+<font color="#ffff54">첫 번째 파이프라인은 트레이스입니다.</font>
+
+655
+00:30:10,680 --> 00:30:15,680
+And with that, what we are going to do is we are going to receive it in the OTLP.
+
+656
+00:30:10,680 --> 00:30:15,680
+<font color="#ffff54">이제 우리는 이 데이터를 OTLP에서 수신할 것입니다.</font>
+
+657
+00:30:15,680 --> 00:30:19,680
+OTLP supports traces, logs and metrics.
+
+658
+00:30:15,680 --> 00:30:19,680
+<font color="#ffff54">OTLP는 추적, 로그, 메트릭을 지원합니다.</font>
+
+659
+00:30:19,680 --> 00:30:22,680
+The first thing that we're going to do is we're going to do batches.
+
+660
+00:30:19,680 --> 00:30:22,680
+<font color="#ffff54">가장 먼저 할 일은 일괄 처리를 하는 것입니다.</font>
+
+661
+00:30:22,680 --> 00:30:25,680
+So we're going to batch everything all together.
+
+662
+00:30:22,680 --> 00:30:25,680
+<font color="#ffff54">그래서 우리는 모든 것을 일괄 처리할 것입니다.</font>
+
+663
+00:30:25,680 --> 00:30:30,680
+Then we're going to add the resource and you can see OTLP.
+
+664
+00:30:25,680 --> 00:30:30,680
+<font color="#ffff54">그런 다음 리소스를 추가하면 OTLP를 볼 수 있습니다.</font>
+
+665
+00:30:30,680 --> 00:30:32,680
+That's right here.
+
+666
+00:30:30,680 --> 00:30:32,680
+<font color="#ffff54">바로 여기입니다.</font>
+
+667
+00:30:32,680 --> 00:30:34,680
+That's just resources.
+
+668
+00:30:32,680 --> 00:30:34,680
+<font color="#ffff54">그냥 자원입니다.</font>
+
+669
+00:30:34,680 --> 00:30:36,680
+That's right here.
+
+670
+00:30:34,680 --> 00:30:36,680
+<font color="#ffff54">바로 여기입니다.</font>
+
+671
+00:30:36,680 --> 00:30:41,680
+The first thing that we want to do is we want to log it and then write it to Jager.
+
+672
+00:30:36,680 --> 00:30:41,680
+<font color="#ffff54">가장 먼저 해야 할 일은 로깅한 다음 Jager에 쓰는 것입니다.</font>
+
+673
+00:30:41,680 --> 00:30:44,680
+And then we're talking about the exporter.
+
+674
+00:30:41,680 --> 00:30:44,680
+<font color="#ffff54">그리고 내보내기에 대해 이야기하고 있습니다.</font>
+
+675
+00:30:44,680 --> 00:31:02,680
+So at the first section of the configuration, what we did is we mainly described how to how each individual component is configured, how specifically Jager, how specifically Prometheus is configured.
+
+676
+00:30:44,680 --> 00:31:02,680
+<font color="#ffff54">구성의 첫 번째 섹션에서는 각 개별 구성 요소가 어떻게 구성되는지, 구체적으로 Jager와 Prometheus가 어떻게 구성되는지 주로 설명했습니다.</font>
+
+677
+00:31:02,680 --> 00:31:07,680
+And with the service, we define how the pipeline looks all together.
+
+678
+00:31:02,680 --> 00:31:07,680
+<font color="#ffff54">그리고 서비스를 통해 파이프라인이 전체적으로 어떻게 보이는지 정의합니다.</font>
+
+679
+00:31:07,680 --> 00:31:08,680
+The same goes for metrics.
+
+680
+00:31:07,680 --> 00:31:08,680
+<font color="#ffff54">메트릭도 마찬가지입니다.</font>
+
+681
+00:31:08,680 --> 00:31:13,680
+So in this, we'll see very similar thing, but we're not going to export it to Jager.
+
+682
+00:31:08,680 --> 00:31:13,680
+<font color="#ffff54">여기에서도 매우 유사한 것을 볼 수 있지만 Jager로 내보내지는 않을 것입니다.</font>
+
+683
+00:31:13,680 --> 00:31:16,680
+We are going to export it to Prometheus.
+
+684
+00:31:13,680 --> 00:31:16,680
+<font color="#ffff54">프로메테우스로 내보내겠습니다.</font>
+
+685
+00:31:16,680 --> 00:31:21,680
+And this is how it looks in a nutshell.
+
+686
+00:31:16,680 --> 00:31:21,680
+<font color="#ffff54">요약하면 이렇습니다.</font>
+
+687
+00:31:21,680 --> 00:31:29,680
+We do have the extension that I'll touch in in quite a brief way.
+
+688
+00:31:21,680 --> 00:31:29,680
+<font color="#ffff54">확장자는 아주 간략하게 설명하겠습니다.</font>
+
+689
+00:31:29,680 --> 00:31:33,680
+So let me drop it.
+
+690
+00:31:29,680 --> 00:31:33,680
+<font color="#ffff54">그럼 그만두죠.</font>
+
+691
+00:31:33,680 --> 00:31:34,680
+Extensions.
+
+692
+00:31:33,680 --> 00:31:34,680
+<font color="#ffff54">연장.</font>
+
+693
+00:31:34,680 --> 00:31:38,680
+Well, the name kind of suggests quite well what they are doing.
+
+694
+00:31:34,680 --> 00:31:38,680
+<font color="#ffff54">이름만 봐도 무슨 일을 하는지 알 수 있겠네요.</font>
+
+695
+00:31:38,680 --> 00:31:47,680
+The kind of extending the pipeline with things that you would need that are not related directly to how you work with this data.
+
+696
+00:31:38,680 --> 00:31:47,680
+<font color="#ffff54">이 데이터로 작업하는 방법과는 직접 관련이 없지만 필요한 것들로 파이프라인을 확장하는 일입니다.</font>
+
+697
+00:31:47,680 --> 00:31:50,680
+The best example is health check.
+
+698
+00:31:47,680 --> 00:31:50,680
+<font color="#ffff54">가장 좋은 예는 상태 확인입니다.</font>
+
+699
+00:31:50,680 --> 00:31:58,680
+When you spin up a container and you're putting it in a load balancer or behind some monitoring system, you want to know that everything works.
+
+700
+00:31:50,680 --> 00:31:58,680
+<font color="#ffff54">컨테이너를 스핀업하고 로드 밸런서나 모니터링 시스템 뒤에 배치할 때 모든 것이 작동하는지 알고 싶을 것입니다.</font>
+
+701
+00:31:58,680 --> 00:32:00,680
+This is why you need to have a health check.
+
+702
+00:31:58,680 --> 00:32:00,680
+<font color="#ffff54">이것이 바로 상태 점검이 필요한 이유입니다.</font>
+
+703
+00:32:00,680 --> 00:32:05,680
+So extension is just checking that everything works as expected.
+
+704
+00:32:00,680 --> 00:32:05,680
+<font color="#ffff54">따라서 확장은 모든 것이 예상대로 작동하는지 확인하는 것입니다.</font>
+
+705
+00:32:05,680 --> 00:32:11,680
+We have a performance extension that is going to give us access to performance data.
+
+706
+00:32:05,680 --> 00:32:11,680
+<font color="#ffff54">성능 데이터에 액세스할 수 있는 성능 확장이 있습니다.</font>
+
+707
+00:32:11,680 --> 00:32:16,680
+And we have the Z pages, which is more of debugging data available for us.
+
+708
+00:32:11,680 --> 00:32:16,680
+<font color="#ffff54">그리고 더 많은 디버깅 데이터를 사용할 수 있는 Z 페이지가 있습니다.</font>
+
+709
+00:32:16,680 --> 00:32:25,680
+So those are going to help us operate the collector regardless to the pipeline itself.
+
+710
+00:32:16,680 --> 00:32:25,680
+<font color="#ffff54">따라서 파이프라인 자체와 관계없이 수집기를 작동하는 데 도움이 될 것입니다.</font>
+
+711
+00:32:25,680 --> 00:32:31,680
+So we are almost good to go with our where step one in this talk.
+
+712
+00:32:25,680 --> 00:32:31,680
+<font color="#ffff54">이제 이 강연의 첫 번째 단계로 넘어가도 될 것 같습니다.</font>
+
+713
+00:32:31,680 --> 00:32:34,680
+And we need to do two things.
+
+714
+00:32:31,680 --> 00:32:34,680
+<font color="#ffff54">그리고 두 가지를 해야 합니다.</font>
+
+715
+00:32:34,680 --> 00:32:37,680
+The first thing would be to change our SDK.
+
+716
+00:32:34,680 --> 00:32:37,680
+<font color="#ffff54">첫 번째는 SDK를 변경하는 것입니다.</font>
+
+717
+00:32:37,680 --> 00:32:44,680
+Our SDK used to write directly to Jager and Prometheus would fetch it from there.
+
+718
+00:32:37,680 --> 00:32:44,680
+<font color="#ffff54">SDK는 Jager에 직접 작성하고 Prometheus는 거기에서 가져옵니다.</font>
+
+719
+00:32:44,680 --> 00:32:46,680
+So we need to change that.
+
+720
+00:32:44,680 --> 00:32:46,680
+<font color="#ffff54">그래서 우리는 그것을 바꿔야 합니다.</font>
+
+721
+00:32:46,680 --> 00:32:52,680
+We need to make sure that it's going to send everything to the collector agent.
+
+722
+00:32:46,680 --> 00:32:52,680
+<font color="#ffff54">수집 에이전트에게 모든 것을 보내도록 해야 합니다.</font>
+
+723
+00:32:52,680 --> 00:33:02,680
+And then we need to update Prometheus to not try to communicate with the open symmetry SDK, but rather to communicate with our exporter.
+
+724
+00:32:52,680 --> 00:33:02,680
+<font color="#ffff54">그런 다음 오픈 시메트리 SDK와 통신을 시도하지 않고 내보내기와 통신하도록 Prometheus를 업데이트해야 합니다.</font>
+
+725
+00:33:02,680 --> 00:33:07,680
+And let's start first with Prometheus.
+
+726
+00:33:02,680 --> 00:33:07,680
+<font color="#ffff54">그럼 먼저 프로메테우스부터 시작해 보겠습니다.</font>
+
+727
+00:33:07,680 --> 00:33:20,680
+So looking at Prometheus configuration, what we told Prometheus to do is to go to our host and fetch the data from both of our servers.
+
+728
+00:33:07,680 --> 00:33:20,680
+<font color="#ffff54">Prometheus 구성을 보면, Prometheus에게 호스트에 가서 두 서버에서 데이터를 가져오라고 지시했습니다.</font>
+
+729
+00:33:20,680 --> 00:33:24,680
+We fetched the data from both the services that we ran.
+
+730
+00:33:20,680 --> 00:33:24,680
+<font color="#ffff54">실행한 두 서비스에서 데이터를 가져왔습니다.</font>
+
+731
+00:33:24,680 --> 00:33:29,680
+We ran two services and different ports on the host of the Docker.
+
+732
+00:33:24,680 --> 00:33:29,680
+<font color="#ffff54">도커 호스트에서 두 개의 서비스와 서로 다른 포트를 실행했습니다.</font>
+
+733
+00:33:29,680 --> 00:33:36,680
+And now we want to say to Prometheus, don't go to the services themselves, the open telemetry SDK.
+
+734
+00:33:29,680 --> 00:33:36,680
+<font color="#ffff54">이제 Prometheus에게 서비스 자체로 이동하지 말고 오픈 텔레메트리 SDK로 이동하라고 말하고 싶습니다.</font>
+
+735
+00:33:36,680 --> 00:33:40,680
+Please go to the open telemetry collector.
+
+736
+00:33:36,680 --> 00:33:40,680
+<font color="#ffff54">오픈 텔레메트리 수집기로 이동하세요.</font>
+
+737
+00:33:40,680 --> 00:33:44,680
+So let's do collector, gateway.
+
+738
+00:33:40,680 --> 00:33:44,680
+<font color="#ffff54">그럼 수집기, 게이트웨이를 해봅시다.</font>
+
+739
+00:33:44,680 --> 00:33:48,680
+And then we need to know at which port.
+
+740
+00:33:44,680 --> 00:33:48,680
+<font color="#ffff54">그리고 어느 포트에 있는지 알아야 합니다.</font>
+
+741
+00:33:48,680 --> 00:33:55,680
+So now we need to know what the configuration of open telemetry collector is going to tell us.
+
+742
+00:33:48,680 --> 00:33:55,680
+<font color="#ffff54">이제 오픈 텔레메트리 수집기의 구성이 우리에게 무엇을 알려줄지 알아야 합니다.</font>
+
+743
+00:33:55,680 --> 00:33:59,680
+So this is the port we are working with.
+
+744
+00:33:55,680 --> 00:33:59,680
+<font color="#ffff54">이것이 우리가 작업하고 있는 포트입니다.</font>
+
+745
+00:33:59,680 --> 00:34:03,680
+So let's specify this port right here.
+
+746
+00:33:59,680 --> 00:34:03,680
+<font color="#ffff54">이 포트를 바로 여기에 지정해 보겠습니다.</font>
+
+747
+00:34:03,680 --> 00:34:08,680
+So now all the backend configuration is configured as expected.
+
+748
+00:34:03,680 --> 00:34:08,680
+<font color="#ffff54">이제 모든 백엔드 구성이 예상대로 구성되었습니다.</font>
+
+749
+00:34:08,680 --> 00:34:10,680
+Well, hopefully at least.
+
+750
+00:34:08,680 --> 00:34:10,680
+<font color="#ffff54">적어도 그랬으면 좋겠네요.</font>
+
+751
+00:34:10,680 --> 00:34:16,680
+And now we need to make sure that the open telemetry SDK is configured as expected.
+
+752
+00:34:10,680 --> 00:34:16,680
+<font color="#ffff54">이제 오픈 텔레메트리 SDK가 예상대로 구성되었는지 확인해야 합니다.</font>
+
+753
+00:34:16,679 --> 00:34:20,679
+So looking at the code, we can see that we have Prometheus exporter.
+
+754
+00:34:16,679 --> 00:34:20,679
+<font color="#ffff54">코드를 보면 Prometheus 내보내기가 있음을 알 수 있습니다.</font>
+
+755
+00:34:20,679 --> 00:34:23,679
+We don't want to export it to Prometheus.
+
+756
+00:34:20,679 --> 00:34:23,679
+<font color="#ffff54">Prometheus로 내보내고 싶지 않습니다.</font>
+
+757
+00:34:23,679 --> 00:34:29,679
+We want to export it to the collector metric exporter.
+
+758
+00:34:23,679 --> 00:34:29,679
+<font color="#ffff54">수집기 메트릭 내보내기로 내보내고 싶습니다.</font>
+
+759
+00:34:29,679 --> 00:34:34,679
+And we are exporting to 44318.
+
+760
+00:34:29,679 --> 00:34:34,679
+<font color="#ffff54">그리고 44318로 내보내고 있습니다.</font>
+
+761
+00:34:34,679 --> 00:34:38,679
+If I go to the collector gateway and look at that port.
+
+762
+00:34:34,679 --> 00:34:38,679
+<font color="#ffff54">수집기 게이트웨이로 가서 해당 포트를 보면.</font>
+
+763
+00:34:38,679 --> 00:34:41,679
+So we are using the correct port.
+
+764
+00:34:38,679 --> 00:34:41,679
+<font color="#ffff54">따라서 우리는 올바른 포트를 사용하고 있습니다.</font>
+
+765
+00:34:41,679 --> 00:34:43,679
+That's great.
+
+766
+00:34:41,679 --> 00:34:43,679
+<font color="#ffff54">잘됐네요.</font>
+
+767
+00:34:43,679 --> 00:34:49,679
+Now we also don't want to export it to Jager.
+
+768
+00:34:43,679 --> 00:34:49,679
+<font color="#ffff54">이제 예거로 내보내고 싶지 않아요.</font>
+
+769
+00:34:49,679 --> 00:34:55,679
+We want to export it to the collector trace exporter.
+
+770
+00:34:49,679 --> 00:34:55,679
+<font color="#ffff54">수집기 추적 내보내기로 내보내고 싶습니다.</font>
+
+771
+00:34:55,679 --> 00:34:56,679
+And again, same port.
+
+772
+00:34:55,679 --> 00:34:56,679
+<font color="#ffff54">다시 같은 포트입니다.</font>
+
+773
+00:34:56,679 --> 00:35:00,679
+So you can see we are exporting to the exact same address.
+
+774
+00:34:56,679 --> 00:35:00,679
+<font color="#ffff54">정확히 동일한 주소로 내보내고 있음을 알 수 있습니다.</font>
+
+775
+00:35:00,679 --> 00:35:03,679
+V1, that's the version that we are using.
+
+776
+00:35:00,679 --> 00:35:03,679
+<font color="#ffff54">V1, 이것이 우리가 사용하고 있는 버전입니다.</font>
+
+777
+00:35:03,679 --> 00:35:06,679
+And here we are using metrics.
+
+778
+00:35:03,679 --> 00:35:06,679
+<font color="#ffff54">여기서는 메트릭을 사용하고 있습니다.</font>
+
+779
+00:35:06,679 --> 00:35:13,679
+So this should be trace and not trace or trace as we will see in a second.
+
+780
+00:35:06,679 --> 00:35:13,679
+<font color="#ffff54">따라서 이것은 잠시 후에 보게 되겠지만 추적이나 추적이 아닌 추적이어야 합니다.</font>
+
+781
+00:35:13,679 --> 00:35:17,679
+And we are sending that right here.
+
+782
+00:35:13,679 --> 00:35:17,679
+<font color="#ffff54">바로 여기로 전송합니다.</font>
+
+783
+00:35:17,679 --> 00:35:21,679
+So let's verify that the application is running and working.
+
+784
+00:35:17,679 --> 00:35:21,679
+<font color="#ffff54">이제 애플리케이션이 실행 중이고 작동하는지 확인해 보겠습니다.</font>
+
+785
+00:35:21,679 --> 00:35:27,679
+Young items, young users and spinning up the application.
+
+786
+00:35:21,679 --> 00:35:27,679
+<font color="#ffff54">젊은 아이템, 젊은 사용자, 애플리케이션을 돌리고 있습니다.</font>
+
+787
+00:35:27,679 --> 00:35:32,679
+And also it's saying that it's not able to connect.
+
+788
+00:35:27,679 --> 00:35:32,679
+<font color="#ffff54">또한 연결할 수 없다는 메시지가 표시됩니다.</font>
+
+789
+00:35:32,679 --> 00:35:35,679
+That's because I haven't spin up the Docker compose yet.
+
+790
+00:35:32,679 --> 00:35:35,679
+<font color="#ffff54">아직 도커 컴포즈를 스핀업하지 않았기 때문입니다.</font>
+
+791
+00:35:35,679 --> 00:35:40,679
+So let's spin that up.
+
+792
+00:35:35,679 --> 00:35:40,679
+<font color="#ffff54">그럼 스핀업해 봅시다.</font>
+
+793
+00:35:40,679 --> 00:35:43,679
+Docker compose up.
+
+794
+00:35:40,679 --> 00:35:43,679
+<font color="#ffff54">도커를 컴파일합니다.</font>
+
+795
+00:35:43,679 --> 00:35:46,679
+And now we're spinning everything up.
+
+796
+00:35:43,679 --> 00:35:46,679
+<font color="#ffff54">이제 모든 것을 스핀업합니다.</font>
+
+797
+00:35:46,679 --> 00:35:51,679
+And hopefully everything will work as we expect it to.
+
+798
+00:35:46,679 --> 00:35:51,679
+<font color="#ffff54">모든 것이 예상대로 작동하길 바랍니다.</font>
+
+799
+00:35:51,679 --> 00:35:56,679
+And also let's spin up the services, items, users.
+
+800
+00:35:51,679 --> 00:35:56,679
+<font color="#ffff54">그리고 서비스, 아이템, 사용자를 스핀업해 봅시다.</font>
+
+801
+00:35:56,679 --> 00:35:59,679
+And let's check that our application is actually working.
+
+802
+00:35:56,679 --> 00:35:59,679
+<font color="#ffff54">그리고 애플리케이션이 실제로 작동하는지 확인해 봅시다.</font>
+
+803
+00:35:59,679 --> 00:36:04,679
+And we could see whatever that we want to see that it's actually working.
+
+804
+00:35:59,679 --> 00:36:04,679
+<font color="#ffff54">그리고 실제로 작동하는지 확인하고 싶은 것은 무엇이든 볼 수 있습니다.</font>
+
+805
+00:36:04,679 --> 00:36:07,679
+So the application is running.
+
+806
+00:36:04,679 --> 00:36:07,679
+<font color="#ffff54">애플리케이션이 실행 중입니다.</font>
+
+807
+00:36:07,679 --> 00:36:09,679
+Right. You can see the name changes.
+
+808
+00:36:07,679 --> 00:36:09,679
+<font color="#ffff54">그렇군요. 이름이 변경된 것을 볼 수 있습니다.</font>
+
+809
+00:36:09,679 --> 00:36:13,679
+And let's refresh Jager.
+
+810
+00:36:09,679 --> 00:36:13,679
+<font color="#ffff54">이제 예거를 새로고침합니다.</font>
+
+811
+00:36:13,679 --> 00:36:15,679
+Jager is running.
+
+812
+00:36:13,679 --> 00:36:15,679
+<font color="#ffff54">예거가 실행 중입니다.</font>
+
+813
+00:36:15,679 --> 00:36:17,679
+And we have some traces.
+
+814
+00:36:15,679 --> 00:36:17,679
+<font color="#ffff54">흔적을 찾았습니다.</font>
+
+815
+00:36:17,679 --> 00:36:20,679
+So everything that we did actually worked.
+
+816
+00:36:17,679 --> 00:36:20,679
+<font color="#ffff54">우리가 한 모든 일이 실제로 효과가 있었군요.</font>
+
+817
+00:36:20,679 --> 00:36:28,679
+And I know we did a lot of configuration and not much changes in the way that everything interacted.
+
+818
+00:36:20,679 --> 00:36:28,679
+<font color="#ffff54">그리고 우리가 많은 구성을 했지만 모든 것이 상호 작용하는 방식에는 큰 변화가 없었다는 것을 알고 있습니다.</font>
+
+819
+00:36:28,679 --> 00:36:35,679
+So I do want to just jump here again for a second to kind of wrap up what we did.
+
+820
+00:36:28,679 --> 00:36:35,679
+<font color="#ffff54">잠깐만 다시 돌아와서 우리가 한 일을 마무리하고 싶습니다.</font>
+
+821
+00:36:35,679 --> 00:36:46,679
+So the application, the client side application, the open telemetry SDK, all directed to Jager and Prometheus fetched from here.
+
+822
+00:36:35,679 --> 00:36:46,679
+<font color="#ffff54">애플리케이션, 클라이언트 측 애플리케이션, 개방형 텔레메트리 SDK는 모두 여기에서 가져온 Jager와 Prometheus로 연결됩니다.</font>
+
+823
+00:36:46,679 --> 00:36:54,679
+And our changes were that the open telemetry collector is writing to the gateway.
+
+824
+00:36:46,679 --> 00:36:54,679
+<font color="#ffff54">그리고 오픈 텔레메트리 수집기가 게이트웨이에 쓰고 있다는 점이 변경되었습니다.</font>
+
+825
+00:36:54,679 --> 00:37:00,679
+And where the gateway is running and getting and sending the data to Jager all in one.
+
+826
+00:36:54,679 --> 00:37:00,679
+<font color="#ffff54">그리고 게이트웨이가 실행 중이고 데이터를 가져와서 Jager로 전송하는 위치가 모두 하나로 통합되었습니다.</font>
+
+827
+00:37:00,679 --> 00:37:04,679
+And where Prometheus is fetching from the collector.
+
+828
+00:37:00,679 --> 00:37:04,679
+<font color="#ffff54">그리고 프로메테우스가 수집기로부터 데이터를 가져오는 위치.</font>
+
+829
+00:37:04,679 --> 00:37:10,679
+This is for me a must thing, a thing that you must do before going to production.
+
+830
+00:37:04,679 --> 00:37:10,679
+<font color="#ffff54">이건 프로덕션에 들어가기 전에 꼭 해야 할 일입니다.</font>
+
+831
+00:37:10,679 --> 00:37:15,679
+At least that would be the very basic thing that I would do.
+
+832
+00:37:10,679 --> 00:37:15,679
+<font color="#ffff54">적어도 저라면 그렇게 할 겁니다.</font>
+
+833
+00:37:15,679 --> 00:37:25,679
+And even I would probably say that you have to have here some database and we will see that in a second how we are adding that.
+
+834
+00:37:15,679 --> 00:37:25,679
+<font color="#ffff54">그리고 저조차도 여기에 어떤 데이터베이스가 있어야 한다고 말하고 싶고, 우리가 그것을 어떻게 추가하는지 곧 보게 될 것입니다.</font>
+
+835
+00:37:25,679 --> 00:37:27,679
+OK, cool.
+
+836
+00:37:25,679 --> 00:37:27,679
+<font color="#ffff54">네, 좋아요.</font>
+
+837
+00:37:27,679 --> 00:37:29,679
+So let's move on. We talked about all of those.
+
+838
+00:37:27,679 --> 00:37:29,679
+<font color="#ffff54">그럼 계속 진행하죠. 다 얘기했잖아요.</font>
+
+839
+00:37:29,679 --> 00:37:33,679
+Let's move to step number two.
+
+840
+00:37:29,679 --> 00:37:33,679
+<font color="#ffff54">두 번째 단계로 넘어가죠.</font>
+
+841
+00:37:33,679 --> 00:37:39,679
+In step number two, what we are going to do is we're going to have an additional configuration.
+
+842
+00:37:33,679 --> 00:37:39,679
+<font color="#ffff54">두 번째 단계에서는 추가 구성을 할 것입니다.</font>
+
+843
+00:37:39,679 --> 00:37:44,679
+The additional configuration is going to be an additional collector agent.
+
+844
+00:37:39,679 --> 00:37:44,679
+<font color="#ffff54">추가 구성은 추가 수집기 에이전트가 될 것입니다.</font>
+
+845
+00:37:44,679 --> 00:37:52,679
+So the container with the open telemetry SDK will be able to write to the collector agent and that would send it to the collector.
+
+846
+00:37:44,679 --> 00:37:52,679
+<font color="#ffff54">따라서 오픈 텔레메트리 SDK가 있는 컨테이너는 수집기 에이전트에 쓸 수 있고, 그러면 수집기로 전송됩니다.</font>
+
+847
+00:37:52,679 --> 00:38:03,679
+This is going to be actually a simple change because we are just spinning up another container and we just need to have some changes in the way that the agent works.
+
+848
+00:37:52,679 --> 00:38:03,679
+<font color="#ffff54">다른 컨테이너를 스핀업하고 에이전트가 작동하는 방식만 약간 변경하면 되므로 실제로는 간단한 변경이 될 것입니다.</font>
+
+849
+00:38:03,679 --> 00:38:12,679
+The collector actually going to work roughly the same, but the agent needs to work a bit differently and we need to set it up.
+
+850
+00:38:03,679 --> 00:38:12,679
+<font color="#ffff54">수집기는 실제로 거의 동일하게 작동하지만 에이전트는 약간 다르게 작동해야 하므로 이를 설정해야 합니다.</font>
+
+851
+00:38:12,679 --> 00:38:16,679
+So let's do exactly that.
+
+852
+00:38:12,679 --> 00:38:16,679
+<font color="#ffff54">그럼 정확히 그렇게 해봅시다.</font>
+
+853
+00:38:16,679 --> 00:38:28,679
+So we need to first spin up an additional service, an additional open telemetry collector.
+
+854
+00:38:16,679 --> 00:38:28,679
+<font color="#ffff54">먼저 추가 서비스, 즉 개방형 텔레메트리 수집기를 추가로 스핀업해야 합니다.</font>
+
+855
+00:38:28,679 --> 00:38:38,679
+So let's grab it from here and let's review those changes.
+
+856
+00:38:28,679 --> 00:38:38,679
+<font color="#ffff54">그럼 여기서부터 시작해서 변경 사항을 검토해 봅시다.</font>
+
+857
+00:38:38,679 --> 00:38:42,679
+OK. Edit it correctly.
+
+858
+00:38:38,679 --> 00:38:42,679
+<font color="#ffff54">됐어요. 올바르게 수정했습니다.</font>
+
+859
+00:38:42,679 --> 00:38:49,679
+Yes. So now we are having an agent and the agent is defined pretty much the same.
+
+860
+00:38:42,679 --> 00:38:49,679
+<font color="#ffff54">예. 이제 에이전트가 있고 에이전트가 거의 동일하게 정의되었습니다.</font>
+
+861
+00:38:49,679 --> 00:38:52,679
+We have an image, the same version.
+
+862
+00:38:49,679 --> 00:38:52,679
+<font color="#ffff54">동일한 버전의 이미지가 있습니다.</font>
+
+863
+00:38:52,679 --> 00:38:58,679
+We need to add a configuration for the collector agent, rather the collector gateway.
+
+864
+00:38:52,679 --> 00:38:58,679
+<font color="#ffff54">수집기 게이트웨이가 아닌 수집기 에이전트에 대한 구성을 추가해야 합니다.</font>
+
+865
+00:38:58,679 --> 00:39:02,679
+And this one doesn't need to have all of those ports.
+
+866
+00:38:58,679 --> 00:39:02,679
+<font color="#ffff54">그리고 이 포트가 모든 포트를 가질 필요는 없습니다.</font>
+
+867
+00:39:02,679 --> 00:39:09,679
+It's just going to receive telemetry data and it's going to export it to the main collector.
+
+868
+00:39:02,679 --> 00:39:09,679
+<font color="#ffff54">텔레메트리 데이터만 수신해서 메인 수집기로 내보내면 됩니다.</font>
+
+869
+00:39:09,679 --> 00:39:21,679
+And this is the reason why you don't need a lot of ports as opposed to the collector one where you need to have for the extension and for prometeus and for health check and all of those things.
+
+870
+00:39:09,679 --> 00:39:21,679
+<font color="#ffff54">그래서 확장이나 프로메테우스, 상태 확인 등을 위해 필요한 수집기와 달리 포트가 많이 필요하지 않습니다.</font>
+
+871
+00:39:21,679 --> 00:39:29,679
+So let's add an additional file and it's called Collector Agent.
+
+872
+00:39:21,679 --> 00:39:29,679
+<font color="#ffff54">이제 콜렉터 에이전트라는 파일을 추가해 보겠습니다.</font>
+
+873
+00:39:29,679 --> 00:39:45,679
+And now that we're very much expert with taking a look at this configuration, I'm going to copy it all together and I see it right here.
+
+874
+00:39:29,679 --> 00:39:45,679
+<font color="#ffff54">이제 이 구성을 살펴보는 데 매우 능숙해졌으므로 모두 함께 복사해서 바로 여기에 보겠습니다.</font>
+
+875
+00:39:45,679 --> 00:39:49,679
+And let's review it because it's going to be very similar.
+
+876
+00:39:45,679 --> 00:39:49,679
+<font color="#ffff54">매우 유사할 것이므로 검토해 봅시다.</font>
+
+877
+00:39:49,679 --> 00:39:56,679
+But let's just say out loud what we want to happen here before reviewing it.
+
+878
+00:39:49,679 --> 00:39:56,679
+<font color="#ffff54">하지만 검토하기 전에 여기서 어떤 일이 일어나길 원하는지 큰 소리로 말해봅시다.</font>
+
+879
+00:39:56,679 --> 00:40:06,679
+We want to get the data using an OTLP and then we want to export it using OTLP to the main collector.
+
+880
+00:39:56,679 --> 00:40:06,679
+<font color="#ffff54">OTLP를 사용하여 데이터를 가져온 다음 OTLP를 사용하여 메인 수집기로 내보내고 싶습니다.</font>
+
+881
+00:40:06,679 --> 00:40:11,679
+We're getting data from the SDK and sending it to the gateway collector.
+
+882
+00:40:06,679 --> 00:40:11,679
+<font color="#ffff54">SDK에서 데이터를 가져와서 게이트웨이 수집기로 보내고 있습니다.</font>
+
+883
+00:40:11,679 --> 00:40:13,679
+So receiver is going to stay the same.
+
+884
+00:40:11,679 --> 00:40:13,679
+<font color="#ffff54">수신기는 그대로 유지됩니다.</font>
+
+885
+00:40:13,679 --> 00:40:17,679
+So we won't need to do any changes in the application.
+
+886
+00:40:13,679 --> 00:40:17,679
+<font color="#ffff54">따라서 애플리케이션을 변경할 필요가 없습니다.</font>
+
+887
+00:40:17,679 --> 00:40:21,679
+Still OTLP, still HTTP, still same port.
+
+888
+00:40:17,679 --> 00:40:21,679
+<font color="#ffff54">여전히 OTLP, 여전히 HTTP, 여전히 동일한 포트입니다.</font>
+
+889
+00:40:21,679 --> 00:40:27,679
+From a processor perspective, I didn't do much changes.
+
+890
+00:40:21,679 --> 00:40:27,679
+<font color="#ffff54">프로세서 관점에서 보면 별다른 변화가 없습니다.</font>
+
+891
+00:40:27,679 --> 00:40:30,679
+I'm just writing a different attribute.
+
+892
+00:40:27,679 --> 00:40:30,679
+<font color="#ffff54">그냥 다른 어트리뷰트를 작성했을 뿐입니다.</font>
+
+893
+00:40:30,679 --> 00:40:42,679
+So we have component name one agent and let's in our gateway change it to gateway so we will be able to actually see both of them.
+
+894
+00:40:30,679 --> 00:40:42,679
+<font color="#ffff54">이제 컴포넌트 이름이 에이전트 하나이고 게이트웨이에서 이를 게이트웨이로 변경하여 실제로 두 에이전트를 모두 볼 수 있도록 하겠습니다.</font>
+
+895
+00:40:42,679 --> 00:40:47,679
+And then we have only one exporter.
+
+896
+00:40:42,679 --> 00:40:47,679
+<font color="#ffff54">그리고 수출자가 하나만 있습니다.</font>
+
+897
+00:40:47,679 --> 00:40:51,679
+Well, we have the logging one, but only one significant exporter.
+
+898
+00:40:47,679 --> 00:40:51,679
+<font color="#ffff54">로깅은 있지만 중요한 내보내기는 하나뿐입니다.</font>
+
+899
+00:40:51,679 --> 00:41:00,679
+So we are going to have an OTLP exporter in secure, which is going to export to the collector gateway.
+
+900
+00:40:51,679 --> 00:41:00,679
+<font color="#ffff54">그래서 우리는 수집기 게이트웨이로 내보내는 OTLP 내보내기를 보안에 넣을 것입니다.</font>
+
+901
+00:41:00,679 --> 00:41:06,679
+That's great. I did have the health check, because we want to make sure that that is working.
+
+902
+00:41:00,679 --> 00:41:06,679
+<font color="#ffff54">잘됐네요. 제대로 작동하는지 확인하고 싶어서 상태 확인을 했어요.</font>
+
+903
+00:41:06,679 --> 00:41:07,679
+Cool.
+
+904
+00:41:06,679 --> 00:41:07,679
+<font color="#ffff54">멋지네.</font>
+
+905
+00:41:07,679 --> 00:41:12,679
+For traces, we're receiving an OTLP batch and resource.
+
+906
+00:41:07,679 --> 00:41:12,679
+<font color="#ffff54">추적의 경우, OTLP 배치와 리소스를 받고 있습니다.</font>
+
+907
+00:41:12,679 --> 00:41:21,679
+We are exporting it to the OTLP and that's our main collector, the gateway, and the same goes for metrics.
+
+908
+00:41:12,679 --> 00:41:21,679
+<font color="#ffff54">메인 수집기인 게이트웨이인 OTLP로 내보내고 있으며, 메트릭도 마찬가지입니다.</font>
+
+909
+00:41:21,679 --> 00:41:27,679
+So once you get to know OpenTelemetry collector, it's kind of easy to define it.
+
+910
+00:41:21,679 --> 00:41:27,679
+<font color="#ffff54">따라서 일단 OpenTelemetry 수집기에 대해 알게 되면, 이를 정의하는 것은 매우 쉽습니다.</font>
+
+911
+00:41:27,679 --> 00:41:30,679
+The first steps are rather complex.
+
+912
+00:41:27,679 --> 00:41:30,679
+<font color="#ffff54">첫 단계는 다소 복잡합니다.</font>
+
+913
+00:41:30,679 --> 00:41:36,679
+But once you get to know this configuration, it's kind of easy to make those changes.
+
+914
+00:41:30,679 --> 00:41:36,679
+<font color="#ffff54">하지만 이 설정에 익숙해지면 변경하는 것은 꽤 쉽습니다.</font>
+
+915
+00:41:36,679 --> 00:41:39,679
+So let's save that.
+
+916
+00:41:36,679 --> 00:41:39,679
+<font color="#ffff54">그럼 저장합시다.</font>
+
+917
+00:41:39,679 --> 00:41:49,679
+And also, let's save our Docker compose and let's try to spin it up and see whether it's working or not.
+
+918
+00:41:39,679 --> 00:41:49,679
+<font color="#ffff54">그리고 Docker 컴포넌트를 저장하고 스핀업해서 작동하는지 확인해 봅시다.</font>
+
+919
+00:41:49,679 --> 00:41:56,679
+So Docker compose up, spinning everything all together, almost spinning everything all together.
+
+920
+00:41:49,679 --> 00:41:56,679
+<font color="#ffff54">Docker 컴포즈가 시작되어 모든 것을 한꺼번에, 거의 모든 것을 한꺼번에 돌리고 있습니다.</font>
+
+921
+00:41:56,679 --> 00:41:59,679
+So let's try to figure out what really happened here.
+
+922
+00:41:56,679 --> 00:41:59,679
+<font color="#ffff54">그럼 여기서 실제로 무슨 일이 일어났는지 알아봅시다.</font>
+
+923
+00:41:59,679 --> 00:42:07,679
+Looking at what happened here is that we have two ports listening to a 4318.
+
+924
+00:41:59,679 --> 00:42:07,679
+<font color="#ffff54">여기서 무슨 일이 일어났는지 살펴보면 두 개의 포트가 4318을 수신하고 있다는 것을 알 수 있습니다.</font>
+
+925
+00:42:07,679 --> 00:42:15,679
+And that is true. I have my agent listening to this port and I also have the collector gateway listening to that port.
+
+926
+00:42:07,679 --> 00:42:15,679
+<font color="#ffff54">그리고 그건 사실입니다. 에이전트가 이 포트를 수신하고 있고 수집기 게이트웨이도 이 포트를 수신하고 있습니다.</font>
+
+927
+00:42:15,679 --> 00:42:19,679
+So I can't have both of them listening to the same port.
+
+928
+00:42:15,679 --> 00:42:19,679
+<font color="#ffff54">그래서 둘 다 같은 포트를 수신하도록 할 수 없습니다.</font>
+
+929
+00:42:19,679 --> 00:42:23,679
+That is correct because I'm doing a demo and everything running on the same host.
+
+930
+00:42:19,679 --> 00:42:23,679
+<font color="#ffff54">데모를 하고 있고 모든 것이 동일한 호스트에서 실행 중이기 때문에 맞습니다.</font>
+
+931
+00:42:23,679 --> 00:42:27,679
+If I had two different hosts, that wouldn't be the case.
+
+932
+00:42:23,679 --> 00:42:27,679
+<font color="#ffff54">두 개의 다른 호스트가 있다면 그렇지 않을 것입니다.</font>
+
+933
+00:42:27,679 --> 00:42:30,679
+So let's review what we can do.
+
+934
+00:42:27,679 --> 00:42:30,679
+<font color="#ffff54">그럼 우리가 할 수 있는 일을 검토해 봅시다.</font>
+
+935
+00:42:30,679 --> 00:42:38,679
+So our agent is going to export the data in port 4320.
+
+936
+00:42:30,679 --> 00:42:38,679
+<font color="#ffff54">에이전트는 포트 4320으로 데이터를 내보낼 것입니다.</font>
+
+937
+00:42:38,679 --> 00:42:43,679
+And let's say that we're receiving at that port.
+
+938
+00:42:38,679 --> 00:42:43,679
+<font color="#ffff54">그리고 해당 포트에서 수신한다고 가정해 봅시다.</font>
+
+939
+00:42:43,679 --> 00:42:51,679
+And this is so this is the HTTP, but we are going to send it in the GRPC.
+
+940
+00:42:43,679 --> 00:42:51,679
+<font color="#ffff54">그리고 이것은 HTTP이지만 GRPC로 전송할 것입니다.</font>
+
+941
+00:42:51,679 --> 00:43:01,679
+And the endpoint is going to be 20 because collector to collector communication by default is GRPC.
+
+942
+00:42:51,679 --> 00:43:01,679
+<font color="#ffff54">컬렉터와 컬렉터 간의 통신은 기본적으로 GRPC이므로 엔드포인트는 20이 될 것입니다.</font>
+
+943
+00:43:01,679 --> 00:43:13,679
+And now we need to make the appropriate changes in our gateway that we are going to have if it's HTTP, it's going to be 19.
+
+944
+00:43:01,679 --> 00:43:13,679
+<font color="#ffff54">이제 게이트웨이를 적절히 변경해야 하는데, 게이트웨이가 HTTP인 경우 19가 될 것입니다.</font>
+
+945
+00:43:13,679 --> 00:43:19,679
+And if it's GRPC, it's going to be 20.
+
+946
+00:43:13,679 --> 00:43:19,679
+<font color="#ffff54">그리고 GRPC라면 20이 될 것입니다.</font>
+
+947
+00:43:19,679 --> 00:43:25,679
+If I haven't done anything, it shouldn't do any mistake.
+
+948
+00:43:19,679 --> 00:43:25,679
+<font color="#ffff54">내가 아무것도 하지 않았다면 실수하지 않아야 합니다.</font>
+
+949
+00:43:25,679 --> 00:43:28,679
+It should spin up right now.
+
+950
+00:43:25,679 --> 00:43:28,679
+<font color="#ffff54">지금쯤 돌아갈 거야.</font>
+
+951
+00:43:28,679 --> 00:43:31,679
+Let's see. That's everything.
+
+952
+00:43:28,679 --> 00:43:31,679
+<font color="#ffff54">어디 보자. 이게 다야.</font>
+
+953
+00:43:31,679 --> 00:43:34,679
+Looks like everything is running.
+
+954
+00:43:31,679 --> 00:43:34,679
+<font color="#ffff54">모든 것이 실행되는 것 같습니다.</font>
+
+955
+00:43:34,679 --> 00:43:36,679
+Hopefully.
+
+956
+00:43:34,679 --> 00:43:36,679
+<font color="#ffff54">그러길 바라네.</font>
+
+957
+00:43:36,679 --> 00:43:40,679
+And now let's see if our application still works.
+
+958
+00:43:36,679 --> 00:43:40,679
+<font color="#ffff54">이제 애플리케이션이 여전히 작동하는지 살펴봅시다.</font>
+
+959
+00:43:40,679 --> 00:43:45,679
+So we are again running the application.
+
+960
+00:43:40,679 --> 00:43:45,679
+<font color="#ffff54">다시 애플리케이션을 실행합니다.</font>
+
+961
+00:43:45,679 --> 00:43:47,679
+Looks like it worked.
+
+962
+00:43:45,679 --> 00:43:47,679
+<font color="#ffff54">성공한 것 같습니다.</font>
+
+963
+00:43:47,679 --> 00:43:50,679
+And let's search again.
+
+964
+00:43:47,679 --> 00:43:50,679
+<font color="#ffff54">다시 검색해 봅시다.</font>
+
+965
+00:43:50,679 --> 00:43:52,679
+Refresh search.
+
+966
+00:43:50,679 --> 00:43:52,679
+<font color="#ffff54">검색을 새로고침합니다.</font>
+
+967
+00:43:52,679 --> 00:43:54,679
+OK.
+
+968
+00:43:52,679 --> 00:43:54,679
+<font color="#ffff54">OK.</font>
+
+969
+00:43:54,679 --> 00:43:57,679
+That is from right now.
+
+970
+00:43:54,679 --> 00:43:57,679
+<font color="#ffff54">지금부터입니다.</font>
+
+971
+00:43:57,679 --> 00:44:00,679
+So it looks like we have a new application.
+
+972
+00:43:57,679 --> 00:44:00,679
+<font color="#ffff54">새로운 애플리케이션이 생긴 것 같습니다.</font>
+
+973
+00:44:00,679 --> 00:44:02,679
+Refresh search.
+
+974
+00:44:00,679 --> 00:44:02,679
+<font color="#ffff54">검색을 새로고침합니다.</font>
+
+975
+00:44:02,679 --> 00:44:04,679
+OK.
+
+976
+00:44:02,679 --> 00:44:04,679
+<font color="#ffff54">OK.</font>
+
+977
+00:44:04,679 --> 00:44:06,679
+That is from right now.
+
+978
+00:44:04,679 --> 00:44:06,679
+<font color="#ffff54">지금부터입니다.</font>
+
+979
+00:44:06,679 --> 00:44:08,679
+So it looks like it worked.
+
+980
+00:44:06,679 --> 00:44:08,679
+<font color="#ffff54">성공한 것 같네요.</font>
+
+981
+00:44:08,679 --> 00:44:21,679
+And to actually validate that it passed both the both collectors, you can see right here that we have the component name one agent and the test key gateway.
+
+982
+00:44:08,679 --> 00:44:21,679
+<font color="#ffff54">그리고 실제로 두 수집기를 모두 통과했는지 확인하기 위해 컴포넌트 이름이 에이전트 1과 테스트 키 게이트웨이인 것을 바로 여기에서 확인할 수 있습니다.</font>
+
+983
+00:44:21,679 --> 00:44:28,679
+That ensures us that it's actually visited and it ran through both collectors and it's actually working.
+
+984
+00:44:21,679 --> 00:44:28,679
+<font color="#ffff54">이렇게 하면 실제로 방문되었고 두 수집기를 모두 통과했으며 실제로 작동하고 있음을 확인할 수 있습니다.</font>
+
+985
+00:44:28,679 --> 00:44:33,679
+And this is where we are ended up with.
+
+986
+00:44:28,679 --> 00:44:33,679
+<font color="#ffff54">그리고 이것이 우리가 끝나는 곳입니다.</font>
+
+987
+00:44:33,679 --> 00:44:43,679
+We ended up with having open telemetry collectors and it would both the collector agent and the collector gateway.
+
+988
+00:44:33,679 --> 00:44:43,679
+<font color="#ffff54">결국 열린 텔레메트리 수집기를 사용하게 되었고, 수집기 에이전트와 수집기 게이트웨이 모두 사용할 수 있게 되었습니다.</font>
+
+989
+00:44:43,679 --> 00:44:46,679
+And we are happy with that.
+
+990
+00:44:43,679 --> 00:44:46,679
+<font color="#ffff54">그리고 우리는 그것에 만족합니다.</font>
+
+991
+00:44:46,679 --> 00:44:48,679
+The last step that we want to do.
+
+992
+00:44:46,679 --> 00:44:48,679
+<font color="#ffff54">마지막 단계입니다.</font>
+
+993
+00:44:48,679 --> 00:44:53,679
+And this is a bit of an issue is we're going to have elastic search.
+
+994
+00:44:48,679 --> 00:44:53,679
+<font color="#ffff54">여기서 약간 문제가 되는 것은 탄력적 검색을 사용한다는 것입니다.</font>
+
+995
+00:44:53,679 --> 00:44:55,679
+We want to send data to elastic search.
+
+996
+00:44:53,679 --> 00:44:55,679
+<font color="#ffff54">데이터를 탄력적 검색으로 보내려고 합니다.</font>
+
+997
+00:44:55,679 --> 00:44:57,679
+We want the data to be persistent there.
+
+998
+00:44:55,679 --> 00:44:57,679
+<font color="#ffff54">데이터가 영구적으로 유지되기를 원합니다.</font>
+
+999
+00:44:57,679 --> 00:45:00,679
+We don't want it to be stored in memory.
+
+1000
+00:44:57,679 --> 00:45:00,679
+<font color="#ffff54">메모리에 저장되지 않기를 원합니다.</font>
+
+1001
+00:45:00,679 --> 00:45:09,679
+I would have wanted to have the open telemetry gateway writing directly to elastic search and then the Eager querying elastic search.
+
+1002
+00:45:00,679 --> 00:45:09,679
+<font color="#ffff54">개방형 텔레메트리 게이트웨이가 탄력적 검색에 직접 쓴 다음 Eager가 탄력적 검색을 쿼리하도록 하고 싶었습니다.</font>
+
+1003
+00:45:09,679 --> 00:45:17,679
+That is not possible at the moment because that relation between the collector gateway to elastic search is simply in development.
+
+1004
+00:45:09,679 --> 00:45:17,679
+<font color="#ffff54">수집기 게이트웨이와 탄력적 검색 간의 관계는 아직 개발 중이기 때문에 현재로서는 불가능합니다.</font>
+
+1005
+00:45:17,679 --> 00:45:21,679
+So for the time being, we would use this approach.
+
+1006
+00:45:17,679 --> 00:45:21,679
+<font color="#ffff54">따라서 당분간은 이 방법을 사용하겠습니다.</font>
+
+1007
+00:45:21,679 --> 00:45:30,679
+And this approach is actually quite easy because it's mostly how to define it in in Eager.
+
+1008
+00:45:21,679 --> 00:45:30,679
+<font color="#ffff54">이 접근 방식은 대부분 Eager에서 정의하는 방식이기 때문에 실제로 매우 쉽습니다.</font>
+
+1009
+00:45:30,679 --> 00:45:35,679
+So let's review how we can get that done.
+
+1010
+00:45:30,679 --> 00:45:35,679
+<font color="#ffff54">그럼 어떻게 하면 되는지 살펴봅시다.</font>
+
+1011
+00:45:35,679 --> 00:45:42,679
+So I prepared in advance how this configuration should look like.
+
+1012
+00:45:35,679 --> 00:45:42,679
+<font color="#ffff54">그래서 저는 이 구성이 어떤 모습일지 미리 준비했습니다.</font>
+
+1013
+00:45:42,679 --> 00:45:47,679
+So the first thing that we should do is we should spin up elastic.
+
+1014
+00:45:42,679 --> 00:45:47,679
+<font color="#ffff54">가장 먼저 해야 할 일은 엘라스틱을 스핀업하는 것입니다.</font>
+
+1015
+00:45:47,679 --> 00:45:50,679
+Elastic, right, because we want to send data to elastic search.
+
+1016
+00:45:47,679 --> 00:45:50,679
+<font color="#ffff54">맞아요, 데이터를 탄력적 검색으로 보내고 싶으니까요.</font>
+
+1017
+00:45:50,679 --> 00:45:53,679
+So we need to have that service ready.
+
+1018
+00:45:50,679 --> 00:45:53,679
+<font color="#ffff54">그래서 우리는 그 서비스를 준비해야 합니다.</font>
+
+1019
+00:45:53,679 --> 00:45:56,679
+So elastic using again a specific version.
+
+1020
+00:45:53,679 --> 00:45:56,679
+<font color="#ffff54">그래서 다시 특정 버전을 사용하는 탄력적.</font>
+
+1021
+00:45:56,679 --> 00:46:04,679
+We're running it in a single node again, demo purposes and reports that are required to run it.
+
+1022
+00:45:56,679 --> 00:46:04,679
+<font color="#ffff54">다시 단일 노드에서 실행하고 있으며, 데모 목적과 실행에 필요한 보고서를 작성하고 있습니다.</font>
+
+1023
+00:46:04,679 --> 00:46:12,679
+And then what we need to do is when we are defining Eager.
+
+1024
+00:46:04,679 --> 00:46:12,679
+<font color="#ffff54">이제 우리가 해야 할 일은 Eager를 정의할 때입니다.</font>
+
+1025
+00:46:12,679 --> 00:46:14,679
+I think I lost my Eager.
+
+1026
+00:46:12,679 --> 00:46:14,679
+<font color="#ffff54">내 열망을 잃어버린 것 같아.</font>
+
+1027
+00:46:14,679 --> 00:46:18,679
+We are going to do two things.
+
+1028
+00:46:14,679 --> 00:46:18,679
+<font color="#ffff54">우리는 두 가지 일을 할 거야.</font>
+
+1029
+00:46:18,679 --> 00:46:27,679
+So the first thing that we are going to do is we are going to specify to Eager that this dispense storage type is elastic search.
+
+1030
+00:46:18,679 --> 00:46:27,679
+<font color="#ffff54">첫 번째 작업은 이 디스펜스 스토리지 유형이 탄력적 검색임을 Eager에 지정하는 것입니다.</font>
+
+1031
+00:46:27,679 --> 00:46:29,679
+So it's not going to store it in memory.
+
+1032
+00:46:27,679 --> 00:46:29,679
+<font color="#ffff54">그래서 메모리에 저장하지 않을 것입니다.</font>
+
+1033
+00:46:29,679 --> 00:46:31,679
+It's going to write it to elastic search.
+
+1034
+00:46:29,679 --> 00:46:31,679
+<font color="#ffff54">탄력적 검색에 쓸 것입니다.</font>
+
+1035
+00:46:31,679 --> 00:46:38,679
+And it's going to have this specific URL as the URL that it's going to send data to.
+
+1036
+00:46:31,679 --> 00:46:38,679
+<font color="#ffff54">그리고 이 특정 URL을 데이터를 전송할 URL로 갖게 됩니다.</font>
+
+1037
+00:46:38,679 --> 00:46:48,679
+The second thing that we are going to define, and this is a bit of a hacky way to solve it, but one of the problems that we are having, and this is very specific for the demo, because when Docker composes spinning up, it's hard to synchronize who spins, who starts first.
+
+1038
+00:46:38,679 --> 00:46:48,679
+<font color="#ffff54">두 번째로 정의할 것은, 이것은 약간 엉뚱한 방법이지만, 우리가 겪고 있는 문제 중 하나이며 데모에서는 매우 구체적인데, Docker가 스핀업을 구성할 때 누가 먼저 시작하고 누가 스핀을 시작하는지 동기화하기가 어렵기 때문입니다.</font>
+
+1039
+00:46:48,679 --> 00:46:50,679
+So Eager is very lightweight.
+
+1040
+00:46:48,679 --> 00:46:50,679
+<font color="#ffff54">그래서 Eager는 매우 가볍습니다.</font>
+
+1041
+00:46:50,679 --> 00:46:53,679
+So it's going to spin up before elastic and then it's not going to find it.
+
+1042
+00:46:50,679 --> 00:46:53,679
+<font color="#ffff54">그래서 탄성체보다 먼저 회전하고 나서 탄성체를 찾지 못합니다.</font>
+
+1043
+00:46:53,679 --> 00:47:01,679
+And then we need to have a specific type of data that we are going to send to elastic.
+
+1044
+00:46:53,679 --> 00:47:01,679
+<font color="#ffff54">그런 다음 Elastic으로 전송할 특정 유형의 데이터가 있어야 합니다.</font>
+
+1045
+00:47:01,679 --> 00:47:03,679
+So Eager is very lightweight.
+
+1046
+00:47:01,679 --> 00:47:03,679
+<font color="#ffff54">그래서 Eager는 매우 가볍습니다.</font>
+
+1047
+00:47:03,679 --> 00:47:07,679
+So it's going to spin up before elastic and then it's not going to find it.
+
+1048
+00:47:03,679 --> 00:47:07,679
+<font color="#ffff54">그래서 탄성체보다 먼저 회전해서 찾지 못합니다.</font>
+
+1049
+00:47:07,679 --> 00:47:13,679
+And then Eager won't work because it would think that it doesn't have access to the database.
+
+1050
+00:47:07,679 --> 00:47:13,679
+<font color="#ffff54">그러면 Eager는 데이터베이스에 액세스할 수 없다고 생각하기 때문에 작동하지 않습니다.</font>
+
+1051
+00:47:13,679 --> 00:47:20,679
+So basically what I'm saying is Eager, keep on redeploying yourself if you fail.
+
+1052
+00:47:13,679 --> 00:47:20,679
+<font color="#ffff54">그러니까 기본적으로 제가 말씀드리고 싶은 것은 Eager, 실패해도 계속 재배포하라는 겁니다.</font>
+
+1053
+00:47:20,679 --> 00:47:27,679
+In real life, the elastic search would always be up because we are going to manage some cluster for that.
+
+1054
+00:47:20,679 --> 00:47:27,679
+<font color="#ffff54">실제 상황에서는 탄력적 검색을 위해 클러스터를 관리할 것이기 때문에 항상 가동될 것입니다.</font>
+
+1055
+00:47:27,679 --> 00:47:31,679
+So that's not really an issue, just a fix for our demo.
+
+1056
+00:47:27,679 --> 00:47:31,679
+<font color="#ffff54">따라서 이것은 실제로 문제가 되는 것이 아니라 데모를 위한 수정 사항일 뿐입니다.</font>
+
+1057
+00:47:31,679 --> 00:47:36,679
+And let me fix the indentation here.
+
+1058
+00:47:31,679 --> 00:47:36,679
+<font color="#ffff54">여기 들여쓰기를 수정하겠습니다.</font>
+
+1059
+00:47:36,679 --> 00:47:37,679
+Okay, cool.
+
+1060
+00:47:36,679 --> 00:47:37,679
+<font color="#ffff54">그래, 좋아.</font>
+
+1061
+00:47:37,679 --> 00:47:45,679
+So what we did here is we basically set it up, Eager, to have some kind of a database.
+
+1062
+00:47:37,679 --> 00:47:45,679
+<font color="#ffff54">그래서 우리가 여기서 한 일은 기본적으로 일종의 데이터베이스를 갖도록 설정한 것입니다.</font>
+
+1063
+00:47:45,679 --> 00:47:46,679
+So let's spin it up.
+
+1064
+00:47:45,679 --> 00:47:46,679
+<font color="#ffff54">그럼 실행해 봅시다.</font>
+
+1065
+00:47:46,679 --> 00:47:54,679
+You would probably see that Eager is failing until it won't fail anymore.
+
+1066
+00:47:46,679 --> 00:47:54,679
+<font color="#ffff54">Eager가 더 이상 실패하지 않을 때까지 실패하는 것을 볼 수 있을 것입니다.</font>
+
+1067
+00:47:54,679 --> 00:48:00,679
+And hopefully everything will work and eventually will work and we will be able to send the data.
+
+1068
+00:47:54,679 --> 00:48:00,679
+<font color="#ffff54">모든 것이 작동하고 결국에는 작동하여 데이터를 전송할 수 있기를 바랍니다.</font>
+
+1069
+00:48:00,679 --> 00:48:11,679
+So you can see, I don't know if you were able to see because it was kind of fast, but Eager crashes and then spins it up.
+
+1070
+00:48:00,679 --> 00:48:11,679
+<font color="#ffff54">너무 빨라서 보셨는지 모르겠지만, Eager가 충돌을 일으켰다가 다시 회전하는 것을 볼 수 있습니다.</font>
+
+1071
+00:48:11,679 --> 00:48:12,679
+Here you can see that.
+
+1072
+00:48:11,679 --> 00:48:12,679
+<font color="#ffff54">여기서 볼 수 있습니다.</font>
+
+1073
+00:48:12,679 --> 00:48:17,679
+But eventually it would succeed and everything would work just fine.
+
+1074
+00:48:12,679 --> 00:48:17,679
+<font color="#ffff54">하지만 결국에는 성공하고 모든 것이 잘 작동합니다.</font>
+
+1075
+00:48:17,679 --> 00:48:25,679
+Okay, so I'm just going to move on and test that everything is actually working.
+
+1076
+00:48:17,679 --> 00:48:25,679
+<font color="#ffff54">좋아, 그럼 이제 모든 것이 실제로 작동하는지 테스트해 보겠습니다.</font>
+
+1077
+00:48:25,679 --> 00:48:26,679
+Hopefully it does.
+
+1078
+00:48:25,679 --> 00:48:26,679
+<font color="#ffff54">그랬으면 좋겠네요.</font>
+
+1079
+00:48:26,679 --> 00:48:29,679
+So let's refresh that.
+
+1080
+00:48:26,679 --> 00:48:29,679
+<font color="#ffff54">그럼 새로 고쳐보죠.</font>
+
+1081
+00:48:29,679 --> 00:48:31,679
+Okay, application works.
+
+1082
+00:48:29,679 --> 00:48:31,679
+<font color="#ffff54">좋아, 애플리케이션이 작동합니다.</font>
+
+1083
+00:48:31,679 --> 00:48:34,679
+Let's see that we have our data.
+
+1084
+00:48:31,679 --> 00:48:34,679
+<font color="#ffff54">데이터가 있는지 확인해 봅시다.</font>
+
+1085
+00:48:34,679 --> 00:48:38,679
+So we have our data, 48, 48.
+
+1086
+00:48:34,679 --> 00:48:38,679
+<font color="#ffff54">데이터는 48, 48입니다.</font>
+
+1087
+00:48:38,679 --> 00:48:41,679
+We actually getting real data.
+
+1088
+00:48:38,679 --> 00:48:41,679
+<font color="#ffff54">실제 데이터를 얻었습니다.</font>
+
+1089
+00:48:41,679 --> 00:48:46,679
+And let's see that Elasticsearch indeed have data.
+
+1090
+00:48:41,679 --> 00:48:46,679
+<font color="#ffff54">그리고 Elasticsearch에 실제로 데이터가 있는지 확인해 봅시다.</font>
+
+1091
+00:48:46,679 --> 00:48:56,679
+So you can see that we have an index from today with very few little data because it's a demo and we don't have much data.
+
+1092
+00:48:46,679 --> 00:48:56,679
+<font color="#ffff54">데모이고 데이터가 많지 않기 때문에 데이터가 거의 없는 오늘의 인덱스가 있다는 것을 알 수 있습니다.</font>
+
+1093
+00:48:56,679 --> 00:49:02,679
+And if I'll search for all the data that is residing in today's index.
+
+1094
+00:48:56,679 --> 00:49:02,679
+<font color="#ffff54">그리고 오늘 인덱스에 있는 모든 데이터를 검색해 보겠습니다.</font>
+
+1095
+00:49:03,679 --> 00:49:06,679
+So let's refresh that.
+
+1096
+00:49:03,679 --> 00:49:06,679
+<font color="#ffff54">그럼 새로 고쳐보겠습니다.</font>
+
+1097
+00:49:06,679 --> 00:49:11,679
+And you can see that we have data which are tracing data.
+
+1098
+00:49:06,679 --> 00:49:11,679
+<font color="#ffff54">추적 데이터인 데이터가 있는 것을 볼 수 있습니다.</font>
+
+1099
+00:49:11,679 --> 00:49:19,679
+So with that, we are completed this whole big stack.
+
+1100
+00:49:11,679 --> 00:49:19,679
+<font color="#ffff54">이것으로 전체 큰 스택이 완성되었습니다.</font>
+
+1101
+00:49:19,679 --> 00:49:23,679
+And this is a step that you can definitely go to production with.
+
+1102
+00:49:19,679 --> 00:49:23,679
+<font color="#ffff54">이제 프로덕션 단계로 넘어갈 수 있는 단계입니다.</font>
+
+1103
+00:49:23,679 --> 00:49:28,679
+The only caveat I would say is this one.
+
+1104
+00:49:23,679 --> 00:49:28,679
+<font color="#ffff54">한 가지 주의할 점은 이것뿐입니다.</font>
+
+1105
+00:49:28,679 --> 00:49:35,679
+And if you're into Jager, you are going to use specifically Jager.
+
+1106
+00:49:28,679 --> 00:49:35,679
+<font color="#ffff54">그리고 예거를 좋아한다면 예거만 사용하게 될 것입니다.</font>
+
+1107
+00:49:35,679 --> 00:49:45,679
+So Jager has only one which is containing both the collecting part and shipping into Elastic and the visualization.
+
+1108
+00:49:35,679 --> 00:49:45,679
+<font color="#ffff54">따라서 Jager에는 수집 부분과 Elastic으로의 전송 및 시각화 부분이 모두 포함된 단 하나의 솔루션만 있습니다.</font>
+
+1109
+00:49:45,679 --> 00:49:50,679
+But if you want to go to production, you would probably separate it to different two containers.
+
+1110
+00:49:45,679 --> 00:49:50,679
+<font color="#ffff54">하지만 프로덕션으로 넘어가려면 아마도 다른 두 개의 컨테이너로 분리할 것입니다.</font>
+
+1111
+00:49:50,679 --> 00:49:55,679
+One for the visualization and one for accepting the traffic and persisting into Elasticsearch.
+
+1112
+00:49:50,679 --> 00:49:55,679
+<font color="#ffff54">하나는 시각화를 위한 것이고 다른 하나는 트래픽을 받아들여 Elasticsearch로 지속시키기 위한 것입니다.</font>
+
+1113
+00:49:55,679 --> 00:49:58,679
+It's very, very similar to the OpenTelemetry collector.
+
+1114
+00:49:55,679 --> 00:49:58,679
+<font color="#ffff54">OpenTelemetry 수집기와 매우 유사합니다.</font>
+
+1115
+00:49:58,679 --> 00:50:05,679
+Looking at the OpenTelemetry repository, it looks like very fast.
+
+1116
+00:49:58,679 --> 00:50:05,679
+<font color="#ffff54">OpenTelemetry 저장소를 보면 매우 빠른 것처럼 보입니다.</font>
+
+1117
+00:50:05,679 --> 00:50:11,679
+You will be able to write directly collector to Elastic and that would be great.
+
+1118
+00:50:05,679 --> 00:50:11,679
+<font color="#ffff54">Elastic에 직접 수집기를 작성할 수 있게 되면 정말 좋을 것 같습니다.</font>
+
+1119
+00:50:11,679 --> 00:50:17,679
+This is what I would recommend you to do, but we're still a few weeks from from that.
+
+1120
+00:50:11,679 --> 00:50:17,679
+<font color="#ffff54">이것이 제가 권장하는 방법이지만, 아직 몇 주가 더 남았습니다.</font>
+
+1121
+00:50:19,679 --> 00:50:24,679
+OK, so now we know end to end the OpenTelemetry stack.
+
+1122
+00:50:19,679 --> 00:50:24,679
+<font color="#ffff54">이제 OpenTelemetry 스택의 엔드 투 엔드를 알았어요.</font>
+
+1123
+00:50:24,679 --> 00:50:31,679
+We know how to integrate it to your code, how to set up the SDK, how to ship it to the collector.
+
+1124
+00:50:24,679 --> 00:50:31,679
+<font color="#ffff54">코드에 통합하는 방법, SDK를 설정하는 방법, 수집기로 전송하는 방법을 알았습니다.</font>
+
+1125
+00:50:31,679 --> 00:50:42,679
+And once we receive it in the collector, what to do with that, whether we're going the approach that we have single collector or agent end and a gateway.
+
+1126
+00:50:31,679 --> 00:50:42,679
+<font color="#ffff54">그리고 일단 컬렉터에 수신되면 단일 컬렉터 또는 에이전트 엔드와 게이트웨이가 있는 접근 방식을 취할지 여부에 따라 이를 어떻게 처리할지 결정해야 합니다.</font>
+
+1127
+00:50:42,679 --> 00:50:45,679
+So we are that close to deploy.
+
+1128
+00:50:42,679 --> 00:50:45,679
+<font color="#ffff54">이제 배포가 얼마 남지 않았습니다.</font>
+
+1129
+00:50:45,679 --> 00:50:52,679
+So basically, if you don't have a very much high load, you can deploy it as it is today.
+
+1130
+00:50:45,679 --> 00:50:52,679
+<font color="#ffff54">따라서 기본적으로 부하가 매우 높지 않다면 현재 상태 그대로 배포해도 됩니다.</font>
+
+1131
+00:50:52,679 --> 00:50:57,679
+If you do have a lot of load, that's our next section.
+
+1132
+00:50:52,679 --> 00:50:57,679
+<font color="#ffff54">부하가 많은 경우 다음 섹션에서 설명합니다.</font>
+
+1133
+00:50:57,679 --> 00:51:15,679
+Our next session would be mostly about what we're going to do when we are having a lot of load, how to scale it, how to reduce the amount of load, what is sampling and why it's so complicated, and also discuss a bit of what it means to have debugging.
+
+1134
+00:50:57,679 --> 00:51:15,679
+<font color="#ffff54">다음 세션에서는 부하가 많을 때 어떻게 해야 하는지, 부하를 확장하는 방법, 부하를 줄이는 방법, 샘플링이란 무엇이며 왜 그렇게 복잡한지, 그리고 디버깅의 의미에 대해서도 논의할 것입니다.</font>
+
+1135
+00:51:16,679 --> 00:51:19,679
+If you have any questions, this is the time to ask them.
+
+1136
+00:51:16,679 --> 00:51:19,679
+<font color="#ffff54">궁금한 점이 있다면 지금 바로 질문하세요.</font>
+
+1137
+00:51:19,680 --> 00:51:24,680
+All right, Michael, first of all, thank you so much.
+
+1138
+00:51:19,680 --> 00:51:24,680
+<font color="#ffff54">좋아요, 마이클, 우선 정말 감사합니다.</font>
+
+1139
+00:51:24,680 --> 00:51:26,680
+That was like very, very thorough.
+
+1140
+00:51:24,680 --> 00:51:26,680
+<font color="#ffff54">아주, 아주 철저하네요.</font>
+
+1141
+00:51:27,680 --> 00:51:31,680
+We have we have one question from Brian here.
+
+1142
+00:51:27,680 --> 00:51:31,680
+<font color="#ffff54">브라이언의 질문이 하나 있습니다.</font>
+
+1143
+00:51:32,680 --> 00:51:39,680
+Would you show us how to secure OpenTelemetry collector gateway if we wanted to expose it publicly?
+
+1144
+00:51:32,680 --> 00:51:39,680
+<font color="#ffff54">오픈텔레메트리 수집기 게이트웨이를 공개적으로 노출하고 싶을 때 보안을 유지하는 방법을 알려주시겠어요?</font>
+
+1145
+00:51:39,680 --> 00:51:40,680
+Yeah, definitely.
+
+1146
+00:51:39,680 --> 00:51:40,680
+<font color="#ffff54">네, 물론이죠.</font>
+
+1147
+00:51:40,680 --> 00:51:45,680
+One of the things that I'll discuss in the next section is exactly how to do it.
+
+1148
+00:51:40,680 --> 00:51:45,680
+<font color="#ffff54">다음 섹션에서 정확히 어떻게 하는지에 대해 설명하겠습니다.</font>
+
+1149
+00:51:45,680 --> 00:51:52,680
+Long story short, it's a part of of of kind of how you receive data.
+
+1150
+00:51:45,680 --> 00:51:52,680
+<font color="#ffff54">간단히 말해서, 데이터를 수신하는 방법의 일부입니다.</font>
+
+1151
+00:51:52,680 --> 00:52:08,680
+Usually you would just send in some kind of authorization either a notification header that is going to explain who this user is either by some custom data that you're going to send or just by having a private and public key.
+
+1152
+00:51:52,680 --> 00:52:08,680
+<font color="#ffff54">일반적으로는 사용자가 누구인지 설명하는 알림 헤더에 사용자 지정 데이터를 보내거나 개인키와 공개키를 사용하여 일종의 인증을 보내면 됩니다.</font>
+
+1153
+00:52:08,680 --> 00:52:20,680
+And if you want, I can share in the CNCF Slack channel a link to the communication explaining how to do authentication or in the next session, we'll describe it with more details.
+
+1154
+00:52:08,680 --> 00:52:20,680
+<font color="#ffff54">원하신다면 인증 방법을 설명하는 커뮤니케이션 링크를 CNCF Slack 채널에서 공유해 드리거나 다음 세션에서 더 자세히 설명해 드릴 수 있습니다.</font>
+
+1155
+00:52:22,680 --> 00:52:25,680
+Cool. We have another question from the audience.
+
+1156
+00:52:22,680 --> 00:52:25,680
+<font color="#ffff54">멋지네요. 청중의 질문이 또 있습니다.</font>
+
+1157
+00:52:25,680 --> 00:52:27,680
+This is actually something that we hear a lot.
+
+1158
+00:52:25,680 --> 00:52:27,680
+<font color="#ffff54">사실 자주 듣는 질문입니다.</font>
+
+1159
+00:52:27,680 --> 00:52:33,680
+So let's say you already created a setup of open tracing and Jaeger.
+
+1160
+00:52:27,680 --> 00:52:33,680
+<font color="#ffff54">이미 오픈 트레이싱과 예거의 설정을 만들었다고 가정해 보겠습니다.</font>
+
+1161
+00:52:33,680 --> 00:52:35,680
+We didn't talk a lot about it.
+
+1162
+00:52:33,680 --> 00:52:35,680
+<font color="#ffff54">우리는 그것에 대해 많이 이야기하지 않았습니다.</font>
+
+1163
+00:52:35,680 --> 00:52:37,680
+Maybe we should say something about that.
+
+1164
+00:52:35,680 --> 00:52:37,680
+<font color="#ffff54">우리 얘기 좀 해야겠어.</font>
+
+1165
+00:52:37,680 --> 00:52:41,680
+But let's say you have open tracing and Jaeger and you want to upgrade.
+
+1166
+00:52:37,680 --> 00:52:41,680
+<font color="#ffff54">하지만 오픈 트레이싱과 예거가 있고 업그레이드를 원한다고 가정해 봅시다.</font>
+
+1167
+00:52:41,680 --> 00:52:45,680
+You want to move to open telemetry to the open telemetry collector.
+
+1168
+00:52:41,680 --> 00:52:45,680
+<font color="#ffff54">오픈 텔레메트리 수집기로 오픈 텔레메트리로 이동하려고 합니다.</font>
+
+1169
+00:52:45,680 --> 00:52:50,680
+What would be the best move or the course of upgrading it?
+
+1170
+00:52:45,680 --> 00:52:50,680
+<font color="#ffff54">가장 좋은 방법 또는 업그레이드 과정은 무엇인가요?</font>
+
+1171
+00:52:52,680 --> 00:52:55,680
+So I don't have a lot of good news here.
+
+1172
+00:52:52,680 --> 00:52:55,680
+<font color="#ffff54">좋은 소식이 별로 없네요.</font>
+
+1173
+00:52:55,680 --> 00:53:01,680
+The reason is that open tracing and open telemetry by the way,
+
+1174
+00:52:55,680 --> 00:53:01,680
+<font color="#ffff54">그 이유는 오픈 트레이싱과 오픈 텔레메트리 때문입니다,</font>
+
+1175
+00:53:01,680 --> 00:53:11,680
+is that open tracing and open telemetry by itself, the data structure, what data it collects and whatnot, it's a bit different.
+
+1176
+00:53:01,680 --> 00:53:11,680
+<font color="#ffff54">오픈 트레이싱과 오픈 텔레메트리는 그 자체로 데이터 구조, 수집하는 데이터 등이 조금 다르기 때문입니다.</font>
+
+1177
+00:53:13,680 --> 00:53:22,680
+I don't think that you can take open telemetry tracing and just point it to an open telemetry collector.
+
+1178
+00:53:13,680 --> 00:53:22,680
+<font color="#ffff54">개방형 텔레메트리 추적을 오픈 텔레메트리 수집기를 가리키기만 하면 된다고 생각하지 않습니다.</font>
+
+1179
+00:53:22,680 --> 00:53:44,680
+The community, the ecosystem are kind of moving to open telemetry and open tracing and open sensors was merged together into open telemetry because both open tracing and open sensors are going to be end of life and won't be any support.
+
+1180
+00:53:22,680 --> 00:53:44,680
+<font color="#ffff54">커뮤니티, 생태계가 오픈 텔레메트리로 이동하고 있고 오픈 트레이싱과 오픈 센서가 오픈 텔레메트리로 합쳐진 것은 오픈 트레이싱과 오픈 센서가 모두 수명이 다하고 지원이 중단될 것이기 때문입니다.</font>
+
+1181
+00:53:45,680 --> 00:53:54,680
+So I would assume that the right move in the long term would be to just move to open telemetry.
+
+1182
+00:53:45,680 --> 00:53:54,680
+<font color="#ffff54">따라서 장기적으로는 개방형 텔레메트리로 전환하는 것이 옳다고 생각합니다.</font>
+
+1183
+00:53:54,680 --> 00:54:02,680
+I haven't really tried to use open telemetry just to path through open tracing.
+
+1184
+00:53:54,680 --> 00:54:02,680
+<font color="#ffff54">저는 개방형 원격 분석을 단지 개방형 추적 경로로 사용하려고 시도한 적은 없습니다.</font>
+
+1185
+00:54:02,680 --> 00:54:10,680
+You may be able to do that because, again, open telemetry is something that is, the collector is something very extensible.
+
+1186
+00:54:02,680 --> 00:54:10,680
+<font color="#ffff54">다시 말하지만, 개방형 텔레메트리는 수집기가 매우 확장 가능한 것이기 때문에 그렇게 할 수 있을지도 모릅니다.</font>
+
+1187
+00:54:10,680 --> 00:54:17,680
+So you can have a receiver dedicated for that, an exporter for Yeager.
+
+1188
+00:54:10,680 --> 00:54:17,680
+<font color="#ffff54">따라서 전용 수신기, 즉 예거를 위한 익스포터를 가질 수 있습니다.</font>
+
+1189
+00:54:17,680 --> 00:54:20,680
+So you may have it working.
+
+1190
+00:54:17,680 --> 00:54:20,680
+<font color="#ffff54">그럼 작동할 수 있겠군.</font>
+
+1191
+00:54:21,680 --> 00:54:23,680
+I'm not sure that I saw something like that.
+
+1192
+00:54:21,680 --> 00:54:23,680
+<font color="#ffff54">내가 그런 걸 봤는지 잘 모르겠어.</font>
+
+1193
+00:54:23,680 --> 00:54:25,680
+I can definitely look for that.
+
+1194
+00:54:23,680 --> 00:54:25,680
+<font color="#ffff54">확실히 찾을 수 있어요.</font>
+
+1195
+00:54:27,680 --> 00:54:31,680
+But probably long term I would do the effort to move to open telemetry.
+
+1196
+00:54:27,680 --> 00:54:31,680
+<font color="#ffff54">하지만 장기적으로는 개방형 텔레메트리로 전환하기 위해 노력할 것입니다.</font>
+
+1197
+00:54:32,680 --> 00:54:37,680
+Yeah, I think it looks like our audience is interested in that.
+
+1198
+00:54:32,680 --> 00:54:37,680
+<font color="#ffff54">네, 청중들이 그런 것에 관심이 있는 것 같네요.</font>
+
+1199
+00:54:37,680 --> 00:54:43,680
+And from what you're saying, basically, the best way to do it is to start from scratch, right?
+
+1200
+00:54:37,680 --> 00:54:43,680
+<font color="#ffff54">말씀하신 대로라면 기본적으로 처음부터 다시 시작하는 것이 가장 좋은 방법이겠죠?</font>
+
+1201
+00:54:43,680 --> 00:54:49,680
+Is to remove the open tracing, create a new setup, set up open telemetry.
+
+1202
+00:54:43,680 --> 00:54:49,680
+<font color="#ffff54">오픈 트레이싱을 제거하고, 새 설정을 만들고, 오픈 텔레메트리를 설정하는 것입니다.</font>
+
+1203
+00:54:49,680 --> 00:54:59,680
+There isn't any way to do it without going full way, removing one and adding the other.
+
+1204
+00:54:49,680 --> 00:54:59,680
+<font color="#ffff54">하나를 제거하고 다른 하나를 추가하는 전체 과정을 거치지 않고는 방법이 없습니다.</font>
+
+1205
+00:54:59,680 --> 00:55:00,680
+No, no, no.
+
+1206
+00:54:59,680 --> 00:55:00,680
+<font color="#ffff54">안 돼, 안 돼, 안 돼.</font>
+
+1207
+00:55:00,680 --> 00:55:04,680
+It's like moving from one window to another.
+
+1208
+00:55:00,680 --> 00:55:04,680
+<font color="#ffff54">한 창에서 다른 창으로 이동하는 것과 같습니다.</font>
+
+1209
+00:55:04,680 --> 00:55:10,680
+It's like a different, not technology, but a different implementation of that technology.
+
+1210
+00:55:04,680 --> 00:55:10,680
+<font color="#ffff54">기술이 아니라 그 기술의 다른 구현과 같습니다.</font>
+
+1211
+00:55:10,680 --> 00:55:12,680
+So, yeah.
+
+1212
+00:55:10,680 --> 00:55:12,680
+<font color="#ffff54">그렇군요.</font>
+
+1213
+00:55:12,680 --> 00:55:13,680
+Yeah.
+
+1214
+00:55:12,680 --> 00:55:13,680
+<font color="#ffff54">그래</font>
+
+1215
+00:55:13,680 --> 00:55:21,680
+And obviously, you also said it, but worth mentioning, the industry is moving to open telemetry.
+
+1216
+00:55:13,680 --> 00:55:21,680
+<font color="#ffff54">그리고 분명히 말씀하셨지만, 언급할 가치가 있는 것은 업계가 개방형 원격 측정으로 이동하고 있다는 것입니다.</font>
+
+1217
+00:55:21,680 --> 00:55:25,680
+Open tracing is somewhat abandoned along the way.
+
+1218
+00:55:21,680 --> 00:55:25,680
+<font color="#ffff54">개방형 추적은 그 과정에서 다소 버려지고 있습니다.</font>
+
+1219
+00:55:25,680 --> 00:55:31,680
+So at some point you do want to do this move, even if there is some heavy lifting to it.
+
+1220
+00:55:25,680 --> 00:55:31,680
+<font color="#ffff54">따라서 어느 시점에서는 이 이동이 다소 힘들더라도 하고 싶을 것입니다.</font>
+
+1221
+00:55:31,680 --> 00:55:32,680
+Yeah.
+
+1222
+00:55:31,680 --> 00:55:32,680
+<font color="#ffff54">그래요.</font>
+
+1223
+00:55:32,680 --> 00:55:33,680
+Cool.
+
+1224
+00:55:32,680 --> 00:55:33,680
+<font color="#ffff54">멋지다.</font>
+
+1225
+00:55:33,680 --> 00:55:36,680
+So our time is almost up.
+
+1226
+00:55:33,680 --> 00:55:36,680
+<font color="#ffff54">시간이 거의 다 됐어요.</font>
+
+1227
+00:55:36,680 --> 00:55:40,680
+Maybe, you know, one last thing, Michael, that you touched at the end.
+
+1228
+00:55:36,680 --> 00:55:40,680
+<font color="#ffff54">마이클, 마지막에 만진 게 하나 더 있네요.</font>
+
+1229
+00:55:40,680 --> 00:55:47,680
+You talked about performance and the fact that, you know, if you do have a large load,
+
+1230
+00:55:40,680 --> 00:55:47,680
+<font color="#ffff54">성능에 대해 말씀하셨고, 부하가 많을 경우라는 사실에 대해서도 말씀하셨죠,</font>
+
+1231
+00:55:47,680 --> 00:55:52,680
+you do want to make those changes.
+
+1232
+00:55:47,680 --> 00:55:52,680
+<font color="#ffff54">변경하고 싶을 거라고요.</font>
+
+1233
+00:55:52,680 --> 00:55:56,680
+Do you have some kind of a benchmark or something to tell us, like, do I have a large load or not?
+
+1234
+00:55:52,680 --> 00:55:56,680
+<font color="#ffff54">제가 부하가 많은지 아닌지 알려줄 수 있는 벤치마크 같은 게 있나요?</font>
+
+1235
+00:55:56,680 --> 00:56:02,680
+How do I know where am I on the spectrum?
+
+1236
+00:55:56,680 --> 00:56:02,680
+<font color="#ffff54">스펙트럼에서 내가 어디에 있는지 어떻게 알 수 있나요?</font>
+
+1237
+00:56:02,680 --> 00:56:03,680
+Yeah.
+
+1238
+00:56:02,680 --> 00:56:03,680
+<font color="#ffff54">그래요.</font>
+
+1239
+00:56:03,680 --> 00:56:11,680
+So first of all, you could find, so I would approach it in, I would say, the way that you would approach it.
+
+1240
+00:56:03,680 --> 00:56:11,680
+<font color="#ffff54">그래서 우선, 여러분이 찾을 수 있는 방식으로 접근하겠습니다.</font>
+
+1241
+00:56:11,680 --> 00:56:21,680
+First of all, you could find, so I would approach it in, if you have scaling problems in your day to day,
+
+1242
+00:56:11,680 --> 00:56:21,680
+<font color="#ffff54">우선, 일상 생활에서 스케일링 문제가 있다면 찾을 수 있으므로 접근하는 방식으로 접근하겠습니다,</font>
+
+1243
+00:56:21,680 --> 00:56:24,680
+so you do have a lot of traffic, right?
+
+1244
+00:56:21,680 --> 00:56:24,680
+<font color="#ffff54">그래서 트래픽이 많죠?</font>
+
+1245
+00:56:24,680 --> 00:56:32,680
+If you have auto-scale implemented in place and it's scaling a lot and you have peaks in your traffic,
+
+1246
+00:56:24,680 --> 00:56:32,680
+<font color="#ffff54">자동 확장 기능이 구현되어 있고 확장 중이며 트래픽이 급증하는 경우,</font>
+
+1247
+00:56:32,680 --> 00:56:38,680
+I would treat it as my application has high scale.
+
+1248
+00:56:32,680 --> 00:56:38,680
+<font color="#ffff54">내 애플리케이션의 규모가 큰 것으로 간주합니다.</font>
+
+1249
+00:56:38,680 --> 00:56:43,680
+I would also say that you could also do some benchmarking.
+
+1250
+00:56:38,680 --> 00:56:43,680
+<font color="#ffff54">벤치마킹을 할 수도 있다고 말하고 싶습니다.</font>
+
+1251
+00:56:43,680 --> 00:56:54,680
+So you do have tools out there that can be, that you can put stress on your collector and see how it performs.
+
+1252
+00:56:43,680 --> 00:56:54,680
+<font color="#ffff54">수집기에 스트레스를 가하고 그 성능을 확인할 수 있는 도구가 있습니다.</font>
+
+1253
+00:56:54,680 --> 00:57:01,680
+I think there are also, if you look at the, not the documentation, but the OpenTemplate collector repository,
+
+1254
+00:56:54,680 --> 00:57:01,680
+<font color="#ffff54">문서가 아니라 오픈템플릿 컬렉터 저장소를 보면 알 수 있을 것 같아요,</font>
+
+1255
+00:57:01,680 --> 00:57:12,680
+you have like a benchmark of if you have like two CPU and four gigabytes, this is how much data it's going to, it's going to handle.
+
+1256
+00:57:01,680 --> 00:57:12,680
+<font color="#ffff54">CPU가 2개이고 기가바이트가 4기가바이트인 경우 이 정도 데이터를 처리할 수 있다는 벤치마크가 있습니다.</font>
+
+1257
+00:57:12,680 --> 00:57:16,680
+Those numbers are quite good.
+
+1258
+00:57:12,680 --> 00:57:16,680
+<font color="#ffff54">꽤 괜찮은 수치네요.</font>
+
+1259
+00:57:16,680 --> 00:57:22,680
+I can send it in the Slack or even search for that and show it to you.
+
+1260
+00:57:16,680 --> 00:57:22,680
+<font color="#ffff54">슬랙으로 보내거나 검색해서 보여줄 수도 있어요.</font>
+
+1261
+00:57:22,680 --> 00:57:24,680
+All right, cool.
+
+1262
+00:57:22,680 --> 00:57:24,680
+<font color="#ffff54">알았어요.</font>
+
+1263
+00:57:24,680 --> 00:57:31,680
+Okay, so we're almost done for today. A few administrative comments.
+
+1264
+00:57:24,680 --> 00:57:31,680
+<font color="#ffff54">자, 오늘은 거의 다 끝났습니다. 몇 가지 행정적인 말씀만 남깁니다.</font>
+
+1265
+00:57:31,680 --> 00:57:39,680
+So first of all, I could just set it. We have our Slack channel. It's on the CNCF Slack.
+
+1266
+00:57:31,680 --> 00:57:39,680
+<font color="#ffff54">우선 설정부터 할게요. 슬랙 채널이 있습니다. CNCF 슬랙에 있습니다.</font>
+
+1267
+00:57:39,680 --> 00:57:45,680
+It's called OpenTemplate Bootcamp. Feel free to join over there if you have questions.
+
+1268
+00:57:39,680 --> 00:57:45,680
+<font color="#ffff54">오픈템플릿 부트캠프라고 합니다. 질문이 있으시면 언제든지 참여하세요.</font>
+
+1269
+00:57:45,680 --> 00:57:53,680
+If you have those questions, not necessarily during our events, you can just write whatever and we'll try to help.
+
+1270
+00:57:45,680 --> 00:57:53,680
+<font color="#ffff54">꼭 이벤트가 아니더라도 궁금한 점이 있으면 무엇이든 적어주시면 도와드리도록 하겠습니다.</font>
+
+1271
+00:57:53,680 --> 00:57:56,680
+Next week is a special week. We want to have a session next week.
+
+1272
+00:57:53,680 --> 00:57:56,680
+<font color="#ffff54">다음 주는 특별한 주간입니다. 다음 주에 세션을 갖고 싶어요.</font>
+
+1273
+00:57:56,680 --> 00:58:08,680
+Next session will only happen in two weeks because next week is KubeCon and we are all going to be there focusing on talking on OpenTelemetry on-site in LA.
+
+1274
+00:57:56,680 --> 00:58:08,680
+<font color="#ffff54">다음 세션은 2주 후에 열릴 예정인데, 다음 주가 KubeCon이고 우리 모두 LA 현장에서 오픈텔레메트리에 대해 집중적으로 이야기할 예정이기 때문입니다.</font>
+
+1275
+00:58:08,680 --> 00:58:15,680
+So if you are, happens to visiting over there as well, you know, stop by, shoot us an email or message.
+
+1276
+00:58:08,680 --> 00:58:15,680
+<font color="#ffff54">혹시 그곳에 가시는 분이 계시다면 들러서 이메일이나 메시지를 보내주세요.</font>
+
+1277
+00:58:15,680 --> 00:58:23,680
+We would be happy to meet you over there and answer any OpenTelemetry question you might have.
+
+1278
+00:58:15,680 --> 00:58:23,680
+<font color="#ffff54">그곳에서 만나서 오픈텔레메트리에 대한 질문에 답해드리겠습니다.</font>
+
+1279
+00:58:23,680 --> 00:58:28,680
+All right. Thank you very much, Michael. Thank you, everyone, for joining us.
+
+1280
+00:58:23,680 --> 00:58:28,680
+<font color="#ffff54">알겠습니다. 감사합니다, 마이클. 함께 해주신 모든 분들께 감사드립니다.</font>
+
+1281
+00:58:28,680 --> 00:58:34,680
+Have a good night, day, wherever you are. Bye bye.
+
+1282
+00:58:28,680 --> 00:58:34,680
+<font color="#ffff54">어디에 계시든 좋은 밤, 좋은 하루 되세요. 안녕히 가세요.</font>

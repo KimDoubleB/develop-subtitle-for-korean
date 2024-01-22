@@ -1,0 +1,7403 @@
+﻿1
+00:00:00,000 --> 00:00:02,280
+Oh, we're live.
+
+2
+00:00:00,000 --> 00:00:02,280
+<font color="#ffff54">오, 라이브입니다.</font>
+
+3
+00:00:02,280 --> 00:00:04,080
+All right, yeah, we are live now.
+
+4
+00:00:02,280 --> 00:00:04,080
+<font color="#ffff54">네, 지금 생방송 중입니다.</font>
+
+5
+00:00:04,080 --> 00:00:05,639
+Hey, everybody.
+
+6
+00:00:04,080 --> 00:00:05,639
+<font color="#ffff54">안녕, 여러분.</font>
+
+7
+00:00:05,639 --> 00:00:07,400
+In the different platforms, we're actually
+
+8
+00:00:05,639 --> 00:00:07,400
+<font color="#ffff54">다른 플랫폼에서, 우리는 사실</font>
+
+9
+00:00:07,400 --> 00:00:10,599
+broadcasting now with the help of our friends
+
+10
+00:00:07,400 --> 00:00:10,599
+<font color="#ffff54">친구들의 도움으로 지금 방송 중</font>
+
+11
+00:00:10,599 --> 00:00:15,880
+from StreamYard to Twitch and YouTube and LinkedIn
+
+12
+00:00:10,599 --> 00:00:15,880
+<font color="#ffff54">스트림야드에서 트위치, 유튜브, 링크드인에 이르기까지</font>
+
+13
+00:00:15,880 --> 00:00:17,679
+and what so I don't know.
+
+14
+00:00:15,880 --> 00:00:17,679
+<font color="#ffff54">그리고 나도 모르겠다.</font>
+
+15
+00:00:17,679 --> 00:00:20,960
+So I hope that everybody can hear as well.
+
+16
+00:00:17,679 --> 00:00:20,960
+<font color="#ffff54">모두들 잘 들었으면 좋겠어요.</font>
+
+17
+00:00:20,960 --> 00:00:24,160
+If not, just leave a comment or something.
+
+18
+00:00:20,960 --> 00:00:24,160
+<font color="#ffff54">안 들리면 댓글이나 뭐라도 남겨주세요.</font>
+
+19
+00:00:24,160 --> 00:00:27,120
+We will see that and address that.
+
+20
+00:00:24,160 --> 00:00:27,120
+<font color="#ffff54">확인해서 해결하겠습니다.</font>
+
+21
+00:00:27,120 --> 00:00:28,160
+So again, welcome.
+
+22
+00:00:27,120 --> 00:00:28,160
+<font color="#ffff54">다시 한 번 환영합니다.</font>
+
+23
+00:00:28,160 --> 00:00:31,000
+I'm Andrei Binner from Aspecto.
+
+24
+00:00:28,160 --> 00:00:31,000
+<font color="#ffff54">아스펙토의 안드레이 비너입니다.</font>
+
+25
+00:00:31,000 --> 00:00:37,280
+Michael here with me, my partner and co-founder.
+
+26
+00:00:31,000 --> 00:00:37,280
+<font color="#ffff54">제 파트너이자 공동 창업자인 마이클입니다.</font>
+
+27
+00:00:37,280 --> 00:00:38,840
+You're probably here because you're
+
+28
+00:00:37,280 --> 00:00:38,840
+<font color="#ffff54">당신이 여기 있는 이유는 아마도</font>
+
+29
+00:00:38,840 --> 00:00:41,640
+interested in open telemetry to some extent.
+
+30
+00:00:38,840 --> 00:00:41,640
+<font color="#ffff54">개방형 원격 측정에 어느 정도 관심이 있습니다.</font>
+
+31
+00:00:41,640 --> 00:00:44,679
+And this is the purpose of this series.
+
+32
+00:00:41,640 --> 00:00:44,679
+<font color="#ffff54">이것이 이 시리즈의 목적입니다.</font>
+
+33
+00:00:44,679 --> 00:00:48,719
+We're basically going to go over from the basics
+
+34
+00:00:44,679 --> 00:00:48,719
+<font color="#ffff54">기본부터 차근차근 살펴보겠습니다.</font>
+
+35
+00:00:48,719 --> 00:00:52,039
+to the advanced stuff of open telemetry.
+
+36
+00:00:48,719 --> 00:00:52,039
+<font color="#ffff54">개방형 텔레메트리의 고급 기능에 대해 알아보겠습니다.</font>
+
+37
+00:00:52,039 --> 00:00:56,039
+In the past two years, we've been working very extensively
+
+38
+00:00:52,039 --> 00:00:56,039
+<font color="#ffff54">지난 2년 동안 우리는 매우 광범위하게 작업해 왔습니다.</font>
+
+39
+00:00:56,039 --> 00:00:59,719
+as part of our startup Aspecto on open telemetry.
+
+40
+00:00:56,039 --> 00:00:59,719
+<font color="#ffff54">개방형 텔레메트리에 대한 스타트업 Aspecto의 일환으로.</font>
+
+41
+00:00:59,719 --> 00:01:01,679
+And actually, in the last couple of months,
+
+42
+00:00:59,719 --> 00:01:01,679
+<font color="#ffff54">그리고 실제로 지난 두 달 동안,</font>
+
+43
+00:01:01,679 --> 00:01:04,079
+we learned that there is an increased
+
+44
+00:01:01,679 --> 00:01:04,079
+<font color="#ffff54">가 증가했다는 것을 알게 되었습니다.</font>
+
+45
+00:01:04,079 --> 00:01:05,319
+interest in the industry.
+
+46
+00:01:04,079 --> 00:01:05,319
+<font color="#ffff54">업계에 대한 관심이 증가했습니다.</font>
+
+47
+00:01:05,319 --> 00:01:07,120
+We meet more and more folks that would
+
+48
+00:01:05,319 --> 00:01:07,120
+<font color="#ffff54">점점 더 많은 사람들을 만납니다.</font>
+
+49
+00:01:07,120 --> 00:01:09,799
+like to start using open telemetry,
+
+50
+00:01:07,120 --> 00:01:09,799
+<font color="#ffff54">개방형 텔레메트리를 사용하고 싶어하는 사람들을 더 많이 만나게 됩니다,</font>
+
+51
+00:01:09,799 --> 00:01:15,120
+yeah, trying to get some tracing capabilities in your systems.
+
+52
+00:01:09,799 --> 00:01:15,120
+<font color="#ffff54">네, 시스템에서 추적 기능을 사용하려고 합니다.</font>
+
+53
+00:01:15,120 --> 00:01:18,480
+And they don't have a lot of materials, a lot of help
+
+54
+00:01:15,120 --> 00:01:18,480
+<font color="#ffff54">자료도 별로 없고, 도움도 별로 없어요.</font>
+
+55
+00:01:18,480 --> 00:01:20,000
+to get started.
+
+56
+00:01:18,480 --> 00:01:20,000
+<font color="#ffff54">시작하기 위해.</font>
+
+57
+00:01:20,000 --> 00:01:24,840
+So I asked Michael, our expert in open telemetry,
+
+58
+00:01:20,000 --> 00:01:24,840
+<font color="#ffff54">그래서 오픈 텔레메트리 전문가인 마이클에게 물어봤습니다,</font>
+
+59
+00:01:24,880 --> 00:01:27,680
+to do this series.
+
+60
+00:01:24,880 --> 00:01:27,680
+<font color="#ffff54">이 시리즈를 해달라고 부탁했습니다.</font>
+
+61
+00:01:27,680 --> 00:01:30,480
+So we're going to start today with the first episode.
+
+62
+00:01:27,680 --> 00:01:30,480
+<font color="#ffff54">그럼 오늘부터 첫 번째 에피소드를 시작하겠습니다.</font>
+
+63
+00:01:30,480 --> 00:01:33,760
+Although we are broadcasting it, feel free, again,
+
+64
+00:01:30,480 --> 00:01:33,760
+<font color="#ffff54">방송 중이지만, 다시 한 번 자유롭게 시청하세요,</font>
+
+65
+00:01:33,760 --> 00:01:36,200
+to comment and ask questions.
+
+66
+00:01:33,760 --> 00:01:36,200
+<font color="#ffff54">댓글을 달고 질문할 수 있습니다.</font>
+
+67
+00:01:36,200 --> 00:01:41,200
+We would like to make it as open discussion as we can.
+
+68
+00:01:36,200 --> 00:01:41,200
+<font color="#ffff54">최대한 열린 토론의 장을 만들고자 합니다.</font>
+
+69
+00:01:41,200 --> 00:01:42,840
+So please be my guest.
+
+70
+00:01:41,200 --> 00:01:42,840
+<font color="#ffff54">그러니 마음껏 토론해 주세요.</font>
+
+71
+00:01:42,840 --> 00:01:48,280
+And without further ado, Michael, to you.
+
+72
+00:01:42,840 --> 00:01:48,280
+<font color="#ffff54">더 이상 말할 것도 없이, 마이클, 당신을 위해.</font>
+
+73
+00:01:48,280 --> 00:01:49,439
+OK, cool.
+
+74
+00:01:48,280 --> 00:01:49,439
+<font color="#ffff54">좋아, 멋지네.</font>
+
+75
+00:01:49,480 --> 00:01:56,000
+So hello, everybody, and welcome to the Open Telemetry Bootcamp.
+
+76
+00:01:49,480 --> 00:01:56,000
+<font color="#ffff54">안녕하세요, 여러분, 오픈 텔레메트리 부트캠프에 오신 것을 환영합니다.</font>
+
+77
+00:01:56,000 --> 00:01:58,200
+Let me start sharing my screen.
+
+78
+00:01:56,000 --> 00:01:58,200
+<font color="#ffff54">화면 공유를 시작하겠습니다.</font>
+
+79
+00:01:58,200 --> 00:02:04,280
+And we will go through what we have in this bootcamp, what
+
+80
+00:01:58,200 --> 00:02:04,280
+<font color="#ffff54">그리고 이 부트캠프에서 우리가 가지고 있는 것을 살펴볼 것입니다.</font>
+
+81
+00:02:04,280 --> 00:02:08,360
+was the idea and the motivation to create the bootcamp, what
+
+82
+00:02:04,280 --> 00:02:08,360
+<font color="#ffff54">부트캠프를 만들게 된 아이디어와 동기는 무엇이었나요?</font>
+
+83
+00:02:08,360 --> 00:02:10,039
+content you can expect.
+
+84
+00:02:08,360 --> 00:02:10,039
+<font color="#ffff54">기대할 수 있는 콘텐츠.</font>
+
+85
+00:02:10,039 --> 00:02:15,240
+And just before jumping into the bootcamp itself,
+
+86
+00:02:10,039 --> 00:02:15,240
+<font color="#ffff54">그리고 부트캠프에 뛰어들기 직전,</font>
+
+87
+00:02:15,240 --> 00:02:17,520
+I worried about myself.
+
+88
+00:02:15,240 --> 00:02:17,520
+<font color="#ffff54">내 자신에 대해 걱정했다.</font>
+
+89
+00:02:17,520 --> 00:02:21,040
+So you will know why I'm speaking
+
+90
+00:02:17,520 --> 00:02:21,040
+<font color="#ffff54">내가 왜 말하는지 알겠지?</font>
+
+91
+00:02:21,040 --> 00:02:23,560
+to you about those topics.
+
+92
+00:02:21,040 --> 00:02:23,560
+<font color="#ffff54">그 주제에 대해 이야기하고 있습니다.</font>
+
+93
+00:02:23,560 --> 00:02:28,760
+So I've been working with microservices,
+
+94
+00:02:23,560 --> 00:02:28,760
+<font color="#ffff54">그래서 저는 마이크로서비스와 함께 일하고 있습니다,</font>
+
+95
+00:02:28,760 --> 00:02:32,920
+the CIMU applications, for about five years now.
+
+96
+00:02:28,760 --> 00:02:32,920
+<font color="#ffff54">약 5년 동안 CIMU 애플리케이션을 개발해왔습니다.</font>
+
+97
+00:02:32,920 --> 00:02:35,160
+Started as an independent consultant
+
+98
+00:02:32,920 --> 00:02:35,160
+<font color="#ffff54">독립 컨설턴트로 시작</font>
+
+99
+00:02:35,160 --> 00:02:40,879
+and helped companies to migrate from monolith to microservices,
+
+100
+00:02:35,160 --> 00:02:40,879
+<font color="#ffff54">기업이 모놀리스에서 마이크로서비스로 마이그레이션하도록 지원했습니다,</font>
+
+101
+00:02:40,879 --> 00:02:45,120
+helped company with too many services manage it,
+
+102
+00:02:40,879 --> 00:02:45,120
+<font color="#ffff54">너무 많은 서비스를 보유한 기업이 이를 관리하는 데 도움을 주었습니다,</font>
+
+103
+00:02:45,120 --> 00:02:47,920
+also as an independent consultant and as an employee.
+
+104
+00:02:45,120 --> 00:02:47,920
+<font color="#ffff54">독립 컨설턴트로서 그리고 직원으로서도.</font>
+
+105
+00:02:47,920 --> 00:02:50,520
+In the past two years, I founded a company
+
+106
+00:02:47,920 --> 00:02:50,520
+<font color="#ffff54">지난 2년 동안 회사를 설립했습니다.</font>
+
+107
+00:02:50,520 --> 00:02:58,039
+around microservices and worked mostly with open telemetry.
+
+108
+00:02:50,520 --> 00:02:58,039
+<font color="#ffff54">마이크로 서비스 관련 회사를 설립했으며 주로 개방형 원격 측정으로 일했습니다.</font>
+
+109
+00:02:58,039 --> 00:03:00,719
+So I gained some experience with open telemetry.
+
+110
+00:02:58,039 --> 00:03:00,719
+<font color="#ffff54">그래서 개방형 텔레메트리에 대한 경험을 쌓았습니다.</font>
+
+111
+00:03:00,719 --> 00:03:04,080
+And I saw the difficulty people are having starting with it.
+
+112
+00:03:00,719 --> 00:03:04,080
+<font color="#ffff54">그리고 사람들이 시작하는 데 어려움을 겪는 것을 보았습니다.</font>
+
+113
+00:03:04,080 --> 00:03:08,480
+And this is where the idea came to do a bootcamp.
+
+114
+00:03:04,080 --> 00:03:08,480
+<font color="#ffff54">그래서 부트캠프를 만들자는 아이디어가 떠올랐죠.</font>
+
+115
+00:03:08,519 --> 00:03:14,280
+So our bootcamp is free and live,
+
+116
+00:03:08,519 --> 00:03:14,280
+<font color="#ffff54">그래서 부트캠프는 무료이며 라이브입니다,</font>
+
+117
+00:03:14,280 --> 00:03:17,879
+mostly kind of starting with open telemetry.
+
+118
+00:03:14,280 --> 00:03:17,879
+<font color="#ffff54">대부분 오픈 텔레메트리로 시작합니다.</font>
+
+119
+00:03:17,879 --> 00:03:22,079
+It would span over six sessions.
+
+120
+00:03:17,879 --> 00:03:22,079
+<font color="#ffff54">6개의 세션에 걸쳐 진행됩니다.</font>
+
+121
+00:03:22,079 --> 00:03:25,479
+And it has nothing to do with the Spectre product.
+
+122
+00:03:22,079 --> 00:03:25,479
+<font color="#ffff54">스펙터 제품과는 아무런 관련이 없습니다.</font>
+
+123
+00:03:25,479 --> 00:03:28,719
+We are not here to come and sell your product.
+
+124
+00:03:25,479 --> 00:03:28,719
+<font color="#ffff54">우리는 당신의 제품을 팔러 온 것이 아닙니다.</font>
+
+125
+00:03:28,719 --> 00:03:33,039
+We're here to come and teach you open telemetry.
+
+126
+00:03:28,719 --> 00:03:33,039
+<font color="#ffff54">우리는 오픈 텔레메트리를 가르쳐 드리러 왔습니다.</font>
+
+127
+00:03:33,039 --> 00:03:35,000
+We're definitely going to use the knowledge
+
+128
+00:03:33,039 --> 00:03:35,000
+<font color="#ffff54">우리는 확실히 지식을 사용할 것입니다.</font>
+
+129
+00:03:35,000 --> 00:03:37,120
+that we gain while building Spectre,
+
+130
+00:03:35,000 --> 00:03:37,120
+<font color="#ffff54">스펙터를 만들면서 얻은 지식이죠,</font>
+
+131
+00:03:37,120 --> 00:03:41,200
+but not to talk about the product itself.
+
+132
+00:03:37,120 --> 00:03:41,200
+<font color="#ffff54">제품 자체에 대한 이야기는 아닙니다.</font>
+
+133
+00:03:41,200 --> 00:03:45,719
+So what can you expect from this bootcamp?
+
+134
+00:03:41,200 --> 00:03:45,719
+<font color="#ffff54">이 부트캠프에서 무엇을 기대할 수 있을까요?</font>
+
+135
+00:03:45,719 --> 00:03:49,480
+So those are going to be the six main topics
+
+136
+00:03:45,719 --> 00:03:49,480
+<font color="#ffff54">6가지 주요 주제는 다음과 같습니다.</font>
+
+137
+00:03:49,480 --> 00:03:51,240
+that we are going to cover.
+
+138
+00:03:49,480 --> 00:03:51,240
+<font color="#ffff54">우리가 다룰 주제입니다.</font>
+
+139
+00:03:51,240 --> 00:03:56,080
+And I think those would be the one to get you confident
+
+140
+00:03:51,240 --> 00:03:56,080
+<font color="#ffff54">이걸로 자신감을 얻을 수 있을 것 같아요.</font>
+
+141
+00:03:56,080 --> 00:03:59,680
+to deploy and manage open telemetry.
+
+142
+00:03:56,080 --> 00:03:59,680
+<font color="#ffff54">개방형 텔레메트리를 배포하고 관리할 수 있습니다.</font>
+
+143
+00:03:59,680 --> 00:04:04,560
+So everything starts as developers and dev accessories
+
+144
+00:03:59,680 --> 00:04:04,560
+<font color="#ffff54">모든 것이 개발자와 개발 액세서리로 시작됩니다.</font>
+
+145
+00:04:04,599 --> 00:04:08,120
+were responsible on the system that we build
+
+146
+00:04:04,599 --> 00:04:08,120
+<font color="#ffff54">우리가 구축하는 시스템에 대한 책임이 있습니다.</font>
+
+147
+00:04:08,120 --> 00:04:11,400
+and open telemetry integrating to our system.
+
+148
+00:04:08,120 --> 00:04:11,400
+<font color="#ffff54">그리고 우리 시스템에 통합된 개방형 원격 측정.</font>
+
+149
+00:04:11,400 --> 00:04:15,240
+So we need to understand how it works and what are the risks
+
+150
+00:04:11,400 --> 00:04:15,240
+<font color="#ffff54">따라서 우리는 그것이 어떻게 작동하고 어떤 위험이 있는지 이해해야 합니다.</font>
+
+151
+00:04:15,240 --> 00:04:17,519
+and how things are operating internally.
+
+152
+00:04:15,240 --> 00:04:17,519
+<font color="#ffff54">그리고 내부적으로 어떻게 운영되는지 알아야 합니다.</font>
+
+153
+00:04:17,519 --> 00:04:20,600
+So we are going to start by understanding how it works
+
+154
+00:04:17,519 --> 00:04:20,600
+<font color="#ffff54">먼저 어떻게 작동하는지 이해하는 것부터 시작하겠습니다.</font>
+
+155
+00:04:20,600 --> 00:04:25,600
+and what's the motivation to the way that it's implemented.
+
+156
+00:04:20,600 --> 00:04:25,600
+<font color="#ffff54">그리고 그것이 구현되는 방식에 대한 동기가 무엇인지.</font>
+
+157
+00:04:26,959 --> 00:04:29,360
+Once we understand how it's working,
+
+158
+00:04:26,959 --> 00:04:29,360
+<font color="#ffff54">어떻게 작동하는지 이해했다면,</font>
+
+159
+00:04:29,360 --> 00:04:34,360
+we can then try and integrate it to an application.
+
+160
+00:04:29,360 --> 00:04:34,360
+<font color="#ffff54">애플리케이션에 통합할 수 있습니다.</font>
+
+161
+00:04:35,120 --> 00:04:38,040
+We will go and make the necessary code changes
+
+162
+00:04:35,120 --> 00:04:38,040
+<font color="#ffff54">이제 필요한 코드를 변경하겠습니다.</font>
+
+163
+00:04:38,040 --> 00:04:39,879
+in order to have open telemetry,
+
+164
+00:04:38,040 --> 00:04:39,879
+<font color="#ffff54">오픈 텔레메트리를 위해,</font>
+
+165
+00:04:39,879 --> 00:04:44,439
+open telemetry collects data and then ships it somewhere.
+
+166
+00:04:39,879 --> 00:04:44,439
+<font color="#ffff54">개방형 텔레메트리는 데이터를 수집한 다음 어딘가로 전송합니다.</font>
+
+167
+00:04:44,439 --> 00:04:46,840
+So that will be the second phase.
+
+168
+00:04:44,439 --> 00:04:46,840
+<font color="#ffff54">이것이 두 번째 단계입니다.</font>
+
+169
+00:04:46,840 --> 00:04:50,000
+Once we have started to collect data
+
+170
+00:04:46,840 --> 00:04:50,000
+<font color="#ffff54">데이터 수집이 시작되면</font>
+
+171
+00:04:50,000 --> 00:04:53,240
+and this data needs to be shipped somewhere.
+
+172
+00:04:50,000 --> 00:04:53,240
+<font color="#ffff54">이 데이터를 어딘가로 전송해야 합니다.</font>
+
+173
+00:04:53,240 --> 00:04:55,920
+So for that, we're going to deploy
+
+174
+00:04:53,240 --> 00:04:55,920
+<font color="#ffff54">이를 위해, 우리는 다음을 배포할 것입니다.</font>
+
+175
+00:04:55,920 --> 00:04:58,439
+all kinds of backend components
+
+176
+00:04:55,920 --> 00:04:58,439
+<font color="#ffff54">모든 종류의 백엔드 컴포넌트</font>
+
+177
+00:04:58,439 --> 00:05:02,079
+that are going to receive the data and process it,
+
+178
+00:04:58,439 --> 00:05:02,079
+<font color="#ffff54">데이터를 수신하고 처리할 컴포넌트들,</font>
+
+179
+00:05:02,159 --> 00:05:06,079
+ingest it, analyze it, visualize it.
+
+180
+00:05:02,159 --> 00:05:06,079
+<font color="#ffff54">수집하고, 분석하고, 시각화합니다.</font>
+
+181
+00:05:06,079 --> 00:05:09,599
+And for that, I'll refer to it as the open telemetry stack.
+
+182
+00:05:06,079 --> 00:05:09,599
+<font color="#ffff54">이를 위해 오픈 텔레메트리 스택이라고 부르겠습니다.</font>
+
+183
+00:05:10,439 --> 00:05:12,039
+And when that's deployed,
+
+184
+00:05:10,439 --> 00:05:12,039
+<font color="#ffff54">그리고 그것이 배포되면,</font>
+
+185
+00:05:12,039 --> 00:05:14,079
+it's going to production environment.
+
+186
+00:05:12,039 --> 00:05:14,079
+<font color="#ffff54">프로덕션 환경으로 이동합니다.</font>
+
+187
+00:05:14,079 --> 00:05:16,360
+This is where the fun begins
+
+188
+00:05:14,079 --> 00:05:16,360
+<font color="#ffff54">재미가 시작되는 곳</font>
+
+189
+00:05:16,360 --> 00:05:19,959
+and we're trying to get a lot of traffic and a lot of data.
+
+190
+00:05:16,360 --> 00:05:19,959
+<font color="#ffff54">우리는 많은 트래픽과 많은 데이터를 얻으려고 노력하고 있습니다.</font>
+
+191
+00:05:19,959 --> 00:05:24,000
+And then we need to start to manage it under high scale.
+
+192
+00:05:19,959 --> 00:05:24,000
+<font color="#ffff54">그리고 나서 대규모로 관리하기 시작해야 합니다.</font>
+
+193
+00:05:24,839 --> 00:05:26,479
+We will learn how to do it,
+
+194
+00:05:24,839 --> 00:05:26,479
+<font color="#ffff54">방법을 배웁니다,</font>
+
+195
+00:05:26,479 --> 00:05:28,839
+both in terms of the infrastructure,
+
+196
+00:05:26,479 --> 00:05:28,839
+<font color="#ffff54">둘 다 인프라 측면에서,</font>
+
+197
+00:05:28,839 --> 00:05:30,879
+auto-scaling and those kinds of things,
+
+198
+00:05:28,839 --> 00:05:30,879
+<font color="#ffff54">자동 확장 및 그런 종류의 것들,</font>
+
+199
+00:05:30,879 --> 00:05:34,079
+but most importantly, from the open telemetry perspective,
+
+200
+00:05:30,879 --> 00:05:34,079
+<font color="#ffff54">하지만 가장 중요한 것은 개방형 원격 측정의 관점입니다,</font>
+
+201
+00:05:34,079 --> 00:05:37,480
+how we're efficient with the data that we're collecting,
+
+202
+00:05:34,079 --> 00:05:37,480
+<font color="#ffff54">우리가 수집하는 데이터를 어떻게 효율적으로 사용할 수 있는지입니다,</font>
+
+203
+00:05:37,480 --> 00:05:39,639
+how we're collecting the right amount of data
+
+204
+00:05:37,480 --> 00:05:39,639
+<font color="#ffff54">적절한 양의 데이터를 수집하는 방법</font>
+
+205
+00:05:39,639 --> 00:05:40,920
+and not too much data.
+
+206
+00:05:39,639 --> 00:05:40,920
+<font color="#ffff54">너무 많은 데이터를 수집하지 않는 방법</font>
+
+207
+00:05:42,120 --> 00:05:45,879
+The fifth part, so your application may be similar
+
+208
+00:05:42,120 --> 00:05:45,879
+<font color="#ffff54">다섯 번째 부분이므로 애플리케이션도 비슷할 수 있습니다.</font>
+
+209
+00:05:45,879 --> 00:05:48,000
+to other application, but it's not the same.
+
+210
+00:05:45,879 --> 00:05:48,000
+<font color="#ffff54">다른 애플리케이션과 비슷하지만 동일하지는 않습니다.</font>
+
+211
+00:05:48,000 --> 00:05:51,079
+And you definitely will need to do some customization
+
+212
+00:05:48,000 --> 00:05:51,079
+<font color="#ffff54">그리고 약간의 사용자 정의가 필요합니다.</font>
+
+213
+00:05:51,079 --> 00:05:53,319
+to open telemetry, usually very few,
+
+214
+00:05:51,079 --> 00:05:53,319
+<font color="#ffff54">텔레메트리를 열려면, 보통은 거의 없습니다,</font>
+
+215
+00:05:53,319 --> 00:05:56,079
+but you need to understand how to do it.
+
+216
+00:05:53,319 --> 00:05:56,079
+<font color="#ffff54">하지만 어떻게 하는지 이해해야 합니다.</font>
+
+217
+00:05:56,079 --> 00:05:58,759
+And last thing would be,
+
+218
+00:05:56,079 --> 00:05:58,759
+<font color="#ffff54">그리고 마지막으로</font>
+
+219
+00:05:58,759 --> 00:06:02,399
+we did a lot of work to have open telemetry
+
+220
+00:05:58,759 --> 00:06:02,399
+<font color="#ffff54">오픈 텔레메트리를 위해 많은 노력을 기울였습니다.</font>
+
+221
+00:06:02,399 --> 00:06:03,879
+and to collect this data.
+
+222
+00:06:02,399 --> 00:06:03,879
+<font color="#ffff54">이 데이터를 수집하기 위해 많은 노력을 기울였습니다.</font>
+
+223
+00:06:04,920 --> 00:06:07,959
+Let's make sure that we're squeezing the lemon
+
+224
+00:06:04,920 --> 00:06:07,959
+<font color="#ffff54">레몬을 잘 짜고 있는지 확인해 봅시다.</font>
+
+225
+00:06:07,959 --> 00:06:11,599
+and we're getting the most out of our open telemetry.
+
+226
+00:06:07,959 --> 00:06:11,599
+<font color="#ffff54">개방형 텔레메트리를 최대한 활용하고 있습니다.</font>
+
+227
+00:06:11,599 --> 00:06:15,519
+So those are going to be the topics
+
+228
+00:06:11,599 --> 00:06:15,519
+<font color="#ffff54">따라서 다음과 같은 주제가 될 것입니다.</font>
+
+229
+00:06:15,519 --> 00:06:17,279
+that we're going to cover.
+
+230
+00:06:15,519 --> 00:06:17,279
+<font color="#ffff54">우리가 다룰 주제입니다.</font>
+
+231
+00:06:17,279 --> 00:06:21,240
+This is the process that I want you to go with us.
+
+232
+00:06:17,279 --> 00:06:21,240
+<font color="#ffff54">이 과정을 함께 해주시길 바랍니다.</font>
+
+233
+00:06:22,360 --> 00:06:25,519
+So I hope you find it interesting.
+
+234
+00:06:22,360 --> 00:06:25,519
+<font color="#ffff54">재미있게 보셨으면 좋겠어요.</font>
+
+235
+00:06:25,519 --> 00:06:27,759
+And if you feel there is something missing,
+
+236
+00:06:25,519 --> 00:06:27,759
+<font color="#ffff54">그리고 뭔가 빠진 게 있다면,</font>
+
+237
+00:06:27,759 --> 00:06:30,159
+please reach out and let us know.
+
+238
+00:06:27,759 --> 00:06:30,159
+<font color="#ffff54">로 연락하여 알려주세요.</font>
+
+239
+00:06:32,560 --> 00:06:36,719
+So we're going to have three main sections.
+
+240
+00:06:32,560 --> 00:06:36,719
+<font color="#ffff54">세 가지 주요 섹션으로 구성됩니다.</font>
+
+241
+00:06:36,719 --> 00:06:39,439
+The first one will be mostly around coding
+
+242
+00:06:36,719 --> 00:06:39,439
+<font color="#ffff54">첫 번째 섹션은 주로 코딩에 관한 것입니다.</font>
+
+243
+00:06:39,439 --> 00:06:42,199
+and making changes to application.
+
+244
+00:06:39,439 --> 00:06:42,199
+<font color="#ffff54">그리고 애플리케이션을 변경하는 것입니다.</font>
+
+245
+00:06:42,199 --> 00:06:44,879
+The second one will be mostly about deployment
+
+246
+00:06:42,199 --> 00:06:44,879
+<font color="#ffff54">두 번째는 주로 배포에 관한 것입니다.</font>
+
+247
+00:06:44,879 --> 00:06:47,360
+and configuring it for high scale.
+
+248
+00:06:44,879 --> 00:06:47,360
+<font color="#ffff54">그리고 대규모로 구성하는 것입니다.</font>
+
+249
+00:06:47,360 --> 00:06:50,319
+And the last section will be about
+
+250
+00:06:47,360 --> 00:06:50,319
+<font color="#ffff54">그리고 마지막 섹션은</font>
+
+251
+00:06:50,319 --> 00:06:52,719
+customizing open telemetry.
+
+252
+00:06:50,319 --> 00:06:52,719
+<font color="#ffff54">개방형 텔레메트리 사용자 지정.</font>
+
+253
+00:06:53,600 --> 00:06:58,600
+This bootcamp, we decided to do it with live coding
+
+254
+00:06:53,600 --> 00:06:58,600
+<font color="#ffff54">이번 부트캠프에서는 라이브 코딩으로 진행하기로 결정했습니다.</font>
+
+255
+00:07:00,560 --> 00:07:02,280
+and live demo.
+
+256
+00:07:00,560 --> 00:07:02,280
+<font color="#ffff54">그리고 라이브 데모.</font>
+
+257
+00:07:02,280 --> 00:07:05,800
+It's going to be quite an hands-on thing.
+
+258
+00:07:02,280 --> 00:07:05,800
+<font color="#ffff54">꽤나 실습이 될 겁니다.</font>
+
+259
+00:07:05,800 --> 00:07:09,760
+The first session today is going to be a bit more talking
+
+260
+00:07:05,800 --> 00:07:09,760
+<font color="#ffff54">오늘 첫 번째 세션은 좀 더 많은 이야기를 나눌 예정입니다.</font>
+
+261
+00:07:09,760 --> 00:07:14,640
+and less coding, but overall live code, live demos.
+
+262
+00:07:09,760 --> 00:07:14,640
+<font color="#ffff54">코딩보다는 전반적인 라이브 코드와 라이브 데모로 진행됩니다.</font>
+
+263
+00:07:14,640 --> 00:07:15,800
+We want it to be hands-on.
+
+264
+00:07:14,640 --> 00:07:15,800
+<font color="#ffff54">우리는 실습을 원합니다.</font>
+
+265
+00:07:15,800 --> 00:07:18,960
+We want you to learn from experience.
+
+266
+00:07:15,800 --> 00:07:18,960
+<font color="#ffff54">우리는 경험을 통해 배우기를 원합니다.</font>
+
+267
+00:07:18,960 --> 00:07:21,560
+That means that when you do live code and live demo,
+
+268
+00:07:18,960 --> 00:07:21,560
+<font color="#ffff54">즉, 라이브 코딩과 라이브 데모를 할 때입니다,</font>
+
+269
+00:07:21,600 --> 00:07:23,920
+things may not work, but this is a great chance
+
+270
+00:07:21,600 --> 00:07:23,920
+<font color="#ffff54">가 작동하지 않을 수도 있지만, 이것은 좋은 기회입니다.</font>
+
+271
+00:07:23,920 --> 00:07:26,040
+to understand why they are not working
+
+272
+00:07:23,920 --> 00:07:26,040
+<font color="#ffff54">왜 작동하지 않는지 이해하기 위해</font>
+
+273
+00:07:26,040 --> 00:07:28,800
+and to see for firsthand how the debugging
+
+274
+00:07:26,040 --> 00:07:28,800
+<font color="#ffff54">그리고 디버깅이 어떻게 작동하는지 직접 확인하기 위해</font>
+
+275
+00:07:28,800 --> 00:07:31,959
+and troubleshoot process looks like.
+
+276
+00:07:28,800 --> 00:07:31,959
+<font color="#ffff54">및 문제 해결 과정이 어떻게 진행되는지 직접 확인할 수 있습니다.</font>
+
+277
+00:07:31,959 --> 00:07:34,199
+We do have a few resources available for you.
+
+278
+00:07:31,959 --> 00:07:34,199
+<font color="#ffff54">사용 가능한 몇 가지 리소스가 있습니다.</font>
+
+279
+00:07:34,199 --> 00:07:39,199
+So we have a GitHub repo where you can find the code,
+
+280
+00:07:34,199 --> 00:07:39,199
+<font color="#ffff54">코드를 찾을 수 있는 GitHub 리포지토리가 있습니다,</font>
+
+281
+00:07:39,199 --> 00:07:42,000
+the presentation, more resources to read.
+
+282
+00:07:39,199 --> 00:07:42,000
+<font color="#ffff54">프레젠테이션, 더 많은 리소스를 읽을 수 있습니다.</font>
+
+283
+00:07:42,000 --> 00:07:44,439
+So if you want that, you can check it out.
+
+284
+00:07:42,000 --> 00:07:44,439
+<font color="#ffff54">원하시면 확인해보세요.</font>
+
+285
+00:07:44,439 --> 00:07:49,439
+And also we having a Slack channel under the CNCF worksite.
+
+286
+00:07:44,439 --> 00:07:49,439
+<font color="#ffff54">그리고 CNCF 워크사이트 아래에 Slack 채널도 있습니다.</font>
+
+287
+00:07:51,560 --> 00:07:55,360
+It's a great space where you can just communicate with us.
+
+288
+00:07:51,560 --> 00:07:55,360
+<font color="#ffff54">저희와 소통할 수 있는 훌륭한 공간입니다.</font>
+
+289
+00:07:56,480 --> 00:08:01,160
+So again, it's live, use it, ask question.
+
+290
+00:07:56,480 --> 00:08:01,160
+<font color="#ffff54">다시 한 번 말씀드리지만, 라이브이니 이용하고 질문하세요.</font>
+
+291
+00:08:01,160 --> 00:08:04,040
+And I think that's about it to tell you
+
+292
+00:08:01,160 --> 00:08:04,040
+<font color="#ffff54">여기까지만 말씀드리겠습니다.</font>
+
+293
+00:08:04,040 --> 00:08:08,560
+about what is the open telemetry bootcamp.
+
+294
+00:08:04,040 --> 00:08:08,560
+<font color="#ffff54">오픈 텔레메트리 부트캠프가 뭔지 알려드릴게요.</font>
+
+295
+00:08:08,560 --> 00:08:12,800
+And we can dive right into the first episode
+
+296
+00:08:08,560 --> 00:08:12,800
+<font color="#ffff54">이제 첫 번째 에피소드로 바로 들어가 보겠습니다.</font>
+
+297
+00:08:12,800 --> 00:08:15,879
+where we're going to talk about the architecture,
+
+298
+00:08:12,800 --> 00:08:15,879
+<font color="#ffff54">건축에 대해 이야기하겠습니다,</font>
+
+299
+00:08:15,879 --> 00:08:18,439
+the motivation of open telemetry
+
+300
+00:08:15,879 --> 00:08:18,439
+<font color="#ffff54">개방형 원격 측정의 동기</font>
+
+301
+00:08:18,439 --> 00:08:20,920
+and see the first project of open telemetry
+
+302
+00:08:18,439 --> 00:08:20,920
+<font color="#ffff54">오픈 텔레메트리의 첫 번째 프로젝트 보기</font>
+
+303
+00:08:21,240 --> 00:08:22,640
+that we're going to work on.
+
+304
+00:08:21,240 --> 00:08:22,640
+<font color="#ffff54">우리가 작업할 프로젝트입니다.</font>
+
+305
+00:08:23,960 --> 00:08:28,040
+So before I'm starting to give you the typical lecture
+
+306
+00:08:23,960 --> 00:08:28,040
+<font color="#ffff54">일반적인 강의를 시작하기 전에 먼저</font>
+
+307
+00:08:28,040 --> 00:08:32,159
+of what is open telemetry, why should you use it,
+
+308
+00:08:28,040 --> 00:08:32,159
+<font color="#ffff54">오픈 텔레메트리가 무엇인지, 왜 사용해야 하는지 설명하겠습니다,</font>
+
+309
+00:08:32,159 --> 00:08:34,519
+let's take it from an example.
+
+310
+00:08:32,159 --> 00:08:34,519
+<font color="#ffff54">예를 들어 보겠습니다.</font>
+
+311
+00:08:34,519 --> 00:08:38,879
+Let's take a real example that we can all relate to
+
+312
+00:08:34,519 --> 00:08:38,879
+<font color="#ffff54">우리 모두가 공감할 수 있는 실제 예를 들어 보겠습니다.</font>
+
+313
+00:08:38,879 --> 00:08:43,720
+and try to figure out how we were working
+
+314
+00:08:38,879 --> 00:08:43,720
+<font color="#ffff54">우리가 어떻게 작업했는지 알아봅시다.</font>
+
+315
+00:08:43,720 --> 00:08:48,320
+with this example with and without open telemetry.
+
+316
+00:08:43,720 --> 00:08:48,320
+<font color="#ffff54">이 예제는 오픈 텔레메트리를 사용했을 때와 사용하지 않았을 때를 비교합니다.</font>
+
+317
+00:08:48,320 --> 00:08:53,320
+And my example would be something very common.
+
+318
+00:08:48,320 --> 00:08:53,320
+<font color="#ffff54">그리고 제 예제는 매우 일반적인 예제입니다.</font>
+
+319
+00:08:53,680 --> 00:08:56,280
+So you would get an alert.
+
+320
+00:08:53,680 --> 00:08:56,280
+<font color="#ffff54">그래서 경고를 받게 됩니다.</font>
+
+321
+00:08:56,280 --> 00:08:59,200
+You get an alert that some service,
+
+322
+00:08:56,280 --> 00:08:59,200
+<font color="#ffff54">어떤 서비스에 대한 경고를 받습니다,</font>
+
+323
+00:08:59,200 --> 00:09:04,200
+service A is not able to write data to DB1.
+
+324
+00:08:59,200 --> 00:09:04,200
+<font color="#ffff54">서비스 A가 DB1에 데이터를 쓸 수 없습니다.</font>
+
+325
+00:09:04,920 --> 00:09:06,160
+That is a scary alert.
+
+326
+00:09:04,920 --> 00:09:06,160
+<font color="#ffff54">무서운 경고입니다.</font>
+
+327
+00:09:06,160 --> 00:09:09,440
+That means that some service is not working.
+
+328
+00:09:06,160 --> 00:09:09,440
+<font color="#ffff54">일부 서비스가 작동하지 않는다는 뜻입니다.</font>
+
+329
+00:09:09,440 --> 00:09:11,760
+They are not doing what they're supposed to do.
+
+330
+00:09:09,440 --> 00:09:11,760
+<font color="#ffff54">서비스가 제대로 작동하지 않습니다.</font>
+
+331
+00:09:11,760 --> 00:09:13,680
+They're not able to write data.
+
+332
+00:09:11,760 --> 00:09:13,680
+<font color="#ffff54">데이터를 쓸 수 없습니다.</font>
+
+333
+00:09:13,680 --> 00:09:17,280
+Maybe we're even at a data loss situation.
+
+334
+00:09:13,680 --> 00:09:17,280
+<font color="#ffff54">데이터 손실 상황일 수도 있습니다.</font>
+
+335
+00:09:17,279 --> 00:09:21,159
+This is something that we need to put our mind into.
+
+336
+00:09:17,279 --> 00:09:21,159
+<font color="#ffff54">이것은 우리가 마음을 써야 할 부분입니다.</font>
+
+337
+00:09:21,159 --> 00:09:22,000
+We need to fix it.
+
+338
+00:09:21,159 --> 00:09:22,000
+<font color="#ffff54">고쳐야겠어.</font>
+
+339
+00:09:22,000 --> 00:09:26,879
+We need to act fast and down times and bugs
+
+340
+00:09:22,000 --> 00:09:26,879
+<font color="#ffff54">다운타임과 버그에 빠르게 대처해야 합니다.</font>
+
+341
+00:09:26,879 --> 00:09:30,079
+and critical issues are bound to happen.
+
+342
+00:09:26,879 --> 00:09:30,079
+<font color="#ffff54">중요한 문제가 발생하기 마련입니다.</font>
+
+343
+00:09:30,079 --> 00:09:32,879
+The question is how fast can you fix it?
+
+344
+00:09:30,079 --> 00:09:32,879
+<font color="#ffff54">문제는 얼마나 빨리 고칠 수 있느냐입니다.</font>
+
+345
+00:09:32,879 --> 00:09:35,480
+How accurate you are in your fix?
+
+346
+00:09:32,879 --> 00:09:35,480
+<font color="#ffff54">얼마나 정확하게 고치나요?</font>
+
+347
+00:09:35,480 --> 00:09:37,600
+And this is what we wanna do.
+
+348
+00:09:35,480 --> 00:09:37,600
+<font color="#ffff54">이것이 우리가 하고 싶은 일입니다.</font>
+
+349
+00:09:37,600 --> 00:09:40,199
+So try to think for a second.
+
+350
+00:09:37,600 --> 00:09:40,199
+<font color="#ffff54">그러니 잠시만 생각해보세요.</font>
+
+351
+00:09:40,199 --> 00:09:43,759
+You got an alert from your log solution saying
+
+352
+00:09:40,199 --> 00:09:43,759
+<font color="#ffff54">로그 솔루션에서 다음과 같은 경고를 받았습니다.</font>
+
+353
+00:09:43,759 --> 00:09:46,439
+service A can't write to DB1.
+
+354
+00:09:43,759 --> 00:09:46,439
+<font color="#ffff54">서비스 A가 DB1에 쓸 수 없습니다.</font>
+
+355
+00:09:47,399 --> 00:09:49,079
+What are your first instincts?
+
+356
+00:09:47,399 --> 00:09:49,079
+<font color="#ffff54">당신의 첫 번째 본능은 무엇인가요?</font>
+
+357
+00:09:49,079 --> 00:09:51,079
+What the first thing that you're going to do?
+
+358
+00:09:49,079 --> 00:09:51,079
+<font color="#ffff54">가장 먼저 할 일은 무엇인가요?</font>
+
+359
+00:09:51,079 --> 00:09:53,839
+What are the tools that you're going to open?
+
+360
+00:09:51,079 --> 00:09:53,839
+<font color="#ffff54">어떤 도구를 열려고 하나요?</font>
+
+361
+00:09:53,839 --> 00:09:55,360
+What are the questions that you're going,
+
+362
+00:09:53,839 --> 00:09:55,360
+<font color="#ffff54">어떤 질문을 하려고 하나요?</font>
+
+363
+00:09:55,360 --> 00:09:58,360
+that are going to run in your head when you're fixing it?
+
+364
+00:09:55,360 --> 00:09:58,360
+<font color="#ffff54">고칠 때 머릿속에 떠오르는 질문이 있나요?</font>
+
+365
+00:09:58,360 --> 00:09:59,679
+I can think of a few.
+
+366
+00:09:58,360 --> 00:09:59,679
+<font color="#ffff54">몇 개 생각나는데요.</font>
+
+367
+00:09:59,679 --> 00:10:03,639
+I can think of, okay, I know service A
+
+368
+00:09:59,679 --> 00:10:03,639
+<font color="#ffff54">알겠어요, 서비스 A를 알아요.</font>
+
+369
+00:10:03,639 --> 00:10:06,319
+is sending some exceptions.
+
+370
+00:10:03,639 --> 00:10:06,319
+<font color="#ffff54">일부 예외를 보내고 있습니다.</font>
+
+371
+00:10:06,319 --> 00:10:10,039
+I can locate this exception in my code
+
+372
+00:10:06,319 --> 00:10:10,039
+<font color="#ffff54">내 코드에서 이 예외를 찾을 수 있습니다.</font>
+
+373
+00:10:10,039 --> 00:10:13,559
+and then I can track the flow in my flow,
+
+374
+00:10:10,039 --> 00:10:13,559
+<font color="#ffff54">내 흐름에서 흐름을 추적할 수 있습니다,</font>
+
+375
+00:10:13,559 --> 00:10:15,720
+in my code that led to this exception.
+
+376
+00:10:13,559 --> 00:10:15,720
+<font color="#ffff54">이 예외를 발생시킨 코드에서.</font>
+
+377
+00:10:15,720 --> 00:10:17,720
+Maybe it will give me some hints.
+
+378
+00:10:15,720 --> 00:10:17,720
+<font color="#ffff54">힌트를 얻을 수 있을지도 모르겠네요.</font>
+
+379
+00:10:17,720 --> 00:10:19,680
+Maybe this service was recently deployed
+
+380
+00:10:17,720 --> 00:10:19,680
+<font color="#ffff54">이 서비스가 최근에 배포된 것일 수 있습니다.</font>
+
+381
+00:10:19,680 --> 00:10:21,240
+and that's the issue.
+
+382
+00:10:19,680 --> 00:10:21,240
+<font color="#ffff54">그게 문제입니다.</font>
+
+383
+00:10:21,240 --> 00:10:24,560
+And maybe there are some database metrics
+
+384
+00:10:21,240 --> 00:10:24,560
+<font color="#ffff54">그리고 데이터베이스 메트릭이 있을 수도 있습니다.</font>
+
+385
+00:10:24,560 --> 00:10:26,639
+that I want to check out.
+
+386
+00:10:24,560 --> 00:10:26,639
+<font color="#ffff54">확인하고 싶어요.</font>
+
+387
+00:10:26,639 --> 00:10:30,960
+Maybe that's the reason DB1 is not available at all.
+
+388
+00:10:26,639 --> 00:10:30,960
+<font color="#ffff54">아마도 이것이 DB1을 전혀 사용할 수 없는 이유일 것입니다.</font>
+
+389
+00:10:30,960 --> 00:10:33,560
+So I would start with those.
+
+390
+00:10:30,960 --> 00:10:33,560
+<font color="#ffff54">그래서 저는 그것부터 시작하겠습니다.</font>
+
+391
+00:10:33,560 --> 00:10:36,879
+I guess you guys may have other things
+
+392
+00:10:33,560 --> 00:10:36,879
+<font color="#ffff54">다른 것도 있을 것 같네요</font>
+
+393
+00:10:36,879 --> 00:10:38,560
+that you can think of.
+
+394
+00:10:36,879 --> 00:10:38,560
+<font color="#ffff54">생각나는 게 있겠지.</font>
+
+395
+00:10:38,560 --> 00:10:43,560
+So let's say that the logs show an exception.
+
+396
+00:10:38,560 --> 00:10:43,560
+<font color="#ffff54">로그에 예외가 있다고 가정해 봅시다.</font>
+
+397
+00:10:44,440 --> 00:10:47,600
+You follow the code.
+
+398
+00:10:44,440 --> 00:10:47,600
+<font color="#ffff54">코드를 따라갑니다.</font>
+
+399
+00:10:47,600 --> 00:10:50,000
+You don't find anything too interesting.
+
+400
+00:10:47,600 --> 00:10:50,000
+<font color="#ffff54">별로 흥미로운 것을 찾지 못했습니다.</font>
+
+401
+00:10:50,000 --> 00:10:51,720
+When you look at the metrics of DB1,
+
+402
+00:10:50,000 --> 00:10:51,720
+<font color="#ffff54">DB1의 메트릭을 살펴보면 다음과 같습니다,</font>
+
+403
+00:10:51,720 --> 00:10:54,720
+you do see high CPU, which is interesting.
+
+404
+00:10:51,720 --> 00:10:54,720
+<font color="#ffff54">CPU가 높은 것을 볼 수 있습니다.</font>
+
+405
+00:10:54,720 --> 00:10:57,880
+It's something new that has changed.
+
+406
+00:10:54,720 --> 00:10:57,880
+<font color="#ffff54">뭔가 새로운 것이 변경되었습니다.</font>
+
+407
+00:10:57,880 --> 00:11:02,880
+And then I would ask a fairly simple question.
+
+408
+00:10:57,880 --> 00:11:02,880
+<font color="#ffff54">그리고 아주 간단한 질문을 하죠.</font>
+
+409
+00:11:04,400 --> 00:11:06,360
+Maybe we're just having more traffic
+
+410
+00:11:04,400 --> 00:11:06,360
+<font color="#ffff54">트래픽이 더 많은 것일 수도 있습니다.</font>
+
+411
+00:11:06,360 --> 00:11:08,120
+and it's not really a problem.
+
+412
+00:11:06,360 --> 00:11:08,120
+<font color="#ffff54">별 문제도 아니야.</font>
+
+413
+00:11:08,120 --> 00:11:10,760
+Well, it is a problem, but more traffic,
+
+414
+00:11:08,120 --> 00:11:10,760
+<font color="#ffff54">음, 문제이긴 하지만 트래픽이 더 많습니다,</font>
+
+415
+00:11:10,760 --> 00:11:12,640
+it's probably a good thing.
+
+416
+00:11:10,760 --> 00:11:12,640
+<font color="#ffff54">아마 좋은 일이겠지.</font>
+
+417
+00:11:14,160 --> 00:11:17,480
+So maybe we need to look at traffic.
+
+418
+00:11:14,160 --> 00:11:17,480
+<font color="#ffff54">트래픽을 살펴봐야 할 것 같습니다.</font>
+
+419
+00:11:17,480 --> 00:11:19,480
+And then to ask myself,
+
+420
+00:11:17,480 --> 00:11:19,480
+<font color="#ffff54">그리고 스스로에게 물어봅니다,</font>
+
+421
+00:11:19,480 --> 00:11:24,480
+which HTTP route are causing to service A to write in DB1?
+
+422
+00:11:19,480 --> 00:11:24,480
+<font color="#ffff54">어떤 HTTP 경로가 서비스 A로 하여금 DB1에 쓰게 만들었을까요?</font>
+
+423
+00:11:25,240 --> 00:11:26,400
+That's a fairly question.
+
+424
+00:11:25,240 --> 00:11:26,400
+<font color="#ffff54">꽤 괜찮은 질문입니다.</font>
+
+425
+00:11:26,400 --> 00:11:30,640
+I may not know that question from the top of my head.
+
+426
+00:11:26,400 --> 00:11:30,640
+<font color="#ffff54">그 질문은 제가 잘 모르겠는데요.</font>
+
+427
+00:11:30,640 --> 00:11:32,320
+Maybe I need to check it out.
+
+428
+00:11:30,640 --> 00:11:32,320
+<font color="#ffff54">확인해 봐야겠어.</font>
+
+429
+00:11:32,320 --> 00:11:35,320
+And maybe my assumption that it's an HTTP is wrong.
+
+430
+00:11:32,320 --> 00:11:35,320
+<font color="#ffff54">HTTP라는 내 가정이 틀렸을 수도 있겠군.</font>
+
+431
+00:11:35,320 --> 00:11:40,320
+Maybe it's because service A consumes some Kafka messages
+
+432
+00:11:35,320 --> 00:11:40,320
+<font color="#ffff54">서비스 A가 일부 카프카 메시지를 소비하기 때문일 수도 있습니다.</font>
+
+433
+00:11:41,000 --> 00:11:45,760
+and then in response to that, write to the database.
+
+434
+00:11:41,000 --> 00:11:45,760
+<font color="#ffff54">그리고 그에 대한 응답으로 데이터베이스에 씁니다.</font>
+
+435
+00:11:45,760 --> 00:11:50,360
+So this is the thought process that I would go through.
+
+436
+00:11:45,760 --> 00:11:50,360
+<font color="#ffff54">이것이 제가 생각하는 사고 과정입니다.</font>
+
+437
+00:11:50,360 --> 00:11:54,760
+And if I'm looking at this diagram
+
+438
+00:11:50,360 --> 00:11:54,760
+<font color="#ffff54">이 다이어그램을 보면 다음과 같습니다.</font>
+
+439
+00:11:54,760 --> 00:11:58,200
+of the overall service architecture,
+
+440
+00:11:54,760 --> 00:11:58,200
+<font color="#ffff54">전체 서비스 아키텍처의</font>
+
+441
+00:11:58,200 --> 00:12:01,360
+so I have here service A,
+
+442
+00:11:58,200 --> 00:12:01,360
+<font color="#ffff54">그래서 여기 서비스 A가 있습니다,</font>
+
+443
+00:12:01,360 --> 00:12:04,560
+and service A is writing to DB1.
+
+444
+00:12:01,360 --> 00:12:04,560
+<font color="#ffff54">그리고 서비스 A는 DB1에 쓰고 있습니다.</font>
+
+445
+00:12:04,560 --> 00:12:09,560
+And if I need to know who is calling service A,
+
+446
+00:12:04,560 --> 00:12:09,560
+<font color="#ffff54">그리고 누가 서비스 A를 호출하는지 알고 싶습니다,</font>
+
+447
+00:12:10,440 --> 00:12:13,120
+whether it's the front end or some, I don't know,
+
+448
+00:12:10,440 --> 00:12:13,120
+<font color="#ffff54">프런트 엔드인지 뭔지 모르겠어요,</font>
+
+449
+00:12:13,120 --> 00:12:17,540
+mobile device or other services, it's hard for me to know.
+
+450
+00:12:13,120 --> 00:12:17,540
+<font color="#ffff54">모바일 기기나 다른 서비스인지 잘 모르겠습니다.</font>
+
+451
+00:12:17,540 --> 00:12:19,879
+Thinking about metrics and logs,
+
+452
+00:12:17,540 --> 00:12:19,879
+<font color="#ffff54">메트릭과 로그에 대해 생각 중입니다,</font>
+
+453
+00:12:19,879 --> 00:12:24,600
+it's even more complicated to know who called service A.
+
+454
+00:12:19,879 --> 00:12:24,600
+<font color="#ffff54">누가 서비스 A를 호출했는지 아는 것은 훨씬 더 복잡합니다.</font>
+
+455
+00:12:25,960 --> 00:12:28,800
+And there are tools that may help you,
+
+456
+00:12:25,960 --> 00:12:28,800
+<font color="#ffff54">도움이 될 수 있는 도구가 있습니다,</font>
+
+457
+00:12:28,800 --> 00:12:30,200
+some tools that can't help you,
+
+458
+00:12:28,800 --> 00:12:30,200
+<font color="#ffff54">도움이 되지 않는 도구도 있습니다,</font>
+
+459
+00:12:30,200 --> 00:12:34,560
+but let's say that you know from the top of your head again,
+
+460
+00:12:30,200 --> 00:12:34,560
+<font color="#ffff54">하지만 다시 머리로만 알고 있다고 가정해 봅시다,</font>
+
+461
+00:12:34,560 --> 00:12:38,540
+that both service B and service C are calling service A.
+
+462
+00:12:34,560 --> 00:12:38,540
+<font color="#ffff54">서비스 B와 서비스 C가 모두 서비스 A를 호출하고 있다는 것을 알 수 있습니다.</font>
+
+463
+00:12:39,539 --> 00:12:43,819
+Okay, so now we have two consumer for service A.
+
+464
+00:12:39,539 --> 00:12:43,819
+<font color="#ffff54">이제 서비스 A에 대한 두 명의 소비자가 생겼습니다.</font>
+
+465
+00:12:43,819 --> 00:12:48,819
+And now the question is which one of them
+
+466
+00:12:43,819 --> 00:12:48,819
+<font color="#ffff54">이제 문제는 다음 중 어느 것이</font>
+
+467
+00:12:50,459 --> 00:12:53,819
+is calling service A that is actually producing the error
+
+468
+00:12:50,459 --> 00:12:53,819
+<font color="#ffff54">가 실제로 오류를 발생시키는 서비스 A를 호출하고 있는가이다.</font>
+
+469
+00:12:53,819 --> 00:12:55,219
+that we're experiencing?
+
+470
+00:12:53,819 --> 00:12:55,219
+<font color="#ffff54">우리가 겪고 있는 오류는?</font>
+
+471
+00:12:55,219 --> 00:12:58,419
+Is it service C, is it service B, or maybe it's just both?
+
+472
+00:12:55,219 --> 00:12:58,419
+<font color="#ffff54">서비스 C인가요, 서비스 B인가요, 아니면 둘 다인가요?</font>
+
+473
+00:12:59,459 --> 00:13:01,819
+So this is something that now,
+
+474
+00:12:59,459 --> 00:13:01,819
+<font color="#ffff54">이게 바로 지금입니다,</font>
+
+475
+00:13:01,819 --> 00:13:05,339
+if I'm thinking again about logs and metrics,
+
+476
+00:13:01,819 --> 00:13:05,339
+<font color="#ffff54">로그와 메트릭에 대해 다시 생각해보자,</font>
+
+477
+00:13:05,339 --> 00:13:08,099
+it's kind of hard to answer this question.
+
+478
+00:13:05,339 --> 00:13:08,099
+<font color="#ffff54">이 질문에 답하기가 좀 어렵네요.</font>
+
+479
+00:13:08,100 --> 00:13:13,100
+And this is where we're maybe unveiling the third
+
+480
+00:13:08,100 --> 00:13:13,100
+<font color="#ffff54">그리고 여기서 우리는 아마도 세 번째를 공개할 것입니다.</font>
+
+481
+00:13:13,580 --> 00:13:17,580
+and important part of open telemetry, which is a trace.
+
+482
+00:13:13,580 --> 00:13:17,580
+<font color="#ffff54">개방형 텔레메트리의 중요한 부분인 추적입니다.</font>
+
+483
+00:13:17,580 --> 00:13:19,980
+So let's start with the log.
+
+484
+00:13:17,580 --> 00:13:19,980
+<font color="#ffff54">그럼 로그부터 시작하겠습니다.</font>
+
+485
+00:13:19,980 --> 00:13:21,500
+We all know what logs are,
+
+486
+00:13:19,980 --> 00:13:21,500
+<font color="#ffff54">우리 모두 로그가 무엇인지 알고 있습니다,</font>
+
+487
+00:13:21,500 --> 00:13:24,340
+basically a message that telling you
+
+488
+00:13:21,500 --> 00:13:24,340
+<font color="#ffff54">기본적으로 다음을 알려주는 메시지입니다.</font>
+
+489
+00:13:24,340 --> 00:13:26,420
+something doesn't work and we know metric.
+
+490
+00:13:24,340 --> 00:13:26,420
+<font color="#ffff54">무언가 작동하지 않으며 메트릭을 알고 있습니다.</font>
+
+491
+00:13:26,420 --> 00:13:31,420
+We have some number representing some value in the system.
+
+492
+00:13:26,420 --> 00:13:31,420
+<font color="#ffff54">시스템에서 어떤 값을 나타내는 숫자가 있습니다.</font>
+
+493
+00:13:31,759 --> 00:13:32,860
+And then we have a trace.
+
+494
+00:13:31,759 --> 00:13:32,860
+<font color="#ffff54">그리고 추적이 있습니다.</font>
+
+495
+00:13:32,860 --> 00:13:35,740
+And the trace is going to tell us the context.
+
+496
+00:13:32,860 --> 00:13:35,740
+<font color="#ffff54">이 추적을 통해 컨텍스트를 알 수 있습니다.</font>
+
+497
+00:13:35,740 --> 00:13:40,740
+It's going to tell us the path that a specific API
+
+498
+00:13:35,740 --> 00:13:40,740
+<font color="#ffff54">특정 API가 호출한 경로를 알려줍니다.</font>
+
+499
+00:13:41,379 --> 00:13:45,700
+or a specific backend interaction, what path it took,
+
+500
+00:13:41,379 --> 00:13:45,700
+<font color="#ffff54">또는 특정 백엔드 상호 작용이 어떤 경로를 거쳤는지 알려줍니다,</font>
+
+501
+00:13:45,700 --> 00:13:50,700
+which services it visited before it hit that error.
+
+502
+00:13:45,700 --> 00:13:50,700
+<font color="#ffff54">해당 오류가 발생하기 전에 어떤 서비스를 방문했는지.</font>
+
+503
+00:13:50,899 --> 00:13:53,500
+This kind of the same way that you would try to look
+
+504
+00:13:50,899 --> 00:13:53,500
+<font color="#ffff54">이와 같은 방식으로 다음과 같이 살펴볼 수 있습니다.</font>
+
+505
+00:13:53,500 --> 00:13:57,460
+at the call stack and see that a specific invocation
+
+506
+00:13:53,500 --> 00:13:57,460
+<font color="#ffff54">호출 스택을 살펴보고 특정 호출이</font>
+
+507
+00:13:57,460 --> 00:13:59,460
+jumped from function to function.
+
+508
+00:13:57,460 --> 00:13:59,460
+<font color="#ffff54">함수에서 함수로 이동했습니다.</font>
+
+509
+00:13:59,460 --> 00:14:02,419
+I wanna know from each service to service it jumped.
+
+510
+00:13:59,460 --> 00:14:02,419
+<font color="#ffff54">각 서비스에서 서비스로 점프했는지 알고 싶습니다.</font>
+
+511
+00:14:03,420 --> 00:14:06,300
+Once I understand and I can visualize,
+
+512
+00:14:03,420 --> 00:14:06,300
+<font color="#ffff54">이해가 되고 시각화할 수 있게 되면</font>
+
+513
+00:14:06,300 --> 00:14:10,020
+I can see that maybe all of the issues that I had
+
+514
+00:14:06,300 --> 00:14:10,020
+<font color="#ffff54">제가 가지고 있던 모든 문제들이</font>
+
+515
+00:14:10,020 --> 00:14:13,000
+are related to service B,
+
+516
+00:14:10,020 --> 00:14:13,000
+<font color="#ffff54">서비스 B와 관련이 있습니다,</font>
+
+517
+00:14:13,000 --> 00:14:16,380
+this is a very important piece of information for me
+
+518
+00:14:13,000 --> 00:14:16,380
+<font color="#ffff54">이것은 저에게 매우 중요한 정보입니다.</font>
+
+519
+00:14:16,380 --> 00:14:19,780
+to resolve the issue and to resolve it fast.
+
+520
+00:14:16,380 --> 00:14:19,780
+<font color="#ffff54">문제를 해결하고 빠르게 해결할 수 있습니다.</font>
+
+521
+00:14:19,780 --> 00:14:23,180
+Because now I know that I need to look
+
+522
+00:14:19,780 --> 00:14:23,180
+<font color="#ffff54">이제 저는</font>
+
+523
+00:14:23,180 --> 00:14:27,660
+whether the increases traffic is related to service B,
+
+524
+00:14:23,180 --> 00:14:27,660
+<font color="#ffff54">트래픽 증가가 서비스 B와 관련이 있는지 확인해야 합니다,</font>
+
+525
+00:14:27,660 --> 00:14:30,340
+or if I know that it's specific to service B,
+
+526
+00:14:27,660 --> 00:14:30,340
+<font color="#ffff54">또는 서비스 B와 관련된 것인지 알 수 있습니다,</font>
+
+527
+00:14:30,340 --> 00:14:34,700
+maybe deployment in service B is the one
+
+528
+00:14:30,340 --> 00:14:34,700
+<font color="#ffff54">아마도 서비스 B에 배포하는 것이</font>
+
+529
+00:14:34,700 --> 00:14:37,740
+that caused the issues in service A.
+
+530
+00:14:34,700 --> 00:14:37,740
+<font color="#ffff54">서비스 A에서 문제를 일으켰을 수 있습니다.</font>
+
+531
+00:14:37,740 --> 00:14:42,320
+So basically when we get more data points
+
+532
+00:14:37,740 --> 00:14:42,320
+<font color="#ffff54">따라서 기본적으로 더 많은 데이터 포인트를 얻으면</font>
+
+533
+00:14:42,320 --> 00:14:45,480
+describing the whole story, it starts to get easier.
+
+534
+00:14:42,320 --> 00:14:45,480
+<font color="#ffff54">전체 스토리를 설명하는 것이 더 쉬워지기 시작합니다.</font>
+
+535
+00:14:46,860 --> 00:14:51,060
+So to resolve this issue fast,
+
+536
+00:14:46,860 --> 00:14:51,060
+<font color="#ffff54">이 문제를 빨리 해결하려면,</font>
+
+537
+00:14:51,060 --> 00:14:56,060
+I needed to have all three of logs, metrics and end traces.
+
+538
+00:14:51,060 --> 00:14:56,060
+<font color="#ffff54">로그, 메트릭, 엔드 트레이스 세 가지가 모두 필요했습니다.</font>
+
+539
+00:14:57,139 --> 00:15:00,200
+And I've said traces quite a few times.
+
+540
+00:14:57,139 --> 00:15:00,200
+<font color="#ffff54">트레이스라고 여러 번 말씀드렸습니다.</font>
+
+541
+00:15:00,200 --> 00:15:05,080
+So let me give you a visualization of a trace.
+
+542
+00:15:00,200 --> 00:15:05,080
+<font color="#ffff54">그럼 트레이스를 시각화해서 보여드리겠습니다.</font>
+
+543
+00:15:05,080 --> 00:15:10,080
+So here you can see a UI that displays a trace,
+
+544
+00:15:05,080 --> 00:15:10,080
+<font color="#ffff54">트레이스를 표시하는 UI를 볼 수 있습니다,</font>
+
+545
+00:15:10,920 --> 00:15:13,200
+specifically Eager UI.
+
+546
+00:15:10,920 --> 00:15:13,200
+<font color="#ffff54">특히 Eager UI입니다.</font>
+
+547
+00:15:13,200 --> 00:15:15,480
+And what you can see here,
+
+548
+00:15:13,200 --> 00:15:15,480
+<font color="#ffff54">그리고 여기서 볼 수 있는 것들,</font>
+
+549
+00:15:15,480 --> 00:15:18,560
+you can see that we have older service,
+
+550
+00:15:15,480 --> 00:15:18,560
+<font color="#ffff54">이전 서비스임을 알 수 있습니다,</font>
+
+551
+00:15:18,560 --> 00:15:21,940
+it got an API call to slash purchase slash order.
+
+552
+00:15:18,560 --> 00:15:21,940
+<font color="#ffff54">구매 슬래시 주문을 슬래시하는 API 호출을 받았습니다.</font>
+
+553
+00:15:22,920 --> 00:15:26,680
+The whole thing took a bit over two seconds.
+
+554
+00:15:22,920 --> 00:15:26,680
+<font color="#ffff54">전체적으로 2초가 조금 넘게 걸렸습니다.</font>
+
+555
+00:15:26,680 --> 00:15:29,879
+And older service, the first thing that it did,
+
+556
+00:15:26,680 --> 00:15:29,879
+<font color="#ffff54">그리고 이전 서비스에서 가장 먼저 한 일입니다,</font>
+
+557
+00:15:29,879 --> 00:15:34,639
+it communicated with user service to verify the user.
+
+558
+00:15:29,879 --> 00:15:34,639
+<font color="#ffff54">사용자 서비스와 통신하여 사용자를 확인했습니다.</font>
+
+559
+00:15:34,639 --> 00:15:35,600
+That's great.
+
+560
+00:15:34,639 --> 00:15:35,600
+<font color="#ffff54">잘됐네요.</font>
+
+561
+00:15:35,600 --> 00:15:40,600
+And once that's done, I can see that older service
+
+562
+00:15:35,600 --> 00:15:40,600
+<font color="#ffff54">완료되면 이전 서비스를 볼 수 있습니다.</font>
+
+563
+00:15:41,799 --> 00:15:46,700
+communicated with stock service and asked to update the stock.
+
+564
+00:15:41,799 --> 00:15:46,700
+<font color="#ffff54">재고 서비스와 통신하여 재고를 업데이트하도록 요청했습니다.</font>
+
+565
+00:15:46,700 --> 00:15:51,700
+And eventually the stock service ran a Mongoose query,
+
+566
+00:15:46,700 --> 00:15:51,700
+<font color="#ffff54">결국 주식 서비스가 몽구스 쿼리를 실행했습니다,</font>
+
+567
+00:15:51,720 --> 00:15:56,440
+which is a MongoDB library to update many of the stock items.
+
+568
+00:15:51,720 --> 00:15:56,440
+<font color="#ffff54">몽구스 쿼리를 실행하여 많은 재고 항목을 업데이트했습니다.</font>
+
+569
+00:15:56,440 --> 00:15:58,080
+Only when that's done,
+
+570
+00:15:56,440 --> 00:15:58,080
+<font color="#ffff54">완료된 경우에만,</font>
+
+571
+00:15:58,080 --> 00:16:01,800
+we published a new older Kafka message.
+
+572
+00:15:58,080 --> 00:16:01,800
+<font color="#ffff54">새로운 이전 카프카 메시지를 게시했습니다.</font>
+
+573
+00:16:01,800 --> 00:16:04,600
+So basically I told you a story.
+
+574
+00:16:01,800 --> 00:16:04,600
+<font color="#ffff54">그래서 기본적으로 나는 당신에게 이야기를 들려줬어요.</font>
+
+575
+00:16:04,600 --> 00:16:07,800
+I told you a story of how a particular API
+
+576
+00:16:04,600 --> 00:16:07,800
+<font color="#ffff54">특정 API가 어떻게 작동하는지에 대한 이야기를 했죠.</font>
+
+577
+00:16:09,280 --> 00:16:11,720
+rolled through the different services.
+
+578
+00:16:09,280 --> 00:16:11,720
+<font color="#ffff54">다른 서비스를 통해 전달되는 과정을 설명했습니다.</font>
+
+579
+00:16:11,720 --> 00:16:14,880
+And I was able to do it, not only to tell you
+
+580
+00:16:11,720 --> 00:16:14,880
+<font color="#ffff54">그리고 저는 해낼 수 있었습니다.</font>
+
+581
+00:16:14,880 --> 00:16:19,260
+which services it visited,
+
+582
+00:16:14,880 --> 00:16:19,260
+<font color="#ffff54">어떤 서비스를 방문했는지도요,</font>
+
+583
+00:16:19,260 --> 00:16:23,800
+also whether they were happening in sequence or in parallel.
+
+584
+00:16:19,260 --> 00:16:23,800
+<font color="#ffff54">또한 순차적으로 발생했는지 또는 병렬로 발생했는지 여부도 확인합니다.</font>
+
+585
+00:16:23,800 --> 00:16:28,480
+And I am able to tell you this whole story
+
+586
+00:16:23,800 --> 00:16:28,480
+<font color="#ffff54">그리고 나는 이 모든 이야기를 당신에게 말할 수 있습니다.</font>
+
+587
+00:16:28,480 --> 00:16:32,440
+and it's kind of a data tree, a tree structure
+
+588
+00:16:28,480 --> 00:16:32,440
+<font color="#ffff54">일종의 데이터 트리, 트리 구조입니다.</font>
+
+589
+00:16:32,440 --> 00:16:34,240
+where we can see what was the root
+
+590
+00:16:32,440 --> 00:16:34,240
+<font color="#ffff54">어디가 루트인지 알 수 있습니다.</font>
+
+591
+00:16:34,240 --> 00:16:36,600
+and what happened because of a root.
+
+592
+00:16:34,240 --> 00:16:36,600
+<font color="#ffff54">그리고 루트로 인해 어떤 일이 일어났는지 알 수 있습니다.</font>
+
+593
+00:16:37,760 --> 00:16:42,760
+So now we are a bit smother with what traces are.
+
+594
+00:16:37,760 --> 00:16:42,760
+<font color="#ffff54">이제 흔적이 무엇인지 조금은 알 것 같습니다.</font>
+
+595
+00:16:44,940 --> 00:16:49,520
+So we're talking about those three things altogether.
+
+596
+00:16:44,940 --> 00:16:49,520
+<font color="#ffff54">그래서 우리는 이 세 가지에 대해 함께 이야기하고 있습니다.</font>
+
+597
+00:16:49,520 --> 00:16:51,880
+We're talking about the logs.
+
+598
+00:16:49,520 --> 00:16:51,880
+<font color="#ffff54">로그에 대해 이야기하고 있습니다.</font>
+
+599
+00:16:51,879 --> 00:16:55,080
+Basically the application itself is telling us a story.
+
+600
+00:16:51,879 --> 00:16:55,080
+<font color="#ffff54">기본적으로 애플리케이션 자체가 우리에게 이야기를 들려주고 있습니다.</font>
+
+601
+00:16:55,080 --> 00:16:59,919
+It outputs some messages that we can read as humans
+
+602
+00:16:55,080 --> 00:16:59,919
+<font color="#ffff54">인간으로서 읽을 수 있는 몇 가지 메시지를 출력합니다.</font>
+
+603
+00:16:59,919 --> 00:17:04,920
+and understand what went in that particular application.
+
+604
+00:16:59,919 --> 00:17:04,920
+<font color="#ffff54">특정 애플리케이션에 무엇이 들어갔는지 이해할 수 있습니다.</font>
+
+605
+00:17:06,539 --> 00:17:11,539
+The metric tells the statistical data about our system.
+
+606
+00:17:06,539 --> 00:17:11,539
+<font color="#ffff54">이 메트릭은 시스템에 대한 통계 데이터를 알려줍니다.</font>
+
+607
+00:17:12,599 --> 00:17:16,640
+How it was the CPU, how many API code did I get?
+
+608
+00:17:12,599 --> 00:17:16,640
+<font color="#ffff54">CPU는 어땠고, API 코드는 몇 개였나요?</font>
+
+609
+00:17:16,640 --> 00:17:21,319
+And traces are the context and the story and the path
+
+610
+00:17:16,640 --> 00:17:21,319
+<font color="#ffff54">그리고 흔적은 맥락과 스토리, 경로입니다.</font>
+
+611
+00:17:21,319 --> 00:17:23,159
+that each event took.
+
+612
+00:17:21,319 --> 00:17:23,159
+<font color="#ffff54">각 사건이 걸어온 길입니다.</font>
+
+613
+00:17:24,159 --> 00:17:27,799
+Those three would usually be referred
+
+614
+00:17:24,159 --> 00:17:27,799
+<font color="#ffff54">이 세 가지는 보통 다음과 같이 참조됩니다.</font>
+
+615
+00:17:27,799 --> 00:17:30,379
+to the three pillar of observability.
+
+616
+00:17:27,799 --> 00:17:30,379
+<font color="#ffff54">가 관찰 가능성의 세 가지 기둥으로 참조됩니다.</font>
+
+617
+00:17:30,379 --> 00:17:33,980
+So observability is a new term, a new trend,
+
+618
+00:17:30,379 --> 00:17:33,980
+<font color="#ffff54">가관측성은 새로운 용어이자 새로운 트렌드입니다,</font>
+
+619
+00:17:33,980 --> 00:17:37,559
+basically trying to say how we should do monitoring
+
+620
+00:17:33,980 --> 00:17:37,559
+<font color="#ffff54">기본적으로 모니터링을 어떻게 해야 하는지를 말하려고 합니다.</font>
+
+621
+00:17:37,559 --> 00:17:40,519
+in distributed cloud native application.
+
+622
+00:17:37,559 --> 00:17:40,519
+<font color="#ffff54">분산된 클라우드 네이티브 애플리케이션에서.</font>
+
+623
+00:17:40,519 --> 00:17:45,519
+And if we were today was using logs and metrics and APM,
+
+624
+00:17:40,519 --> 00:17:45,519
+<font color="#ffff54">오늘 로그와 메트릭, APM을 사용했다면요,</font>
+
+625
+00:17:46,639 --> 00:17:50,819
+with distributed application, it's not enough usually
+
+626
+00:17:46,639 --> 00:17:50,819
+<font color="#ffff54">분산 애플리케이션에서는 일반적으로 충분하지 않습니다.</font>
+
+627
+00:17:50,819 --> 00:17:52,619
+and this is why we're starting to see
+
+628
+00:17:50,819 --> 00:17:52,619
+<font color="#ffff54">그리고 이것이 우리가 보기 시작한 이유입니다.</font>
+
+629
+00:17:52,619 --> 00:17:54,339
+the rise of observability,
+
+630
+00:17:52,619 --> 00:17:54,339
+<font color="#ffff54">관측 가능성의 부상</font>
+
+631
+00:17:54,339 --> 00:17:57,299
+which essentially it's those three things.
+
+632
+00:17:54,339 --> 00:17:57,299
+<font color="#ffff54">본질적으로 이 세 가지입니다.</font>
+
+633
+00:17:57,299 --> 00:18:01,419
+It's logs, it's metrics and traces altogether.
+
+634
+00:17:57,299 --> 00:18:01,419
+<font color="#ffff54">로그, 메트릭, 그리고 추적입니다.</font>
+
+635
+00:18:02,339 --> 00:18:05,079
+So what is open telemetry?
+
+636
+00:18:02,339 --> 00:18:05,079
+<font color="#ffff54">그렇다면 개방형 텔레메트리란 무엇인가요?</font>
+
+637
+00:18:05,079 --> 00:18:09,179
+Why I said this is the open telemetry bootcamp,
+
+638
+00:18:05,079 --> 00:18:09,179
+<font color="#ffff54">오픈 텔레메트리 부트캠프라고 말한 이유,</font>
+
+639
+00:18:09,179 --> 00:18:13,579
+but I didn't mention open telemetry in the past few minutes.
+
+640
+00:18:09,179 --> 00:18:13,579
+<font color="#ffff54">지난 몇 분 동안 오픈 텔레메트리에 대해 언급하지 않았어요.</font>
+
+641
+00:18:13,579 --> 00:18:17,819
+So open telemetry in some way is the three pillars.
+
+642
+00:18:13,579 --> 00:18:17,819
+<font color="#ffff54">어떤 식으로든 개방형 텔레메트리는 세 가지 기둥입니다.</font>
+
+643
+00:18:17,819 --> 00:18:22,819
+Open telemetry is the ability to collect logs, metrics
+
+644
+00:18:17,819 --> 00:18:22,819
+<font color="#ffff54">개방형 텔레메트리는 로그, 메트릭을 수집하는 기능입니다.</font>
+
+645
+00:18:23,899 --> 00:18:26,779
+and traces and you can argue and say,
+
+646
+00:18:23,899 --> 00:18:26,779
+<font color="#ffff54">추적할 수 있는 기능입니다,</font>
+
+647
+00:18:26,779 --> 00:18:29,980
+hey, I'm collecting logs today.
+
+648
+00:18:26,779 --> 00:18:29,980
+<font color="#ffff54">안녕, 나 오늘 로그 수집 중이야.</font>
+
+649
+00:18:29,980 --> 00:18:32,700
+Right now as you speak, I have logs and metrics.
+
+650
+00:18:29,980 --> 00:18:32,700
+<font color="#ffff54">지금 이 순간에도 로그와 메트릭을 수집하고 있습니다.</font>
+
+651
+00:18:32,700 --> 00:18:36,579
+I just need traces so I can just use open telemetry
+
+652
+00:18:32,700 --> 00:18:36,579
+<font color="#ffff54">오픈 텔레메트리를 사용할 수 있도록 추적만 필요합니다.</font>
+
+653
+00:18:36,579 --> 00:18:41,059
+and collect the traces from open telemetry.
+
+654
+00:18:36,579 --> 00:18:41,059
+<font color="#ffff54">오픈 텔레메트리에서 트레이스를 수집합니다.</font>
+
+655
+00:18:41,059 --> 00:18:42,619
+But the magic really happens
+
+656
+00:18:41,059 --> 00:18:42,619
+<font color="#ffff54">하지만 마법은 실제로 일어납니다.</font>
+
+657
+00:18:42,619 --> 00:18:47,139
+where they are all correlated altogether.
+
+658
+00:18:42,619 --> 00:18:47,139
+<font color="#ffff54">모두 상관관계가 있는 곳입니다.</font>
+
+659
+00:18:47,140 --> 00:18:49,500
+And the traces are attached to the logs
+
+660
+00:18:47,140 --> 00:18:49,500
+<font color="#ffff54">그리고 추적은 로그에 첨부됩니다.</font>
+
+661
+00:18:49,500 --> 00:18:52,060
+and the log attached to the trace says,
+
+662
+00:18:49,500 --> 00:18:52,060
+<font color="#ffff54">추적에 첨부된 로그는 다음과 같습니다,</font>
+
+663
+00:18:52,060 --> 00:18:55,340
+and everything is glued together,
+
+664
+00:18:52,060 --> 00:18:55,340
+<font color="#ffff54">그리고 모든 것이 서로 붙어 있습니다,</font>
+
+665
+00:18:55,340 --> 00:18:59,100
+making it that when you need to resolve some issue,
+
+666
+00:18:55,340 --> 00:18:59,100
+<font color="#ffff54">어떤 문제를 해결해야 할 때 그렇게 만들 수 있습니다,</font>
+
+667
+00:18:59,100 --> 00:19:04,100
+moving from logs to traces, from traces to metrics
+
+668
+00:18:59,100 --> 00:19:04,100
+<font color="#ffff54">로그에서 트레이스, 트레이스에서 메트릭으로 이동합니다.</font>
+
+669
+00:19:04,980 --> 00:19:07,620
+is fast and very efficient.
+
+670
+00:19:04,980 --> 00:19:07,620
+<font color="#ffff54">는 빠르고 매우 효율적입니다.</font>
+
+671
+00:19:08,860 --> 00:19:11,440
+So open telemetry for me is the glue.
+
+672
+00:19:08,860 --> 00:19:11,440
+<font color="#ffff54">그래서 저에게 오픈 텔레메트리는 접착제입니다.</font>
+
+673
+00:19:11,799 --> 00:19:16,799
+Open telemetry is basically the ability to collect
+
+674
+00:19:11,799 --> 00:19:16,799
+<font color="#ffff54">개방형 텔레메트리는 기본적으로 데이터를 수집하는 기능입니다.</font>
+
+675
+00:19:19,680 --> 00:19:24,320
+all three pillars under one unified SDK.
+
+676
+00:19:19,680 --> 00:19:24,320
+<font color="#ffff54">세 가지 기둥을 모두 하나의 통합 SDK로 통합하는 것입니다.</font>
+
+677
+00:19:24,320 --> 00:19:28,680
+So open telemetry is a big part of it is the SDK.
+
+678
+00:19:24,320 --> 00:19:28,680
+<font color="#ffff54">따라서 개방형 텔레메트리의 가장 큰 부분은 SDK입니다.</font>
+
+679
+00:19:28,680 --> 00:19:32,720
+There are a bit more paths that we will see in a second,
+
+680
+00:19:28,680 --> 00:19:32,720
+<font color="#ffff54">잠시 후 더 많은 경로를 볼 수 있습니다,</font>
+
+681
+00:19:32,720 --> 00:19:35,400
+but open telemetry is a project under CNCF.
+
+682
+00:19:32,720 --> 00:19:35,400
+<font color="#ffff54">하지만 오픈 텔레메트리는 CNCF의 프로젝트입니다.</font>
+
+683
+00:19:35,400 --> 00:19:39,160
+CNCF is the Cloud Native Compute Foundation.
+
+684
+00:19:35,400 --> 00:19:39,160
+<font color="#ffff54">CNCF는 클라우드 네이티브 컴퓨팅 재단입니다.</font>
+
+685
+00:19:39,160 --> 00:19:42,040
+They're responsible for Kubernetes.
+
+686
+00:19:39,160 --> 00:19:42,040
+<font color="#ffff54">쿠버네티스를 담당하고 있습니다.</font>
+
+687
+00:19:42,040 --> 00:19:45,080
+So open telemetry is in a good hand.
+
+688
+00:19:42,040 --> 00:19:45,080
+<font color="#ffff54">그래서 개방형 원격 분석은 좋은 손에 있습니다.</font>
+
+689
+00:19:45,080 --> 00:19:49,000
+And basically, if you look at the project structure,
+
+690
+00:19:45,080 --> 00:19:49,000
+<font color="#ffff54">그리고 기본적으로 프로젝트 구조를 살펴보면,</font>
+
+691
+00:19:49,000 --> 00:19:53,600
+at least the main part of it is you have one specification
+
+692
+00:19:49,000 --> 00:19:53,600
+<font color="#ffff54">적어도 주요한 부분은 하나의 사양이 있다는 것입니다.</font>
+
+693
+00:19:53,600 --> 00:19:57,640
+how data should be collected and should be sent.
+
+694
+00:19:53,600 --> 00:19:57,640
+<font color="#ffff54">데이터를 어떻게 수집하고 전송해야 하는지.</font>
+
+695
+00:19:57,640 --> 00:19:59,680
+And then you have implementation
+
+696
+00:19:57,640 --> 00:19:59,680
+<font color="#ffff54">그리고 구현이 있습니다.</font>
+
+697
+00:19:59,680 --> 00:20:01,680
+through different programming languages.
+
+698
+00:19:59,680 --> 00:20:01,680
+<font color="#ffff54">을 다른 프로그래밍 언어로 구현합니다.</font>
+
+699
+00:20:01,680 --> 00:20:05,240
+Because it is an SDK, we need to support
+
+700
+00:20:01,680 --> 00:20:05,240
+<font color="#ffff54">SDK이므로 다음을 지원해야 합니다.</font>
+
+701
+00:20:05,240 --> 00:20:08,040
+all kinds of different programming languages.
+
+702
+00:20:05,240 --> 00:20:08,040
+<font color="#ffff54">모든 종류의 다른 프로그래밍 언어를 지원해야 합니다.</font>
+
+703
+00:20:08,039 --> 00:20:12,720
+Of course, the modern one are supported like Node,
+
+704
+00:20:08,039 --> 00:20:12,720
+<font color="#ffff54">물론 노드와 같은 최신 언어도 지원됩니다,</font>
+
+705
+00:20:12,720 --> 00:20:16,240
+Java, Python, Go, Ruby.
+
+706
+00:20:12,720 --> 00:20:16,240
+<font color="#ffff54">자바, 파이썬, 고, 루비.</font>
+
+707
+00:20:17,720 --> 00:20:21,000
+Any modern one would be probably supported.
+
+708
+00:20:17,720 --> 00:20:21,000
+<font color="#ffff54">모든 최신 언어가 지원될 것입니다.</font>
+
+709
+00:20:22,440 --> 00:20:25,680
+So in a very short explanation,
+
+710
+00:20:22,440 --> 00:20:25,680
+<font color="#ffff54">아주 짧게 설명하자면</font>
+
+711
+00:20:25,680 --> 00:20:30,240
+open telemetry is the three pillars glued together
+
+712
+00:20:25,680 --> 00:20:30,240
+<font color="#ffff54">개방형 원격 측정은 세 개의 기둥이 서로 붙어 있습니다.</font>
+
+713
+00:20:30,240 --> 00:20:34,480
+as an SDK under the CNCF with one specification
+
+714
+00:20:30,240 --> 00:20:34,480
+<font color="#ffff54">하나의 사양으로 CNCF에 따라 SDK로 제공됩니다.</font>
+
+715
+00:20:34,480 --> 00:20:36,920
+so they could communicate with one another.
+
+716
+00:20:34,480 --> 00:20:36,920
+<font color="#ffff54">서로 통신할 수 있도록 했습니다.</font>
+
+717
+00:20:39,039 --> 00:20:41,119
+Okay, cool.
+
+718
+00:20:39,039 --> 00:20:41,119
+<font color="#ffff54">좋아, 멋지네.</font>
+
+719
+00:20:41,119 --> 00:20:43,839
+So now that we have a bit of a sense
+
+720
+00:20:41,119 --> 00:20:43,839
+<font color="#ffff54">이제 어느 정도 감이 오네요.</font>
+
+721
+00:20:43,839 --> 00:20:48,839
+what open telemetry is, we need to talk about how it works.
+
+722
+00:20:43,839 --> 00:20:48,839
+<font color="#ffff54">개방형 텔레메트리가 무엇인지, 어떻게 작동하는지에 대해 이야기할 필요가 있습니다.</font>
+
+723
+00:20:48,960 --> 00:20:52,720
+And I'm going to do it in three sections.
+
+724
+00:20:48,960 --> 00:20:52,720
+<font color="#ffff54">세 부분으로 나눠서 설명할게요.</font>
+
+725
+00:20:52,720 --> 00:20:55,480
+The first one would be to describe
+
+726
+00:20:52,720 --> 00:20:55,480
+<font color="#ffff54">첫 번째는</font>
+
+727
+00:20:55,480 --> 00:20:57,279
+what is the open telemetry stack,
+
+728
+00:20:55,480 --> 00:20:57,279
+<font color="#ffff54">오픈 텔레메트리 스택이란 무엇인가요?</font>
+
+729
+00:20:57,279 --> 00:20:59,639
+what you need to deploy in order to have
+
+730
+00:20:57,279 --> 00:20:59,639
+<font color="#ffff54">다음을 갖기 위해 배포해야 하는 것</font>
+
+731
+00:20:59,639 --> 00:21:02,119
+open telemetry up and running.
+
+732
+00:20:59,639 --> 00:21:02,119
+<font color="#ffff54">오픈 텔레메트리를 실행합니다.</font>
+
+733
+00:21:02,119 --> 00:21:04,559
+Then we're going to take a deeper dive
+
+734
+00:21:02,119 --> 00:21:04,559
+<font color="#ffff54">이제 더 자세히 살펴보겠습니다.</font>
+
+735
+00:21:04,559 --> 00:21:07,319
+into how the open telemetry SDK,
+
+736
+00:21:04,559 --> 00:21:07,319
+<font color="#ffff54">오픈 텔레메트리 SDK가 어떻게 작동하는지 살펴보겠습니다,</font>
+
+737
+00:21:07,480 --> 00:21:09,559
+the portion that you implement in your code,
+
+738
+00:21:07,480 --> 00:21:09,559
+<font color="#ffff54">코드에서 구현하는 부분입니다,</font>
+
+739
+00:21:09,559 --> 00:21:11,119
+how does it work?
+
+740
+00:21:09,559 --> 00:21:11,119
+<font color="#ffff54">어떻게 작동하나요?</font>
+
+741
+00:21:11,119 --> 00:21:14,319
+And then we're going to do a live demo
+
+742
+00:21:11,119 --> 00:21:14,319
+<font color="#ffff54">그리고 라이브 데모를 해보겠습니다.</font>
+
+743
+00:21:14,319 --> 00:21:18,319
+and show you a real application collecting logs,
+
+744
+00:21:14,319 --> 00:21:18,319
+<font color="#ffff54">로그를 수집하는 실제 애플리케이션을 보여드리겠습니다,</font>
+
+745
+00:21:18,319 --> 00:21:20,799
+collecting metrics, collecting traces,
+
+746
+00:21:18,319 --> 00:21:20,799
+<font color="#ffff54">메트릭을 수집하고, 트레이스를 수집합니다,</font>
+
+747
+00:21:20,799 --> 00:21:23,200
+and give you a sense of how it looks like.
+
+748
+00:21:20,799 --> 00:21:23,200
+<font color="#ffff54">어떻게 생겼는지 알 수 있습니다.</font>
+
+749
+00:21:25,919 --> 00:21:30,319
+Okay, so we said that open telemetry is an SDK
+
+750
+00:21:25,919 --> 00:21:30,319
+<font color="#ffff54">자, 오픈 텔레메트리는 SDK라고 말씀드렸습니다.</font>
+
+751
+00:21:30,319 --> 00:21:32,279
+and collects all three pillars.
+
+752
+00:21:30,319 --> 00:21:32,279
+<font color="#ffff54">세 개의 기둥을 모두 수집합니다.</font>
+
+753
+00:21:32,279 --> 00:21:33,720
+That's great.
+
+754
+00:21:32,279 --> 00:21:33,720
+<font color="#ffff54">대단하네요.</font>
+
+755
+00:21:33,720 --> 00:21:37,240
+That means that it's done in memory, in process.
+
+756
+00:21:33,720 --> 00:21:37,240
+<font color="#ffff54">메모리에서 처리 중이라는 뜻입니다.</font>
+
+757
+00:21:38,160 --> 00:21:40,960
+So we're going to have some backend
+
+758
+00:21:38,160 --> 00:21:40,960
+<font color="#ffff54">그래서 우리는 백엔드에서</font>
+
+759
+00:21:40,960 --> 00:21:43,880
+that is going to ingest the traces, logs,
+
+760
+00:21:40,960 --> 00:21:43,880
+<font color="#ffff54">트레이스와 로그를 수집할 백엔드가 있습니다,</font>
+
+761
+00:21:43,880 --> 00:21:46,120
+and metrics that we just received.
+
+762
+00:21:43,880 --> 00:21:46,120
+<font color="#ffff54">그리고 방금 받은 메트릭을 수집합니다.</font>
+
+763
+00:21:46,120 --> 00:21:49,359
+And then to store it in a database.
+
+764
+00:21:46,120 --> 00:21:49,359
+<font color="#ffff54">그리고 이를 데이터베이스에 저장합니다.</font>
+
+765
+00:21:49,359 --> 00:21:50,559
+That's cool.
+
+766
+00:21:49,359 --> 00:21:50,559
+<font color="#ffff54">멋지네요.</font>
+
+767
+00:21:50,559 --> 00:21:52,599
+And once we have something in the database,
+
+768
+00:21:50,559 --> 00:21:52,599
+<font color="#ffff54">일단 데이터베이스에 뭔가가 있으면</font>
+
+769
+00:21:52,599 --> 00:21:54,759
+we need to query and to visualize it.
+
+770
+00:21:52,599 --> 00:21:54,759
+<font color="#ffff54">쿼리하고 시각화해야 합니다.</font>
+
+771
+00:21:54,759 --> 00:21:57,279
+And that would be our last layer.
+
+772
+00:21:54,759 --> 00:21:57,279
+<font color="#ffff54">이것이 우리의 마지막 레이어가 될 것입니다.</font>
+
+773
+00:21:57,279 --> 00:21:59,559
+So mostly we're talking about three layers.
+
+774
+00:21:57,279 --> 00:21:59,559
+<font color="#ffff54">그래서 대부분 세 개의 레이어에 대해 이야기하고 있습니다.</font>
+
+775
+00:22:00,880 --> 00:22:05,880
+So how does it look for more a diagram perspective?
+
+776
+00:22:00,880 --> 00:22:05,880
+<font color="#ffff54">다이어그램 관점에서 보면 어떻게 보일까요?</font>
+
+777
+00:22:06,000 --> 00:22:10,080
+So at the top, we have three microservices.
+
+778
+00:22:06,000 --> 00:22:10,080
+<font color="#ffff54">맨 위에는 3개의 마이크로서비스가 있습니다.</font>
+
+779
+00:22:10,080 --> 00:22:13,440
+All of them install open telemetry.
+
+780
+00:22:10,080 --> 00:22:13,440
+<font color="#ffff54">모두 개방형 텔레메트리를 설치합니다.</font>
+
+781
+00:22:13,440 --> 00:22:17,360
+So they're collecting logs, events, metrics.
+
+782
+00:22:13,440 --> 00:22:17,360
+<font color="#ffff54">그래서 로그, 이벤트, 메트릭을 수집하고 있습니다.</font>
+
+783
+00:22:17,360 --> 00:22:20,800
+When those are being collected,
+
+784
+00:22:17,360 --> 00:22:20,800
+<font color="#ffff54">그것들이 수집되고 있을 때,</font>
+
+785
+00:22:20,800 --> 00:22:24,880
+they are being exported to an open telemetry collector.
+
+786
+00:22:20,800 --> 00:22:24,880
+<font color="#ffff54">개방형 텔레메트리 수집기로 내보내고 있습니다.</font>
+
+787
+00:22:24,880 --> 00:22:28,560
+Open telemetry collector is a backend
+
+788
+00:22:24,880 --> 00:22:28,560
+<font color="#ffff54">개방형 텔레메트리 수집기가 백엔드입니다.</font>
+
+789
+00:22:28,560 --> 00:22:33,200
+that can ingest these telemetry data.
+
+790
+00:22:28,560 --> 00:22:33,200
+<font color="#ffff54">텔레메트리 데이터를 수집할 수 있는 백엔드입니다.</font>
+
+791
+00:22:34,080 --> 00:22:35,600
+And it can process it.
+
+792
+00:22:34,080 --> 00:22:35,600
+<font color="#ffff54">그리고 처리할 수 있습니다.</font>
+
+793
+00:22:35,600 --> 00:22:38,559
+It can process it and do all kinds of things
+
+794
+00:22:35,600 --> 00:22:38,559
+<font color="#ffff54">처리하고 모든 종류의 일을 할 수 있습니다.</font>
+
+795
+00:22:38,559 --> 00:22:43,279
+that we will deep dive into later this course.
+
+796
+00:22:38,559 --> 00:22:43,279
+<font color="#ffff54">이 강좌의 뒷부분에서 자세히 살펴볼 것입니다.</font>
+
+797
+00:22:43,279 --> 00:22:46,080
+And once it receives those messages
+
+798
+00:22:43,279 --> 00:22:46,080
+<font color="#ffff54">그리고 이 메시지를 받으면</font>
+
+799
+00:22:46,080 --> 00:22:50,799
+and this telemetry data, it's going to be shipped somewhere.
+
+800
+00:22:46,080 --> 00:22:50,799
+<font color="#ffff54">그리고 이 원격 측정 데이터는 어딘가로 전송될 것입니다.</font>
+
+801
+00:22:50,799 --> 00:22:53,559
+Usually a database may be a message broker
+
+802
+00:22:50,799 --> 00:22:53,559
+<font color="#ffff54">일반적으로 데이터베이스는 메시지 브로커일 수 있습니다.</font>
+
+803
+00:22:53,559 --> 00:22:54,840
+and then a database,
+
+804
+00:22:53,559 --> 00:22:54,840
+<font color="#ffff54">그리고 데이터베이스,</font>
+
+805
+00:22:54,840 --> 00:22:57,720
+but at the end of the day,
+
+806
+00:22:54,840 --> 00:22:57,720
+<font color="#ffff54">하지만 하루가 끝나면</font>
+
+807
+00:22:57,720 --> 00:22:59,759
+it's going to be stored in a database.
+
+808
+00:22:57,720 --> 00:22:59,759
+<font color="#ffff54">데이터베이스에 저장됩니다.</font>
+
+809
+00:22:59,759 --> 00:23:01,640
+And once we have everything stored,
+
+810
+00:22:59,759 --> 00:23:01,640
+<font color="#ffff54">모든 것이 저장되면</font>
+
+811
+00:23:01,640 --> 00:23:03,600
+we need to visualize this data.
+
+812
+00:23:01,640 --> 00:23:03,600
+<font color="#ffff54">이 데이터를 시각화해야 합니다.</font>
+
+813
+00:23:03,600 --> 00:23:06,040
+And this is where we're going to use,
+
+814
+00:23:03,600 --> 00:23:06,040
+<font color="#ffff54">여기가 우리가 사용할 곳입니다,</font>
+
+815
+00:23:06,040 --> 00:23:09,840
+at this course, we're going to use an open source
+
+816
+00:23:06,040 --> 00:23:09,840
+<font color="#ffff54">이 강좌에서는 오픈 소스를 사용하겠습니다.</font>
+
+817
+00:23:09,840 --> 00:23:12,000
+and we're going to use Yeager.
+
+818
+00:23:09,840 --> 00:23:12,000
+<font color="#ffff54">예거를 사용하겠습니다.</font>
+
+819
+00:23:12,000 --> 00:23:15,160
+Of course, there is an endless amount of vendors
+
+820
+00:23:12,000 --> 00:23:15,160
+<font color="#ffff54">물론 벤더는 무궁무진합니다.</font>
+
+821
+00:23:15,160 --> 00:23:18,000
+that knows how to work with this data as well.
+
+822
+00:23:15,160 --> 00:23:18,000
+<font color="#ffff54">이 데이터로 작업하는 방법도 알고 있습니다.</font>
+
+823
+00:23:19,200 --> 00:23:23,960
+So if you are going to start open telemetry tomorrow,
+
+824
+00:23:19,200 --> 00:23:23,960
+<font color="#ffff54">따라서 내일 오픈 텔레메트리를 시작하려면,</font>
+
+825
+00:23:23,960 --> 00:23:26,560
+you start by implementing in your code,
+
+826
+00:23:23,960 --> 00:23:26,560
+<font color="#ffff54">을 코드에 구현하는 것부터 시작해야 합니다,</font>
+
+827
+00:23:26,560 --> 00:23:31,040
+then send it somewhere that is going to get this data,
+
+828
+00:23:26,560 --> 00:23:31,040
+<font color="#ffff54">를 구현한 다음 이 데이터를 가져올 곳으로 전송합니다,</font>
+
+829
+00:23:31,039 --> 00:23:33,000
+store it and visualize it.
+
+830
+00:23:31,039 --> 00:23:33,000
+<font color="#ffff54">저장하고 시각화합니다.</font>
+
+831
+00:23:34,000 --> 00:23:35,799
+Okay, that's cool.
+
+832
+00:23:34,000 --> 00:23:35,799
+<font color="#ffff54">좋아요, 멋지네요.</font>
+
+833
+00:23:35,799 --> 00:23:38,159
+We can proceed to the next phase.
+
+834
+00:23:35,799 --> 00:23:38,159
+<font color="#ffff54">다음 단계로 넘어가도 됩니다.</font>
+
+835
+00:23:39,079 --> 00:23:44,079
+And the next phase is after we know what is the stack,
+
+836
+00:23:39,079 --> 00:23:44,079
+<font color="#ffff54">다음 단계는 스택이 무엇인지 파악한 후입니다,</font>
+
+837
+00:23:45,359 --> 00:23:48,839
+we can proceed to deep dive into the SDK itself
+
+838
+00:23:45,359 --> 00:23:48,839
+<font color="#ffff54">SDK 자체에 대한 심층 분석을 진행할 수 있습니다.</font>
+
+839
+00:23:48,839 --> 00:23:50,359
+and understand how it work.
+
+840
+00:23:48,839 --> 00:23:50,359
+<font color="#ffff54">어떻게 작동하는지 이해할 수 있습니다.</font>
+
+841
+00:23:51,960 --> 00:23:53,519
+I mentioned four layers.
+
+842
+00:23:51,960 --> 00:23:53,519
+<font color="#ffff54">네 개의 레이어를 언급했습니다.</font>
+
+843
+00:23:53,519 --> 00:23:58,240
+I will say that when we progress in this course,
+
+844
+00:23:53,519 --> 00:23:58,240
+<font color="#ffff54">이 과정을 진행하면서 말씀드리겠습니다,</font>
+
+845
+00:23:58,240 --> 00:24:01,960
+we would see that we can reduce the amount of layers
+
+846
+00:23:58,240 --> 00:24:01,960
+<font color="#ffff54">레이어의 양을 줄일 수 있다는 것을 알 수 있습니다.</font>
+
+847
+00:24:01,960 --> 00:24:05,759
+or add some layers to simplify stuff
+
+848
+00:24:01,960 --> 00:24:05,759
+<font color="#ffff54">또는 일부 레이어를 추가하여 단순화할 수 있습니다.</font>
+
+849
+00:24:05,759 --> 00:24:07,480
+or to make it more complex.
+
+850
+00:24:05,759 --> 00:24:07,480
+<font color="#ffff54">또는 더 복잡하게 만들 수 있습니다.</font>
+
+851
+00:24:07,480 --> 00:24:12,480
+But in a nutshell, and at this phase of the course,
+
+852
+00:24:07,480 --> 00:24:12,480
+<font color="#ffff54">하지만 간단히 말해서, 이 단계에서는,</font>
+
+853
+00:24:12,480 --> 00:24:15,960
+let's address this as four layers.
+
+854
+00:24:12,480 --> 00:24:15,960
+<font color="#ffff54">네 개의 레이어로 표현해 봅시다.</font>
+
+855
+00:24:17,880 --> 00:24:21,240
+Okay, so you took the first step
+
+856
+00:24:17,880 --> 00:24:21,240
+<font color="#ffff54">자, 첫 번째 단계를 수행했습니다.</font>
+
+857
+00:24:21,240 --> 00:24:24,440
+and you took some service,
+
+858
+00:24:21,240 --> 00:24:24,440
+<font color="#ffff54">그리고 서비스를 받았군요,</font>
+
+859
+00:24:24,440 --> 00:24:27,039
+a victim service in your application
+
+860
+00:24:24,440 --> 00:24:27,039
+<font color="#ffff54">애플리케이션의 피해자 서비스</font>
+
+861
+00:24:27,039 --> 00:24:31,279
+that you're going to try and implement open telemetry.
+
+862
+00:24:27,039 --> 00:24:31,279
+<font color="#ffff54">개방형 텔레메트리를 구현하려고 합니다.</font>
+
+863
+00:24:31,279 --> 00:24:36,279
+Cool, so let's say that this is an example
+
+864
+00:24:31,279 --> 00:24:36,279
+<font color="#ffff54">좋아요, 그럼 이것이 예시라고 가정해 봅시다.</font>
+
+865
+00:24:36,960 --> 00:24:39,960
+of an architecture with a front end communicating
+
+866
+00:24:36,960 --> 00:24:39,960
+<font color="#ffff54">프론트 엔드와 통신하는 아키텍처의</font>
+
+867
+00:24:39,960 --> 00:24:43,039
+with service A that communicates with service B
+
+868
+00:24:39,960 --> 00:24:43,039
+<font color="#ffff54">서비스 A와 통신하는 서비스 B</font>
+
+869
+00:24:43,039 --> 00:24:45,720
+that eventually write data to a database.
+
+870
+00:24:43,039 --> 00:24:45,720
+<font color="#ffff54">결국 데이터베이스에 데이터를 씁니다.</font>
+
+871
+00:24:45,720 --> 00:24:47,559
+Both service A and service B
+
+872
+00:24:45,720 --> 00:24:47,559
+<font color="#ffff54">서비스 A와 서비스 B 모두</font>
+
+873
+00:24:48,799 --> 00:24:51,240
+have open telemetry installed in them.
+
+874
+00:24:48,799 --> 00:24:51,240
+<font color="#ffff54">에 개방형 텔레메트리가 설치되어 있습니다.</font>
+
+875
+00:24:52,240 --> 00:24:57,240
+Now, when we are trying to think how a trace looks,
+
+876
+00:24:52,240 --> 00:24:57,240
+<font color="#ffff54">이제 트레이스가 어떻게 생겼는지 생각해 보겠습니다,</font>
+
+877
+00:24:58,359 --> 00:25:02,680
+if you remember, we had the purchase service,
+
+878
+00:24:58,359 --> 00:25:02,680
+<font color="#ffff54">기억하시겠지만, 구매 서비스가 있었죠,</font>
+
+879
+00:25:02,680 --> 00:25:05,920
+the auto service communicating with the user service.
+
+880
+00:25:02,680 --> 00:25:05,920
+<font color="#ffff54">사용자 서비스와 통신하는 자동 서비스입니다.</font>
+
+881
+00:25:05,920 --> 00:25:08,440
+And I told you that it's kind of a tree view.
+
+882
+00:25:05,920 --> 00:25:08,440
+<font color="#ffff54">일종의 트리뷰라고 말씀드렸잖아요.</font>
+
+883
+00:25:08,440 --> 00:25:10,279
+In order to have a tree view,
+
+884
+00:25:08,440 --> 00:25:10,279
+<font color="#ffff54">트리 뷰를 가지려면,</font>
+
+885
+00:25:10,279 --> 00:25:15,000
+we need to have a parent and child relation.
+
+886
+00:25:10,279 --> 00:25:15,000
+<font color="#ffff54">부모와 자식 관계가 있어야 합니다.</font>
+
+887
+00:25:15,000 --> 00:25:20,000
+That means that any data that would be sent from service B
+
+888
+00:25:15,000 --> 00:25:20,000
+<font color="#ffff54">즉, 서비스 B에서 전송되는 모든 데이터는</font>
+
+889
+00:25:20,000 --> 00:25:22,039
+it needs to be under the context
+
+890
+00:25:20,000 --> 00:25:22,039
+<font color="#ffff54">컨텍스트 아래에 있어야 합니다.</font>
+
+891
+00:25:22,039 --> 00:25:24,579
+as a child of what happened in service A.
+
+892
+00:25:22,039 --> 00:25:24,579
+<font color="#ffff54">서비스 A에서 일어난 일의 자식으로.</font>
+
+893
+00:25:25,720 --> 00:25:29,599
+For that reason, when service A is sending an API call
+
+894
+00:25:25,720 --> 00:25:29,599
+<font color="#ffff54">따라서 서비스 A가 API 호출을 보낼 때</font>
+
+895
+00:25:29,599 --> 00:25:34,000
+to service B, it's going to inject some headers
+
+896
+00:25:29,599 --> 00:25:34,000
+<font color="#ffff54">을 서비스 B로 보낼 때, 일부 헤더를 삽입합니다.</font>
+
+897
+00:25:34,000 --> 00:25:37,000
+in the HTTP headers.
+
+898
+00:25:34,000 --> 00:25:37,000
+<font color="#ffff54">헤더를 삽입합니다.</font>
+
+899
+00:25:37,000 --> 00:25:42,000
+And that would help us to understand
+
+900
+00:25:37,000 --> 00:25:42,000
+<font color="#ffff54">그러면 다음과 같이 이해하는 데 도움이 됩니다.</font>
+
+901
+00:25:42,920 --> 00:25:47,240
+that who has service B to understand who is the parent,
+
+902
+00:25:42,920 --> 00:25:47,240
+<font color="#ffff54">누가 부모인지 이해하기 위해 누가 서비스 B를 가지고 있는지,</font>
+
+903
+00:25:47,240 --> 00:25:51,640
+what is the cause, what led up to this API call
+
+904
+00:25:47,240 --> 00:25:51,640
+<font color="#ffff54">원인이 무엇인지, 이 API 호출에 이르게 된 원인</font>
+
+905
+00:25:51,640 --> 00:25:54,920
+so we would know that service B is the child service A
+
+906
+00:25:51,640 --> 00:25:54,920
+<font color="#ffff54">그래서 서비스 B가 자식 서비스 A라는 것을 알 수 있습니다.</font>
+
+907
+00:25:54,920 --> 00:25:56,519
+in this particular case.
+
+908
+00:25:54,920 --> 00:25:56,519
+<font color="#ffff54">이 특별한 경우에는</font>
+
+909
+00:25:57,720 --> 00:26:02,720
+And then the open telemetry is going to send data
+
+910
+00:25:57,720 --> 00:26:02,720
+<font color="#ffff54">그리고 개방형 텔레메트리가 데이터를 전송합니다.</font>
+
+911
+00:26:02,920 --> 00:26:05,920
+to our collector and is going to say,
+
+912
+00:26:02,920 --> 00:26:05,920
+<font color="#ffff54">를 수집기로 보내고 다음과 같이 말할 것입니다,</font>
+
+913
+00:26:05,920 --> 00:26:09,400
+hey, collector, please, you should know
+
+914
+00:26:05,920 --> 00:26:09,400
+<font color="#ffff54">이봐요, 수집가, 제발, 당신은 알아야 해요.</font>
+
+915
+00:26:09,400 --> 00:26:13,880
+that I sent an API call to service B.
+
+916
+00:26:09,400 --> 00:26:13,880
+<font color="#ffff54">서비스 B에 API 호출을 보냈습니다.</font>
+
+917
+00:26:13,880 --> 00:26:17,400
+And this is all done under trace ID, number one,
+
+918
+00:26:13,880 --> 00:26:17,400
+<font color="#ffff54">그리고 이 모든 것이 추적 ID 1번에서 이루어집니다,</font>
+
+919
+00:26:17,400 --> 00:26:20,780
+because we want to know how to find this trace later on.
+
+920
+00:26:17,400 --> 00:26:20,780
+<font color="#ffff54">나중에 이 추적을 찾는 방법을 알고 싶기 때문입니다.</font>
+
+921
+00:26:21,760 --> 00:26:24,040
+And then service B is going to say,
+
+922
+00:26:21,760 --> 00:26:24,040
+<font color="#ffff54">그리고 서비스 B는 다음과 같이 말할 것입니다,</font>
+
+923
+00:26:24,040 --> 00:26:29,040
+hey, I got an API call from service A
+
+924
+00:26:24,040 --> 00:26:29,040
+<font color="#ffff54">안녕하세요, 서비스 A에서 API 호출을 받았습니다.</font>
+
+925
+00:26:30,200 --> 00:26:32,880
+and now I do have a parent.
+
+926
+00:26:30,200 --> 00:26:32,880
+<font color="#ffff54">이제 부모가 생겼어요.</font>
+
+927
+00:26:32,880 --> 00:26:37,880
+Now this thing, it has a parent and the parent is service A.
+
+928
+00:26:32,880 --> 00:26:37,880
+<font color="#ffff54">이제 이것은 부모가 있고 부모는 서비스 A입니다.</font>
+
+929
+00:26:37,960 --> 00:26:42,960
+So in this case, now any data that would be sent
+
+930
+00:26:37,960 --> 00:26:42,960
+<font color="#ffff54">따라서 이 경우 이제 전송되는 모든 데이터는</font>
+
+931
+00:26:43,720 --> 00:26:46,720
+from service B, it would have a parent.
+
+932
+00:26:43,720 --> 00:26:46,720
+<font color="#ffff54">로 전송되는 데이터는 부모를 갖게 됩니다.</font>
+
+933
+00:26:46,720 --> 00:26:51,720
+Then of course we have service B sending again this data
+
+934
+00:26:46,720 --> 00:26:51,720
+<font color="#ffff54">그러면 당연히 서비스 B가 이 데이터를 다시 전송합니다.</font>
+
+935
+00:26:52,720 --> 00:26:55,720
+to send data about the DB query.
+
+936
+00:26:52,720 --> 00:26:55,720
+<font color="#ffff54">로 DB 쿼리에 대한 데이터를 전송합니다.</font>
+
+937
+00:26:55,720 --> 00:27:00,720
+Of course it has service A as its parent and that's,
+
+938
+00:26:55,720 --> 00:27:00,720
+<font color="#ffff54">물론 서비스 A를 부모로 두고 있습니다,</font>
+
+939
+00:27:02,720 --> 00:27:05,000
+so service A is the parent.
+
+940
+00:27:02,720 --> 00:27:05,000
+<font color="#ffff54">따라서 서비스 A가 부모입니다.</font>
+
+941
+00:27:05,160 --> 00:27:10,160
+Service A is its parent and that's, so goes later on.
+
+942
+00:27:05,160 --> 00:27:10,160
+<font color="#ffff54">서비스 A가 부모이므로 이후에도 마찬가지입니다.</font>
+
+943
+00:27:10,480 --> 00:27:13,400
+I can do the same kind of visualization,
+
+944
+00:27:10,480 --> 00:27:13,400
+<font color="#ffff54">같은 종류의 시각화를 할 수 있습니다,</font>
+
+945
+00:27:13,400 --> 00:27:18,400
+but I would add an additional data about it
+
+946
+00:27:13,400 --> 00:27:18,400
+<font color="#ffff54">하지만 이에 대한 추가 데이터를 추가합니다.</font>
+
+947
+00:27:19,880 --> 00:27:23,759
+at every interaction that we have.
+
+948
+00:27:19,880 --> 00:27:23,759
+<font color="#ffff54">모든 상호작용에서.</font>
+
+949
+00:27:23,759 --> 00:27:28,759
+So when service A is sending an API call,
+
+950
+00:27:23,759 --> 00:27:28,759
+<font color="#ffff54">따라서 서비스 A가 API 호출을 보낼 때,</font>
+
+951
+00:27:29,079 --> 00:27:34,079
+that refers to spam, a single event within the trace.
+
+952
+00:27:29,079 --> 00:27:34,079
+<font color="#ffff54">는 스팸을 가리키며, 추적 내 단일 이벤트입니다.</font>
+
+953
+00:27:35,960 --> 00:27:39,200
+And the span is of course, it spans over time.
+
+954
+00:27:35,960 --> 00:27:39,200
+<font color="#ffff54">그리고 그 범위는 당연히 시간에 걸쳐 있습니다.</font>
+
+955
+00:27:39,200 --> 00:27:41,900
+It has a start point and a duration
+
+956
+00:27:39,200 --> 00:27:41,900
+<font color="#ffff54">시작점과 지속 시간이 있습니다.</font>
+
+957
+00:27:41,900 --> 00:27:44,440
+and that being an end time.
+
+958
+00:27:41,900 --> 00:27:44,440
+<font color="#ffff54">그리고 종료 시간입니다.</font>
+
+959
+00:27:44,440 --> 00:27:48,799
+And you can see that the first span has no parent
+
+960
+00:27:44,440 --> 00:27:48,799
+<font color="#ffff54">그리고 첫 번째 스팬에는 부모가 없음을 알 수 있습니다.</font>
+
+961
+00:27:49,880 --> 00:27:52,240
+because it's the first one, it's the root one.
+
+962
+00:27:49,880 --> 00:27:52,240
+<font color="#ffff54">첫 번째 스팬이 루트 스팬이기 때문입니다.</font>
+
+963
+00:27:53,119 --> 00:27:56,880
+And the span ID is 55.
+
+964
+00:27:53,119 --> 00:27:56,880
+<font color="#ffff54">그리고 스팬 ID는 55입니다.</font>
+
+965
+00:27:56,880 --> 00:27:59,759
+And when we're looking at this span,
+
+966
+00:27:56,880 --> 00:27:59,759
+<font color="#ffff54">그리고 이 스팬을 보면,</font>
+
+967
+00:27:59,759 --> 00:28:03,079
+when this span ID is 66, it does has a parent,
+
+968
+00:27:59,759 --> 00:28:03,079
+<font color="#ffff54">이 스팬 ID가 66이면 부모가 있습니다,</font>
+
+969
+00:28:03,079 --> 00:28:05,559
+even though I made a mistake, it has a parent
+
+970
+00:28:03,079 --> 00:28:05,559
+<font color="#ffff54">내가 실수했지만, 부모가 있다.</font>
+
+971
+00:28:05,559 --> 00:28:07,839
+and the parent is 55.
+
+972
+00:28:05,559 --> 00:28:07,839
+<font color="#ffff54">부모는 55세입니다.</font>
+
+973
+00:28:07,839 --> 00:28:10,639
+And this is how we're able to construct
+
+974
+00:28:07,839 --> 00:28:10,639
+<font color="#ffff54">이렇게 하면 다음과 같이 구성할 수 있습니다.</font>
+
+975
+00:28:10,639 --> 00:28:13,179
+the structure of the trace.
+
+976
+00:28:10,639 --> 00:28:13,179
+<font color="#ffff54">트레이스의 구조입니다.</font>
+
+977
+00:28:15,399 --> 00:28:20,399
+Okay, so I talked quite a lot in theory,
+
+978
+00:28:15,399 --> 00:28:20,399
+<font color="#ffff54">좋아, 이론적으로 꽤 많은 이야기를 했어,</font>
+
+979
+00:28:21,559 --> 00:28:26,559
+but this would be a deep dive into real code
+
+980
+00:28:21,559 --> 00:28:26,559
+<font color="#ffff54">하지만 실제 코드에 대해 자세히 알아보겠습니다.</font>
+
+981
+00:28:27,980 --> 00:28:31,439
+and how things look like in real life.
+
+982
+00:28:27,980 --> 00:28:31,439
+<font color="#ffff54">그리고 실제 생활에서 어떻게 보이는지.</font>
+
+983
+00:28:31,440 --> 00:28:36,440
+So let me jump to our code and I'll spin up two services.
+
+984
+00:28:31,440 --> 00:28:36,440
+<font color="#ffff54">이제 코드로 넘어가서 두 개의 서비스를 실행해 보겠습니다.</font>
+
+985
+00:28:40,320 --> 00:28:44,920
+So I'm spinning up a service called yarn, called items
+
+986
+00:28:40,320 --> 00:28:44,920
+<font color="#ffff54">그래서 저는 yarn이라는 서비스와 items라는 서비스를 스핀업합니다.</font>
+
+987
+00:28:44,920 --> 00:28:48,019
+and another one is called users.
+
+988
+00:28:44,920 --> 00:28:48,019
+<font color="#ffff54">그리고 다른 하나는 사용자라고 합니다.</font>
+
+989
+00:28:48,019 --> 00:28:53,000
+And I am going to send two types of API call.
+
+990
+00:28:48,019 --> 00:28:53,000
+<font color="#ffff54">그리고 두 가지 유형의 API 호출을 보내겠습니다.</font>
+
+991
+00:28:53,000 --> 00:28:58,000
+I'm going to send slash data and that would return some data.
+
+992
+00:28:53,000 --> 00:28:58,000
+<font color="#ffff54">슬래시 데이터를 보내면 몇 가지 데이터를 반환할 것입니다.</font>
+
+993
+00:28:59,000 --> 00:29:03,000
+And I would also, you know what, let's leave it with that.
+
+994
+00:28:59,000 --> 00:29:03,000
+<font color="#ffff54">그리고 이것도 그냥 놔두겠습니다.</font>
+
+995
+00:29:03,000 --> 00:29:06,680
+So I sent one API call and when I'm sending
+
+996
+00:29:03,000 --> 00:29:06,680
+<font color="#ffff54">그래서 API 호출을 한 번 보냈는데</font>
+
+997
+00:29:06,680 --> 00:29:11,680
+a single API call, now I want to visualize those traces.
+
+998
+00:29:06,680 --> 00:29:11,680
+<font color="#ffff54">이제 그 추적을 시각화하고 싶습니다.</font>
+
+999
+00:29:12,200 --> 00:29:16,440
+So let's look at that, search for it
+
+1000
+00:29:12,200 --> 00:29:16,440
+<font color="#ffff54">그럼 이걸 살펴보고 검색해 봅시다.</font>
+
+1001
+00:29:16,440 --> 00:29:21,000
+and we can see a very, very beautiful trace.
+
+1002
+00:29:16,440 --> 00:29:21,000
+<font color="#ffff54">아주 아름다운 흔적을 볼 수 있습니다.</font>
+
+1003
+00:29:21,000 --> 00:29:25,839
+So that's what I would experience if I'm having an issue
+
+1004
+00:29:21,000 --> 00:29:25,839
+<font color="#ffff54">문제가 발생하면 이런 현상이 나타납니다.</font>
+
+1005
+00:29:25,840 --> 00:29:29,320
+with this API call I'm trying to debug it.
+
+1006
+00:29:25,840 --> 00:29:29,320
+<font color="#ffff54">이 API 호출로 디버깅을 시도하고 있습니다.</font>
+
+1007
+00:29:29,320 --> 00:29:31,240
+That's how a trace look like.
+
+1008
+00:29:29,320 --> 00:29:31,240
+<font color="#ffff54">트레이스는 이렇게 생깁니다.</font>
+
+1009
+00:29:31,240 --> 00:29:33,600
+So that's just to give you a bit of a context,
+
+1010
+00:29:31,240 --> 00:29:33,600
+<font color="#ffff54">약간의 맥락을 알려드리기 위한 것입니다,</font>
+
+1011
+00:29:33,600 --> 00:29:37,260
+let's jump to the code so you will see
+
+1012
+00:29:33,600 --> 00:29:37,260
+<font color="#ffff54">코드로 이동하여 다음을 볼 수 있습니다.</font>
+
+1013
+00:29:37,260 --> 00:29:38,720
+what the code looks like.
+
+1014
+00:29:37,260 --> 00:29:38,720
+<font color="#ffff54">코드가 어떻게 생겼는지 보시죠.</font>
+
+1015
+00:29:38,720 --> 00:29:43,480
+And I'll go briefly from the application layer code.
+
+1016
+00:29:38,720 --> 00:29:43,480
+<font color="#ffff54">애플리케이션 레이어 코드를 간략히 살펴보겠습니다.</font>
+
+1017
+00:29:43,480 --> 00:29:46,520
+After that, I'll look at the application layer code.
+
+1018
+00:29:43,480 --> 00:29:46,520
+<font color="#ffff54">그 다음에는 애플리케이션 레이어 코드를 살펴보겠습니다.</font>
+
+1019
+00:29:47,520 --> 00:29:51,240
+I'll show you a bit how Yeager and Prometheus,
+
+1020
+00:29:47,520 --> 00:29:51,240
+<font color="#ffff54">예거와 프로메테우스가 어떻게 작동하는지 조금 보여드리겠습니다,</font>
+
+1021
+00:29:51,240 --> 00:29:53,980
+that's what I'm going to use in order to show you
+
+1022
+00:29:51,240 --> 00:29:53,980
+<font color="#ffff54">를 보여드리기 위해 사용하겠습니다.</font>
+
+1023
+00:29:54,220 --> 00:29:56,880
+how much API calls we got.
+
+1024
+00:29:54,220 --> 00:29:56,880
+<font color="#ffff54">얼마나 많은 API 호출을 받았는지 보여줍니다.</font>
+
+1025
+00:29:59,220 --> 00:30:02,180
+And then I'll look how the implementation
+
+1026
+00:29:59,220 --> 00:30:02,180
+<font color="#ffff54">그리고 구현이 어떻게 되는지 살펴보겠습니다.</font>
+
+1027
+00:30:02,180 --> 00:30:03,740
+of open telemetry works.
+
+1028
+00:30:02,180 --> 00:30:03,740
+<font color="#ffff54">어떻게 작동하는지 살펴보겠습니다.</font>
+
+1029
+00:30:03,740 --> 00:30:07,539
+I will say one thing, in this first session,
+
+1030
+00:30:03,740 --> 00:30:07,539
+<font color="#ffff54">이 첫 번째 세션에서 한 가지 말씀드리겠습니다,</font>
+
+1031
+00:30:07,539 --> 00:30:12,539
+we're not going to deep dive into open telemetry a lot.
+
+1032
+00:30:07,539 --> 00:30:12,539
+<font color="#ffff54">오픈 텔레메트리에 대해서는 깊이 있게 다루지 않을 것입니다.</font>
+
+1033
+00:30:13,420 --> 00:30:16,500
+That's what happened in the second session.
+
+1034
+00:30:13,420 --> 00:30:16,500
+<font color="#ffff54">이것이 두 번째 세션에서 일어난 일입니다.</font>
+
+1035
+00:30:18,140 --> 00:30:22,900
+Okay, so let's look at item service.
+
+1036
+00:30:18,140 --> 00:30:22,900
+<font color="#ffff54">이제 아이템 서비스를 살펴봅시다.</font>
+
+1037
+00:30:22,900 --> 00:30:27,900
+So this is by the way, Node.js with TypeScript.
+
+1038
+00:30:22,900 --> 00:30:27,900
+<font color="#ffff54">참고로, 이것은 타입스크립트가 있는 Node.js입니다.</font>
+
+1039
+00:30:28,180 --> 00:30:31,380
+You don't need to understand Node.js and TypeScript
+
+1040
+00:30:28,180 --> 00:30:31,380
+<font color="#ffff54">Node.js와 TypeScript를 이해할 필요는 없습니다.</font>
+
+1041
+00:30:31,380 --> 00:30:35,580
+in order to understand open telemetry,
+
+1042
+00:30:31,380 --> 00:30:35,580
+<font color="#ffff54">오픈 텔레메트리를 이해하기 위해,</font>
+
+1043
+00:30:35,580 --> 00:30:38,680
+just the programming language that I use.
+
+1044
+00:30:35,580 --> 00:30:38,680
+<font color="#ffff54">제가 사용하는 프로그래밍 언어만요.</font>
+
+1045
+00:30:39,759 --> 00:30:44,759
+So let me enlarge it a bit so it will be easier
+
+1046
+00:30:39,759 --> 00:30:44,759
+<font color="#ffff54">조금 더 쉽게 볼 수 있도록 확대해서 보여드리겠습니다.</font>
+
+1047
+00:30:45,140 --> 00:30:46,400
+for you to see.
+
+1048
+00:30:45,140 --> 00:30:46,400
+<font color="#ffff54">보실 수 있게요.</font>
+
+1049
+00:30:46,400 --> 00:30:47,900
+So the first thing that we do
+
+1050
+00:30:46,400 --> 00:30:47,900
+<font color="#ffff54">그래서 우리가 가장 먼저 하는 일은</font>
+
+1051
+00:30:47,900 --> 00:30:50,860
+is we initialize open telemetry.
+
+1052
+00:30:47,900 --> 00:30:50,860
+<font color="#ffff54">오픈 텔레메트리를 초기화합니다.</font>
+
+1053
+00:30:51,860 --> 00:30:55,060
+All you need to do in order to have open telemetry,
+
+1054
+00:30:51,860 --> 00:30:55,060
+<font color="#ffff54">오픈 텔레메트리를 사용하기 위해 필요한 모든 작업입니다,</font>
+
+1055
+00:30:55,060 --> 00:30:56,740
+at least the basics of it,
+
+1056
+00:30:55,060 --> 00:30:56,740
+<font color="#ffff54">최소한 기본적인 것들은,</font>
+
+1057
+00:30:56,740 --> 00:31:01,740
+is to initialize, import some file and then initialize it.
+
+1058
+00:30:56,740 --> 00:31:01,740
+<font color="#ffff54">초기화하고, 파일을 가져온 다음 초기화하는 것입니다.</font>
+
+1059
+00:31:03,140 --> 00:31:07,860
+The file itself is not that long.
+
+1060
+00:31:03,140 --> 00:31:07,860
+<font color="#ffff54">파일 자체는 그리 길지 않습니다.</font>
+
+1061
+00:31:08,740 --> 00:31:13,740
+So it's 42 lines of code with spaces.
+
+1062
+00:31:08,740 --> 00:31:13,740
+<font color="#ffff54">공백을 포함한 42줄의 코드입니다.</font>
+
+1063
+00:31:15,740 --> 00:31:19,020
+So, and here we have one extra.
+
+1064
+00:31:15,740 --> 00:31:19,020
+<font color="#ffff54">여기에 한 줄이 더 있습니다.</font>
+
+1065
+00:31:19,019 --> 00:31:23,940
+So it's fairly simple implementation.
+
+1066
+00:31:19,019 --> 00:31:23,940
+<font color="#ffff54">아주 간단한 구현입니다.</font>
+
+1067
+00:31:23,940 --> 00:31:26,500
+We will dive into it in a second.
+
+1068
+00:31:23,940 --> 00:31:26,500
+<font color="#ffff54">잠시 후에 자세히 살펴보겠습니다.</font>
+
+1069
+00:31:26,500 --> 00:31:28,980
+And what we are doing is we are creating
+
+1070
+00:31:26,500 --> 00:31:28,980
+<font color="#ffff54">그리고 우리가 하는 일은</font>
+
+1071
+00:31:28,980 --> 00:31:32,539
+an express application, which is a RESTful service.
+
+1072
+00:31:28,980 --> 00:31:32,539
+<font color="#ffff54">레스트풀 서비스인 익스프레스 애플리케이션을 생성하는 것입니다.</font>
+
+1073
+00:31:32,539 --> 00:31:35,579
+And we are listening to sledge data,
+
+1074
+00:31:32,539 --> 00:31:35,579
+<font color="#ffff54">그리고 우리는 슬레지 데이터를 수신하고 있습니다,</font>
+
+1075
+00:31:35,579 --> 00:31:38,779
+as you saw earlier, in the browser.
+
+1076
+00:31:35,579 --> 00:31:38,779
+<font color="#ffff54">브라우저에서 보셨듯이요.</font>
+
+1077
+00:31:38,779 --> 00:31:43,779
+And basically, if we didn't get a fail in our query string,
+
+1078
+00:31:38,779 --> 00:31:43,779
+<font color="#ffff54">기본적으로 쿼리 문자열에서 실패가 발생하지 않았다면,</font>
+
+1079
+00:31:44,779 --> 00:31:49,339
+what we're doing is we're calling the user service.
+
+1080
+00:31:44,779 --> 00:31:49,339
+<font color="#ffff54">우리가 하는 일은 사용자 서비스를 호출하는 것입니다.</font>
+
+1081
+00:31:49,339 --> 00:31:50,740
+And if that's successful,
+
+1082
+00:31:49,339 --> 00:31:50,740
+<font color="#ffff54">성공하면</font>
+
+1083
+00:31:50,740 --> 00:31:53,259
+we're just returning the user service data.
+
+1084
+00:31:50,740 --> 00:31:53,259
+<font color="#ffff54">사용자 서비스 데이터를 반환합니다.</font>
+
+1085
+00:31:53,259 --> 00:31:56,619
+And if it's not successful,
+
+1086
+00:31:53,259 --> 00:31:56,619
+<font color="#ffff54">성공하지 못하면</font>
+
+1087
+00:31:56,619 --> 00:31:59,619
+we are putting some error logs
+
+1088
+00:31:56,619 --> 00:31:59,619
+<font color="#ffff54">몇 가지 오류 로그를 기록합니다.</font>
+
+1089
+00:32:02,299 --> 00:32:05,139
+to get all the data that we need.
+
+1090
+00:32:02,299 --> 00:32:05,139
+<font color="#ffff54">필요한 모든 데이터를 가져옵니다.</font>
+
+1091
+00:32:05,139 --> 00:32:09,420
+And also, for every API call,
+
+1092
+00:32:05,139 --> 00:32:09,420
+<font color="#ffff54">또한 모든 API 호출에 대해</font>
+
+1093
+00:32:09,420 --> 00:32:12,279
+we are adding one to our counter.
+
+1094
+00:32:09,420 --> 00:32:12,279
+<font color="#ffff54">를 카운터에 추가합니다.</font>
+
+1095
+00:32:12,279 --> 00:32:17,279
+And this would be the HTTP calls counter
+
+1096
+00:32:12,279 --> 00:32:17,279
+<font color="#ffff54">그리고 이것은 HTTP 호출 카운터입니다.</font>
+
+1097
+00:32:17,359 --> 00:32:20,039
+that we got from our HTTP call.
+
+1098
+00:32:17,359 --> 00:32:20,039
+<font color="#ffff54">HTTP 호출에서 얻은 값입니다.</font>
+
+1099
+00:32:20,039 --> 00:32:25,039
+So you can see here a very quick view
+
+1100
+00:32:20,039 --> 00:32:25,039
+<font color="#ffff54">매우 빠른 보기를 볼 수 있습니다.</font>
+
+1101
+00:32:25,079 --> 00:32:28,079
+of how we are working with metrics.
+
+1102
+00:32:25,079 --> 00:32:28,079
+<font color="#ffff54">메트릭으로 작업하는 방식을 확인할 수 있습니다.</font>
+
+1103
+00:32:30,480 --> 00:32:35,039
+Cool, the user service is also a very simple service.
+
+1104
+00:32:30,480 --> 00:32:35,039
+<font color="#ffff54">멋지네요, 사용자 서비스도 아주 간단한 서비스네요.</font>
+
+1105
+00:32:35,039 --> 00:32:37,960
+The same goes in import tracer,
+
+1106
+00:32:35,039 --> 00:32:37,960
+<font color="#ffff54">임포트 트레이서도 마찬가지입니다,</font>
+
+1107
+00:32:37,960 --> 00:32:40,240
+initialize some express stuff.
+
+1108
+00:32:37,960 --> 00:32:40,240
+<font color="#ffff54">몇 가지 표현식을 초기화합니다.</font>
+
+1109
+00:32:40,240 --> 00:32:44,039
+So we will have a REST service.
+
+1110
+00:32:40,240 --> 00:32:44,039
+<font color="#ffff54">이제 REST 서비스가 생겼습니다.</font>
+
+1111
+00:32:44,039 --> 00:32:47,079
+And when we get a request to slash user,
+
+1112
+00:32:44,039 --> 00:32:47,079
+<font color="#ffff54">그리고 사용자 슬래시 요청을 받으면,</font>
+
+1113
+00:32:47,079 --> 00:32:52,079
+we are using this mock API that I did.
+
+1114
+00:32:47,079 --> 00:32:52,079
+<font color="#ffff54">제가 만든 이 모의 API를 사용하고 있습니다.</font>
+
+1115
+00:32:54,480 --> 00:32:59,480
+We get some users, some mock data user.
+
+1116
+00:32:54,480 --> 00:32:59,480
+<font color="#ffff54">일부 사용자, 일부 모의 데이터 사용자를 얻습니다.</font>
+
+1117
+00:33:00,759 --> 00:33:03,200
+We randomize some index.
+
+1118
+00:33:00,759 --> 00:33:03,200
+<font color="#ffff54">일부 인덱스를 무작위로 추출합니다.</font>
+
+1119
+00:33:03,200 --> 00:33:07,559
+We save what we randomize, and then we are just responding.
+
+1120
+00:33:03,200 --> 00:33:07,559
+<font color="#ffff54">무작위로 추출한 것을 저장하고 응답만 합니다.</font>
+
+1121
+00:33:07,559 --> 00:33:11,759
+So basically, if I'll go back to our UI here,
+
+1122
+00:33:07,559 --> 00:33:11,759
+<font color="#ffff54">기본적으로 여기 UI로 돌아가 보겠습니다,</font>
+
+1123
+00:33:11,759 --> 00:33:15,399
+to our UI go browser, what you can see here,
+
+1124
+00:33:11,759 --> 00:33:15,399
+<font color="#ffff54">로 이동하면 다음과 같이 표시됩니다,</font>
+
+1125
+00:33:15,399 --> 00:33:19,879
+you can see that we sent an API call to item service,
+
+1126
+00:33:15,399 --> 00:33:19,879
+<font color="#ffff54">아이템 서비스에 API 호출을 보낸 것을 확인할 수 있습니다,</font>
+
+1127
+00:33:19,879 --> 00:33:24,220
+item service communicated with user service,
+
+1128
+00:33:19,879 --> 00:33:24,220
+<font color="#ffff54">아이템 서비스가 사용자 서비스와 통신했습니다,</font>
+
+1129
+00:33:24,220 --> 00:33:25,639
+and everybody's happy.
+
+1130
+00:33:24,220 --> 00:33:25,639
+<font color="#ffff54">모두가 행복합니다.</font>
+
+1131
+00:33:26,659 --> 00:33:30,419
+To give you an example of how it really looks.
+
+1132
+00:33:26,659 --> 00:33:30,419
+<font color="#ffff54">실제 모습을 예로 들어보겠습니다.</font>
+
+1133
+00:33:30,419 --> 00:33:35,419
+So again, if I'm looking at the trace itself,
+
+1134
+00:33:30,419 --> 00:33:35,419
+<font color="#ffff54">다시 트레이스 자체를 보면,</font>
+
+1135
+00:33:36,420 --> 00:33:38,220
+what I can see here,
+
+1136
+00:33:36,420 --> 00:33:38,220
+<font color="#ffff54">여기서 볼 수 있는 것은</font>
+
+1137
+00:33:38,220 --> 00:33:42,980
+I can see that item service got an API call to slash data.
+
+1138
+00:33:38,220 --> 00:33:42,980
+<font color="#ffff54">아이템 서비스가 데이터를 삭감하는 API 호출을 받은 것을 볼 수 있습니다.</font>
+
+1139
+00:33:42,980 --> 00:33:46,060
+So I can see everything right here.
+
+1140
+00:33:42,980 --> 00:33:46,060
+<font color="#ffff54">바로 여기서 모든 것을 볼 수 있습니다.</font>
+
+1141
+00:33:46,060 --> 00:33:51,060
+I can also see that it sent an API call to slash users,
+
+1142
+00:33:46,060 --> 00:33:51,060
+<font color="#ffff54">또한 사용자 삭감을 위한 API 호출을 보낸 것도 볼 수 있습니다,</font>
+
+1143
+00:33:51,580 --> 00:33:53,400
+as we saw in the code.
+
+1144
+00:33:51,580 --> 00:33:53,400
+<font color="#ffff54">코드에서 보았듯이.</font>
+
+1145
+00:33:53,400 --> 00:33:58,400
+And now I can also see that we communicated
+
+1146
+00:33:53,400 --> 00:33:58,400
+<font color="#ffff54">그리고 이제 우리가 다음과 같이 통신한 것도 볼 수 있습니다.</font>
+
+1147
+00:33:58,400 --> 00:34:03,340
+with the mock EIO and we got the data that we wanted to.
+
+1148
+00:33:58,400 --> 00:34:03,340
+<font color="#ffff54">모의 EIO와 통신하여 원하는 데이터를 얻었습니다.</font>
+
+1149
+00:34:04,340 --> 00:34:09,019
+And we can see how long everything took.
+
+1150
+00:34:04,340 --> 00:34:09,019
+<font color="#ffff54">그리고 모든 과정이 얼마나 오래 걸렸는지 확인할 수 있습니다.</font>
+
+1151
+00:34:09,019 --> 00:34:14,019
+We can see that nothing works in parallel.
+
+1152
+00:34:09,019 --> 00:34:14,019
+<font color="#ffff54">병렬로 작동하는 것은 없다는 것을 알 수 있습니다.</font>
+
+1153
+00:34:14,140 --> 00:34:19,140
+Everything is in sequence and it's quite fast thing.
+
+1154
+00:34:14,140 --> 00:34:19,140
+<font color="#ffff54">모든 것이 순서대로 진행되며 매우 빠릅니다.</font>
+
+1155
+00:34:19,300 --> 00:34:22,380
+By the way, if I would ask you a question
+
+1156
+00:34:19,300 --> 00:34:22,380
+<font color="#ffff54">그건 그렇고, 하나만 물어볼게요.</font>
+
+1157
+00:34:22,380 --> 00:34:23,980
+on this particular trace,
+
+1158
+00:34:22,380 --> 00:34:23,980
+<font color="#ffff54">이 특정 추적에서,</font>
+
+1159
+00:34:25,059 --> 00:34:30,059
+if I want to improve this trace in terms of performance,
+
+1160
+00:34:25,059 --> 00:34:30,059
+<font color="#ffff54">이 트레이스를 성능 측면에서 개선하고 싶습니다,</font>
+
+1161
+00:34:30,140 --> 00:34:31,440
+what do I need to improve?
+
+1162
+00:34:30,140 --> 00:34:31,440
+<font color="#ffff54">무엇을 개선해야 하나요?</font>
+
+1163
+00:34:31,440 --> 00:34:34,420
+What is the thing that makes my life,
+
+1164
+00:34:31,440 --> 00:34:34,420
+<font color="#ffff54">내 삶을 만드는 것은 무엇인가요?</font>
+
+1165
+00:34:35,280 --> 00:34:37,519
+not my life, the customer life,
+
+1166
+00:34:35,280 --> 00:34:37,519
+<font color="#ffff54">내 삶이 아니라 고객의 삶입니다,</font>
+
+1167
+00:34:38,880 --> 00:34:41,579
+wait the most time?
+
+1168
+00:34:38,880 --> 00:34:41,579
+<font color="#ffff54">가장 오래 기다린 시간?</font>
+
+1169
+00:34:41,579 --> 00:34:44,720
+So usually you need to, with traces,
+
+1170
+00:34:41,579 --> 00:34:44,720
+<font color="#ffff54">그래서 보통은 흔적을 남겨야 합니다,</font>
+
+1171
+00:34:44,720 --> 00:34:46,579
+you need to work your way up.
+
+1172
+00:34:44,720 --> 00:34:46,579
+<font color="#ffff54">위로 올라가야 합니다.</font>
+
+1173
+00:34:46,579 --> 00:34:50,720
+So this thing takes a long time.
+
+1174
+00:34:46,579 --> 00:34:50,720
+<font color="#ffff54">시간이 오래 걸리네요.</font>
+
+1175
+00:34:50,720 --> 00:34:54,119
+This is the call to our mock UI.
+
+1176
+00:34:50,720 --> 00:34:54,119
+<font color="#ffff54">모의 UI에 대한 호출입니다.</font>
+
+1177
+00:34:55,760 --> 00:35:00,159
+And this is the thing that blocks most of my IO.
+
+1178
+00:34:55,760 --> 00:35:00,159
+<font color="#ffff54">그리고 이것이 제 IO의 대부분을 차단하는 것입니다.</font>
+
+1179
+00:35:00,159 --> 00:35:04,179
+So basically if I were able to improve it,
+
+1180
+00:35:00,159 --> 00:35:04,179
+<font color="#ffff54">그래서 기본적으로 제가 개선할 수 있다면,</font>
+
+1181
+00:35:05,039 --> 00:35:07,799
+the whole trace would improve again,
+
+1182
+00:35:05,039 --> 00:35:07,799
+<font color="#ffff54">전체 추적이 다시 개선될 것입니다,</font>
+
+1183
+00:35:07,799 --> 00:35:11,199
+from performance and latency aspect.
+
+1184
+00:35:07,799 --> 00:35:11,199
+<font color="#ffff54">성능과 지연 시간 측면에서 개선되었습니다.</font>
+
+1185
+00:35:12,839 --> 00:35:14,119
+Okay.
+
+1186
+00:35:12,839 --> 00:35:14,119
+<font color="#ffff54">오케이.</font>
+
+1187
+00:35:14,119 --> 00:35:19,119
+So we got a bit of a sense of how this thing looks like.
+
+1188
+00:35:14,119 --> 00:35:19,119
+<font color="#ffff54">이제 이게 어떻게 생겼는지 어느 정도 감이 오네요.</font>
+
+1189
+00:35:20,119 --> 00:35:21,859
+Oh, I do want to show you what happens
+
+1190
+00:35:20,119 --> 00:35:21,859
+<font color="#ffff54">오, 무슨 일이 일어나는지 보여드리고 싶네요.</font>
+
+1191
+00:35:21,859 --> 00:35:23,359
+when I'm adding an error.
+
+1192
+00:35:21,859 --> 00:35:23,359
+<font color="#ffff54">오류를 추가할 때</font>
+
+1193
+00:35:23,359 --> 00:35:26,599
+So I have fail and fail one.
+
+1194
+00:35:23,359 --> 00:35:26,599
+<font color="#ffff54">그래서 나는 실패하고 실패했습니다.</font>
+
+1195
+00:35:26,599 --> 00:35:29,559
+So now I got internal server error.
+
+1196
+00:35:26,599 --> 00:35:29,559
+<font color="#ffff54">이제 내부 서버 오류가 발생했습니다.</font>
+
+1197
+00:35:29,559 --> 00:35:34,559
+And if I go and search again on Yeager
+
+1198
+00:35:29,559 --> 00:35:34,559
+<font color="#ffff54">그리고 예거에서 다시 검색하면</font>
+
+1199
+00:35:34,559 --> 00:35:36,880
+to find the trace that I failed,
+
+1200
+00:35:34,559 --> 00:35:36,880
+<font color="#ffff54">실패한 흔적을 찾을 수 없습니다,</font>
+
+1201
+00:35:36,880 --> 00:35:41,239
+I can see here that there wasn't a call to user service.
+
+1202
+00:35:36,880 --> 00:35:41,239
+<font color="#ffff54">여기에서 사용자 서비스에 대한 호출이 없었음을 알 수 있습니다.</font>
+
+1203
+00:35:41,239 --> 00:35:44,719
+And I do have error true.
+
+1204
+00:35:41,239 --> 00:35:44,719
+<font color="#ffff54">그리고 에러가 참입니다.</font>
+
+1205
+00:35:44,719 --> 00:35:49,719
+And I can also see the error details right here.
+
+1206
+00:35:44,719 --> 00:35:49,719
+<font color="#ffff54">오류 세부 정보도 바로 여기에 표시됩니다.</font>
+
+1207
+00:35:51,559 --> 00:35:53,840
+And if I'll go to Prometheus,
+
+1208
+00:35:51,559 --> 00:35:53,840
+<font color="#ffff54">그리고 프로메테우스로 가볼게요,</font>
+
+1209
+00:35:53,840 --> 00:35:57,799
+I can see that the count of API call is increasing
+
+1210
+00:35:53,840 --> 00:35:57,799
+<font color="#ffff54">API 호출 횟수가 증가하는 것을 볼 수 있습니다.</font>
+
+1211
+00:35:57,800 --> 00:36:00,960
+because we are counting on API calls
+
+1212
+00:35:57,800 --> 00:36:00,960
+<font color="#ffff54">API 호출을 계산하고 있기 때문입니다.</font>
+
+1213
+00:36:00,960 --> 00:36:02,560
+and we're getting more and more.
+
+1214
+00:36:00,960 --> 00:36:02,560
+<font color="#ffff54">그리고 점점 더 많아지고 있습니다.</font>
+
+1215
+00:36:03,560 --> 00:36:04,519
+Okay.
+
+1216
+00:36:04,519 --> 00:36:08,120
+So now that we have a bit of an understanding
+
+1217
+00:36:04,519 --> 00:36:08,120
+<font color="#ffff54">이제 어느 정도 이해가 되셨을 겁니다.</font>
+
+1218
+00:36:08,120 --> 00:36:09,760
+of what the application is doing
+
+1219
+00:36:08,120 --> 00:36:09,760
+<font color="#ffff54">애플리케이션이 무엇을 하고 있는지</font>
+
+1220
+00:36:09,760 --> 00:36:12,620
+and how our monitoring tools are working,
+
+1221
+00:36:09,760 --> 00:36:12,620
+<font color="#ffff54">모니터링 도구가 어떻게 작동하는지</font>
+
+1222
+00:36:13,880 --> 00:36:18,880
+let's dive one step inside how this thing is working.
+
+1223
+00:36:13,880 --> 00:36:18,880
+<font color="#ffff54">어떻게 작동하는지 한 걸음 더 들어가 보겠습니다.</font>
+
+1224
+00:36:22,100 --> 00:36:24,600
+And let's take a look at the tracer.
+
+1225
+00:36:22,100 --> 00:36:24,600
+<font color="#ffff54">추적기를 살펴봅시다.</font>
+
+1226
+00:36:24,599 --> 00:36:26,839
+Again, just to emphasize,
+
+1227
+00:36:24,599 --> 00:36:26,839
+<font color="#ffff54">다시 한 번 강조합니다,</font>
+
+1228
+00:36:28,000 --> 00:36:32,000
+this is not a deep dive into open telemetry.
+
+1229
+00:36:28,000 --> 00:36:32,000
+<font color="#ffff54">이것은 오픈 텔레메트리에 대한 심층 분석이 아닙니다.</font>
+
+1230
+00:36:32,000 --> 00:36:33,159
+There is a lot of setup,
+
+1231
+00:36:32,000 --> 00:36:33,159
+<font color="#ffff54">설정이 많습니다,</font>
+
+1232
+00:36:33,159 --> 00:36:36,039
+there is a lot of moving components in the SDK,
+
+1233
+00:36:33,159 --> 00:36:36,039
+<font color="#ffff54">SDK에 움직이는 컴포넌트가 많이 있습니다,</font>
+
+1234
+00:36:36,039 --> 00:36:39,639
+different names that you may see like provider,
+
+1235
+00:36:36,039 --> 00:36:39,639
+<font color="#ffff54">공급자처럼 다른 이름이 표시될 수 있습니다,</font>
+
+1236
+00:36:39,639 --> 00:36:42,159
+like exported that we need to really understand
+
+1237
+00:36:39,639 --> 00:36:42,159
+<font color="#ffff54">우리가 정말로 이해해야 할 exported와 같은</font>
+
+1238
+00:36:42,159 --> 00:36:43,679
+and deep dive into them.
+
+1239
+00:36:42,159 --> 00:36:43,679
+<font color="#ffff54">그리고 깊이 파고들어야 합니다.</font>
+
+1240
+00:36:45,299 --> 00:36:50,299
+But I do want to give you a sense of how this thing works.
+
+1241
+00:36:45,299 --> 00:36:50,299
+<font color="#ffff54">하지만 이게 어떻게 작동하는지는 알려드리고 싶네요.</font>
+
+1242
+00:36:50,659 --> 00:36:54,360
+So next time we'll be able to dive right into it.
+
+1243
+00:36:50,659 --> 00:36:54,360
+<font color="#ffff54">그럼 다음번에는 더 자세히 알아볼 수 있을 거야.</font>
+
+1244
+00:36:54,360 --> 00:36:56,240
+So next session, I will just assume
+
+1245
+00:36:54,360 --> 00:36:56,240
+<font color="#ffff54">그럼 다음 세션에서는</font>
+
+1246
+00:36:56,240 --> 00:36:58,599
+that you already saw this code
+
+1247
+00:36:56,240 --> 00:36:58,599
+<font color="#ffff54">이 코드를 이미 봤다고 가정합니다.</font>
+
+1248
+00:36:58,599 --> 00:37:00,000
+and we are going to extend it
+
+1249
+00:36:58,599 --> 00:37:00,000
+<font color="#ffff54">그리고 우리는 그것을 확장할 것입니다</font>
+
+1250
+00:37:00,000 --> 00:37:04,480
+and have more and more understanding
+
+1251
+00:37:00,000 --> 00:37:04,480
+<font color="#ffff54">그리고 점점 더 많은 것을 이해하게 됩니다.</font>
+
+1252
+00:37:04,480 --> 00:37:06,800
+on what is the provider and exported
+
+1253
+00:37:04,480 --> 00:37:06,800
+<font color="#ffff54">공급자와 내보낸 것에 대해</font>
+
+1254
+00:37:06,800 --> 00:37:09,599
+and processor and all those kinds of things.
+
+1255
+00:37:06,800 --> 00:37:09,599
+<font color="#ffff54">그리고 프로세서와 그런 모든 종류의 것들.</font>
+
+1256
+00:37:11,000 --> 00:37:13,160
+So the first thing that is happening here
+
+1257
+00:37:11,000 --> 00:37:13,160
+<font color="#ffff54">여기서 가장 먼저 일어나는 일은</font>
+
+1258
+00:37:13,160 --> 00:37:18,019
+is we are setting up our metric configuration.
+
+1259
+00:37:13,160 --> 00:37:18,019
+<font color="#ffff54">메트릭 구성을 설정하고 있습니다.</font>
+
+1260
+00:37:18,019 --> 00:37:20,620
+And when you say metric,
+
+1261
+00:37:18,019 --> 00:37:20,620
+<font color="#ffff54">그리고 메트릭이라고 하면</font>
+
+1262
+00:37:20,620 --> 00:37:22,680
+you need to send this metric somewhere
+
+1263
+00:37:20,620 --> 00:37:22,680
+<font color="#ffff54">이 메트릭을 어딘가로 보내야 합니다.</font>
+
+1264
+00:37:22,679 --> 00:37:27,419
+and I'm going to use metric Prometheus exporter.
+
+1265
+00:37:22,679 --> 00:37:27,419
+<font color="#ffff54">메트릭 Prometheus 내보내기를 사용하겠습니다.</font>
+
+1266
+00:37:27,419 --> 00:37:28,960
+That means that our metrics
+
+1267
+00:37:27,419 --> 00:37:28,960
+<font color="#ffff54">즉, 메트릭</font>
+
+1268
+00:37:32,719 --> 00:37:35,719
+are going to be shipped to Prometheus.
+
+1269
+00:37:32,719 --> 00:37:35,719
+<font color="#ffff54">가 프로메테우스로 전송될 것입니다.</font>
+
+1270
+00:37:35,719 --> 00:37:40,719
+And I'm using here some metric port that I'm defining.
+
+1271
+00:37:35,719 --> 00:37:40,719
+<font color="#ffff54">그리고 여기에 제가 정의한 메트릭 포트를 사용하고 있습니다.</font>
+
+1272
+00:37:41,119 --> 00:37:44,440
+So if you look in the user service,
+
+1273
+00:37:41,119 --> 00:37:44,440
+<font color="#ffff54">그래서 사용자 서비스를 보면</font>
+
+1274
+00:37:44,440 --> 00:37:48,879
+I am providing here a port for scraping
+
+1275
+00:37:44,440 --> 00:37:48,879
+<font color="#ffff54">여기에 스크래핑을 위한 포트를 제공하고 있습니다.</font>
+
+1276
+00:37:48,879 --> 00:37:51,519
+and the item service has a different port
+
+1277
+00:37:48,879 --> 00:37:51,519
+<font color="#ffff54">그리고 항목 서비스에는 다른 포트가 있습니다.</font>
+
+1278
+00:37:51,519 --> 00:37:54,759
+for scraping the metrics.
+
+1279
+00:37:51,519 --> 00:37:54,759
+<font color="#ffff54">로 변경합니다.</font>
+
+1280
+00:37:54,759 --> 00:37:57,519
+So in case you don't know the way Prometheus works
+
+1281
+00:37:54,759 --> 00:37:57,519
+<font color="#ffff54">Prometheus의 작동 방식을 모르시는 분들을 위해 다음과 같이 설명합니다.</font>
+
+1282
+00:37:57,519 --> 00:38:02,519
+is Prometheus scrape the data from the service.
+
+1283
+00:37:57,519 --> 00:38:02,519
+<font color="#ffff54">는 프로메테우스가 서비스에서 데이터를 스크랩하는 것입니다.</font>
+
+1284
+00:38:03,519 --> 00:38:06,360
+So you need to expose some API call,
+
+1285
+00:38:03,519 --> 00:38:06,360
+<font color="#ffff54">따라서 일부 API 호출을 노출해야 합니다,</font>
+
+1286
+00:38:06,360 --> 00:38:11,320
+some API endpoint that Prometheus can fetch the data from
+
+1287
+00:38:06,360 --> 00:38:11,320
+<font color="#ffff54">Prometheus가 데이터를 가져올 수 있는 일부 API 엔드포인트를 노출해야 합니다.</font>
+
+1288
+00:38:11,320 --> 00:38:13,119
+to show you how it looks.
+
+1289
+00:38:11,320 --> 00:38:13,119
+<font color="#ffff54">어떻게 보이는지 보여드리겠습니다.</font>
+
+1290
+00:38:14,239 --> 00:38:19,239
+So the URL, the port was 8081 and slash metrics
+
+1291
+00:38:14,239 --> 00:38:19,239
+<font color="#ffff54">따라서 URL, 포트는 8081이고 슬래시 메트릭은 다음과 같습니다.</font>
+
+1292
+00:38:19,560 --> 00:38:22,080
+and this is how Prometheus works.
+
+1293
+00:38:19,560 --> 00:38:22,080
+<font color="#ffff54">이것이 프로메테우스가 작동하는 방식입니다.</font>
+
+1294
+00:38:22,080 --> 00:38:25,000
+They're sending an API call to slash metrics
+
+1295
+00:38:22,080 --> 00:38:25,000
+<font color="#ffff54">메트릭을 줄이기 위해 API 호출을 보내고 있습니다.</font>
+
+1296
+00:38:25,000 --> 00:38:29,720
+and that's the way that they are getting the metrics from.
+
+1297
+00:38:25,000 --> 00:38:29,720
+<font color="#ffff54">그리고 이것이 그들이 메트릭을 가져오는 방식입니다.</font>
+
+1298
+00:38:29,720 --> 00:38:34,180
+By the way, if I look in Yeager
+
+1299
+00:38:29,720 --> 00:38:34,180
+<font color="#ffff54">그건 그렇고, 예거에서 보면</font>
+
+1300
+00:38:34,180 --> 00:38:39,180
+and you can see here that we have here our arrow
+
+1301
+00:38:34,180 --> 00:38:39,180
+<font color="#ffff54">여기에 화살표가 있는 것을 볼 수 있습니다.</font>
+
+1302
+00:38:39,560 --> 00:38:44,440
+but we have also bunch of very short, very small,
+
+1303
+00:38:39,560 --> 00:38:44,440
+<font color="#ffff54">하지만 아주 짧고 아주 작은 화살표도 있습니다,</font>
+
+1304
+00:38:46,200 --> 00:38:48,840
+very short, very small traces.
+
+1305
+00:38:46,200 --> 00:38:48,840
+<font color="#ffff54">아주 짧고 아주 작은 흔적들이 있습니다.</font>
+
+1306
+00:38:48,840 --> 00:38:50,760
+And if you look at those traces,
+
+1307
+00:38:48,840 --> 00:38:50,760
+<font color="#ffff54">그리고 그 흔적들을 보면</font>
+
+1308
+00:38:50,760 --> 00:38:53,760
+those traces would be the traces for slash metric.
+
+1309
+00:38:50,760 --> 00:38:53,760
+<font color="#ffff54">이 트레이스는 슬래시 메트릭의 트레이스입니다.</font>
+
+1310
+00:38:53,760 --> 00:38:58,760
+So the API calls that Prometheus is sending
+
+1311
+00:38:53,760 --> 00:38:58,760
+<font color="#ffff54">따라서 Prometheus가 전송하는 API 호출은 다음과 같습니다.</font>
+
+1312
+00:38:59,160 --> 00:39:02,019
+in order to fetch the metrics are visible
+
+1313
+00:38:59,160 --> 00:39:02,019
+<font color="#ffff54">메트릭을 가져오기 위해 전송하는 API 호출은 다음과 같습니다.</font>
+
+1314
+00:39:02,019 --> 00:39:03,820
+also right here in Yeager.
+
+1315
+00:39:02,019 --> 00:39:03,820
+<font color="#ffff54">여기 예거에서도 마찬가지입니다.</font>
+
+1316
+00:39:05,400 --> 00:39:09,480
+Cool, so we defined that once it's up and running,
+
+1317
+00:39:05,400 --> 00:39:09,480
+<font color="#ffff54">멋지네요, 일단 실행하면 이렇게 정의했습니다,</font>
+
+1318
+00:39:09,480 --> 00:39:14,480
+we are writing in the logger that the data,
+
+1319
+00:39:09,480 --> 00:39:14,480
+<font color="#ffff54">로거에 데이터를 기록합니다,</font>
+
+1320
+00:39:15,440 --> 00:39:17,039
+what is the address of the scraper?
+
+1321
+00:39:15,440 --> 00:39:17,039
+<font color="#ffff54">스크레이퍼의 주소는 무엇인가요?</font>
+
+1322
+00:39:17,039 --> 00:39:20,279
+So you can see here the scraper and the address
+
+1323
+00:39:17,039 --> 00:39:20,279
+<font color="#ffff54">여기에서 스크레이퍼와 주소를 볼 수 있습니다.</font>
+
+1324
+00:39:20,279 --> 00:39:24,639
+and then we're asking to fetch the traces every second.
+
+1325
+00:39:20,279 --> 00:39:24,639
+<font color="#ffff54">그리고 매초마다 트레이스를 가져오도록 요청하고 있습니다.</font>
+
+1326
+00:39:26,599 --> 00:39:29,320
+Probably in production I would use less
+
+1327
+00:39:26,599 --> 00:39:29,320
+<font color="#ffff54">아마 프로덕션에서는 더 적게 사용할 것입니다.</font>
+
+1328
+00:39:29,320 --> 00:39:33,300
+but this is a demo and I want things to be up to update fresh.
+
+1329
+00:39:29,320 --> 00:39:33,300
+<font color="#ffff54">하지만 이것은 데모이고 나는 모든 것이 새로 업데이트되기를 원합니다.</font>
+
+1330
+00:39:35,559 --> 00:39:38,239
+After that, we need to define the traces
+
+1331
+00:39:35,559 --> 00:39:38,239
+<font color="#ffff54">그런 다음 트레이스를 정의해야 합니다.</font>
+
+1332
+00:39:38,239 --> 00:39:41,519
+and traces are being exported to Yeager.
+
+1333
+00:39:38,239 --> 00:39:41,519
+<font color="#ffff54">트레이스가 예거로 내보내지고 있습니다.</font>
+
+1334
+00:39:41,519 --> 00:39:44,480
+We are specifying the name of the service,
+
+1335
+00:39:41,519 --> 00:39:44,480
+<font color="#ffff54">서비스 이름을 지정하고 있습니다,</font>
+
+1336
+00:39:44,480 --> 00:39:48,679
+the user service and the item service
+
+1337
+00:39:44,480 --> 00:39:48,679
+<font color="#ffff54">사용자 서비스 및 아이템 서비스</font>
+
+1338
+00:39:48,679 --> 00:39:53,679
+and then we are asking to instrument HTTP and express
+
+1339
+00:39:48,679 --> 00:39:53,679
+<font color="#ffff54">그리고 나서 HTTP와 express를 계측하도록 요청합니다.</font>
+
+1340
+00:39:54,440 --> 00:39:58,619
+in order for us to go see the data that is incoming
+
+1341
+00:39:54,440 --> 00:39:58,619
+<font color="#ffff54">들어오는 데이터를 확인하기 위해</font>
+
+1342
+00:39:58,619 --> 00:40:03,619
+to express via the REST API and also the outgoing API calls
+
+1343
+00:39:58,619 --> 00:40:03,619
+<font color="#ffff54">REST API와 나가는 API 호출을 통해 표현할 수 있습니다.</font>
+
+1344
+00:40:06,119 --> 00:40:08,800
+that are being sent from item service to user service
+
+1345
+00:40:06,119 --> 00:40:08,800
+<font color="#ffff54">항목 서비스에서 사용자 서비스로 전송되는 호출</font>
+
+1346
+00:40:08,800 --> 00:40:10,559
+and from user service to demo.
+
+1347
+00:40:08,800 --> 00:40:10,559
+<font color="#ffff54">그리고 사용자 서비스에서 데모로</font>
+
+1348
+00:40:10,840 --> 00:40:14,920
+Cool, looking at our item service,
+
+1349
+00:40:10,840 --> 00:40:14,920
+<font color="#ffff54">좋아요, 아이템 서비스를 살펴보세요,</font>
+
+1350
+00:40:14,920 --> 00:40:19,920
+so there isn't a lot of API,
+
+1351
+00:40:14,920 --> 00:40:19,920
+<font color="#ffff54">그래서 API가 많지 않아요,</font>
+
+1352
+00:40:21,400 --> 00:40:25,440
+an open telemetry API here.
+
+1353
+00:40:21,400 --> 00:40:25,440
+<font color="#ffff54">여기에 오픈 텔레메트리 API가 있습니다.</font>
+
+1354
+00:40:25,440 --> 00:40:29,480
+So there are two things that we're doing
+
+1355
+00:40:25,440 --> 00:40:29,480
+<font color="#ffff54">그래서 우리가 하는 일은 두 가지입니다.</font>
+
+1356
+00:40:29,480 --> 00:40:31,159
+with open telemetry.
+
+1357
+00:40:29,480 --> 00:40:31,159
+<font color="#ffff54">오픈 텔레메트리로.</font>
+
+1358
+00:40:31,159 --> 00:40:34,480
+So if everything works correctly
+
+1359
+00:40:31,159 --> 00:40:34,480
+<font color="#ffff54">모든 것이 올바르게 작동한다면</font>
+
+1360
+00:40:34,480 --> 00:40:36,400
+and we don't have any failure
+
+1361
+00:40:34,480 --> 00:40:36,400
+<font color="#ffff54">실패가 없다면</font>
+
+1362
+00:40:37,500 --> 00:40:40,440
+and we're looking at the code that is being executed,
+
+1363
+00:40:37,500 --> 00:40:40,440
+<font color="#ffff54">실행 중인 코드를 살펴봅니다,</font>
+
+1364
+00:40:41,440 --> 00:40:45,159
+so we are in the slash get, it's not failing,
+
+1365
+00:40:41,440 --> 00:40:45,159
+<font color="#ffff54">따라서 우리는 슬래시 겟에 있고, 실패하지 않습니다,</font>
+
+1366
+00:40:45,159 --> 00:40:47,480
+we are sending in a response and that is it.
+
+1367
+00:40:45,159 --> 00:40:47,480
+<font color="#ffff54">응답을 보내고 있습니다.</font>
+
+1368
+00:40:47,480 --> 00:40:52,480
+So you barely, you don't see any open telemetry data here
+
+1369
+00:40:47,480 --> 00:40:52,480
+<font color="#ffff54">여기에는 열려 있는 텔레메트리 데이터가 거의 보이지 않습니다.</font>
+
+1370
+00:40:52,679 --> 00:40:54,679
+and this is because everything works fine
+
+1371
+00:40:52,679 --> 00:40:54,679
+<font color="#ffff54">모든 것이 정상적으로 작동하기 때문입니다.</font>
+
+1372
+00:40:54,679 --> 00:40:58,039
+and we don't need to do anything special
+
+1373
+00:40:54,679 --> 00:40:58,039
+<font color="#ffff54">그리고 우리는 특별한 일을 할 필요가 없습니다.</font>
+
+1374
+00:40:58,039 --> 00:40:59,860
+so the trace would look as follows.
+
+1375
+00:40:58,039 --> 00:40:59,860
+<font color="#ffff54">따라서 추적은 다음과 같이 보일 것입니다.</font>
+
+1376
+00:41:00,800 --> 00:41:04,539
+But when things are failing and we're having an exception,
+
+1377
+00:41:00,800 --> 00:41:04,539
+<font color="#ffff54">하지만 문제가 발생하여 예외가 발생했습니다,</font>
+
+1378
+00:41:04,539 --> 00:41:05,760
+this is where things are starting
+
+1379
+00:41:04,539 --> 00:41:05,760
+<font color="#ffff54">여기서 문제가 시작됩니다.</font>
+
+1380
+00:41:05,760 --> 00:41:07,420
+to get a bit more complicated.
+
+1381
+00:41:05,760 --> 00:41:07,420
+<font color="#ffff54">조금 더 복잡해집니다.</font>
+
+1382
+00:41:08,420 --> 00:41:12,460
+So I wanted to be able to correlate
+
+1383
+00:41:08,420 --> 00:41:12,460
+<font color="#ffff54">그래서 저는 상관관계를 파악하고 싶었습니다.</font>
+
+1384
+00:41:12,460 --> 00:41:15,260
+between my logs and my traces.
+
+1385
+00:41:12,460 --> 00:41:15,260
+<font color="#ffff54">내 로그와 내 흔적 사이.</font>
+
+1386
+00:41:15,260 --> 00:41:17,760
+To do that, I am writing a log.
+
+1387
+00:41:15,260 --> 00:41:17,760
+<font color="#ffff54">이를 위해 로그를 작성하고 있습니다.</font>
+
+1388
+00:41:17,760 --> 00:41:21,659
+So when I have an exception, I'm writing the console error,
+
+1389
+00:41:17,760 --> 00:41:21,659
+<font color="#ffff54">그래서 예외가 발생하면 콘솔 오류를 기록하고 있습니다,</font>
+
+1390
+00:41:21,659 --> 00:41:24,059
+meaning that I have some failure
+
+1391
+00:41:21,659 --> 00:41:24,059
+<font color="#ffff54">이는 내가 어떤 실패가 있다는 것을 의미합니다.</font>
+
+1392
+00:41:24,059 --> 00:41:26,900
+and you can see this failure right here.
+
+1393
+00:41:24,059 --> 00:41:26,900
+<font color="#ffff54">바로 여기서 이 실패를 볼 수 있습니다.</font>
+
+1394
+00:41:26,900 --> 00:41:30,940
+If I would output from my application critical error,
+
+1395
+00:41:26,900 --> 00:41:30,940
+<font color="#ffff54">내 애플리케이션에서 치명적인 오류를 출력하면</font>
+
+1396
+00:41:30,940 --> 00:41:34,460
+I won't be able to know what is a trace.
+
+1397
+00:41:30,940 --> 00:41:34,460
+<font color="#ffff54">트레이스가 무엇인지 알 수 없습니다.</font>
+
+1398
+00:41:34,460 --> 00:41:36,940
+So for every log that I'm writing,
+
+1399
+00:41:34,460 --> 00:41:36,940
+<font color="#ffff54">그래서 내가 쓰는 모든 로그에 대해,</font>
+
+1400
+00:41:36,940 --> 00:41:39,260
+I am attaching the trace ID
+
+1401
+00:41:36,940 --> 00:41:39,260
+<font color="#ffff54">추적 ID를 첨부합니다.</font>
+
+1402
+00:41:40,300 --> 00:41:42,860
+and this is what you can see right here.
+
+1403
+00:41:40,300 --> 00:41:42,860
+<font color="#ffff54">바로 여기에 이렇게 표시됩니다.</font>
+
+1404
+00:41:42,860 --> 00:41:46,740
+So basically I'm going to the open telemetry API,
+
+1405
+00:41:42,860 --> 00:41:46,740
+<font color="#ffff54">기본적으로 오픈 텔레메트리 API로 이동합니다,</font>
+
+1406
+00:41:46,740 --> 00:41:49,320
+that's the open telemetry API
+
+1407
+00:41:46,740 --> 00:41:49,320
+<font color="#ffff54">오픈 텔레메트리 API입니다.</font>
+
+1408
+00:41:49,320 --> 00:41:53,059
+and I'm asking from the open telemetry API
+
+1409
+00:41:49,320 --> 00:41:53,059
+<font color="#ffff54">오픈 텔레메트리 API에서 요청합니다.</font>
+
+1410
+00:41:53,059 --> 00:41:56,539
+to give me the current spec, the active spec.
+
+1411
+00:41:53,059 --> 00:41:56,539
+<font color="#ffff54">현재 사양, 즉 활성 사양을 알려달라고 요청합니다.</font>
+
+1412
+00:41:56,539 --> 00:42:00,220
+Remember every line here is a spec
+
+1413
+00:41:56,539 --> 00:42:00,220
+<font color="#ffff54">여기 모든 줄이 사양임을 기억하세요.</font>
+
+1414
+00:42:00,220 --> 00:42:03,500
+and this is happening in the item service
+
+1415
+00:42:00,220 --> 00:42:03,500
+<font color="#ffff54">그리고 이것은 아이템 서비스에서 일어나고 있습니다.</font>
+
+1416
+00:42:03,500 --> 00:42:05,639
+and this is happening in the user service,
+
+1417
+00:42:03,500 --> 00:42:05,639
+<font color="#ffff54">사용자 서비스에서 발생하고 있습니다,</font>
+
+1418
+00:42:05,639 --> 00:42:08,440
+so we have space that are currently active.
+
+1419
+00:42:05,639 --> 00:42:08,440
+<font color="#ffff54">따라서 현재 활성화된 공간이 있습니다.</font>
+
+1420
+00:42:09,359 --> 00:42:11,400
+Once I got the active span,
+
+1421
+00:42:09,359 --> 00:42:11,400
+<font color="#ffff54">활성 스팬을 얻었으니</font>
+
+1422
+00:42:11,400 --> 00:42:16,299
+I can write with my log that I have,
+
+1423
+00:42:11,400 --> 00:42:16,299
+<font color="#ffff54">내가 가지고 있는 로그로 쓸 수 있습니다,</font>
+
+1424
+00:42:16,299 --> 00:42:18,359
+what is the current trace ID?
+
+1425
+00:42:16,299 --> 00:42:18,359
+<font color="#ffff54">현재 추적 ID는 무엇인가요?</font>
+
+1426
+00:42:18,359 --> 00:42:21,440
+So imagine next time you have production issue,
+
+1427
+00:42:18,359 --> 00:42:21,440
+<font color="#ffff54">다음에 프로덕션 문제가 발생한다고 가정해 보세요,</font>
+
+1428
+00:42:22,319 --> 00:42:25,559
+you have an exception in your logs.
+
+1429
+00:42:22,319 --> 00:42:25,559
+<font color="#ffff54">로그에 예외가 발생합니다.</font>
+
+1430
+00:42:25,559 --> 00:42:29,639
+In your log, you have the relevant trace ID
+
+1431
+00:42:25,559 --> 00:42:29,639
+<font color="#ffff54">로그에 관련 추적 ID가 있습니다.</font>
+
+1432
+00:42:29,639 --> 00:42:33,639
+and you can take this trace ID right here
+
+1433
+00:42:29,639 --> 00:42:33,639
+<font color="#ffff54">이 추적 ID를 바로 여기에서 가져올 수 있습니다.</font>
+
+1434
+00:42:33,639 --> 00:42:37,879
+and you can grab it and search by the trace ID
+
+1435
+00:42:33,639 --> 00:42:37,879
+<font color="#ffff54">추적 ID로 검색할 수 있습니다.</font>
+
+1436
+00:42:37,879 --> 00:42:42,879
+and I got the trace ID that is causing all of my issues.
+
+1437
+00:42:37,879 --> 00:42:42,879
+<font color="#ffff54">그리고 모든 문제의 원인이 되는 추적 ID를 찾았습니다.</font>
+
+1438
+00:42:43,519 --> 00:42:46,440
+So the ability to jump between a trace
+
+1439
+00:42:43,519 --> 00:42:46,440
+<font color="#ffff54">따라서 트레이스 사이를 이동하는 기능은</font>
+
+1440
+00:42:46,440 --> 00:42:49,719
+and a log between a log and a trace
+
+1441
+00:42:46,440 --> 00:42:49,719
+<font color="#ffff54">로그와 트레이스 사이를 이동할 수 있습니다.</font>
+
+1442
+00:42:49,719 --> 00:42:52,599
+is very simple and very, very fast.
+
+1443
+00:42:49,719 --> 00:42:52,599
+<font color="#ffff54">는 매우 간단하고 매우 빠릅니다.</font>
+
+1444
+00:42:54,079 --> 00:42:56,539
+Also I did here implementation of metrics.
+
+1445
+00:42:54,079 --> 00:42:56,539
+<font color="#ffff54">또한 여기서 메트릭을 구현했습니다.</font>
+
+1446
+00:42:56,539 --> 00:42:59,119
+I kind of show you it already.
+
+1447
+00:42:56,539 --> 00:42:59,119
+<font color="#ffff54">이미 보여드렸습니다.</font>
+
+1448
+00:42:59,119 --> 00:43:02,559
+We'll talk about metrics of course with great more details
+
+1449
+00:42:59,119 --> 00:43:02,559
+<font color="#ffff54">물론 메트릭에 대해 더 자세히 이야기하겠습니다.</font>
+
+1450
+00:43:02,559 --> 00:43:06,480
+but essentially you create a meter,
+
+1451
+00:43:02,559 --> 00:43:06,480
+<font color="#ffff54">하지만 기본적으로 미터를 만드는 것입니다,</font>
+
+1452
+00:43:06,480 --> 00:43:09,159
+you create a counter, you provide it with a name,
+
+1453
+00:43:06,480 --> 00:43:09,159
+<font color="#ffff54">카운터를 생성하고 이름을 지정합니다,</font>
+
+1454
+00:43:09,159 --> 00:43:11,360
+you need to increase and decrease it
+
+1455
+00:43:09,159 --> 00:43:11,360
+<font color="#ffff54">카운터를 늘리거나 줄여야 합니다.</font>
+
+1456
+00:43:11,360 --> 00:43:13,719
+and every time that you have an API call,
+
+1457
+00:43:11,360 --> 00:43:13,719
+<font color="#ffff54">그리고 API 호출이 있을 때마다,</font>
+
+1458
+00:43:13,719 --> 00:43:17,239
+this is running any time that you have an API call,
+
+1459
+00:43:13,719 --> 00:43:17,239
+<font color="#ffff54">API 호출이 있을 때마다 실행됩니다,</font>
+
+1460
+00:43:17,239 --> 00:43:18,840
+it's kind of a middleware,
+
+1461
+00:43:17,239 --> 00:43:18,840
+<font color="#ffff54">일종의 미들웨어입니다,</font>
+
+1462
+00:43:18,840 --> 00:43:22,440
+it eventually would end up in Prometheus
+
+1463
+00:43:18,840 --> 00:43:22,440
+<font color="#ffff54">결국 프로메테우스에 들어가게 될 것이다.</font>
+
+1464
+00:43:22,440 --> 00:43:25,799
+and you can see here the amount of calls that we're getting
+
+1465
+00:43:22,440 --> 00:43:25,799
+<font color="#ffff54">그리고 여기에서 우리가 받고 있는 호출의 양을 볼 수 있습니다.</font>
+
+1466
+00:43:25,799 --> 00:43:29,279
+and you can kind of track it from there.
+
+1467
+00:43:25,799 --> 00:43:29,279
+<font color="#ffff54">거기서부터 추적할 수 있습니다.</font>
+
+1468
+00:43:30,160 --> 00:43:35,160
+When the API call is being sent to the user service
+
+1469
+00:43:30,160 --> 00:43:35,160
+<font color="#ffff54">API 호출이 사용자 서비스로 전송되는 경우</font>
+
+1470
+00:43:35,880 --> 00:43:37,840
+and this is happening right here,
+
+1471
+00:43:35,880 --> 00:43:37,840
+<font color="#ffff54">바로 여기서 일어나고 있습니다,</font>
+
+1472
+00:43:37,840 --> 00:43:41,640
+I didn't need to do anything special with open telemetry.
+
+1473
+00:43:37,840 --> 00:43:41,640
+<font color="#ffff54">오픈 텔레메트리로 특별한 작업을 할 필요가 없었습니다.</font>
+
+1474
+00:43:41,640 --> 00:43:46,640
+I needed to do, I didn't need to write some code
+
+1475
+00:43:41,640 --> 00:43:46,640
+<font color="#ffff54">코드를 작성할 필요가 없었습니다.</font>
+
+1476
+00:43:46,960 --> 00:43:51,400
+in order to be able to see both in the user service
+
+1477
+00:43:46,960 --> 00:43:51,400
+<font color="#ffff54">사용자 서비스에서 두 가지를 모두 볼 수 있도록 하기 위해</font>
+
+1478
+00:43:51,400 --> 00:43:54,360
+and the item service, that's happened automatically.
+
+1479
+00:43:51,400 --> 00:43:54,360
+<font color="#ffff54">그리고 아이템 서비스에서 자동으로 발생했습니다.</font>
+
+1480
+00:43:54,360 --> 00:43:57,360
+Of course, something that we will learn how to do
+
+1481
+00:43:54,360 --> 00:43:57,360
+<font color="#ffff54">물론, 어떻게 해야 하는지 배우게 될 것입니다.</font>
+
+1482
+00:43:57,360 --> 00:44:00,800
+and in the user service, I did something a bit,
+
+1483
+00:43:57,360 --> 00:44:00,800
+<font color="#ffff54">그리고 사용자 서비스에서 뭔가를 좀 했어요,</font>
+
+1484
+00:44:00,800 --> 00:44:02,880
+which I think it's interesting and important.
+
+1485
+00:44:00,800 --> 00:44:02,880
+<font color="#ffff54">흥미롭고 중요하다고 생각합니다.</font>
+
+1486
+00:44:02,880 --> 00:44:07,480
+So if everything works and I'm refreshing here,
+
+1487
+00:44:02,880 --> 00:44:07,480
+<font color="#ffff54">그래서 모든 것이 작동하고 내가 여기서 상쾌하다면,</font>
+
+1488
+00:44:07,480 --> 00:44:09,480
+so you can see that I'm getting Harry Potter
+
+1489
+00:44:07,480 --> 00:44:09,480
+<font color="#ffff54">내가 해리 포터를 얻는다는 것을 알 수 있습니다.</font>
+
+1490
+00:44:09,480 --> 00:44:11,720
+and getting different names.
+
+1491
+00:44:09,480 --> 00:44:11,720
+<font color="#ffff54">그리고 다른 이름을 얻습니다.</font>
+
+1492
+00:44:12,640 --> 00:44:16,160
+So it's kind of a random thing, right?
+
+1493
+00:44:12,640 --> 00:44:16,160
+<font color="#ffff54">일종의 무작위 현상이죠?</font>
+
+1494
+00:44:16,160 --> 00:44:19,160
+Because I did call random number
+
+1495
+00:44:16,160 --> 00:44:19,160
+<font color="#ffff54">난수를 호출했으니까</font>
+
+1496
+00:44:19,160 --> 00:44:22,200
+of zero to the length of the array
+
+1497
+00:44:19,160 --> 00:44:22,200
+<font color="#ffff54">배열의 길이에 0을 곱한 값</font>
+
+1498
+00:44:22,200 --> 00:44:25,160
+and if I look at the trace,
+
+1499
+00:44:22,200 --> 00:44:25,160
+<font color="#ffff54">그리고 트레이스를 보면</font>
+
+1500
+00:44:25,759 --> 00:44:28,519
+and let's jump to the trace,
+
+1501
+00:44:25,759 --> 00:44:28,519
+<font color="#ffff54">트레이스로 이동해 보겠습니다,</font>
+
+1502
+00:44:28,519 --> 00:44:32,319
+let's find the latest traces, find this one.
+
+1503
+00:44:28,519 --> 00:44:32,319
+<font color="#ffff54">가장 최근의 흔적을 찾아보자, 이걸 찾아보자.</font>
+
+1504
+00:44:32,319 --> 00:44:37,319
+So I have no idea why user service chose
+
+1505
+00:44:32,319 --> 00:44:37,319
+<font color="#ffff54">그래서 왜 사용자 서비스가</font>
+
+1506
+00:44:38,119 --> 00:44:39,719
+to return this user.
+
+1507
+00:44:38,119 --> 00:44:39,719
+<font color="#ffff54">을 선택했는지 모르겠습니다.</font>
+
+1508
+00:44:39,719 --> 00:44:42,399
+It's completely random, right?
+
+1509
+00:44:39,719 --> 00:44:42,399
+<font color="#ffff54">완전히 무작위죠?</font>
+
+1510
+00:44:42,399 --> 00:44:46,079
+So I'm not sure if you'll be able to see it,
+
+1511
+00:44:42,399 --> 00:44:46,079
+<font color="#ffff54">그래서 네가 볼 수 있을지 모르겠다,</font>
+
+1512
+00:44:46,079 --> 00:44:49,399
+but if in the right corner of the screen,
+
+1513
+00:44:46,079 --> 00:44:49,399
+<font color="#ffff54">하지만 화면 오른쪽 구석에 있다면요,</font>
+
+1514
+00:44:49,399 --> 00:44:53,119
+there is a small pipe and it describes
+
+1515
+00:44:49,399 --> 00:44:53,119
+<font color="#ffff54">작은 파이프가 있고</font>
+
+1516
+00:44:53,119 --> 00:44:55,599
+that there was some log.
+
+1517
+00:44:53,119 --> 00:44:55,599
+<font color="#ffff54">로그가 있다고 설명합니다.</font>
+
+1518
+00:44:55,599 --> 00:45:00,599
+So I was able to write log within my tricks.
+
+1519
+00:44:55,599 --> 00:45:00,599
+<font color="#ffff54">그래서 저는 제 트릭 안에 로그를 쓸 수 있었습니다.</font>
+
+1520
+00:45:00,679 --> 00:45:04,719
+And this log is saying, hey, a number was random
+
+1521
+00:45:00,679 --> 00:45:04,719
+<font color="#ffff54">그리고 이 로그는 숫자가 무작위였다고 말하고 있습니다.</font>
+
+1522
+00:45:04,719 --> 00:45:09,719
+and the random number that was generated is one.
+
+1523
+00:45:04,719 --> 00:45:09,719
+<font color="#ffff54">그리고 생성된 난수는 1입니다.</font>
+
+1524
+00:45:10,359 --> 00:45:12,799
+So if I'm a developer and I need to figure out
+
+1525
+00:45:10,359 --> 00:45:12,799
+<font color="#ffff54">만약 제가 개발자이고 다음과 같은 경우</font>
+
+1526
+00:45:12,799 --> 00:45:17,159
+why this user was returned, it seems so random,
+
+1527
+00:45:12,799 --> 00:45:17,159
+<font color="#ffff54">왜 이 사용자가 반환되었는지 알아내야 한다면 너무 무작위로 보입니다,</font>
+
+1528
+00:45:17,159 --> 00:45:20,000
+now I have my answer because I know
+
+1529
+00:45:17,159 --> 00:45:20,000
+<font color="#ffff54">이제 답을 알았으니</font>
+
+1530
+00:45:20,000 --> 00:45:23,800
+that it was index number one that was generated.
+
+1531
+00:45:20,000 --> 00:45:23,800
+<font color="#ffff54">생성된 인덱스가 1번 인덱스임을 알 수 있습니다.</font>
+
+1532
+00:45:23,800 --> 00:45:26,480
+And again, I'm getting an API call.
+
+1533
+00:45:23,800 --> 00:45:26,480
+<font color="#ffff54">그리고 다시 API 호출을 받습니다.</font>
+
+1534
+00:45:28,199 --> 00:45:32,159
+I'm grabbing the active span and in the active span,
+
+1535
+00:45:28,199 --> 00:45:32,159
+<font color="#ffff54">활성 스팬과 활성 스팬에 있습니다,</font>
+
+1536
+00:45:32,159 --> 00:45:34,480
+I am adding a new event.
+
+1537
+00:45:32,159 --> 00:45:34,480
+<font color="#ffff54">새 이벤트를 추가하고 있습니다.</font>
+
+1538
+00:45:34,480 --> 00:45:38,039
+An event can have a name, well, it must have a name
+
+1539
+00:45:34,480 --> 00:45:38,039
+<font color="#ffff54">이벤트는 이름을 가질 수 있습니다, 이름이 있어야 합니다.</font>
+
+1540
+00:45:38,039 --> 00:45:43,039
+and also it can send how many data that you want.
+
+1541
+00:45:38,039 --> 00:45:43,039
+<font color="#ffff54">그리고 원하는 만큼의 데이터를 전송할 수도 있습니다.</font>
+
+1542
+00:45:43,519 --> 00:45:46,760
+So you can treat it as just more info being sent
+
+1543
+00:45:43,519 --> 00:45:46,760
+<font color="#ffff54">따라서 더 많은 정보가 전송되는 것으로 간주할 수 있습니다.</font>
+
+1544
+00:45:46,760 --> 00:45:49,039
+on the span and then the trace.
+
+1545
+00:45:46,760 --> 00:45:49,039
+<font color="#ffff54">스팬과 추적에 대한 정보입니다.</font>
+
+1546
+00:45:49,079 --> 00:45:54,079
+And you can also treat it as the real exception,
+
+1547
+00:45:49,079 --> 00:45:54,079
+<font color="#ffff54">그리고 이것을 실제 예외로 취급할 수도 있습니다,</font>
+
+1548
+00:45:54,800 --> 00:45:58,559
+the real exception to real data that we got.
+
+1549
+00:45:54,800 --> 00:45:58,559
+<font color="#ffff54">실제 데이터에 대한 실제 예외로 취급할 수도 있습니다.</font>
+
+1550
+00:45:58,559 --> 00:46:03,519
+And this is like extremely helpful
+
+1551
+00:45:58,559 --> 00:46:03,519
+<font color="#ffff54">그리고 이것은 매우 유용합니다.</font>
+
+1552
+00:46:03,519 --> 00:46:07,400
+because it gives you the opportunity to get everything
+
+1553
+00:46:03,519 --> 00:46:07,400
+<font color="#ffff54">모든 것을 얻을 수 있는 기회를 주니까요</font>
+
+1554
+00:46:07,400 --> 00:46:09,279
+that you want in the story.
+
+1555
+00:46:07,400 --> 00:46:09,279
+<font color="#ffff54">이야기에서 원하는 것을 얻을 수 있기 때문입니다.</font>
+
+1556
+00:46:10,759 --> 00:46:15,759
+Michael, we actually have a question from the audience
+
+1557
+00:46:10,759 --> 00:46:15,759
+<font color="#ffff54">마이클, 청중의 질문이 있습니다.</font>
+
+1558
+00:46:16,520 --> 00:46:20,120
+related to what you touched earlier regarding metrics.
+
+1559
+00:46:16,520 --> 00:46:20,120
+<font color="#ffff54">아까 메트릭에 관해 말씀하신 것과 관련된 질문입니다.</font>
+
+1560
+00:46:20,120 --> 00:46:22,960
+Is there a way to filter out metric calls
+
+1561
+00:46:20,120 --> 00:46:22,960
+<font color="#ffff54">메트릭 호출을 필터링할 수 있는 방법이 있나요?</font>
+
+1562
+00:46:22,960 --> 00:46:24,600
+from the traces list?
+
+1563
+00:46:22,960 --> 00:46:24,600
+<font color="#ffff54">추적 목록에서 필터링할 수 있나요?</font>
+
+1564
+00:46:25,600 --> 00:46:27,080
+Yeah, yeah, definitely.
+
+1565
+00:46:25,600 --> 00:46:27,080
+<font color="#ffff54">네, 네, 맞아요.</font>
+
+1566
+00:46:27,080 --> 00:46:29,880
+It's a great question because, well,
+
+1567
+00:46:27,080 --> 00:46:29,880
+<font color="#ffff54">좋은 질문이네요,</font>
+
+1568
+00:46:29,880 --> 00:46:32,480
+you don't care about this slash metric.
+
+1569
+00:46:29,880 --> 00:46:32,480
+<font color="#ffff54">이 슬래시 메트릭을 신경쓰지 않으니까요.</font>
+
+1570
+00:46:32,480 --> 00:46:34,040
+Although it's cool that it's there,
+
+1571
+00:46:32,480 --> 00:46:34,040
+<font color="#ffff54">그래도 거기 있는 건 멋지네요,</font>
+
+1572
+00:46:34,040 --> 00:46:35,600
+you don't really care about it.
+
+1573
+00:46:34,040 --> 00:46:35,600
+<font color="#ffff54">당신은 그것에 대해 별로 신경 쓰지 않아요.</font>
+
+1574
+00:46:36,600 --> 00:46:41,600
+So yeah, it's up to you to decide what's being instrumented
+
+1575
+00:46:36,600 --> 00:46:41,600
+<font color="#ffff54">그래요, 무엇을 계측할지는 당신에게 달렸어요.</font>
+
+1576
+00:46:41,680 --> 00:46:42,920
+and what's not.
+
+1577
+00:46:41,680 --> 00:46:42,920
+<font color="#ffff54">그리고 무엇이 아닌지.</font>
+
+1578
+00:46:43,840 --> 00:46:47,200
+This is something that we will learn exactly how to do
+
+1579
+00:46:43,840 --> 00:46:47,200
+<font color="#ffff54">이것은 우리가 정확히 어떻게 해야 하는지 배울 것입니다.</font>
+
+1580
+00:46:48,920 --> 00:46:53,920
+when we will work more in depth into open telemetry.
+
+1581
+00:46:48,920 --> 00:46:53,920
+<font color="#ffff54">개방형 원격 측정에 대해 더 깊이 연구할 때입니다.</font>
+
+1582
+00:46:54,880 --> 00:46:57,800
+Basically the processor phase is the phase
+
+1583
+00:46:54,880 --> 00:46:57,800
+<font color="#ffff54">기본적으로 프로세서 단계는</font>
+
+1584
+00:46:57,800 --> 00:47:02,800
+where you can decide that you're going to omit some traces
+
+1585
+00:46:57,800 --> 00:47:02,800
+<font color="#ffff54">일부 흔적을 생략하기로 결정할 수 있습니다.</font>
+
+1586
+00:47:03,440 --> 00:47:07,000
+because they are slash metric.
+
+1587
+00:47:03,440 --> 00:47:07,000
+<font color="#ffff54">슬래시 메트릭이기 때문입니다.</font>
+
+1588
+00:47:07,000 --> 00:47:09,639
+Other types of things that you would probably want to omit
+
+1589
+00:47:07,000 --> 00:47:09,639
+<font color="#ffff54">생략하고 싶은 다른 유형의 것들</font>
+
+1590
+00:47:09,639 --> 00:47:12,599
+is stuff like maybe health checks
+
+1591
+00:47:09,639 --> 00:47:12,599
+<font color="#ffff54">건강 검진 같은 것들</font>
+
+1592
+00:47:12,599 --> 00:47:14,759
+that could be very annoying or some bots
+
+1593
+00:47:12,599 --> 00:47:14,759
+<font color="#ffff54">매우 성가시거나 일부 봇일 수 있습니다.</font>
+
+1594
+00:47:14,759 --> 00:47:18,279
+that are kind of annoying your application.
+
+1595
+00:47:14,759 --> 00:47:18,279
+<font color="#ffff54">애플리케이션을 성가시게 하는 봇입니다.</font>
+
+1596
+00:47:21,119 --> 00:47:21,960
+Cool, thank you.
+
+1597
+00:47:21,119 --> 00:47:21,960
+<font color="#ffff54">좋아요, 고마워요.</font>
+
+1598
+00:47:23,480 --> 00:47:26,239
+One thing that I wanted to show you guys
+
+1599
+00:47:23,480 --> 00:47:26,239
+<font color="#ffff54">너희들에게 보여주고 싶은 게 있어</font>
+
+1600
+00:47:26,239 --> 00:47:29,799
+before closing this session,
+
+1601
+00:47:26,239 --> 00:47:29,799
+<font color="#ffff54">이 세션을 닫기 전에</font>
+
+1602
+00:47:29,799 --> 00:47:31,799
+you can see when we have error,
+
+1603
+00:47:29,799 --> 00:47:31,799
+<font color="#ffff54">오류가 발생하면 확인할 수 있습니다,</font>
+
+1604
+00:47:32,679 --> 00:47:35,199
+I'm taking the active span,
+
+1605
+00:47:32,679 --> 00:47:35,199
+<font color="#ffff54">활성 스팬을 가져옵니다,</font>
+
+1606
+00:47:35,199 --> 00:47:38,279
+I'm writing to our log the trace ID
+
+1607
+00:47:35,199 --> 00:47:38,279
+<font color="#ffff54">로그에 추적 ID를 기록 중입니다.</font>
+
+1608
+00:47:38,280 --> 00:47:40,519
+and then also be calling the exception.
+
+1609
+00:47:38,280 --> 00:47:40,519
+<font color="#ffff54">그리고 예외를 호출합니다.</font>
+
+1610
+00:47:41,600 --> 00:47:46,280
+That reason is for when we have a failure,
+
+1611
+00:47:41,600 --> 00:47:46,280
+<font color="#ffff54">그 이유는 장애가 발생했을 때를 위한 것입니다,</font>
+
+1612
+00:47:46,280 --> 00:47:48,760
+let me make it crash.
+
+1613
+00:47:46,280 --> 00:47:48,760
+<font color="#ffff54">충돌하게 해줘요.</font>
+
+1614
+00:47:48,760 --> 00:47:53,560
+When we have a failure and I am able to see
+
+1615
+00:47:48,760 --> 00:47:53,560
+<font color="#ffff54">장애가 발생하고 내가 볼 수 있을 때</font>
+
+1616
+00:47:53,560 --> 00:47:56,440
+that I had error right here,
+
+1617
+00:47:53,560 --> 00:47:56,440
+<font color="#ffff54">바로 여기에 오류가 있음을 알 수 있습니다,</font>
+
+1618
+00:47:56,440 --> 00:47:58,320
+that's great, that's cool,
+
+1619
+00:47:56,440 --> 00:47:58,320
+<font color="#ffff54">잘됐네, 잘됐어,</font>
+
+1620
+00:47:58,320 --> 00:48:01,920
+but I do want to know exactly what was the error.
+
+1621
+00:47:58,320 --> 00:48:01,920
+<font color="#ffff54">하지만 정확히 무엇이 오류인지 알고 싶습니다.</font>
+
+1622
+00:48:01,920 --> 00:48:05,600
+So I can see here that the event type is exception,
+
+1623
+00:48:01,920 --> 00:48:05,600
+<font color="#ffff54">여기서 이벤트 유형이 예외임을 알 수 있습니다,</font>
+
+1624
+00:48:05,599 --> 00:48:08,679
+the event message is a really bad error
+
+1625
+00:48:05,599 --> 00:48:08,679
+<font color="#ffff54">이벤트 메시지는 정말 나쁜 오류입니다.</font>
+
+1626
+00:48:08,679 --> 00:48:10,360
+and here I can see the stack trace
+
+1627
+00:48:08,679 --> 00:48:10,360
+<font color="#ffff54">그리고 여기에 스택 추적을 볼 수 있습니다.</font>
+
+1628
+00:48:10,360 --> 00:48:15,360
+so I'll be able to debug it and to fix it.
+
+1629
+00:48:10,360 --> 00:48:15,360
+<font color="#ffff54">디버깅하고 수정할 수 있습니다.</font>
+
+1630
+00:48:20,159 --> 00:48:25,159
+Okay, so our goal for today was for this live session,
+
+1631
+00:48:20,159 --> 00:48:25,159
+<font color="#ffff54">자, 오늘의 목표는 이 라이브 세션입니다,</font>
+
+1632
+00:48:29,279 --> 00:48:33,519
+it was to send traces to Jaeger and view some logs.
+
+1633
+00:48:29,279 --> 00:48:33,519
+<font color="#ffff54">예거에게 트레이스를 전송하고 로그를 확인하는 것이었습니다.</font>
+
+1634
+00:48:33,519 --> 00:48:34,559
+We got that done.
+
+1635
+00:48:33,519 --> 00:48:34,559
+<font color="#ffff54">해냈어요.</font>
+
+1636
+00:48:35,639 --> 00:48:38,839
+To send metrics to Prometheus, we got that done.
+
+1637
+00:48:35,639 --> 00:48:38,839
+<font color="#ffff54">메트릭을 Prometheus로 전송하는 작업을 완료했습니다.</font>
+
+1638
+00:48:38,839 --> 00:48:41,000
+We were able to collect trace,
+
+1639
+00:48:38,839 --> 00:48:41,000
+<font color="#ffff54">추적을 수집할 수 있었습니다,</font>
+
+1640
+00:48:41,000 --> 00:48:46,000
+to correlate traces and logs, we have that working.
+
+1641
+00:48:41,000 --> 00:48:46,000
+<font color="#ffff54">추적과 로그의 상관관계를 파악할 수 있었습니다.</font>
+
+1642
+00:48:46,079 --> 00:48:49,000
+And if you're interested in that code,
+
+1643
+00:48:46,079 --> 00:48:49,000
+<font color="#ffff54">그리고 이 코드에 관심이 있으시다면,</font>
+
+1644
+00:48:49,000 --> 00:48:53,000
+you have everything in our repository,
+
+1645
+00:48:49,000 --> 00:48:53,000
+<font color="#ffff54">저장소에 모든 것이 있습니다,</font>
+
+1646
+00:48:53,000 --> 00:48:58,000
+just go to aspect.bed-io, openMP bootcamp.
+
+1647
+00:48:53,000 --> 00:48:58,000
+<font color="#ffff54">aspect.bed-io, openMP 부트캠프로 이동하세요.</font>
+
+1648
+00:48:58,880 --> 00:49:01,239
+You'll have link to the video recording
+
+1649
+00:48:58,880 --> 00:49:01,239
+<font color="#ffff54">비디오 녹화 링크가 표시됩니다.</font>
+
+1650
+00:49:01,239 --> 00:49:02,839
+that is being recorded right now,
+
+1651
+00:49:01,239 --> 00:49:02,839
+<font color="#ffff54">지금 녹화 중입니다,</font>
+
+1652
+00:49:02,880 --> 00:49:05,720
+the slides, the Slack channel
+
+1653
+00:49:02,880 --> 00:49:05,720
+<font color="#ffff54">슬라이드, 슬랙 채널</font>
+
+1654
+00:49:05,720 --> 00:49:08,920
+and of course the source code itself.
+
+1655
+00:49:05,720 --> 00:49:08,920
+<font color="#ffff54">그리고 물론 소스 코드 자체도요.</font>
+
+1656
+00:49:10,000 --> 00:49:15,000
+In the next section, we're going to implement
+
+1657
+00:49:10,000 --> 00:49:15,000
+<font color="#ffff54">다음 섹션에서는 다음과 같이 구현하겠습니다.</font>
+
+1658
+00:49:16,320 --> 00:49:20,640
+everything that we did here, but with more details.
+
+1659
+00:49:16,320 --> 00:49:20,640
+<font color="#ffff54">여기서 한 모든 것을 더 자세히 설명합니다.</font>
+
+1660
+00:49:20,640 --> 00:49:25,640
+And I think the question that we got to remove slash metric
+
+1661
+00:49:20,640 --> 00:49:25,640
+<font color="#ffff54">그리고 슬래시 메트릭을 제거해야 할 것 같습니다.</font>
+
+1662
+00:49:27,440 --> 00:49:29,880
+is exactly the kind of thing that we are going to do
+
+1663
+00:49:27,440 --> 00:49:29,880
+<font color="#ffff54">이 바로 우리가 할 일입니다.</font>
+
+1664
+00:49:29,880 --> 00:49:32,420
+because we are looking for real life issues
+
+1665
+00:49:29,880 --> 00:49:32,420
+<font color="#ffff54">우리는 실제 문제를 찾고 있기 때문입니다.</font>
+
+1666
+00:49:32,579 --> 00:49:35,500
+we faced when we work with open telemetry.
+
+1667
+00:49:32,579 --> 00:49:35,500
+<font color="#ffff54">개방형 텔레메트리로 작업할 때 직면한 문제입니다.</font>
+
+1668
+00:49:37,300 --> 00:49:40,099
+Yeah, so we have to get your questions.
+
+1669
+00:49:37,300 --> 00:49:40,099
+<font color="#ffff54">네, 질문이 있으신가요?</font>
+
+1670
+00:49:40,099 --> 00:49:43,059
+Cool, yeah, so we already have a first question,
+
+1671
+00:49:40,099 --> 00:49:43,059
+<font color="#ffff54">좋아요, 벌써 첫 번째 질문이 나왔네요,</font>
+
+1672
+00:49:43,059 --> 00:49:46,180
+like a general question about open telemetry
+
+1673
+00:49:43,059 --> 00:49:46,180
+<font color="#ffff54">오픈 텔레메트리에 대한 일반적인 질문 같은 거요</font>
+
+1674
+00:49:46,180 --> 00:49:47,860
+and open telemetry compares
+
+1675
+00:49:46,180 --> 00:49:47,860
+<font color="#ffff54">개방형 텔레메트리 비교</font>
+
+1676
+00:49:47,860 --> 00:49:52,059
+to regular application monitoring APMs,
+
+1677
+00:49:47,860 --> 00:49:52,059
+<font color="#ffff54">를 일반 애플리케이션 모니터링 APM과 비교합니다,</font>
+
+1678
+00:49:52,059 --> 00:49:54,059
+like AppDynamics and Dynatrace.
+
+1679
+00:49:52,059 --> 00:49:54,059
+<font color="#ffff54">앱다이나믹스 및 다이나트레이스와 같이.</font>
+
+1680
+00:49:55,019 --> 00:49:56,019
+What is the real difference?
+
+1681
+00:49:55,019 --> 00:49:56,019
+<font color="#ffff54">실제 차이점은 무엇인가요?</font>
+
+1682
+00:49:56,019 --> 00:49:59,740
+Is it just about how logs and metrics correlated
+
+1683
+00:49:56,019 --> 00:49:59,740
+<font color="#ffff54">로그와 메트릭의 상관 관계에 관한 것일까요?</font>
+
+1684
+00:49:59,740 --> 00:50:01,500
+or is there anything else here?
+
+1685
+00:49:59,740 --> 00:50:01,500
+<font color="#ffff54">아니면 다른 이유가 있나요?</font>
+
+1686
+00:50:03,340 --> 00:50:04,860
+Yeah, great question.
+
+1687
+00:50:03,340 --> 00:50:04,860
+<font color="#ffff54">네, 좋은 질문입니다.</font>
+
+1688
+00:50:04,860 --> 00:50:09,860
+So open telemetry by itself is the method to collect data
+
+1689
+00:50:04,860 --> 00:50:09,860
+<font color="#ffff54">그러니까 오픈 텔레메트리는 그 자체로 데이터를 수집하는 방법입니다.</font>
+
+1690
+00:50:10,420 --> 00:50:11,619
+and to distribute it.
+
+1691
+00:50:10,420 --> 00:50:11,619
+<font color="#ffff54">배포하는 방법입니다.</font>
+
+1692
+00:50:12,900 --> 00:50:17,059
+So it's not about what you do with this data.
+
+1693
+00:50:12,900 --> 00:50:17,059
+<font color="#ffff54">따라서 이 데이터로 무엇을 하느냐가 중요한 게 아닙니다.</font>
+
+1694
+00:50:17,059 --> 00:50:19,900
+You do have the area to visualize the data,
+
+1695
+00:50:17,059 --> 00:50:19,900
+<font color="#ffff54">데이터를 시각화할 수 있는 영역이 있습니다,</font>
+
+1696
+00:50:19,900 --> 00:50:21,820
+but that's the tip of the iceberg, right?
+
+1697
+00:50:19,900 --> 00:50:21,820
+<font color="#ffff54">하지만 이건 빙산의 일각이죠?</font>
+
+1698
+00:50:21,820 --> 00:50:24,300
+You just can see the trace.
+
+1699
+00:50:21,820 --> 00:50:24,300
+<font color="#ffff54">흔적만 보이네요.</font>
+
+1700
+00:50:24,300 --> 00:50:29,300
+Companies like Dynatrace and AppDynamics
+
+1701
+00:50:24,300 --> 00:50:29,300
+<font color="#ffff54">다이나트레이스와 앱다이나믹스 같은 회사들</font>
+
+1702
+00:50:29,980 --> 00:50:34,980
+are companies that basically trying to solve the problem
+
+1703
+00:50:29,980 --> 00:50:34,980
+<font color="#ffff54">기본적으로 문제를 해결하려고 노력하는 기업들입니다.</font>
+
+1704
+00:50:35,820 --> 00:50:38,220
+that open telemetry collects data to solve,
+
+1705
+00:50:35,820 --> 00:50:38,220
+<font color="#ffff54">오픈 텔레메트리로 데이터를 수집하여 문제를 해결하려는 기업입니다,</font>
+
+1706
+00:50:38,220 --> 00:50:42,780
+which is to fix issues faster.
+
+1707
+00:50:38,220 --> 00:50:42,780
+<font color="#ffff54">문제를 더 빨리 해결하기 위한 것입니다.</font>
+
+1708
+00:50:42,780 --> 00:50:46,940
+Both companies used to not work with open telemetry
+
+1709
+00:50:42,780 --> 00:50:46,940
+<font color="#ffff54">두 회사 모두 개방형 텔레메트리를 사용하지 않았습니다.</font>
+
+1710
+00:50:46,940 --> 00:50:49,720
+and migrating to open telemetry.
+
+1711
+00:50:46,940 --> 00:50:49,720
+<font color="#ffff54">개방형 텔레메트리로 마이그레이션합니다.</font>
+
+1712
+00:50:49,720 --> 00:50:53,260
+So any APM tool that you know out there
+
+1713
+00:50:49,720 --> 00:50:53,260
+<font color="#ffff54">따라서 여러분이 알고 있는 모든 APM 도구는</font>
+
+1714
+00:50:53,260 --> 00:50:57,780
+is doing some extent of effort to migrate to open telemetry.
+
+1715
+00:50:53,260 --> 00:50:57,780
+<font color="#ffff54">오픈 텔레메트리로 마이그레이션하기 위해 어느 정도 노력하고 있습니다.</font>
+
+1716
+00:50:57,780 --> 00:51:02,620
+I think the question from the consumer side is,
+
+1717
+00:50:57,780 --> 00:51:02,620
+<font color="#ffff54">소비자 측의 질문은 다음과 같습니다,</font>
+
+1718
+00:51:03,740 --> 00:51:05,420
+I want to be part of the community.
+
+1719
+00:51:03,740 --> 00:51:05,420
+<font color="#ffff54">커뮤니티의 일원이 되고 싶어요.</font>
+
+1720
+00:51:05,420 --> 00:51:07,060
+I want to be part of the standard
+
+1721
+00:51:05,420 --> 00:51:07,060
+<font color="#ffff54">표준의 일부가 되고 싶습니다.</font>
+
+1722
+00:51:07,060 --> 00:51:10,480
+and I want to get the flexibility that I want to have
+
+1723
+00:51:07,060 --> 00:51:10,480
+<font color="#ffff54">나는 내가 원하는 유연성을 얻고 싶다.</font>
+
+1724
+00:51:10,480 --> 00:51:12,620
+when I'm working with the standard.
+
+1725
+00:51:10,480 --> 00:51:12,620
+<font color="#ffff54">표준으로 작업할 때.</font>
+
+1726
+00:51:12,620 --> 00:51:15,340
+That means that you will be able to collect
+
+1727
+00:51:12,620 --> 00:51:15,340
+<font color="#ffff54">즉, 다음을 수집할 수 있습니다.</font>
+
+1728
+00:51:15,340 --> 00:51:19,460
+open telemetry data and then ship it whenever you want.
+
+1729
+00:51:15,340 --> 00:51:19,460
+<font color="#ffff54">텔레메트리 데이터를 열어 원할 때마다 전송할 수 있습니다.</font>
+
+1730
+00:51:19,460 --> 00:51:22,680
+You will be able to ship it to your favorite APM tool,
+
+1731
+00:51:19,460 --> 00:51:22,680
+<font color="#ffff54">선호하는 APM 도구로 전송할 수 있습니다,</font>
+
+1732
+00:51:22,680 --> 00:51:25,900
+but also you may be able to part of it
+
+1733
+00:51:22,680 --> 00:51:25,900
+<font color="#ffff54">하지만 일부만 전송할 수도 있습니다.</font>
+
+1734
+00:51:25,900 --> 00:51:28,059
+versus for yourself or other purposes.
+
+1735
+00:51:25,900 --> 00:51:28,059
+<font color="#ffff54">대 자신이나 다른 목적을 위해.</font>
+
+1736
+00:51:28,059 --> 00:51:30,740
+Or if you want to, let's say,
+
+1737
+00:51:28,059 --> 00:51:30,740
+<font color="#ffff54">또는 원할 경우,</font>
+
+1738
+00:51:30,740 --> 00:51:33,660
+ship traces to one vendor because he's very,
+
+1739
+00:51:30,740 --> 00:51:33,660
+<font color="#ffff54">한 공급업체로 배송 추적을 보냅니다,</font>
+
+1740
+00:51:33,660 --> 00:51:37,139
+very good with traces and then the metrics
+
+1741
+00:51:33,660 --> 00:51:37,139
+<font color="#ffff54">추적과 메트릭에 매우 능숙합니다.</font>
+
+1742
+00:51:37,139 --> 00:51:40,820
+and the logs to another one, because it's good at that,
+
+1743
+00:51:37,139 --> 00:51:40,820
+<font color="#ffff54">그리고 로그를 다른 것으로 옮겼습니다,</font>
+
+1744
+00:51:40,820 --> 00:51:42,800
+it will give you this flexibility.
+
+1745
+00:51:40,820 --> 00:51:42,800
+<font color="#ffff54">이 유연성을 제공합니다.</font>
+
+1746
+00:51:44,420 --> 00:51:49,059
+But in a sense, open telemetry is going to change a bit
+
+1747
+00:51:44,420 --> 00:51:49,059
+<font color="#ffff54">하지만 어떤 의미에서 개방형 텔레메트리는 약간 바뀔 것입니다.</font>
+
+1748
+00:51:49,059 --> 00:51:53,260
+how we're using APM as for today.
+
+1749
+00:51:49,059 --> 00:51:53,260
+<font color="#ffff54">오늘날 우리가 APM을 사용하는 방식이 달라질 것입니다.</font>
+
+1750
+00:51:54,260 --> 00:51:56,900
+So if in the past, like APMs,
+
+1751
+00:51:54,260 --> 00:51:56,900
+<font color="#ffff54">그렇다면 과거에는 APM처럼</font>
+
+1752
+00:51:56,900 --> 00:52:01,500
+each one of them had its own proprietary capabilities
+
+1753
+00:51:56,900 --> 00:52:01,500
+<font color="#ffff54">각각 고유한 기능을 가지고 있었습니다.</font>
+
+1754
+00:52:01,500 --> 00:52:04,380
+of how to collect the data, proprietary agents
+
+1755
+00:52:01,500 --> 00:52:04,380
+<font color="#ffff54">데이터를 수집하는 방법, 독점 에이전트</font>
+
+1756
+00:52:04,380 --> 00:52:07,220
+and ways to deploy and collect data.
+
+1757
+00:52:04,380 --> 00:52:07,220
+<font color="#ffff54">데이터를 배포하고 수집하는 방법</font>
+
+1758
+00:52:07,220 --> 00:52:08,860
+So to some extent,
+
+1759
+00:52:07,220 --> 00:52:08,860
+<font color="#ffff54">어느 정도는요,</font>
+
+1760
+00:52:08,860 --> 00:52:12,100
+open telemetry is commoditizing the data layer.
+
+1761
+00:52:08,860 --> 00:52:12,100
+<font color="#ffff54">개방형 텔레메트리가 데이터 계층을 상품화하고 있습니다.</font>
+
+1762
+00:52:12,100 --> 00:52:14,540
+And now it's more of a question of like,
+
+1763
+00:52:12,100 --> 00:52:14,540
+<font color="#ffff54">이제는 '좋아요'의 문제입니다,</font>
+
+1764
+00:52:14,540 --> 00:52:16,660
+what are you doing with this data?
+
+1765
+00:52:14,540 --> 00:52:16,660
+<font color="#ffff54">이 데이터로 뭘 할 건가요?</font>
+
+1766
+00:52:16,660 --> 00:52:20,320
+And probably each vendor has its own ways to do that.
+
+1767
+00:52:16,660 --> 00:52:20,320
+<font color="#ffff54">아마도 각 벤더마다 고유한 방법이 있을 겁니다.</font>
+
+1768
+00:52:21,320 --> 00:52:23,559
+But maybe another interesting thing
+
+1769
+00:52:21,320 --> 00:52:23,559
+<font color="#ffff54">하지만 또 다른 흥미로운 점은</font>
+
+1770
+00:52:23,559 --> 00:52:26,240
+that we will touch on later on in these sessions,
+
+1771
+00:52:23,559 --> 00:52:26,240
+<font color="#ffff54">이 세션의 뒷부분에서 다룰 것입니다,</font>
+
+1772
+00:52:26,240 --> 00:52:29,280
+maybe more of the last ones are,
+
+1773
+00:52:26,240 --> 00:52:29,280
+<font color="#ffff54">어쩌면 마지막에 더 많이 있을지도 모르죠,</font>
+
+1774
+00:52:30,160 --> 00:52:31,720
+what else we can do with this data?
+
+1775
+00:52:30,160 --> 00:52:31,720
+<font color="#ffff54">이 데이터로 또 무엇을 할 수 있을까요?</font>
+
+1776
+00:52:31,720 --> 00:52:35,960
+Because it's not just about an alert in production,
+
+1777
+00:52:31,720 --> 00:52:35,960
+<font color="#ffff54">단순히 프로덕션의 경보에 관한 것이 아니기 때문입니다,</font>
+
+1778
+00:52:35,960 --> 00:52:38,880
+it's actually a very, very powerful data layer
+
+1779
+00:52:35,960 --> 00:52:38,880
+<font color="#ffff54">실제로는 매우 강력한 데이터 레이어입니다.</font>
+
+1780
+00:52:38,880 --> 00:52:40,980
+that can be used for different purposes.
+
+1781
+00:52:38,880 --> 00:52:40,980
+<font color="#ffff54">다양한 용도로 사용할 수 있습니다.</font>
+
+1782
+00:52:44,800 --> 00:52:45,800
+Okay, cool.
+
+1783
+00:52:44,800 --> 00:52:45,800
+<font color="#ffff54">좋아, 멋지네.</font>
+
+1784
+00:52:46,800 --> 00:52:50,900
+Maybe just a few last thing before we're closing.
+
+1785
+00:52:46,800 --> 00:52:50,900
+<font color="#ffff54">닫기 전에 마지막으로 몇 가지만 더 할게요.</font>
+
+1786
+00:52:52,360 --> 00:52:56,000
+Please join our channel in the CNCF Slack
+
+1787
+00:52:52,360 --> 00:52:56,000
+<font color="#ffff54">CNCF 슬랙의 채널에 참여해주세요.</font>
+
+1788
+00:52:56,000 --> 00:52:57,960
+Open Telemetry Bootcamp.
+
+1789
+00:52:56,000 --> 00:52:57,960
+<font color="#ffff54">원격 측정 부트캠프를 엽니다.</font>
+
+1790
+00:52:57,960 --> 00:52:59,840
+If you've got any questions,
+
+1791
+00:52:57,960 --> 00:52:59,840
+<font color="#ffff54">질문이 있으신가요?</font>
+
+1792
+00:52:59,840 --> 00:53:03,180
+feel free to ask them and I'll be happy to answer you.
+
+1793
+00:52:59,840 --> 00:53:03,180
+<font color="#ffff54">언제든지 질문해 주시면 기꺼이 답변해 드리겠습니다.</font>
+
+1794
+00:53:04,160 --> 00:53:06,720
+Few more resources that you can find
+
+1795
+00:53:04,160 --> 00:53:06,720
+<font color="#ffff54">더 많은 리소스를 찾을 수 있습니다.</font>
+
+1796
+00:53:06,720 --> 00:53:10,440
+mostly about how to run Eager locally
+
+1797
+00:53:06,720 --> 00:53:10,440
+<font color="#ffff54">대부분 Eager를 로컬에서 실행하는 방법에 관한 것</font>
+
+1798
+00:53:10,440 --> 00:53:12,880
+and how to run Eager on AWS.
+
+1799
+00:53:10,440 --> 00:53:12,880
+<font color="#ffff54">그리고 AWS에서 Eager를 실행하는 방법.</font>
+
+1800
+00:53:12,880 --> 00:53:14,000
+We're running on AWS,
+
+1801
+00:53:12,880 --> 00:53:14,000
+<font color="#ffff54">AWS에서 실행 중입니다,</font>
+
+1802
+00:53:14,000 --> 00:53:15,840
+so that's why we chose to write about it.
+
+1803
+00:53:14,000 --> 00:53:15,840
+<font color="#ffff54">그래서 이 글을 쓰기로 했습니다.</font>
+
+1804
+00:53:15,840 --> 00:53:19,239
+So if it's that interesting, you can definitely check it out.
+
+1805
+00:53:15,840 --> 00:53:19,239
+<font color="#ffff54">그렇게 흥미롭다면 꼭 확인해보세요.</font>
+
+1806
+00:53:19,239 --> 00:53:23,559
+And as I said, next episode would be mostly about
+
+1807
+00:53:19,239 --> 00:53:23,559
+<font color="#ffff54">그리고 말씀드렸듯이 다음 에피소드는 주로 다음과 같은 내용입니다.</font>
+
+1808
+00:53:23,559 --> 00:53:25,599
+integrating into our code.
+
+1809
+00:53:23,559 --> 00:53:25,599
+<font color="#ffff54">우리 코드에 통합하는 것입니다.</font>
+
+1810
+00:53:26,940 --> 00:53:28,360
+Cool. All right, cool.
+
+1811
+00:53:26,940 --> 00:53:28,360
+<font color="#ffff54">멋지네요. 좋아, 멋지다.</font>
+
+1812
+00:53:28,360 --> 00:53:30,039
+So yeah, Michael, thank you for that.
+
+1813
+00:53:28,360 --> 00:53:30,039
+<font color="#ffff54">그래, 마이클, 고마워.</font>
+
+1814
+00:53:30,039 --> 00:53:33,480
+That was very interesting.
+
+1815
+00:53:30,039 --> 00:53:33,480
+<font color="#ffff54">아주 재미있었어.</font>
+
+1816
+00:53:33,480 --> 00:53:35,039
+What is it? 53 minutes.
+
+1817
+00:53:33,480 --> 00:53:35,039
+<font color="#ffff54">뭐지? 53분입니다.</font>
+
+1818
+00:53:35,039 --> 00:53:39,639
+Wow, that was really fast on my end.
+
+1819
+00:53:35,039 --> 00:53:39,639
+<font color="#ffff54">와, 내가 보기엔 정말 빠르네.</font>
+
+1820
+00:53:39,639 --> 00:53:41,400
+So thank you very much for that.
+
+1821
+00:53:39,639 --> 00:53:41,400
+<font color="#ffff54">정말 고마워요.</font>
+
+1822
+00:53:41,400 --> 00:53:43,280
+Thank you everybody that joined us.
+
+1823
+00:53:41,400 --> 00:53:43,280
+<font color="#ffff54">함께 해주신 모든 분들께 감사드립니다.</font>
+
+1824
+00:53:43,280 --> 00:53:45,720
+As mentioned, this is gonna be available online
+
+1825
+00:53:43,280 --> 00:53:45,720
+<font color="#ffff54">앞서 말씀드린 대로, 온라인으로도 시청하실 수 있습니다.</font>
+
+1826
+00:53:45,720 --> 00:53:49,480
+so you can access it whenever you want.
+
+1827
+00:53:45,720 --> 00:53:49,480
+<font color="#ffff54">원할 때 언제든지 접속할 수 있습니다.</font>
+
+1828
+00:53:49,480 --> 00:53:50,800
+The Slack channel is available
+
+1829
+00:53:49,480 --> 00:53:50,800
+<font color="#ffff54">슬랙 채널을 사용할 수 있습니다.</font>
+
+1830
+00:53:50,800 --> 00:53:53,120
+if you have questions outside of these sessions
+
+1831
+00:53:50,800 --> 00:53:53,120
+<font color="#ffff54">이 세션 외에 질문이 있는 경우</font>
+
+1832
+00:53:53,120 --> 00:53:55,100
+or if there is anything in particular
+
+1833
+00:53:53,120 --> 00:53:55,100
+<font color="#ffff54">또는 특별한 사항이 있는 경우</font>
+
+1834
+00:53:55,100 --> 00:53:58,800
+that you would like us to cover in future sessions.
+
+1835
+00:53:55,100 --> 00:53:58,800
+<font color="#ffff54">다음 세션에서 다루었으면 하는 내용.</font>
+
+1836
+00:53:58,800 --> 00:54:02,720
+So be my guest and reach out.
+
+1837
+00:53:58,800 --> 00:54:02,720
+<font color="#ffff54">언제든지 연락주세요.</font>
+
+1838
+00:54:02,720 --> 00:54:04,480
+We're here to promote Open Telemetry,
+
+1839
+00:54:02,720 --> 00:54:04,480
+<font color="#ffff54">오픈 텔레메트리를 홍보하기 위해 왔습니다,</font>
+
+1840
+00:54:04,480 --> 00:54:07,440
+to promote the community, so feel free.
+
+1841
+00:54:04,480 --> 00:54:07,440
+<font color="#ffff54">커뮤니티를 홍보하기 위해 왔으니 자유롭게 이용하세요.</font>
+
+1842
+00:54:07,440 --> 00:54:08,420
+So thank you again.
+
+1843
+00:54:07,440 --> 00:54:08,420
+<font color="#ffff54">다시 한번 감사드립니다.</font>
+
+1844
+00:54:08,420 --> 00:54:11,080
+We'll be here in our next session.
+
+1845
+00:54:08,420 --> 00:54:11,080
+<font color="#ffff54">다음 세션에서 뵙겠습니다.</font>
+
+1846
+00:54:12,039 --> 00:54:13,960
+Have a good rest of the day.
+
+1847
+00:54:12,039 --> 00:54:13,960
+<font color="#ffff54">좋은 하루 되세요.</font>
+
+1848
+00:54:13,960 --> 00:54:15,559
+Bye-bye everybody.
+
+1849
+00:54:13,960 --> 00:54:15,559
+<font color="#ffff54">모두 안녕히 계세요.</font>
+
+1850
+00:54:15,559 --> 00:54:16,400
+Bye-bye.
+
+1851
+00:54:15,559 --> 00:54:16,400
+<font color="#ffff54">안녕.</font>

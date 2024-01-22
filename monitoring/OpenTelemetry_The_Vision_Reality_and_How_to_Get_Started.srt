@@ -1,0 +1,5223 @@
+﻿1
+00:00:00,000 --> 00:00:12,600
+Hello, everyone.
+
+2
+00:00:00,000 --> 00:00:12,600
+<font color="#c7c7c7">안녕하세요, 여러분.</font>
+
+3
+00:00:12,600 --> 00:00:13,600
+Glad to be here.
+
+4
+00:00:12,600 --> 00:00:13,600
+<font color="#c7c7c7">잘 오셨습니다.</font>
+
+5
+00:00:13,600 --> 00:00:16,040
+And amazing to see a full house.
+
+6
+00:00:13,600 --> 00:00:16,040
+<font color="#c7c7c7">만원이라니 놀랍네요.</font>
+
+7
+00:00:16,040 --> 00:00:18,560
+There are a few seats in the front,
+
+8
+00:00:16,040 --> 00:00:18,560
+<font color="#c7c7c7">앞쪽에 자리가 몇 개 있어요,</font>
+
+9
+00:00:18,560 --> 00:00:20,600
+so if you can get some more people,
+
+10
+00:00:18,560 --> 00:00:20,600
+<font color="#c7c7c7">좀 더 사람을 모을 수 있다면,</font>
+
+11
+00:00:20,600 --> 00:00:22,200
+there are definitely more seats.
+
+12
+00:00:20,600 --> 00:00:22,200
+<font color="#c7c7c7">확실히 더 많은 좌석이 있습니다.</font>
+
+13
+00:00:22,200 --> 00:00:25,520
+But amazing to see everyone here in a full house.
+
+14
+00:00:22,200 --> 00:00:25,520
+<font color="#c7c7c7">하지만 모두가 꽉 찬 모습을 보니 놀랍습니다.</font>
+
+15
+00:00:25,520 --> 00:00:29,000
+Shame we can't see the people there on the virtual platform.
+
+16
+00:00:25,520 --> 00:00:29,000
+<font color="#c7c7c7">가상 플랫폼에서 사람들을 볼 수 없어서 아쉽네요.</font>
+
+17
+00:00:29,000 --> 00:00:32,440
+I'm really excited to be here at KubeCon.
+
+18
+00:00:29,000 --> 00:00:32,440
+<font color="#c7c7c7">큐브콘에 오게 되어 정말 기쁩니다.</font>
+
+19
+00:00:32,440 --> 00:00:35,200
+And today I'd like to talk to you about OpenTelemetry,
+
+20
+00:00:32,440 --> 00:00:35,200
+<font color="#c7c7c7">오늘은 오픈텔레메트리에 대해 말씀드리겠습니다,</font>
+
+21
+00:00:35,200 --> 00:00:39,600
+a project that I'm very passionate about, the vision,
+
+22
+00:00:35,200 --> 00:00:39,600
+<font color="#c7c7c7">제가 매우 열정을 쏟고 있는 프로젝트이자 비전입니다,</font>
+
+23
+00:00:39,600 --> 00:00:43,400
+the reality, and how to get started with it.
+
+24
+00:00:39,600 --> 00:00:43,400
+<font color="#c7c7c7">현실, 그리고 그것을 시작하는 방법.</font>
+
+25
+00:00:43,400 --> 00:00:44,680
+And let's start with a question.
+
+26
+00:00:43,400 --> 00:00:44,680
+<font color="#c7c7c7">질문부터 시작하겠습니다.</font>
+
+27
+00:00:47,800 --> 00:00:52,320
+How many tools does a company use, on average,
+
+28
+00:00:47,800 --> 00:00:52,320
+<font color="#c7c7c7">회사에서 평균적으로 사용하는 도구는 몇 개입니까?</font>
+
+29
+00:00:52,320 --> 00:00:55,400
+to collect telemetry data from its systems?
+
+30
+00:00:52,320 --> 00:00:55,400
+<font color="#c7c7c7">시스템에서 텔레메트리 데이터를 수집하는 데 평균적으로 몇 개의 도구를 사용하십니까?</font>
+
+31
+00:00:56,000 --> 00:00:56,500
+Many.
+
+32
+00:00:56,000 --> 00:00:56,500
+<font color="#c7c7c7">다수.</font>
+
+33
+00:00:56,500 --> 00:01:03,200
+Think about logs, metrics, traces.
+
+34
+00:00:56,500 --> 00:01:03,200
+<font color="#c7c7c7">로그, 메트릭, 트레이스에 대해 생각해 보세요.</font>
+
+35
+00:01:03,200 --> 00:01:06,760
+Think about your front end app, your back end app,
+
+36
+00:01:03,200 --> 00:01:06,760
+<font color="#c7c7c7">프론트엔드 앱과 백엔드 앱에 대해 생각해 보세요,</font>
+
+37
+00:01:06,760 --> 00:01:09,680
+your infrastructure, everything.
+
+38
+00:01:06,760 --> 00:01:09,680
+<font color="#c7c7c7">인프라, 모든 것을 생각하세요.</font>
+
+39
+00:01:09,680 --> 00:01:11,960
+How many tools?
+
+40
+00:01:09,680 --> 00:01:11,960
+<font color="#c7c7c7">도구는 몇 개입니까?</font>
+
+41
+00:01:11,960 --> 00:01:13,320
+10.
+
+42
+00:01:11,960 --> 00:01:13,320
+<font color="#c7c7c7">10.</font>
+
+43
+00:01:13,320 --> 00:01:15,720
+Any other guesses?
+
+44
+00:01:13,320 --> 00:01:15,720
+<font color="#c7c7c7">다른 추측이 있나요?</font>
+
+45
+00:01:15,720 --> 00:01:20,360
+Well, recent surveys show that companies
+
+46
+00:01:15,720 --> 00:01:20,360
+<font color="#c7c7c7">최근 설문 조사에 따르면 기업들은</font>
+
+47
+00:01:20,360 --> 00:01:25,720
+use, on average, between 5 to 10 different tools
+
+48
+00:01:20,360 --> 00:01:25,720
+<font color="#c7c7c7">평균적으로 5~10개의 서로 다른 도구를 사용합니다.</font>
+
+49
+00:01:25,720 --> 00:01:29,720
+to collect telemetry data from the systems.
+
+50
+00:01:25,720 --> 00:01:29,720
+<font color="#c7c7c7">시스템에서 원격 측정 데이터를 수집합니다.</font>
+
+51
+00:01:29,720 --> 00:01:32,800
+5 to 10.
+
+52
+00:01:29,720 --> 00:01:32,800
+<font color="#c7c7c7">5 ~ 10</font>
+
+53
+00:01:32,800 --> 00:01:38,800
+You can reduce it to one unified standard platform.
+
+54
+00:01:32,800 --> 00:01:38,800
+<font color="#c7c7c7">하나의 통합된 표준 플랫폼으로 줄일 수 있습니다.</font>
+
+55
+00:01:38,800 --> 00:01:41,960
+That's the story of OpenTelemetry.
+
+56
+00:01:38,800 --> 00:01:41,960
+<font color="#c7c7c7">이것이 바로 오픈텔레메트리의 이야기입니다.</font>
+
+57
+00:01:45,720 --> 00:01:47,320
+I'm Dutan Horvitz.
+
+58
+00:01:45,720 --> 00:01:47,320
+<font color="#c7c7c7">저는 두탄 호르비츠입니다.</font>
+
+59
+00:01:47,320 --> 00:01:50,880
+I'm the principal developer advocate at logs.io.
+
+60
+00:01:47,320 --> 00:01:50,880
+<font color="#c7c7c7">저는 logs.io의 수석 개발자 옹호자입니다.</font>
+
+61
+00:01:50,880 --> 00:01:54,520
+At logs.io, we provide, essentially,
+
+62
+00:01:50,880 --> 00:01:54,520
+<font color="#c7c7c7">logs.io에서는 기본적으로 다음과 같은 서비스를 제공합니다,</font>
+
+63
+00:01:54,520 --> 00:01:56,400
+cloud native observability platform
+
+64
+00:01:54,520 --> 00:01:56,400
+<font color="#c7c7c7">클라우드 네이티브 통합 가시성 플랫폼</font>
+
+65
+00:01:56,400 --> 00:01:58,480
+that's based on popular open source tools,
+
+66
+00:01:56,400 --> 00:01:58,480
+<font color="#c7c7c7">인기 있는 오픈 소스 도구를 기반으로 합니다,</font>
+
+67
+00:01:58,480 --> 00:02:01,800
+such as Prometheus and Jaeger, and obviously,
+
+68
+00:01:58,480 --> 00:02:01,800
+<font color="#c7c7c7">프로메테우스나 예거와 같은 유명 오픈소스 툴을 기반으로 합니다,</font>
+
+69
+00:02:01,800 --> 00:02:05,040
+OpenTelemetry and other projects.
+
+70
+00:02:01,800 --> 00:02:05,040
+<font color="#c7c7c7">오픈텔레메트리 및 기타 프로젝트.</font>
+
+71
+00:02:05,040 --> 00:02:08,440
+I'm an advocate of open source and communities in general,
+
+72
+00:02:05,040 --> 00:02:08,440
+<font color="#c7c7c7">저는 오픈소스와 커뮤니티 전반을 지지합니다,</font>
+
+73
+00:02:08,440 --> 00:02:10,080
+and the CNCF in particular.
+
+74
+00:02:08,440 --> 00:02:10,080
+<font color="#c7c7c7">특히 CNCF를 지지합니다.</font>
+
+75
+00:02:10,080 --> 00:02:14,080
+That's why it's very exciting to be here on the KubeCon stage.
+
+76
+00:02:10,080 --> 00:02:14,080
+<font color="#c7c7c7">그렇기 때문에 큐브콘 무대에 서는 것이 매우 흥분됩니다.</font>
+
+77
+00:02:14,080 --> 00:02:17,120
+I co-organize the local CNCF chapter in Tel Aviv.
+
+78
+00:02:14,080 --> 00:02:17,120
+<font color="#c7c7c7">저는 텔아비브에서 CNCF 지역 지부를 공동 조직하고 있습니다.</font>
+
+79
+00:02:18,120 --> 00:02:20,520
+I co-organize DevOps days.
+
+80
+00:02:18,120 --> 00:02:20,520
+<font color="#c7c7c7">데브옵스 데이를 공동 주최합니다.</font>
+
+81
+00:02:20,520 --> 00:02:23,760
+I have a podcast, Open Observability Talks,
+
+82
+00:02:20,520 --> 00:02:23,760
+<font color="#c7c7c7">오픈 옵저버빌리티 토크 팟캐스트를 진행합니다,</font>
+
+83
+00:02:23,760 --> 00:02:26,440
+on open source DevOps and observability.
+
+84
+00:02:23,760 --> 00:02:26,440
+<font color="#c7c7c7">오픈 소스 데브옵스와 통합 가시성에 대해 이야기합니다.</font>
+
+85
+00:02:26,440 --> 00:02:30,200
+So if you're a podcast fan, do check it out.
+
+86
+00:02:26,440 --> 00:02:30,200
+<font color="#c7c7c7">팟캐스트 팬이라면 꼭 들어보세요.</font>
+
+87
+00:02:30,200 --> 00:02:34,920
+And in general, you can find me everywhere at Horvitz.
+
+88
+00:02:30,200 --> 00:02:34,920
+<font color="#c7c7c7">그리고 일반적으로 호르비츠의 모든 곳에서 저를 찾을 수 있습니다.</font>
+
+89
+00:02:34,920 --> 00:02:39,440
+And let's talk about observability.
+
+90
+00:02:34,920 --> 00:02:39,440
+<font color="#c7c7c7">이제 관찰 가능성에 대해 이야기해 봅시다.</font>
+
+91
+00:02:39,440 --> 00:02:42,760
+As you all know, observability is essentially
+
+92
+00:02:39,440 --> 00:02:42,760
+<font color="#c7c7c7">모두 아시다시피, 가관측성은 본질적으로</font>
+
+93
+00:02:42,760 --> 00:02:47,400
+the ability to understand the state of our system
+
+94
+00:02:42,760 --> 00:02:47,400
+<font color="#c7c7c7">우리 시스템의 상태를 이해하는 능력</font>
+
+95
+00:02:47,400 --> 00:02:51,480
+based on the telemetry data that it emits.
+
+96
+00:02:47,400 --> 00:02:51,480
+<font color="#c7c7c7">방출하는 원격 측정 데이터를 기반으로 합니다.</font>
+
+97
+00:02:51,480 --> 00:02:55,280
+And the vision talks about unified observability
+
+98
+00:02:51,480 --> 00:02:55,280
+<font color="#c7c7c7">그리고 이 비전은 통합 가시성에 대해 이야기합니다.</font>
+
+99
+00:02:55,280 --> 00:03:00,000
+across different signal types, classically, the three pillars,
+
+100
+00:02:55,280 --> 00:03:00,000
+<font color="#c7c7c7">서로 다른 신호 유형에 걸쳐, 고전적으로 세 가지 기둥을 말합니다,</font>
+
+101
+00:03:00,000 --> 00:03:02,760
+logs, metrics, and traces, but also
+
+102
+00:03:00,000 --> 00:03:02,760
+<font color="#c7c7c7">로그, 메트릭, 트레이스뿐만 아니라</font>
+
+103
+00:03:02,760 --> 00:03:04,480
+across different sources.
+
+104
+00:03:02,760 --> 00:03:04,480
+<font color="#c7c7c7">에 걸쳐 있습니다.</font>
+
+105
+00:03:04,480 --> 00:03:07,160
+So again, think about your front-end code,
+
+106
+00:03:04,480 --> 00:03:07,160
+<font color="#c7c7c7">다시 한 번 프런트엔드 코드를 생각해 보세요,</font>
+
+107
+00:03:07,160 --> 00:03:10,400
+your back-end code, your Kafka-ready,
+
+108
+00:03:07,160 --> 00:03:10,400
+<font color="#c7c7c7">백엔드 코드, 카프카 지원,</font>
+
+109
+00:03:10,400 --> 00:03:13,880
+other open source projects, cloud services,
+
+110
+00:03:10,400 --> 00:03:13,880
+<font color="#c7c7c7">기타 오픈 소스 프로젝트, 클라우드 서비스,</font>
+
+111
+00:03:13,880 --> 00:03:17,680
+essentially just fusing all of these together
+
+112
+00:03:13,880 --> 00:03:17,680
+<font color="#c7c7c7">본질적으로 이 모든 것을 융합한 것</font>
+
+113
+00:03:17,680 --> 00:03:22,560
+to gain insights and observability into your system.
+
+114
+00:03:17,680 --> 00:03:22,560
+<font color="#c7c7c7">시스템에 대한 인사이트와 관찰력을 확보할 수 있습니다.</font>
+
+115
+00:03:22,560 --> 00:03:23,240
+That's the vision.
+
+116
+00:03:22,560 --> 00:03:23,240
+<font color="#c7c7c7">이것이 바로 비전입니다.</font>
+
+117
+00:03:26,560 --> 00:03:31,220
+The reality, however, is much more fragmented.
+
+118
+00:03:26,560 --> 00:03:31,220
+<font color="#c7c7c7">하지만 현실은 훨씬 더 파편화되어 있습니다.</font>
+
+119
+00:03:31,220 --> 00:03:35,800
+And the reason is exactly what we asked at the beginning.
+
+120
+00:03:31,220 --> 00:03:35,800
+<font color="#c7c7c7">그 이유는 우리가 처음에 질문했던 것과 정확히 일치합니다.</font>
+
+121
+00:03:35,800 --> 00:03:39,280
+The reason is that we use so many different tools
+
+122
+00:03:35,800 --> 00:03:39,280
+<font color="#c7c7c7">그 이유는 우리가 너무 다양한 도구를 사용하기 때문입니다.</font>
+
+123
+00:03:39,280 --> 00:03:41,000
+for observability.
+
+124
+00:03:39,280 --> 00:03:41,000
+<font color="#c7c7c7">관찰 가능성을 위해.</font>
+
+125
+00:03:41,000 --> 00:03:46,360
+And each tool and each vendor has its own API and SDK
+
+126
+00:03:41,000 --> 00:03:46,360
+<font color="#c7c7c7">그리고 각 도구와 공급업체마다 고유한 API와 SDK가 있습니다.</font>
+
+127
+00:03:46,360 --> 00:03:49,840
+for instrumenting different programming languages,
+
+128
+00:03:46,360 --> 00:03:49,840
+<font color="#c7c7c7">다양한 프로그래밍 언어를 계측할 수 있습니다,</font>
+
+129
+00:03:49,840 --> 00:03:54,420
+and then daemon, collector, agent for collecting,
+
+130
+00:03:49,840 --> 00:03:54,420
+<font color="#c7c7c7">그리고 데몬, 수집기, 수집을 위한 에이전트,</font>
+
+131
+00:03:54,420 --> 00:03:57,320
+aggregating, processing that data,
+
+132
+00:03:54,420 --> 00:03:57,320
+<font color="#c7c7c7">집계, 해당 데이터 처리,</font>
+
+133
+00:03:57,320 --> 00:04:01,320
+and then its own data model and protocol
+
+134
+00:03:57,320 --> 00:04:01,320
+<font color="#c7c7c7">그리고 자체 데이터 모델과 프로토콜</font>
+
+135
+00:04:01,320 --> 00:04:06,400
+for transmitting that and sending it over.
+
+136
+00:04:01,320 --> 00:04:06,400
+<font color="#c7c7c7">전송하고 전송하는 데 사용됩니다.</font>
+
+137
+00:04:06,400 --> 00:04:10,480
+And all of that is not only an operational headache
+
+138
+00:04:06,400 --> 00:04:10,480
+<font color="#c7c7c7">이 모든 것은 운영상의 골칫거리일 뿐만 아니라</font>
+
+139
+00:04:10,480 --> 00:04:15,240
+running so many different tools, but more importantly,
+
+140
+00:04:10,480 --> 00:04:15,240
+<font color="#c7c7c7">다양한 도구를 실행하는 것도 문제지만 더 중요한 것은</font>
+
+141
+00:04:15,240 --> 00:04:20,280
+it creates tight coupling between the telemetry collection
+
+142
+00:04:15,240 --> 00:04:20,280
+<font color="#c7c7c7">원격 측정 컬렉션 간에 긴밀한 결합을 생성합니다.</font>
+
+143
+00:04:20,280 --> 00:04:26,440
+side and the storage and analytics back end.
+
+144
+00:04:20,280 --> 00:04:26,440
+<font color="#c7c7c7">측면과 스토리지 및 분석 백엔드 사이에 긴밀하게 연결됩니다.</font>
+
+145
+00:04:26,440 --> 00:04:31,400
+And most importantly, it makes it very, very difficult
+
+146
+00:04:26,440 --> 00:04:31,400
+<font color="#c7c7c7">그리고 가장 중요한 것은, 이것이 매우, 매우 어렵게 만든다는 것입니다.</font>
+
+147
+00:04:31,400 --> 00:04:37,360
+to correlate that data and be able to gain
+
+148
+00:04:31,400 --> 00:04:37,360
+<font color="#c7c7c7">그 데이터의 상관관계를 파악하여</font>
+
+149
+00:04:37,360 --> 00:04:42,520
+that unified observability across these essentially data
+
+150
+00:04:37,360 --> 00:04:42,520
+<font color="#c7c7c7">이러한 본질적인 데이터에 대한 통합 가시성을 확보할 수 있습니다.</font>
+
+151
+00:04:42,520 --> 00:04:44,880
+silos.
+
+152
+00:04:42,520 --> 00:04:44,880
+<font color="#c7c7c7">사일로</font>
+
+153
+00:04:44,880 --> 00:04:51,920
+So that's what open telemetry comes to solve in a nutshell.
+
+154
+00:04:44,880 --> 00:04:51,920
+<font color="#c7c7c7">이것이 바로 개방형 텔레메트리가 해결하고자 하는 문제입니다.</font>
+
+155
+00:04:51,920 --> 00:04:55,000
+So open telemetry, or OTEL as its nickname,
+
+156
+00:04:51,920 --> 00:04:55,000
+<font color="#c7c7c7">그래서 개방형 텔레메트리, 또는 별칭으로 OTEL이라고 합니다,</font>
+
+157
+00:04:55,000 --> 00:04:57,000
+so if I say OTEL, forgive me, that's
+
+158
+00:04:55,000 --> 00:04:57,000
+<font color="#c7c7c7">그래서 내가 OTEL이라고 말하면 용서하세요.</font>
+
+159
+00:04:57,000 --> 00:05:00,640
+how usually the group internally calls it,
+
+160
+00:04:57,000 --> 00:05:00,640
+<font color="#c7c7c7">그룹 내부에서 일반적으로 부르는 방식입니다,</font>
+
+161
+00:05:00,640 --> 00:05:08,400
+is an observability framework for generating and capturing,
+
+162
+00:05:00,640 --> 00:05:08,400
+<font color="#c7c7c7">은 생성 및 캡처를 위한 통합 가시성 프레임워크입니다,</font>
+
+163
+00:05:08,400 --> 00:05:13,000
+collecting telemetry data from systems, cloud native systems,
+
+164
+00:05:08,400 --> 00:05:13,000
+<font color="#c7c7c7">시스템, 클라우드 네이티브 시스템에서 원격 측정 데이터를 수집합니다,</font>
+
+165
+00:05:13,000 --> 00:05:17,560
+across logs, metrics, and traces.
+
+166
+00:05:13,000 --> 00:05:17,560
+<font color="#c7c7c7">로그, 메트릭 및 추적 전반에서.</font>
+
+167
+00:05:17,560 --> 00:05:22,740
+So one framework to rule them all if you'd like.
+
+168
+00:05:17,560 --> 00:05:22,740
+<font color="#c7c7c7">원한다면 하나의 프레임워크로 모든 것을 관리할 수 있습니다.</font>
+
+169
+00:05:22,740 --> 00:05:28,560
+And it's a project under the CNCF.
+
+170
+00:05:22,740 --> 00:05:28,560
+<font color="#c7c7c7">그리고 그것은 CNCF의 프로젝트입니다.</font>
+
+171
+00:05:28,560 --> 00:05:29,800
+It's an incubating project.
+
+172
+00:05:28,560 --> 00:05:29,800
+<font color="#c7c7c7">인큐베이팅 프로젝트입니다.</font>
+
+173
+00:05:29,800 --> 00:05:34,360
+It's, in essence, in fact, a merge of open tracing
+
+174
+00:05:29,800 --> 00:05:34,360
+<font color="#c7c7c7">본질적으로 오픈 트레이싱의 병합입니다.</font>
+
+175
+00:05:34,360 --> 00:05:36,760
+and open census projects of the CNCF.
+
+176
+00:05:34,360 --> 00:05:36,760
+<font color="#c7c7c7">CNCF의 오픈 센서스 프로젝트가 합쳐진 것입니다.</font>
+
+177
+00:05:36,760 --> 00:05:41,200
+So if you're familiar with them, that's the future path.
+
+178
+00:05:36,760 --> 00:05:41,200
+<font color="#c7c7c7">익숙하다면 앞으로 나아갈 길입니다.</font>
+
+179
+00:05:41,200 --> 00:05:42,640
+You need to move.
+
+180
+00:05:41,200 --> 00:05:42,640
+<font color="#c7c7c7">움직여야 해.</font>
+
+181
+00:05:42,640 --> 00:05:46,560
+That's especially interesting for you this talk.
+
+182
+00:05:42,640 --> 00:05:46,560
+<font color="#c7c7c7">이번 강연이 특히 흥미롭군요.</font>
+
+183
+00:05:46,560 --> 00:05:50,880
+And I'm very happy to be here, especially here on the KubeCon
+
+184
+00:05:46,560 --> 00:05:50,880
+<font color="#c7c7c7">특히 여기 큐브콘에 오게 되어 매우 기쁩니다.</font>
+
+185
+00:05:50,880 --> 00:05:55,440
+stage, to say that open telemetry has been vastly
+
+186
+00:05:50,880 --> 00:05:55,440
+<font color="#c7c7c7">개방형 원격 측정이 크게 발전했다고 말할 수 있습니다.</font>
+
+187
+00:05:55,440 --> 00:05:58,120
+adopted across the industry.
+
+188
+00:05:55,440 --> 00:05:58,120
+<font color="#c7c7c7">업계 전반에 걸쳐 채택되었습니다.</font>
+
+189
+00:05:58,120 --> 00:06:01,480
+So you see all the cloud vendors, all the monitoring
+
+190
+00:05:58,120 --> 00:06:01,480
+<font color="#c7c7c7">모든 클라우드 공급업체와 모든 모니터링이 한 곳에서 이루어집니다.</font>
+
+191
+00:06:01,480 --> 00:06:03,520
+and observability solutions.
+
+192
+00:06:01,480 --> 00:06:03,520
+<font color="#c7c7c7">그리고 통합 가시성 솔루션까지.</font>
+
+193
+00:06:03,520 --> 00:06:06,800
+Everyone has been aligning behind open telemetry,
+
+194
+00:06:03,520 --> 00:06:06,800
+<font color="#c7c7c7">모두가 개방형 텔레메트리를 지지하고 있습니다,</font>
+
+195
+00:06:06,800 --> 00:06:11,280
+which is fantastic for us as a community and for the CNCF.
+
+196
+00:06:06,800 --> 00:06:11,280
+<font color="#c7c7c7">이는 우리 커뮤니티와 CNCF에게 환상적인 일입니다.</font>
+
+197
+00:06:11,280 --> 00:06:17,800
+It's also the second most active project in the CNCF today.
+
+198
+00:06:11,280 --> 00:06:17,800
+<font color="#c7c7c7">현재 CNCF에서 두 번째로 활발한 프로젝트이기도 합니다.</font>
+
+199
+00:06:17,800 --> 00:06:21,120
+In fact, it's the second most active after Kubernetes
+
+200
+00:06:17,800 --> 00:06:21,120
+<font color="#c7c7c7">실제로 쿠버네티스에 이어 두 번째로 활발합니다.</font>
+
+201
+00:06:21,120 --> 00:06:25,120
+itself, which is astounding, if you ask me.
+
+202
+00:06:21,120 --> 00:06:25,120
+<font color="#c7c7c7">그 자체로도 놀랍습니다.</font>
+
+203
+00:06:25,120 --> 00:06:29,560
+So just to show you how much excitement, how much activity,
+
+204
+00:06:25,120 --> 00:06:29,560
+<font color="#c7c7c7">얼마나 흥분하고 얼마나 활동적인지 보여드리려고요,</font>
+
+205
+00:06:29,560 --> 00:06:33,560
+and how much is going goes on in this project.
+
+206
+00:06:29,560 --> 00:06:33,560
+<font color="#c7c7c7">그리고 이 프로젝트에서 얼마나 많은 일이 진행되고 있는지 보여드리려고요.</font>
+
+207
+00:06:33,560 --> 00:06:37,480
+And by the way, this is taken from the CNCF DevStats
+
+208
+00:06:33,560 --> 00:06:37,480
+<font color="#c7c7c7">참고로 이것은 CNCF 개발자 통계에서 가져온 것입니다.</font>
+
+209
+00:06:37,480 --> 00:06:38,200
+dashboard.
+
+210
+00:06:37,480 --> 00:06:38,200
+<font color="#c7c7c7">대시보드입니다.</font>
+
+211
+00:06:38,200 --> 00:06:40,360
+So you can go check it out yourselves
+
+212
+00:06:38,200 --> 00:06:40,360
+<font color="#c7c7c7">직접 확인해보세요.</font>
+
+213
+00:06:40,360 --> 00:06:42,560
+and slice and dice the data.
+
+214
+00:06:40,360 --> 00:06:42,560
+<font color="#c7c7c7">데이터를 잘게 쪼개서 분석해 보세요.</font>
+
+215
+00:06:42,560 --> 00:06:46,120
+But essentially, it's pretty consistent for a lot of time,
+
+216
+00:06:42,560 --> 00:06:46,120
+<font color="#c7c7c7">하지만 기본적으로 많은 시간 동안 꽤 일관성이 있습니다,</font>
+
+217
+00:06:46,120 --> 00:06:48,720
+for a long time already.
+
+218
+00:06:46,120 --> 00:06:48,720
+<font color="#c7c7c7">이미 오래전부터요.</font>
+
+219
+00:06:48,720 --> 00:06:51,120
+And I hope that I convinced you that open telemetry is
+
+220
+00:06:48,720 --> 00:06:51,120
+<font color="#c7c7c7">그리고 제가 오픈 텔레메트리가</font>
+
+221
+00:06:51,120 --> 00:06:53,800
+interesting and that you are.
+
+222
+00:06:51,120 --> 00:06:53,800
+<font color="#c7c7c7">흥미롭고 당신은 흥미 롭습니다.</font>
+
+223
+00:06:53,920 --> 00:06:55,520
+And the reason that this is important,
+
+224
+00:06:53,920 --> 00:06:55,520
+<font color="#c7c7c7">그리고 이것이 중요한 이유,</font>
+
+225
+00:06:55,520 --> 00:06:58,880
+because this is how projects become de facto standards.
+
+226
+00:06:55,520 --> 00:06:58,880
+<font color="#c7c7c7">이것이 프로젝트가 사실상 표준이 되는 방식이기 때문입니다.</font>
+
+227
+00:06:58,880 --> 00:07:00,760
+When you see the industry aligning behind it,
+
+228
+00:06:58,880 --> 00:07:00,760
+<font color="#c7c7c7">업계가 그 뒤를 따르는 것을 볼 수 있습니다,</font>
+
+229
+00:07:00,760 --> 00:07:02,880
+when you see it's very active and moving.
+
+230
+00:07:00,760 --> 00:07:02,880
+<font color="#c7c7c7">매우 활발하고 움직이는 것을 볼 때.</font>
+
+231
+00:07:02,880 --> 00:07:04,400
+So I'm really excited, and I truly
+
+232
+00:07:02,880 --> 00:07:04,400
+<font color="#c7c7c7">그래서 저는 정말 흥분되고, 진심으로</font>
+
+233
+00:07:04,400 --> 00:07:07,320
+believe that this is going to converge the industry.
+
+234
+00:07:04,400 --> 00:07:07,320
+<font color="#c7c7c7">이것이 산업을 융합할 것이라고 믿습니다.</font>
+
+235
+00:07:07,320 --> 00:07:10,680
+And I hope that I managed to convince you, or at least
+
+236
+00:07:07,320 --> 00:07:10,680
+<font color="#c7c7c7">그리고 제가 여러분을 설득했거나 적어도</font>
+
+237
+00:07:10,680 --> 00:07:12,280
+that you're interested to hear more.
+
+238
+00:07:10,680 --> 00:07:12,280
+<font color="#c7c7c7">더 듣고 싶다고 설득했길 바랍니다.</font>
+
+239
+00:07:12,280 --> 00:07:19,000
+So let's dive deeper into what open telemetry gives us.
+
+240
+00:07:12,280 --> 00:07:19,000
+<font color="#c7c7c7">이제 개방형 텔레메트리가 제공하는 기능에 대해 자세히 알아봅시다.</font>
+
+241
+00:07:19,000 --> 00:07:21,680
+So in essence, open telemetry provides us
+
+242
+00:07:19,000 --> 00:07:21,680
+<font color="#c7c7c7">개방형 텔레메트리는 본질적으로 다음과 같은 이점을 제공합니다.</font>
+
+243
+00:07:21,680 --> 00:07:29,600
+the APIs, SDKs, and tools for generating telemetry data,
+
+244
+00:07:21,680 --> 00:07:29,600
+<font color="#c7c7c7">텔레메트리 데이터를 생성하기 위한 API, SDK 및 도구를 제공합니다,</font>
+
+245
+00:07:29,600 --> 00:07:36,160
+logs, metrics, traces from our own applications.
+
+246
+00:07:29,600 --> 00:07:36,160
+<font color="#c7c7c7">자체 애플리케이션의 로그, 메트릭, 추적.</font>
+
+247
+00:07:36,160 --> 00:07:40,640
+And then that's the bluish part on the left-hand side.
+
+248
+00:07:36,160 --> 00:07:40,640
+<font color="#c7c7c7">그리고 왼쪽의 푸르스름한 부분입니다.</font>
+
+249
+00:07:40,640 --> 00:07:46,960
+And then a unified way of collecting and processing
+
+250
+00:07:40,640 --> 00:07:46,960
+<font color="#c7c7c7">그리고 통합된 수집 및 처리 방식입니다.</font>
+
+251
+00:07:46,960 --> 00:07:50,360
+that data across different sources,
+
+252
+00:07:46,960 --> 00:07:50,360
+<font color="#c7c7c7">다양한 소스에서 데이터를 수집하고 처리합니다,</font>
+
+253
+00:07:50,360 --> 00:07:53,240
+both our apps and other types of sources, infrastructure
+
+254
+00:07:50,360 --> 00:07:53,240
+<font color="#c7c7c7">앱과 다른 유형의 소스, 인프라 모두.</font>
+
+255
+00:07:53,240 --> 00:07:54,280
+and others.
+
+256
+00:07:53,240 --> 00:07:54,280
+<font color="#c7c7c7">그리고 기타</font>
+
+257
+00:07:54,280 --> 00:07:57,640
+And then that's the green part in the middle.
+
+258
+00:07:54,280 --> 00:07:57,640
+<font color="#c7c7c7">그리고 중간에 녹색 부분이 있습니다.</font>
+
+259
+00:07:57,640 --> 00:08:02,040
+And then a standard way of exposing and transmitting
+
+260
+00:07:57,640 --> 00:08:02,040
+<font color="#c7c7c7">그리고 표준 노출 및 전송 방식입니다.</font>
+
+261
+00:08:02,040 --> 00:08:03,960
+that data, the telemetry data.
+
+262
+00:08:02,040 --> 00:08:03,960
+<font color="#c7c7c7">그 데이터, 원격 측정 데이터.</font>
+
+263
+00:08:03,960 --> 00:08:05,360
+That's the orange part.
+
+264
+00:08:03,960 --> 00:08:05,360
+<font color="#c7c7c7">주황색 부분이죠.</font>
+
+265
+00:08:05,360 --> 00:08:09,640
+And then sending it off to whichever back end you choose.
+
+266
+00:08:05,360 --> 00:08:09,640
+<font color="#c7c7c7">그리고 선택한 백엔드로 전송합니다.</font>
+
+267
+00:08:09,640 --> 00:08:13,760
+Open telemetry does not take any stand in the back end.
+
+268
+00:08:09,640 --> 00:08:13,760
+<font color="#c7c7c7">개방형 텔레메트리는 백엔드에서 아무런 입장을 취하지 않습니다.</font>
+
+269
+00:08:13,760 --> 00:08:14,840
+It's your choice.
+
+270
+00:08:13,760 --> 00:08:14,840
+<font color="#c7c7c7">당신의 선택입니다.</font>
+
+271
+00:08:14,840 --> 00:08:18,160
+Open telemetry has lots of integrations, as we'll see.
+
+272
+00:08:14,840 --> 00:08:18,160
+<font color="#c7c7c7">개방형 텔레메트리에는 많은 통합 기능이 있습니다.</font>
+
+273
+00:08:18,160 --> 00:08:20,920
+It's not part of open telemetry scope.
+
+274
+00:08:18,160 --> 00:08:20,920
+<font color="#c7c7c7">개방형 텔레메트리 범위에 포함되지 않습니다.</font>
+
+275
+00:08:20,920 --> 00:08:23,240
+So that's open telemetry in a nutshell.
+
+276
+00:08:20,920 --> 00:08:23,240
+<font color="#c7c7c7">이것이 바로 개방형 텔레메트리입니다.</font>
+
+277
+00:08:23,240 --> 00:08:24,200
+And don't worry.
+
+278
+00:08:23,240 --> 00:08:24,200
+<font color="#c7c7c7">걱정하지 마세요.</font>
+
+279
+00:08:24,200 --> 00:08:27,280
+I'm going to explain each and every one of these components
+
+280
+00:08:24,200 --> 00:08:27,280
+<font color="#c7c7c7">이 구성 요소들을 하나하나 설명해드리겠습니다.</font>
+
+281
+00:08:27,280 --> 00:08:28,240
+in greater detail now.
+
+282
+00:08:27,280 --> 00:08:28,240
+<font color="#c7c7c7">이제 더 자세히 설명하겠습니다.</font>
+
+283
+00:08:32,240 --> 00:08:34,560
+But before going into the components,
+
+284
+00:08:32,240 --> 00:08:34,560
+<font color="#c7c7c7">하지만 컴포넌트로 들어가기 전에,</font>
+
+285
+00:08:34,560 --> 00:08:41,360
+I'd like to talk a bit about open telemetry specification,
+
+286
+00:08:34,560 --> 00:08:41,360
+<font color="#c7c7c7">개방형 텔레메트리 사양에 대해 조금 이야기하고 싶습니다,</font>
+
+287
+00:08:41,360 --> 00:08:42,800
+which is not a component in itself,
+
+288
+00:08:41,360 --> 00:08:42,800
+<font color="#c7c7c7">그 자체로는 구성 요소가 아닙니다,</font>
+
+289
+00:08:42,800 --> 00:08:46,200
+but it governs all the other implementations,
+
+290
+00:08:42,800 --> 00:08:46,200
+<font color="#c7c7c7">하지만 다른 모든 구현에 적용됩니다,</font>
+
+291
+00:08:46,200 --> 00:08:48,280
+open telemetry implementations out there.
+
+292
+00:08:46,200 --> 00:08:48,280
+<font color="#c7c7c7">개방형 텔레메트리 구현에 적용됩니다.</font>
+
+293
+00:08:48,280 --> 00:08:51,900
+And essentially, it provides specification
+
+294
+00:08:48,280 --> 00:08:51,900
+<font color="#c7c7c7">그리고 기본적으로 다음과 같은 사양을 제공합니다.</font>
+
+295
+00:08:51,900 --> 00:08:56,360
+to describe cross-language requirements and expectations
+
+296
+00:08:51,900 --> 00:08:56,360
+<font color="#c7c7c7">언어 간 요구 사항과 기대치를 설명합니다.</font>
+
+297
+00:08:56,360 --> 00:08:58,040
+across the implementations.
+
+298
+00:08:56,360 --> 00:08:58,040
+<font color="#c7c7c7">구현 전반에 걸쳐</font>
+
+299
+00:08:58,040 --> 00:09:03,760
+So it defines the API spec, the SDK spec, and the data spec,
+
+300
+00:08:58,040 --> 00:09:03,760
+<font color="#c7c7c7">따라서 API 사양, SDK 사양, 데이터 사양을 정의합니다,</font>
+
+301
+00:09:03,760 --> 00:09:06,760
+things such as semantic conventions, annotations,
+
+302
+00:09:03,760 --> 00:09:06,760
+<font color="#c7c7c7">의미론적 규칙, 어노테이션 같은 것들을 정의합니다,</font>
+
+303
+00:09:06,760 --> 00:09:12,280
+and so on, across logs, metrics, and traces.
+
+304
+00:09:06,760 --> 00:09:12,280
+<font color="#c7c7c7">등, 로그, 메트릭, 추적 전반에서.</font>
+
+305
+00:09:12,280 --> 00:09:14,560
+And though you won't probably, as end users,
+
+306
+00:09:12,280 --> 00:09:14,560
+<font color="#c7c7c7">최종 사용자는 아마 느끼지 못하겠지만요,</font>
+
+307
+00:09:14,560 --> 00:09:16,520
+interact directly with the specification
+
+308
+00:09:14,560 --> 00:09:16,520
+<font color="#c7c7c7">사양과 직접 상호 작용</font>
+
+309
+00:09:16,520 --> 00:09:19,640
+on a regular basis as much as the other components,
+
+310
+00:09:16,520 --> 00:09:19,640
+<font color="#c7c7c7">다른 컴포넌트들처럼 정기적으로 상호작용합니다,</font>
+
+311
+00:09:19,640 --> 00:09:21,480
+it is important to understand that,
+
+312
+00:09:19,640 --> 00:09:21,480
+<font color="#c7c7c7">이를 이해하는 것이 중요합니다,</font>
+
+313
+00:09:21,480 --> 00:09:24,280
+because this comes to solve the exact problem we talked
+
+314
+00:09:21,480 --> 00:09:24,280
+<font color="#c7c7c7">왜냐하면 이것은 우리가 이야기했던 바로 그 문제를 해결하기 위해서입니다.</font>
+
+315
+00:09:24,280 --> 00:09:28,320
+about before of fragmentation of each tool and each vendor
+
+316
+00:09:24,280 --> 00:09:28,320
+<font color="#c7c7c7">각 도구와 각 공급업체의 파편화 이전에 대해 설명합니다.</font>
+
+317
+00:09:28,320 --> 00:09:31,480
+having its own, and each programming language having
+
+318
+00:09:28,320 --> 00:09:31,480
+<font color="#c7c7c7">각 프로그래밍 언어가 자체적으로 존재하고, 각 프로그래밍 언어가</font>
+
+319
+00:09:31,480 --> 00:09:36,680
+its own APIs, SDKs, formats, and so on.
+
+320
+00:09:31,480 --> 00:09:36,680
+<font color="#c7c7c7">자체 API, SDK, 형식 등이 있습니다.</font>
+
+321
+00:09:36,680 --> 00:09:40,360
+And moreover, having that across one platform
+
+322
+00:09:36,680 --> 00:09:40,360
+<font color="#c7c7c7">게다가 하나의 플랫폼에서 이를 모두 사용할 수 있다는 것은</font>
+
+323
+00:09:40,360 --> 00:09:43,720
+allows then the correlation between the data.
+
+324
+00:09:40,360 --> 00:09:43,720
+<font color="#c7c7c7">데이터 간의 상관관계를 파악할 수 있습니다.</font>
+
+325
+00:09:43,720 --> 00:09:45,480
+So it's not just one.
+
+326
+00:09:43,720 --> 00:09:45,480
+<font color="#c7c7c7">하나만 있는 것이 아닙니다.</font>
+
+327
+00:09:45,480 --> 00:09:47,760
+It's one that can correlate across signals
+
+328
+00:09:45,480 --> 00:09:47,760
+<font color="#c7c7c7">신호 간에 상관관계가 있는 신호입니다.</font>
+
+329
+00:09:47,760 --> 00:09:49,240
+and across sources.
+
+330
+00:09:47,760 --> 00:09:49,240
+<font color="#c7c7c7">그리고 소스 간에도.</font>
+
+331
+00:09:49,240 --> 00:09:54,000
+So that's very important to be aware of.
+
+332
+00:09:49,240 --> 00:09:54,000
+<font color="#c7c7c7">이 점을 알아두는 것이 매우 중요합니다.</font>
+
+333
+00:09:54,000 --> 00:09:57,520
+And the first component that most people encounter
+
+334
+00:09:54,000 --> 00:09:57,520
+<font color="#c7c7c7">그리고 대부분의 사람들이 접하는 첫 번째 구성 요소는</font>
+
+335
+00:09:57,520 --> 00:10:00,840
+are the client libraries.
+
+336
+00:09:57,520 --> 00:10:00,840
+<font color="#c7c7c7">은 클라이언트 라이브러리입니다.</font>
+
+337
+00:10:00,840 --> 00:10:06,640
+Open telemetry provides one API and one SDK per language
+
+338
+00:10:00,840 --> 00:10:06,640
+<font color="#c7c7c7">오픈 텔레메트리는 언어당 하나의 API와 하나의 SDK를 제공합니다.</font>
+
+339
+00:10:06,640 --> 00:10:11,120
+with which you can instrument and extract logs, metrics,
+
+340
+00:10:06,640 --> 00:10:11,120
+<font color="#c7c7c7">로그, 메트릭을 계측하고 추출할 수 있습니다,</font>
+
+341
+00:10:11,120 --> 00:10:14,480
+traces from your application, of course,
+
+342
+00:10:11,120 --> 00:10:14,480
+<font color="#c7c7c7">물론 애플리케이션의 추적도 가능합니다,</font>
+
+343
+00:10:14,480 --> 00:10:19,080
+adhering to the specification that we talked about before.
+
+344
+00:10:14,480 --> 00:10:19,080
+<font color="#c7c7c7">앞서 이야기한 사양을 준수합니다.</font>
+
+345
+00:10:19,080 --> 00:10:21,880
+It also provides integrations with popular libraries
+
+346
+00:10:19,080 --> 00:10:21,880
+<font color="#c7c7c7">또한 인기 있는 라이브러리와의 통합을 제공합니다.</font>
+
+347
+00:10:21,880 --> 00:10:27,120
+and frameworks, RPC, storage, web frameworks, and so on,
+
+348
+00:10:21,880 --> 00:10:27,120
+<font color="#c7c7c7">프레임워크, RPC, 스토리지, 웹 프레임워크 등과의 통합도 제공합니다,</font>
+
+349
+00:10:27,120 --> 00:10:28,860
+per language, of course, so that they
+
+350
+00:10:27,120 --> 00:10:28,860
+<font color="#c7c7c7">물론 언어별로, 그래서</font>
+
+351
+00:10:28,860 --> 00:10:32,040
+can extract from these languages more information
+
+352
+00:10:28,860 --> 00:10:32,040
+<font color="#c7c7c7">이 언어에서 더 많은 정보를 추출할 수 있습니다.</font>
+
+353
+00:10:32,040 --> 00:10:35,120
+and propagate context, and so on, within these frameworks.
+
+354
+00:10:32,040 --> 00:10:35,120
+<font color="#c7c7c7">이러한 프레임워크 내에서 컨텍스트 등을 전파할 수 있습니다.</font>
+
+355
+00:10:35,120 --> 00:10:39,520
+And also, auto-instrumentation agents per language,
+
+356
+00:10:35,120 --> 00:10:39,520
+<font color="#c7c7c7">또한 언어별 자동 인스트루먼트 에이전트도 있습니다,</font>
+
+357
+00:10:39,520 --> 00:10:41,040
+depending on the languages, that
+
+358
+00:10:39,520 --> 00:10:41,040
+<font color="#c7c7c7">언어에 따라</font>
+
+359
+00:10:41,040 --> 00:10:45,180
+allow for a low code to maybe no code instrumentation,
+
+360
+00:10:41,040 --> 00:10:45,180
+<font color="#c7c7c7">낮은 코드에서 코드 계측이 없을 수도 있습니다,</font>
+
+361
+00:10:45,180 --> 00:10:49,480
+so that you don't need to modify your code to start extracting
+
+362
+00:10:45,180 --> 00:10:49,480
+<font color="#c7c7c7">추출을 시작하기 위해 코드를 수정할 필요가 없습니다.</font>
+
+363
+00:10:49,480 --> 00:10:53,200
+at least table stakes type of metrics and data.
+
+364
+00:10:49,480 --> 00:10:53,200
+<font color="#c7c7c7">적어도 테이블 스테이크 유형의 메트릭과 데이터입니다.</font>
+
+365
+00:10:53,200 --> 00:10:56,920
+So essentially, Open Telemetry's mission statement
+
+366
+00:10:53,200 --> 00:10:56,920
+<font color="#c7c7c7">따라서 본질적으로 Open Telemetry의 사명 선언문은 다음과 같습니다.</font>
+
+367
+00:10:56,920 --> 00:11:01,240
+is to allow the full range between the fully manual
+
+368
+00:10:56,920 --> 00:11:01,240
+<font color="#c7c7c7">완전 수동과 완전 수동 사이의 전체 범위를 허용하는 것입니다.</font>
+
+369
+00:11:01,240 --> 00:11:04,640
+instrumentation to the fully automated instrumentation
+
+370
+00:11:01,240 --> 00:11:04,640
+<font color="#c7c7c7">계측에서 완전 자동 계측까지</font>
+
+371
+00:11:04,640 --> 00:11:05,960
+and anything in between.
+
+372
+00:11:04,640 --> 00:11:05,960
+<font color="#c7c7c7">그리고 그 사이의 모든 것.</font>
+
+373
+00:11:05,960 --> 00:11:07,880
+And that's important to say anything in between,
+
+374
+00:11:05,960 --> 00:11:07,880
+<font color="#c7c7c7">그 사이에 있는 모든 것을 말하는 것이 중요합니다,</font>
+
+375
+00:11:07,880 --> 00:11:08,880
+because you can combine.
+
+376
+00:11:07,880 --> 00:11:08,880
+<font color="#c7c7c7">결합할 수 있기 때문입니다.</font>
+
+377
+00:11:08,880 --> 00:11:10,880
+You don't need to decide either or.
+
+378
+00:11:08,880 --> 00:11:10,880
+<font color="#c7c7c7">둘 중 하나를 결정할 필요가 없습니다.</font>
+
+379
+00:11:10,880 --> 00:11:12,600
+You can start with auto-instrumentation
+
+380
+00:11:10,880 --> 00:11:12,600
+<font color="#c7c7c7">자동 인스트루멘테이션으로 시작할 수 있습니다.</font>
+
+381
+00:11:12,600 --> 00:11:15,840
+to get some table stakes and also lower barrier to entry.
+
+382
+00:11:12,600 --> 00:11:15,840
+<font color="#c7c7c7">테이블 지분을 확보하고 진입 장벽을 낮출 수 있습니다.</font>
+
+383
+00:11:15,840 --> 00:11:18,640
+And then you can add, on top of that custom instrumentation,
+
+384
+00:11:15,840 --> 00:11:18,640
+<font color="#c7c7c7">그리고 그 위에 맞춤형 계기를 추가할 수 있습니다,</font>
+
+385
+00:11:18,640 --> 00:11:22,240
+to add more fine-grained zoom in areas
+
+386
+00:11:18,640 --> 00:11:22,240
+<font color="#c7c7c7">를 추가하여 더 세분화된 영역을 확대할 수 있습니다.</font>
+
+387
+00:11:22,240 --> 00:11:24,520
+that you find important enough.
+
+388
+00:11:22,240 --> 00:11:24,520
+<font color="#c7c7c7">충분히 중요하다고 생각되는 부분</font>
+
+389
+00:11:24,520 --> 00:11:27,160
+And also, it accommodates to different situations.
+
+390
+00:11:24,520 --> 00:11:27,160
+<font color="#c7c7c7">또한 다양한 상황에 적응할 수 있습니다.</font>
+
+391
+00:11:27,160 --> 00:11:30,200
+If I have something that I can't modify the code,
+
+392
+00:11:27,160 --> 00:11:30,200
+<font color="#c7c7c7">내가 코드를 수정할 수 없는 것이 있다면,</font>
+
+393
+00:11:30,200 --> 00:11:34,160
+I need to monitor as black box monitoring,
+
+394
+00:11:30,200 --> 00:11:34,160
+<font color="#c7c7c7">블랙박스 모니터링으로 모니터링해야 합니다,</font>
+
+395
+00:11:34,160 --> 00:11:36,560
+because I can't modify, or I'm not allowed to modify,
+
+396
+00:11:34,160 --> 00:11:36,560
+<font color="#c7c7c7">수정할 수 없거나 수정이 허용되지 않기 때문입니다,</font>
+
+397
+00:11:36,560 --> 00:11:38,640
+or it's a third party, then, for example,
+
+398
+00:11:36,560 --> 00:11:38,640
+<font color="#c7c7c7">또는 제삼자이기 때문일 수 있습니다,</font>
+
+399
+00:11:38,640 --> 00:11:40,480
+auto-instrumentation would be the only option.
+
+400
+00:11:38,640 --> 00:11:40,480
+<font color="#c7c7c7">자동 인스트루먼트가 유일한 옵션입니다.</font>
+
+401
+00:11:40,480 --> 00:11:42,000
+It would be a must-have.
+
+402
+00:11:40,480 --> 00:11:42,000
+<font color="#c7c7c7">꼭 필요한 기능입니다.</font>
+
+403
+00:11:42,000 --> 00:11:47,440
+So you get the full range of the instrumentation capabilities.
+
+404
+00:11:42,000 --> 00:11:47,440
+<font color="#c7c7c7">모든 계측 기능을 사용할 수 있습니다.</font>
+
+405
+00:11:47,440 --> 00:11:52,160
+So that's Open Telemetry Client Libraries.
+
+406
+00:11:47,440 --> 00:11:52,160
+<font color="#c7c7c7">이것이 바로 개방형 텔레메트리 클라이언트 라이브러리입니다.</font>
+
+407
+00:11:52,160 --> 00:11:56,360
+Next up, I'd like to talk about Open Telemetry Collector that
+
+408
+00:11:52,160 --> 00:11:56,360
+<font color="#c7c7c7">다음으로, 오픈 텔레메트리 수집기에 대해 말씀드리겠습니다.</font>
+
+409
+00:11:56,360 --> 00:12:00,000
+can collect telemetry both from the SDKs
+
+410
+00:11:56,360 --> 00:12:00,000
+<font color="#c7c7c7">SDK에서 텔레메트리를 수집할 수 있습니다.</font>
+
+411
+00:12:00,000 --> 00:12:04,120
+that we talked about before, but also from other sources.
+
+412
+00:12:00,000 --> 00:12:04,120
+<font color="#c7c7c7">뿐만 아니라 다른 소스로부터도 수집할 수 있습니다.</font>
+
+413
+00:12:04,120 --> 00:12:06,760
+It could collect from infrastructure components,
+
+414
+00:12:04,120 --> 00:12:06,760
+<font color="#c7c7c7">인프라 구성 요소에서 수집할 수도 있습니다,</font>
+
+415
+00:12:06,760 --> 00:12:08,640
+open source cloud services.
+
+416
+00:12:06,760 --> 00:12:08,640
+<font color="#c7c7c7">오픈 소스 클라우드 서비스.</font>
+
+417
+00:12:08,640 --> 00:12:10,000
+You have a Kafka running.
+
+418
+00:12:08,640 --> 00:12:10,000
+<font color="#c7c7c7">카프카가 실행 중입니다.</font>
+
+419
+00:12:10,000 --> 00:12:10,720
+You want to send it.
+
+420
+00:12:10,000 --> 00:12:10,720
+<font color="#c7c7c7">전송하려고 합니다.</font>
+
+421
+00:12:10,720 --> 00:12:12,280
+You have a MySQL.
+
+422
+00:12:10,720 --> 00:12:12,280
+<font color="#c7c7c7">MySQL이 있습니다.</font>
+
+423
+00:12:12,280 --> 00:12:17,320
+You want AWS or Azure and Google services.
+
+424
+00:12:12,280 --> 00:12:17,320
+<font color="#c7c7c7">AWS 또는 Azure 및 Google 서비스를 원합니다.</font>
+
+425
+00:12:17,320 --> 00:12:19,440
+Whatever you can collect, and the Collector
+
+426
+00:12:17,320 --> 00:12:19,440
+<font color="#c7c7c7">수집할 수 있는 것은 무엇이든, 그리고 수집기</font>
+
+427
+00:12:19,440 --> 00:12:21,640
+can support that.
+
+428
+00:12:19,440 --> 00:12:21,640
+<font color="#c7c7c7">가 이를 지원할 수 있습니다.</font>
+
+429
+00:12:21,640 --> 00:12:23,520
+Process it, aggregate, and then send it
+
+430
+00:12:21,640 --> 00:12:23,520
+<font color="#c7c7c7">처리하고 집계한 다음 전송합니다.</font>
+
+431
+00:12:23,520 --> 00:12:26,120
+to whichever back end you choose.
+
+432
+00:12:23,520 --> 00:12:26,120
+<font color="#c7c7c7">선택한 백엔드로 전송합니다.</font>
+
+433
+00:12:26,120 --> 00:12:28,480
+And as you could imagine, you can see that here also,
+
+434
+00:12:26,120 --> 00:12:28,480
+<font color="#c7c7c7">상상할 수 있듯이 여기에서도 볼 수 있습니다,</font>
+
+435
+00:12:28,480 --> 00:12:33,200
+it's built as a typical data pipeline, data processing
+
+436
+00:12:28,480 --> 00:12:33,200
+<font color="#c7c7c7">일반적인 데이터 파이프라인, 데이터 처리로 구축되었습니다.</font>
+
+437
+00:12:33,200 --> 00:12:34,040
+pipeline.
+
+438
+00:12:33,200 --> 00:12:34,040
+<font color="#c7c7c7">파이프라인.</font>
+
+439
+00:12:34,040 --> 00:12:38,360
+It has receivers in multiple protocols.
+
+440
+00:12:34,040 --> 00:12:38,360
+<font color="#c7c7c7">여러 프로토콜의 수신자가 있습니다.</font>
+
+441
+00:12:38,360 --> 00:12:40,920
+It has processors.
+
+442
+00:12:38,360 --> 00:12:40,920
+<font color="#c7c7c7">프로세서가 있습니다.</font>
+
+443
+00:12:40,920 --> 00:12:44,080
+And then it has exporters in multiple protocols.
+
+444
+00:12:40,920 --> 00:12:44,080
+<font color="#c7c7c7">그리고 여러 프로토콜의 내보내기가 있습니다.</font>
+
+445
+00:12:44,080 --> 00:12:47,080
+So just as an example, if my code
+
+446
+00:12:44,080 --> 00:12:47,080
+<font color="#c7c7c7">예를 들어, 내 코드가</font>
+
+447
+00:12:47,080 --> 00:12:49,320
+emits traces in a Jaeger format, I just
+
+448
+00:12:47,080 --> 00:12:49,320
+<font color="#c7c7c7">가 예거 형식으로 트레이스를 방출한다면, 저는 그냥</font>
+
+449
+00:12:49,320 --> 00:12:51,000
+plug in the Jaeger receiver.
+
+450
+00:12:49,320 --> 00:12:51,000
+<font color="#c7c7c7">예거 수신기를 연결합니다.</font>
+
+451
+00:12:51,000 --> 00:12:54,480
+If I want metrics from Kafka, I plug in the Kafka receiver,
+
+452
+00:12:51,000 --> 00:12:54,480
+<font color="#c7c7c7">카프카의 메트릭을 원하면 카프카 리시버를 연결합니다,</font>
+
+453
+00:12:54,480 --> 00:12:55,520
+and so on and so forth.
+
+454
+00:12:54,480 --> 00:12:55,520
+<font color="#c7c7c7">등등 등등.</font>
+
+455
+00:12:55,520 --> 00:12:56,880
+That's for the receivers.
+
+456
+00:12:55,520 --> 00:12:56,880
+<font color="#c7c7c7">리시버용입니다.</font>
+
+457
+00:12:56,880 --> 00:13:00,680
+Then the processors have many types of processors
+
+458
+00:12:56,880 --> 00:13:00,680
+<font color="#c7c7c7">그런 다음 프로세서에는 여러 유형의 프로세서가 있습니다.</font>
+
+459
+00:13:00,680 --> 00:13:04,240
+to do different types of aggregations and processing,
+
+460
+00:13:00,680 --> 00:13:04,240
+<font color="#c7c7c7">를 사용하여 다양한 유형의 집계 및 처리를 수행합니다,</font>
+
+461
+00:13:04,240 --> 00:13:06,760
+batching, filtering, sampling, and so on.
+
+462
+00:13:04,240 --> 00:13:06,760
+<font color="#c7c7c7">일괄 처리, 필터링, 샘플링 등을 수행합니다.</font>
+
+463
+00:13:06,760 --> 00:13:09,720
+And I can also chain, concatenate
+
+464
+00:13:06,760 --> 00:13:09,720
+<font color="#c7c7c7">그리고 체인, 연결도 할 수 있습니다.</font>
+
+465
+00:13:09,720 --> 00:13:13,600
+different processors to create more elaborate logic.
+
+466
+00:13:09,720 --> 00:13:13,600
+<font color="#c7c7c7">더 정교한 로직을 만들 수 있습니다.</font>
+
+467
+00:13:13,600 --> 00:13:17,360
+And then based on the back end analytics tool that I use,
+
+468
+00:13:13,600 --> 00:13:17,360
+<font color="#c7c7c7">그리고 제가 사용하는 백엔드 분석 도구를 기반으로 합니다,</font>
+
+469
+00:13:17,360 --> 00:13:19,000
+and it doesn't have to be a single tool.
+
+470
+00:13:17,360 --> 00:13:19,000
+<font color="#c7c7c7">단일 도구일 필요는 없습니다.</font>
+
+471
+00:13:19,000 --> 00:13:19,800
+I can use several.
+
+472
+00:13:19,000 --> 00:13:19,800
+<font color="#c7c7c7">여러 개를 사용할 수 있습니다.</font>
+
+473
+00:13:19,800 --> 00:13:23,400
+I plug in the relevant exporters.
+
+474
+00:13:19,800 --> 00:13:23,400
+<font color="#c7c7c7">관련 내보내기를 연결합니다.</font>
+
+475
+00:13:23,400 --> 00:13:26,200
+If I want to send it to AWS X-Ray,
+
+476
+00:13:23,400 --> 00:13:26,200
+<font color="#c7c7c7">AWS X-Ray로 보내려면,</font>
+
+477
+00:13:26,200 --> 00:13:28,400
+I have the receiver for that.
+
+478
+00:13:26,200 --> 00:13:28,400
+<font color="#c7c7c7">이를 위한 수신기가 있습니다.</font>
+
+479
+00:13:28,400 --> 00:13:30,440
+I want to send it to Google Pub-Sub.
+
+480
+00:13:28,400 --> 00:13:30,440
+<font color="#c7c7c7">Google Pub-Sub로 보내고 싶습니다.</font>
+
+481
+00:13:30,440 --> 00:13:31,440
+I plug it to that.
+
+482
+00:13:30,440 --> 00:13:31,440
+<font color="#c7c7c7">거기에 연결합니다.</font>
+
+483
+00:13:31,440 --> 00:13:35,640
+I want to send it to Kafka, to Prometheus, to my company
+
+484
+00:13:31,440 --> 00:13:35,640
+<font color="#c7c7c7">카프카, 프로메테우스, 내 회사로 보내고 싶어요.</font>
+
+485
+00:13:35,640 --> 00:13:37,160
+Logs.io as an exporter.
+
+486
+00:13:35,640 --> 00:13:37,160
+<font color="#c7c7c7">Logs.io를 내보내려고 합니다.</font>
+
+487
+00:13:37,160 --> 00:13:40,560
+And any vendor and any tool largely supported,
+
+488
+00:13:37,160 --> 00:13:40,560
+<font color="#c7c7c7">그리고 모든 공급업체와 모든 도구가 대부분 지원됩니다,</font>
+
+489
+00:13:40,560 --> 00:13:42,800
+you have exporters.
+
+490
+00:13:40,560 --> 00:13:42,800
+<font color="#c7c7c7">수출업체가 있습니다.</font>
+
+491
+00:13:42,800 --> 00:13:44,440
+So that's about the collector.
+
+492
+00:13:42,800 --> 00:13:44,440
+<font color="#c7c7c7">수집가가 있습니다.</font>
+
+493
+00:13:47,800 --> 00:13:50,760
+And the last component that I would like to talk about
+
+494
+00:13:47,800 --> 00:13:50,760
+<font color="#c7c7c7">마지막으로 말씀드리고 싶은 구성 요소는 다음과 같습니다.</font>
+
+495
+00:13:50,760 --> 00:13:56,240
+is the Open Telemetry Protocol, or OTLP.
+
+496
+00:13:50,760 --> 00:13:56,240
+<font color="#c7c7c7">오픈 텔레메트리 프로토콜, 즉 OTLP입니다.</font>
+
+497
+00:13:56,240 --> 00:14:01,800
+And OTLP is essentially a general purpose telemetry data
+
+498
+00:13:56,240 --> 00:14:01,800
+<font color="#c7c7c7">그리고 OTLP는 본질적으로 범용 텔레메트리 데이터입니다.</font>
+
+499
+00:14:01,800 --> 00:14:03,720
+delivery protocol.
+
+500
+00:14:01,800 --> 00:14:03,720
+<font color="#c7c7c7">전송 프로토콜입니다.</font>
+
+501
+00:14:03,720 --> 00:14:05,840
+It can be used, as you can see here,
+
+502
+00:14:03,720 --> 00:14:05,840
+<font color="#c7c7c7">여기에서 볼 수 있듯이 사용할 수 있습니다,</font>
+
+503
+00:14:05,840 --> 00:14:11,640
+to send between the SDK, the OTEL SDK to the OTEL collector.
+
+504
+00:14:05,840 --> 00:14:11,640
+<font color="#c7c7c7">를 사용하여 SDK와 OTEL 수집기 간에 전송할 수 있습니다.</font>
+
+505
+00:14:11,640 --> 00:14:15,000
+It can be used to send between the collector and the back end
+
+506
+00:14:11,640 --> 00:14:15,000
+<font color="#c7c7c7">수집기와 백엔드 간에 전송하는 데 사용할 수 있습니다.</font>
+
+507
+00:14:15,000 --> 00:14:17,280
+analytics tool if it supports it.
+
+508
+00:14:15,000 --> 00:14:17,280
+<font color="#c7c7c7">분석 도구가 지원하는 경우.</font>
+
+509
+00:14:17,280 --> 00:14:19,200
+It can be used between intermediary nodes,
+
+510
+00:14:17,280 --> 00:14:19,200
+<font color="#c7c7c7">중개 노드 간에 사용할 수 있습니다,</font>
+
+511
+00:14:19,200 --> 00:14:22,320
+such as two different collectors, or any other purpose.
+
+512
+00:14:19,200 --> 00:14:22,320
+<font color="#c7c7c7">또는 다른 목적으로 사용할 수 있습니다.</font>
+
+513
+00:14:22,320 --> 00:14:25,680
+It's really a general purpose protocol.
+
+514
+00:14:22,320 --> 00:14:25,680
+<font color="#c7c7c7">정말 범용 프로토콜입니다.</font>
+
+515
+00:14:25,680 --> 00:14:29,760
+It's a client server request response.
+
+516
+00:14:25,680 --> 00:14:29,760
+<font color="#c7c7c7">클라이언트 서버 요청 응답입니다.</font>
+
+517
+00:14:29,760 --> 00:14:31,760
+As you can see here at the bottom, if you can see,
+
+518
+00:14:29,760 --> 00:14:31,760
+<font color="#c7c7c7">아래쪽에서 볼 수 있듯이,</font>
+
+519
+00:14:31,760 --> 00:14:36,720
+it's based on a GRPC and HTTP 1.1 for the transport.
+
+520
+00:14:31,760 --> 00:14:36,720
+<font color="#c7c7c7">전송을 위한 GRPC와 HTTP 1.1을 기반으로 합니다.</font>
+
+521
+00:14:36,720 --> 00:14:41,440
+So you have OTLP over HTTP and OTLP over GRPC.
+
+522
+00:14:36,720 --> 00:14:41,440
+<font color="#c7c7c7">따라서 HTTP를 통한 OTLP와 GRPC를 통한 OTLP가 있습니다.</font>
+
+523
+00:14:41,440 --> 00:14:46,200
+It currently supports the binary protobuf encoding.
+
+524
+00:14:41,440 --> 00:14:46,200
+<font color="#c7c7c7">현재 바이너리 프로토부프 인코딩을 지원합니다.</font>
+
+525
+00:14:46,200 --> 00:14:50,280
+And in the works, there's a plan to support also
+
+526
+00:14:46,200 --> 00:14:50,280
+<font color="#c7c7c7">그리고 다음 인코딩도 지원할 계획입니다.</font>
+
+527
+00:14:50,280 --> 00:14:52,080
+JSON encoding over HTTP.
+
+528
+00:14:50,280 --> 00:14:52,080
+<font color="#c7c7c7">HTTP를 통한 JSON 인코딩.</font>
+
+529
+00:14:52,080 --> 00:14:57,280
+So you'll have JSON over OTLP over HTTP.
+
+530
+00:14:52,080 --> 00:14:57,280
+<font color="#c7c7c7">따라서 HTTP를 통한 OTLP를 통한 JSON이 됩니다.</font>
+
+531
+00:14:57,280 --> 00:14:59,320
+And it's agnostic.
+
+532
+00:14:57,280 --> 00:14:59,320
+<font color="#c7c7c7">그리고 불가지론적입니다.</font>
+
+533
+00:14:59,320 --> 00:15:01,880
+So as you can see, you can actually take the proto file,
+
+534
+00:14:59,320 --> 00:15:01,880
+<font color="#c7c7c7">보시다시피 실제로 프로토 파일을 가져올 수 있습니다,</font>
+
+535
+00:15:01,880 --> 00:15:04,760
+and you can generate your own GRPC clients yourselves
+
+536
+00:15:01,880 --> 00:15:04,760
+<font color="#c7c7c7">그리고 여러분만의 GRPC 클라이언트를 직접 생성할 수 있습니다.</font>
+
+537
+00:15:04,760 --> 00:15:05,600
+if you so choose.
+
+538
+00:15:04,760 --> 00:15:05,600
+<font color="#c7c7c7">원한다면요.</font>
+
+539
+00:15:05,600 --> 00:15:08,440
+That's part of the freedom that you have when you use this.
+
+540
+00:15:05,600 --> 00:15:08,440
+<font color="#c7c7c7">이것이 바로 이 기능을 사용할 때 누릴 수 있는 자유의 일부입니다.</font>
+
+541
+00:15:08,440 --> 00:15:11,800
+You're not locked into even using these implementations
+
+542
+00:15:08,440 --> 00:15:11,800
+<font color="#c7c7c7">이러한 구현을 사용하는 것조차도 구속되지 않습니다.</font>
+
+543
+00:15:11,800 --> 00:15:12,920
+that Open Telemetry provides.
+
+544
+00:15:11,800 --> 00:15:12,920
+<font color="#c7c7c7">를 사용할 수 있습니다.</font>
+
+545
+00:15:12,920 --> 00:15:17,640
+It's part of the mindset of Open Telemetry.
+
+546
+00:15:12,920 --> 00:15:17,640
+<font color="#c7c7c7">오픈 텔레메트리의 사고방식의 일부입니다.</font>
+
+547
+00:15:17,640 --> 00:15:20,280
+Another important point that I would like to make about
+
+548
+00:15:17,640 --> 00:15:20,280
+<font color="#c7c7c7">제가 말씀드리고 싶은 또 다른 중요한 점은</font>
+
+549
+00:15:20,400 --> 00:15:23,760
+is that Open Telemetry as a project
+
+550
+00:15:20,400 --> 00:15:23,760
+<font color="#c7c7c7">프로젝트로서 오픈 텔레메트리가</font>
+
+551
+00:15:23,760 --> 00:15:28,240
+does not mandate you to use OTLP protocol.
+
+552
+00:15:23,760 --> 00:15:28,240
+<font color="#c7c7c7">는 OTLP 프로토콜 사용을 의무화하지 않습니다.</font>
+
+553
+00:15:28,240 --> 00:15:30,280
+As I've shown you just now with the collector,
+
+554
+00:15:28,240 --> 00:15:30,280
+<font color="#c7c7c7">방금 콜렉터를 통해 보여드렸듯이,</font>
+
+555
+00:15:30,280 --> 00:15:32,160
+the collector supports many protocols
+
+556
+00:15:30,280 --> 00:15:32,160
+<font color="#c7c7c7">수집기는 많은 프로토콜을 지원합니다.</font>
+
+557
+00:15:32,160 --> 00:15:33,840
+for the receivers, for the ingest,
+
+558
+00:15:32,160 --> 00:15:33,840
+<font color="#c7c7c7">수신기의 경우, 수집기의 경우,</font>
+
+559
+00:15:33,840 --> 00:15:37,480
+many protocols for the exporters, for the egress.
+
+560
+00:15:33,840 --> 00:15:37,480
+<font color="#c7c7c7">내보내기, 내보내기를 위한 많은 프로토콜.</font>
+
+561
+00:15:37,480 --> 00:15:41,480
+So you're not bound to it.
+
+562
+00:15:37,480 --> 00:15:41,480
+<font color="#c7c7c7">그래서 당신은 그것에 얽매이지 않아요.</font>
+
+563
+00:15:41,480 --> 00:15:45,400
+However, as a holistic framework aiming
+
+564
+00:15:41,480 --> 00:15:45,400
+<font color="#c7c7c7">하지만, 전체론적 프레임워크가 지향하는 바는 다음과 같습니다.</font>
+
+565
+00:15:45,400 --> 00:15:48,280
+to provide a holistic way of generating and collecting
+
+566
+00:15:45,400 --> 00:15:48,280
+<font color="#c7c7c7">생성하고 수집하는 총체적인 방법을 제공합니다.</font>
+
+567
+00:15:48,280 --> 00:15:51,800
+telemetry data, the purpose is to get the industry
+
+568
+00:15:48,280 --> 00:15:51,800
+<font color="#c7c7c7">텔레메트리 데이터, 목적은 업계가</font>
+
+569
+00:15:51,800 --> 00:15:56,000
+into one unified protocol that can then have also
+
+570
+00:15:51,800 --> 00:15:56,000
+<font color="#c7c7c7">하나의 통합 프로토콜로 통합하는 것입니다.</font>
+
+571
+00:15:56,000 --> 00:15:57,640
+the benefit of correlating data.
+
+572
+00:15:56,000 --> 00:15:57,640
+<font color="#c7c7c7">데이터 상관관계의 이점을 누릴 수 있습니다.</font>
+
+573
+00:15:57,640 --> 00:16:01,000
+Because if we send logs, metrics, and traces together
+
+574
+00:15:57,640 --> 00:16:01,000
+<font color="#c7c7c7">로그, 메트릭, 추적을 함께 전송하면 다음과 같은 이점이 있습니다.</font>
+
+575
+00:16:01,000 --> 00:16:02,400
+with a unified data model, then we
+
+576
+00:16:01,000 --> 00:16:02,400
+<font color="#c7c7c7">통합 데이터 모델을 사용하면</font>
+
+577
+00:16:02,400 --> 00:16:04,400
+can also create the correlation, and we
+
+578
+00:16:02,400 --> 00:16:04,400
+<font color="#c7c7c7">도 상관 관계를 생성할 수 있습니다.</font>
+
+579
+00:16:04,400 --> 00:16:06,880
+can align the semantic conventions, and so on.
+
+580
+00:16:04,400 --> 00:16:06,880
+<font color="#c7c7c7">는 의미 규칙을 정렬하는 등의 작업을 수행할 수 있습니다.</font>
+
+581
+00:16:06,880 --> 00:16:09,560
+So that's the mindset, and that's the goal.
+
+582
+00:16:06,880 --> 00:16:09,560
+<font color="#c7c7c7">이것이 마음가짐이고 목표입니다.</font>
+
+583
+00:16:09,560 --> 00:16:12,760
+And the same goes, by the way, to other components as well.
+
+584
+00:16:09,560 --> 00:16:12,760
+<font color="#c7c7c7">다른 구성 요소도 마찬가지입니다.</font>
+
+585
+00:16:12,760 --> 00:16:17,680
+You can use the OTL SDK without the collector, for example,
+
+586
+00:16:12,760 --> 00:16:17,680
+<font color="#c7c7c7">예를 들어 수집기 없이도 OTL SDK를 사용할 수 있습니다,</font>
+
+587
+00:16:17,680 --> 00:16:21,160
+sending from the SDK directly to a back end analytics tool.
+
+588
+00:16:17,680 --> 00:16:21,160
+<font color="#c7c7c7">SDK에서 백엔드 분석 도구로 직접 전송할 수 있습니다.</font>
+
+589
+00:16:21,160 --> 00:16:23,120
+You can use the collector without an SDK,
+
+590
+00:16:21,160 --> 00:16:23,120
+<font color="#c7c7c7">SDK 없이 수집기를 사용할 수 있습니다,</font>
+
+591
+00:16:23,120 --> 00:16:25,960
+like I gave the example of collecting from Kafka directly,
+
+592
+00:16:23,120 --> 00:16:25,960
+<font color="#c7c7c7">카프카에서 직접 수집하는 예제처럼 말이죠,</font>
+
+593
+00:16:25,960 --> 00:16:26,480
+and so on.
+
+594
+00:16:25,960 --> 00:16:26,480
+<font color="#c7c7c7">등등.</font>
+
+595
+00:16:26,480 --> 00:16:32,320
+So it's a loosely coupled, yet a holistic framework
+
+596
+00:16:26,480 --> 00:16:32,320
+<font color="#c7c7c7">느슨하게 결합되어 있지만 전체론적인 프레임워크입니다.</font>
+
+597
+00:16:32,320 --> 00:16:39,880
+aiming to provide a standard, unified way of generating
+
+598
+00:16:32,320 --> 00:16:39,880
+<font color="#c7c7c7">표준적이고 통일된 생성 방법을 제공하는 것을 목표로 합니다.</font>
+
+599
+00:16:39,880 --> 00:16:43,520
+and collecting telemetry data.
+
+600
+00:16:39,880 --> 00:16:43,520
+<font color="#c7c7c7">텔레메트리 데이터를 수집하는 것을 목표로 합니다.</font>
+
+601
+00:16:43,520 --> 00:16:47,360
+That's about OTLP and maybe the mindset.
+
+602
+00:16:43,520 --> 00:16:47,360
+<font color="#c7c7c7">OTLP와 마음가짐에 관한 이야기입니다.</font>
+
+603
+00:16:47,360 --> 00:16:49,560
+These are the main components that I'll cover.
+
+604
+00:16:47,360 --> 00:16:49,560
+<font color="#c7c7c7">이것이 제가 다룰 주요 구성 요소입니다.</font>
+
+605
+00:16:49,560 --> 00:16:52,200
+There are other components and other elements.
+
+606
+00:16:49,560 --> 00:16:52,200
+<font color="#c7c7c7">다른 구성 요소와 다른 요소들이 있습니다.</font>
+
+607
+00:16:52,200 --> 00:16:55,480
+There's an open telemetry operator
+
+608
+00:16:52,200 --> 00:16:55,480
+<font color="#c7c7c7">열려 있는 텔레메트리 연산자가 있습니다.</font>
+
+609
+00:16:55,480 --> 00:16:59,360
+that allows you to install that easily on Kubernetes
+
+610
+00:16:55,480 --> 00:16:59,360
+<font color="#c7c7c7">쿠버네티스에 쉽게 설치할 수 있다.</font>
+
+611
+00:16:59,360 --> 00:17:00,520
+and other components.
+
+612
+00:16:59,360 --> 00:17:00,520
+<font color="#c7c7c7">및 기타 컴포넌트.</font>
+
+613
+00:17:00,520 --> 00:17:03,000
+But for the sake of this discussion,
+
+614
+00:17:00,520 --> 00:17:03,000
+<font color="#c7c7c7">하지만 이 논의를 위해,</font>
+
+615
+00:17:03,000 --> 00:17:05,680
+I will keep it here.
+
+616
+00:17:03,000 --> 00:17:05,680
+<font color="#c7c7c7">여기 보관하겠습니다.</font>
+
+617
+00:17:05,680 --> 00:17:07,360
+And now I would like to talk about,
+
+618
+00:17:05,680 --> 00:17:07,360
+<font color="#c7c7c7">이제 이야기하고 싶어요,</font>
+
+619
+00:17:07,360 --> 00:17:12,680
+so what's the state of open telemetry project?
+
+620
+00:17:07,360 --> 00:17:12,680
+<font color="#c7c7c7">오픈 텔레메트리 프로젝트는 어떤 상태인가요?</font>
+
+621
+00:17:12,680 --> 00:17:14,840
+And most importantly, is that GA?
+
+622
+00:17:12,680 --> 00:17:14,840
+<font color="#c7c7c7">그리고 가장 중요한 것은, 저게 GA인가요?</font>
+
+623
+00:17:14,840 --> 00:17:17,000
+Can I use it in production?
+
+624
+00:17:14,840 --> 00:17:17,000
+<font color="#c7c7c7">프로덕션에서 사용할 수 있나요?</font>
+
+625
+00:17:17,000 --> 00:17:18,760
+That's the most interesting question, right?
+
+626
+00:17:17,000 --> 00:17:18,760
+<font color="#c7c7c7">가장 흥미로운 질문이죠?</font>
+
+627
+00:17:18,760 --> 00:17:20,760
+So show of hands, who thinks yes?
+
+628
+00:17:18,760 --> 00:17:20,760
+<font color="#c7c7c7">손 들어보시죠, 그렇다고 생각하시는 분?</font>
+
+629
+00:17:23,400 --> 00:17:24,000
+OK.
+
+630
+00:17:23,400 --> 00:17:24,000
+<font color="#c7c7c7">좋아요.</font>
+
+631
+00:17:24,000 --> 00:17:26,800
+And who thinks no?
+
+632
+00:17:24,000 --> 00:17:26,800
+<font color="#c7c7c7">안 된다고 생각하는 사람?</font>
+
+633
+00:17:26,800 --> 00:17:28,600
+And who thinks it depends?
+
+634
+00:17:26,800 --> 00:17:28,600
+<font color="#c7c7c7">그리고 누가 그렇게 생각하죠?</font>
+
+635
+00:17:32,040 --> 00:17:32,720
+Great.
+
+636
+00:17:32,040 --> 00:17:32,720
+<font color="#c7c7c7">잘됐네.</font>
+
+637
+00:17:32,720 --> 00:17:36,760
+So like any interesting question, the answer is,
+
+638
+00:17:32,720 --> 00:17:36,760
+<font color="#c7c7c7">다른 흥미로운 질문과 마찬가지로 답은 '좋아요'입니다,</font>
+
+639
+00:17:36,760 --> 00:17:38,600
+it depends.
+
+640
+00:17:36,760 --> 00:17:38,600
+<font color="#c7c7c7">이다.</font>
+
+641
+00:17:38,600 --> 00:17:43,000
+And the reason it depends is because open telemetry is,
+
+642
+00:17:38,600 --> 00:17:43,000
+<font color="#c7c7c7">그 이유는 개방형 텔레메트리가 있기 때문입니다,</font>
+
+643
+00:17:43,000 --> 00:17:45,240
+in fact, not a monolithic project,
+
+644
+00:17:43,000 --> 00:17:45,240
+<font color="#c7c7c7">사실 단일화된 프로젝트가 아니기 때문입니다,</font>
+
+645
+00:17:45,240 --> 00:17:50,320
+but an aggregate of multiple groups,
+
+646
+00:17:45,240 --> 00:17:50,320
+<font color="#c7c7c7">여러 그룹의 집합체입니다,</font>
+
+647
+00:17:50,320 --> 00:17:56,480
+and each working on a different part of this huge endeavor.
+
+648
+00:17:50,320 --> 00:17:56,480
+<font color="#c7c7c7">이 거대한 노력의 각기 다른 부분에서 일하고 있습니다.</font>
+
+649
+00:17:56,480 --> 00:18:00,600
+So you have the metric standardization specification
+
+650
+00:17:56,480 --> 00:18:00,600
+<font color="#c7c7c7">메트릭 표준화 사양은 다음과 같습니다.</font>
+
+651
+00:18:00,600 --> 00:18:02,960
+group, and the tracing one, and the logging one,
+
+652
+00:18:00,600 --> 00:18:02,960
+<font color="#c7c7c7">그룹, 추적 그룹, 로깅 그룹이 있습니다,</font>
+
+653
+00:18:02,960 --> 00:18:05,360
+and then you have the Java one, and the .NET one, and the Go
+
+654
+00:18:02,960 --> 00:18:05,360
+<font color="#c7c7c7">그리고 Java, .NET, Go가 있습니다.</font>
+
+655
+00:18:05,360 --> 00:18:07,280
+one, and many more.
+
+656
+00:18:05,360 --> 00:18:07,280
+<font color="#c7c7c7">하나, 그리고 더 많은 것들이 있습니다.</font>
+
+657
+00:18:07,280 --> 00:18:09,040
+I don't know if there are maintainers here.
+
+658
+00:18:07,280 --> 00:18:09,040
+<font color="#c7c7c7">여기에 관리자가 있는지 모르겠습니다.</font>
+
+659
+00:18:09,040 --> 00:18:11,000
+They will probably name 1,000 more.
+
+660
+00:18:09,040 --> 00:18:11,000
+<font color="#c7c7c7">아마 1,000명이 더 있을 겁니다.</font>
+
+661
+00:18:11,000 --> 00:18:13,080
+So I'm oversimplifying even that.
+
+662
+00:18:11,000 --> 00:18:13,080
+<font color="#c7c7c7">그것도 지나치게 단순화했네요.</font>
+
+663
+00:18:13,080 --> 00:18:16,840
+But just to get the drift, and each SIG,
+
+664
+00:18:13,080 --> 00:18:16,840
+<font color="#c7c7c7">하지만 드리프트와 각 SIG,</font>
+
+665
+00:18:16,840 --> 00:18:19,680
+and each special interest group, and each working group,
+
+666
+00:18:16,840 --> 00:18:19,680
+<font color="#c7c7c7">그리고 각 특별 이익 단체와 각 실무 그룹도요,</font>
+
+667
+00:18:19,680 --> 00:18:24,640
+and each such component has its own development lifecycle,
+
+668
+00:18:19,680 --> 00:18:24,640
+<font color="#c7c7c7">그리고 이러한 각 구성 요소에는 고유한 개발 수명 주기가 있습니다,</font>
+
+669
+00:18:24,640 --> 00:18:27,360
+which means that different parts of open telemetry
+
+670
+00:18:24,640 --> 00:18:27,360
+<font color="#c7c7c7">즉, 개방형 텔레메트리의 다른 부분은</font>
+
+671
+00:18:27,360 --> 00:18:32,960
+may be in different state of the maturity lifecycle, which
+
+672
+00:18:27,360 --> 00:18:32,960
+<font color="#c7c7c7">성숙도 수명 주기의 다른 상태에 있을 수 있습니다.</font>
+
+673
+00:18:32,960 --> 00:18:38,560
+is, in the CNCF terms, draft, experimental, stable,
+
+674
+00:18:32,960 --> 00:18:38,560
+<font color="#c7c7c7">은 CNCF 용어로 초안, 실험적, 안정 상태입니다,</font>
+
+675
+00:18:38,560 --> 00:18:39,640
+and deprecated.
+
+676
+00:18:38,560 --> 00:18:39,640
+<font color="#c7c7c7">그리고 더 이상 사용되지 않습니다.</font>
+
+677
+00:18:39,640 --> 00:18:41,560
+Just for those who are more new, we
+
+678
+00:18:39,640 --> 00:18:41,560
+<font color="#c7c7c7">좀 더 새로운 분들을 위해</font>
+
+679
+00:18:41,560 --> 00:18:45,840
+have like 67% new people there this year in KubeCon.
+
+680
+00:18:41,560 --> 00:18:45,840
+<font color="#c7c7c7">올해 큐브콘에는 67%의 새로운 사람들이 참석했습니다.</font>
+
+681
+00:18:45,840 --> 00:18:48,200
+It's very exciting.
+
+682
+00:18:45,840 --> 00:18:48,200
+<font color="#c7c7c7">정말 신나는 일이죠.</font>
+
+683
+00:18:48,200 --> 00:18:50,560
+And just to align the terms with the common terms
+
+684
+00:18:48,200 --> 00:18:50,560
+<font color="#c7c7c7">그리고 용어들을 일반적인 용어와 일치시키기 위해</font>
+
+685
+00:18:50,560 --> 00:18:54,920
+in the industry, so stable would be GA, generally available,
+
+686
+00:18:50,560 --> 00:18:54,920
+<font color="#c7c7c7">업계에서 일반적으로 사용되는 GA가 안정적일 것입니다,</font>
+
+687
+00:18:54,920 --> 00:18:59,400
+what you'd be looking for to run it in production.
+
+688
+00:18:54,920 --> 00:18:59,400
+<font color="#c7c7c7">프로덕션에서 실행하려면 무엇을 찾아야 할까요?</font>
+
+689
+00:18:59,400 --> 00:19:02,440
+And it comes with guarantees, like backwards compatibility,
+
+690
+00:18:59,400 --> 00:19:02,440
+<font color="#c7c7c7">그리고 이전 버전과의 호환성 같은 보장도 함께 제공됩니다,</font>
+
+691
+00:19:02,440 --> 00:19:04,320
+and so on.
+
+692
+00:19:02,440 --> 00:19:04,320
+<font color="#c7c7c7">등등.</font>
+
+693
+00:19:04,320 --> 00:19:07,480
+Experimental would be beta, so something
+
+694
+00:19:04,320 --> 00:19:07,480
+<font color="#c7c7c7">실험적은 베타 버전이므로, 뭔가</font>
+
+695
+00:19:07,480 --> 00:19:10,440
+you can start POCing on, proof of concept.
+
+696
+00:19:07,480 --> 00:19:10,440
+<font color="#c7c7c7">개념 검증을 시작할 수 있습니다.</font>
+
+697
+00:19:10,440 --> 00:19:11,480
+So just to align terms.
+
+698
+00:19:10,440 --> 00:19:11,480
+<font color="#c7c7c7">용어를 정렬합니다.</font>
+
+699
+00:19:11,480 --> 00:19:13,720
+And again, apologies with the maintainers.
+
+700
+00:19:11,480 --> 00:19:13,720
+<font color="#c7c7c7">그리고 다시 한번, 관리자들에게 사과드립니다.</font>
+
+701
+00:19:13,720 --> 00:19:15,280
+I will stick to the common terms just
+
+702
+00:19:13,720 --> 00:19:15,280
+<font color="#c7c7c7">나는 그냥 일반적인 용어를 고수할 것이다.</font>
+
+703
+00:19:15,280 --> 00:19:18,880
+to make sure that everyone understands the state.
+
+704
+00:19:15,280 --> 00:19:18,880
+<font color="#c7c7c7">모든 사람이 상태를 이해할 수 있도록 말이죠.</font>
+
+705
+00:19:18,880 --> 00:19:21,400
+So OK, we understand that it's complicated.
+
+706
+00:19:18,880 --> 00:19:21,400
+<font color="#c7c7c7">알았어요, 복잡하다는 건 이해합니다.</font>
+
+707
+00:19:21,400 --> 00:19:22,400
+Thank you, Dutan.
+
+708
+00:19:21,400 --> 00:19:22,400
+<font color="#c7c7c7">고마워, 두탄.</font>
+
+709
+00:19:22,400 --> 00:19:27,880
+But still, what's the state of open telemetry?
+
+710
+00:19:22,400 --> 00:19:27,880
+<font color="#c7c7c7">하지만 여전히 오픈 텔레메트리의 상태는 어떤가요?</font>
+
+711
+00:19:27,880 --> 00:19:33,280
+And for that, I'd like to break it down by signal types.
+
+712
+00:19:27,880 --> 00:19:33,280
+<font color="#c7c7c7">이를 위해 신호 유형별로 세분화해서 살펴보고자 합니다.</font>
+
+713
+00:19:33,280 --> 00:19:38,360
+And the first signal, and the most mature one, is traces.
+
+714
+00:19:33,280 --> 00:19:38,360
+<font color="#c7c7c7">첫 번째 신호이자 가장 성숙한 신호는 트레이스입니다.</font>
+
+715
+00:19:38,360 --> 00:19:43,080
+And open telemetry is generally available for traces
+
+716
+00:19:38,360 --> 00:19:43,080
+<font color="#c7c7c7">그리고 개방형 텔레메트리는 일반적으로 트레이스에 사용할 수 있습니다.</font>
+
+717
+00:19:43,080 --> 00:19:48,480
+since last year, which means that the tracing API and SDK
+
+718
+00:19:43,080 --> 00:19:48,480
+<font color="#c7c7c7">즉, 작년부터 추적 API와 SDK가</font>
+
+719
+00:19:48,480 --> 00:19:51,360
+and the protocol specifications are stable, the collectors
+
+720
+00:19:48,480 --> 00:19:51,360
+<font color="#c7c7c7">프로토콜 사양이 안정적이며, 수집기인</font>
+
+721
+00:19:51,360 --> 00:19:52,280
+table.
+
+722
+00:19:51,360 --> 00:19:52,280
+<font color="#c7c7c7">테이블.</font>
+
+723
+00:19:52,280 --> 00:19:57,160
+We have many client libraries, SDK implementations,
+
+724
+00:19:52,280 --> 00:19:57,160
+<font color="#c7c7c7">많은 클라이언트 라이브러리, SDK 구현이 있습니다,</font>
+
+725
+00:19:57,160 --> 00:20:00,040
+that are version 1.0 or above.
+
+726
+00:19:57,160 --> 00:20:00,040
+<font color="#c7c7c7">버전이 1.0 이상입니다.</font>
+
+727
+00:20:00,040 --> 00:20:04,320
+Version 1.0 is when the tracing implementation is complete.
+
+728
+00:20:00,040 --> 00:20:04,320
+<font color="#c7c7c7">버전 1.0은 추적 구현이 완료된 경우입니다.</font>
+
+729
+00:20:04,320 --> 00:20:08,340
+So as you can see here, we have for Java and Go
+
+730
+00:20:04,320 --> 00:20:08,340
+<font color="#c7c7c7">여기서 볼 수 있듯이 Java와 Go의 경우 다음과 같습니다.</font>
+
+731
+00:20:08,340 --> 00:20:11,660
+and .NET and Python and C++ and JavaScript and Ruby
+
+732
+00:20:08,340 --> 00:20:11,660
+<font color="#c7c7c7">그리고 .NET, 파이썬, C++, 자바스크립트, 루비</font>
+
+733
+00:20:11,660 --> 00:20:14,480
+and Erlang and Swift, and working on more.
+
+734
+00:20:11,660 --> 00:20:14,480
+<font color="#c7c7c7">그리고 얼랑과 스위프트, 그리고 더 많은 일을 하고 있습니다.</font>
+
+735
+00:20:14,480 --> 00:20:16,740
+And it keeps on advancing so rapidly
+
+736
+00:20:14,480 --> 00:20:16,740
+<font color="#c7c7c7">그리고 계속 빠르게 발전하고 있습니다.</font>
+
+737
+00:20:16,740 --> 00:20:20,020
+that maybe that has even advanced since the last time
+
+738
+00:20:16,740 --> 00:20:20,020
+<font color="#c7c7c7">어쩌면 지난번보다 더 발전했을지도 모릅니다.</font>
+
+739
+00:20:20,020 --> 00:20:21,860
+I made the slide.
+
+740
+00:20:20,020 --> 00:20:21,860
+<font color="#c7c7c7">슬라이드를 만들었습니다.</font>
+
+741
+00:20:21,860 --> 00:20:23,980
+And most importantly, as I said, GA
+
+742
+00:20:21,860 --> 00:20:23,980
+<font color="#c7c7c7">그리고 가장 중요한 것은, 제가 말했듯이, GA입니다.</font>
+
+743
+00:20:23,980 --> 00:20:25,980
+means that it comes with guarantees
+
+744
+00:20:23,980 --> 00:20:25,980
+<font color="#c7c7c7">은 보증과 함께 제공된다는 것을 의미합니다.</font>
+
+745
+00:20:25,980 --> 00:20:29,820
+for long-term support, for backwards compatibility,
+
+746
+00:20:25,980 --> 00:20:29,820
+<font color="#c7c7c7">장기 지원, 이전 버전과의 호환성을 의미합니다,</font>
+
+747
+00:20:29,820 --> 00:20:33,580
+for dependency isolation, what you'd be expecting
+
+748
+00:20:29,820 --> 00:20:33,580
+<font color="#c7c7c7">의존성 격리의 경우, 기대할 수 있는 사항</font>
+
+749
+00:20:33,580 --> 00:20:36,100
+to run it in production.
+
+750
+00:20:33,580 --> 00:20:36,100
+<font color="#c7c7c7">프로덕션 환경에서 실행하려면.</font>
+
+751
+00:20:36,100 --> 00:20:37,480
+Next up is metrics.
+
+752
+00:20:36,100 --> 00:20:37,480
+<font color="#c7c7c7">다음은 메트릭입니다.</font>
+
+753
+00:20:37,480 --> 00:20:40,000
+And that's actually one of the most exciting news,
+
+754
+00:20:37,480 --> 00:20:40,000
+<font color="#c7c7c7">가장 흥미로운 소식 중 하나입니다,</font>
+
+755
+00:20:40,000 --> 00:20:44,320
+at least on the observability front from this KubeCon.
+
+756
+00:20:40,000 --> 00:20:44,320
+<font color="#c7c7c7">적어도 이번 큐브콘에서 관측성 측면에서는 말이죠.</font>
+
+757
+00:20:44,320 --> 00:20:47,200
+I'm happy to say, for those who missed the news,
+
+758
+00:20:44,320 --> 00:20:47,200
+<font color="#c7c7c7">소식을 놓치신 분들을 위해 기쁜 소식을 전합니다,</font>
+
+759
+00:20:47,200 --> 00:20:52,080
+that metrics has reached the release candidate, just
+
+760
+00:20:47,200 --> 00:20:52,080
+<font color="#c7c7c7">이 메트릭이 릴리스 후보에 도달했음을 알려드립니다.</font>
+
+761
+00:20:52,080 --> 00:20:53,840
+the announcement on KubeCon.
+
+762
+00:20:52,080 --> 00:20:53,840
+<font color="#c7c7c7">에 이르렀습니다.</font>
+
+763
+00:20:53,840 --> 00:20:56,600
+And release candidate, again, just to align terms,
+
+764
+00:20:53,840 --> 00:20:56,600
+<font color="#c7c7c7">그리고 릴리스 후보를 다시 릴리스합니다,</font>
+
+765
+00:20:56,600 --> 00:21:01,280
+means that it's practically GA now collecting
+
+766
+00:20:56,600 --> 00:21:01,280
+<font color="#c7c7c7">이는 이제 실질적으로 GA가</font>
+
+767
+00:21:01,280 --> 00:21:02,440
+the feedback from users.
+
+768
+00:21:01,280 --> 00:21:02,440
+<font color="#c7c7c7">사용자의 피드백을 수집하고 있음을 의미합니다.</font>
+
+769
+00:21:02,440 --> 00:21:06,000
+And if nothing major critical comes up,
+
+770
+00:21:02,440 --> 00:21:06,000
+<font color="#c7c7c7">큰 문제가 발생하지 않는다면,</font>
+
+771
+00:21:06,000 --> 00:21:09,160
+it should be turning the same versions will be turned GA
+
+772
+00:21:06,000 --> 00:21:09,160
+<font color="#c7c7c7">동일한 버전이 GA로 전환될 것입니다.</font>
+
+773
+00:21:09,160 --> 00:21:12,840
+within a matter of a week or a couple of weeks more.
+
+774
+00:21:09,160 --> 00:21:12,840
+<font color="#c7c7c7">일주일 또는 몇 주 더 걸릴 수 있습니다.</font>
+
+775
+00:21:12,840 --> 00:21:14,560
+That's the time frame.
+
+776
+00:21:12,840 --> 00:21:14,560
+<font color="#c7c7c7">이것이 시간 프레임입니다.</font>
+
+777
+00:21:14,560 --> 00:21:20,040
+So the API, the SDK, the protocol are obviously stable.
+
+778
+00:21:14,560 --> 00:21:20,040
+<font color="#c7c7c7">API, SDK, 프로토콜은 분명히 안정적입니다.</font>
+
+779
+00:21:20,040 --> 00:21:21,840
+The API and SDK specifications are already
+
+780
+00:21:20,040 --> 00:21:21,840
+<font color="#c7c7c7">API와 SDK 사양은 이미</font>
+
+781
+00:21:21,840 --> 00:21:26,640
+implemented in Java and .NET and Python in RC,
+
+782
+00:21:21,840 --> 00:21:26,640
+<font color="#c7c7c7">Java와 .NET으로 구현되어 있고, RC에서는 Python으로 구현되어 있습니다,</font>
+
+783
+00:21:26,640 --> 00:21:28,800
+in release candidate.
+
+784
+00:21:26,640 --> 00:21:28,800
+<font color="#c7c7c7">릴리스 후보에서.</font>
+
+785
+00:21:28,800 --> 00:21:32,240
+JavaScript is just a week away or something like that.
+
+786
+00:21:28,800 --> 00:21:32,240
+<font color="#c7c7c7">자바스크립트 출시가 일주일 앞으로 다가왔습니다.</font>
+
+787
+00:21:32,240 --> 00:21:35,440
+And then many more languages will join in the coming month
+
+788
+00:21:32,240 --> 00:21:35,440
+<font color="#c7c7c7">다음 달에는 더 많은 언어가 추가될 예정입니다.</font>
+
+789
+00:21:35,440 --> 00:21:37,440
+or two.
+
+790
+00:21:35,440 --> 00:21:37,440
+<font color="#c7c7c7">한두 개 정도</font>
+
+791
+00:21:37,440 --> 00:21:39,020
+In terms of the collector, the collector
+
+792
+00:21:37,440 --> 00:21:39,020
+<font color="#c7c7c7">수집기 측면에서 보면, 수집기는 다음과 같습니다.</font>
+
+793
+00:21:39,020 --> 00:21:43,120
+supports metric pipelines.
+
+794
+00:21:39,020 --> 00:21:43,120
+<font color="#c7c7c7">는 메트릭 파이프라인을 지원합니다.</font>
+
+795
+00:21:43,120 --> 00:21:45,200
+And very important to say, because as you also
+
+796
+00:21:43,120 --> 00:21:45,200
+<font color="#c7c7c7">그리고 매우 중요한 것은, 여러분도 아시다시피</font>
+
+797
+00:21:45,200 --> 00:21:47,200
+heard in the previous talk here in this hall,
+
+798
+00:21:45,200 --> 00:21:47,200
+<font color="#c7c7c7">여기 이 홀의 이전 강연에서 들으셨죠,</font>
+
+799
+00:21:47,200 --> 00:21:50,600
+and generally Prometheus being a de facto standard
+
+800
+00:21:47,200 --> 00:21:50,600
+<font color="#c7c7c7">그리고 일반적으로 프로메테우스는 사실상의 표준입니다.</font>
+
+801
+00:21:50,600 --> 00:21:51,840
+in the metric side.
+
+802
+00:21:50,600 --> 00:21:51,840
+<font color="#c7c7c7">미터법 쪽에서.</font>
+
+803
+00:21:51,840 --> 00:21:54,680
+So there's Prometheus support that
+
+804
+00:21:51,840 --> 00:21:54,680
+<font color="#c7c7c7">따라서 Prometheus는 다음과 같이 지원합니다.</font>
+
+805
+00:21:54,680 --> 00:21:56,640
+has been worked on in collaboration
+
+806
+00:21:54,680 --> 00:21:56,640
+<font color="#c7c7c7">공동 작업 중입니다.</font>
+
+807
+00:21:56,640 --> 00:21:59,000
+with the Prometheus community.
+
+808
+00:21:56,640 --> 00:21:59,000
+<font color="#c7c7c7">프로메테우스 커뮤니티와 함께.</font>
+
+809
+00:21:59,000 --> 00:22:01,920
+I think it's a great example of collaboration under the CNCF.
+
+810
+00:21:59,000 --> 00:22:01,920
+<font color="#c7c7c7">CNCF에서 협업의 좋은 예라고 생각합니다.</font>
+
+811
+00:22:01,920 --> 00:22:04,880
+So applause to the teams involved.
+
+812
+00:22:01,920 --> 00:22:04,880
+<font color="#c7c7c7">참여한 팀들에게 박수를 보냅니다.</font>
+
+813
+00:22:04,880 --> 00:22:08,760
+And it means that the SDK has exporters in Prometheus format.
+
+814
+00:22:04,880 --> 00:22:08,760
+<font color="#c7c7c7">SDK에 Prometheus 형식의 익스포터가 있다는 뜻입니다.</font>
+
+815
+00:22:08,760 --> 00:22:12,140
+The hotel collector has receivers and exporters
+
+816
+00:22:08,760 --> 00:22:12,140
+<font color="#c7c7c7">호텔 콜렉터에 수신자와 내보내기가 있습니다.</font>
+
+817
+00:22:12,140 --> 00:22:15,760
+in Prometheus formats, Prometheus remote write.
+
+818
+00:22:12,140 --> 00:22:15,760
+<font color="#c7c7c7">프로메테우스 형식의 프로메테우스 원격 쓰기.</font>
+
+819
+00:22:15,760 --> 00:22:19,520
+The OTLP to Prometheus specification is aligned.
+
+820
+00:22:15,760 --> 00:22:19,520
+<font color="#c7c7c7">OTLP-프로메테우스 사양이 정렬되었습니다.</font>
+
+821
+00:22:19,520 --> 00:22:23,040
+The data model, so that's there.
+
+822
+00:22:19,520 --> 00:22:23,040
+<font color="#c7c7c7">데이터 모델이 완성되었습니다.</font>
+
+823
+00:22:23,040 --> 00:22:26,320
+And the least, I guess, advanced signal
+
+824
+00:22:23,040 --> 00:22:26,320
+<font color="#c7c7c7">그리고 가장 적은, 아마도 고급 신호</font>
+
+825
+00:22:26,320 --> 00:22:29,840
+is logs that are still experimental.
+
+826
+00:22:26,320 --> 00:22:29,840
+<font color="#c7c7c7">은 아직 실험적인 로그입니다.</font>
+
+827
+00:22:29,840 --> 00:22:34,800
+We hope to have that GA'd this year.
+
+828
+00:22:29,840 --> 00:22:34,800
+<font color="#c7c7c7">연내 GA를 목표로 하고 있습니다.</font>
+
+829
+00:22:34,800 --> 00:22:37,480
+And with logging, it's important to understand.
+
+830
+00:22:34,800 --> 00:22:37,480
+<font color="#c7c7c7">로깅은 이해가 중요합니다.</font>
+
+831
+00:22:37,480 --> 00:22:40,560
+Logging is the most longstanding signal, obviously.
+
+832
+00:22:37,480 --> 00:22:40,560
+<font color="#c7c7c7">로깅은 가장 오랜 역사를 지닌 신호입니다.</font>
+
+833
+00:22:40,560 --> 00:22:43,240
+So everyone has logging.
+
+834
+00:22:40,560 --> 00:22:43,240
+<font color="#c7c7c7">모든 사람이 로깅을 하고 있군요.</font>
+
+835
+00:22:43,240 --> 00:22:44,480
+Every system has logging.
+
+836
+00:22:43,240 --> 00:22:44,480
+<font color="#c7c7c7">모든 시스템에는 로깅이 있습니다.</font>
+
+837
+00:22:44,480 --> 00:22:45,520
+It's been there for ages.
+
+838
+00:22:44,480 --> 00:22:45,520
+<font color="#c7c7c7">오래전부터 있었어.</font>
+
+839
+00:22:45,520 --> 00:22:47,880
+So we can't just ignore that, obviously.
+
+840
+00:22:45,520 --> 00:22:47,880
+<font color="#c7c7c7">그러니 그냥 무시할 수는 없죠.</font>
+
+841
+00:22:47,880 --> 00:22:52,500
+So the first focus is to align with existing and support
+
+842
+00:22:47,880 --> 00:22:52,500
+<font color="#c7c7c7">따라서 첫 번째 초점은 기존 및 지원과 일치하는 것입니다.</font>
+
+843
+00:22:52,500 --> 00:22:57,360
+existing logging sources and logging systems.
+
+844
+00:22:52,500 --> 00:22:57,360
+<font color="#c7c7c7">기존 로깅 소스 및 로깅 시스템을 지원하는 것입니다.</font>
+
+845
+00:22:57,360 --> 00:23:04,280
+And for that, there's also work around the penders,
+
+846
+00:22:57,360 --> 00:23:04,280
+<font color="#c7c7c7">그리고 이를 위해 펜더를 둘러싼 작업도 있습니다,</font>
+
+847
+00:23:04,280 --> 00:23:07,520
+log appenders that are under development in many languages.
+
+848
+00:23:04,280 --> 00:23:07,520
+<font color="#c7c7c7">로그 가산기를 여러 언어로 개발 중입니다.</font>
+
+849
+00:23:07,520 --> 00:23:10,440
+So that even existing logs that are typically
+
+850
+00:23:07,520 --> 00:23:10,440
+<font color="#c7c7c7">따라서 일반적으로 다음과 같은 기존 로그도</font>
+
+851
+00:23:10,440 --> 00:23:13,600
+text-based, unstructured, maybe even file-based,
+
+852
+00:23:10,440 --> 00:23:13,600
+<font color="#c7c7c7">텍스트 기반, 비정형, 심지어 파일 기반일 수도 있습니다,</font>
+
+853
+00:23:13,600 --> 00:23:15,960
+can still be augmented with additional data,
+
+854
+00:23:13,600 --> 00:23:15,960
+<font color="#c7c7c7">여전히 추가 데이터로 보강할 수 있습니다,</font>
+
+855
+00:23:15,960 --> 00:23:18,760
+such as a trace ID and other important data
+
+856
+00:23:15,960 --> 00:23:18,760
+<font color="#c7c7c7">추적 ID 및 기타 중요한 데이터 등</font>
+
+857
+00:23:18,760 --> 00:23:20,200
+to allow correlation.
+
+858
+00:23:18,760 --> 00:23:20,200
+<font color="#c7c7c7">상관관계를 허용합니다.</font>
+
+859
+00:23:20,200 --> 00:23:23,480
+And obviously, sending that over OTLP.
+
+860
+00:23:20,200 --> 00:23:23,480
+<font color="#c7c7c7">그리고 당연히 OTLP를 통해 전송합니다.</font>
+
+861
+00:23:23,480 --> 00:23:25,380
+So even for existing logging sources,
+
+862
+00:23:23,480 --> 00:23:25,380
+<font color="#c7c7c7">기존 로깅 소스의 경우에도 마찬가지입니다,</font>
+
+863
+00:23:25,380 --> 00:23:28,640
+being able to ingest and then model it over OTLP
+
+864
+00:23:25,380 --> 00:23:28,640
+<font color="#c7c7c7">수집한 다음 OTLP를 통해 모델링할 수 있습니다.</font>
+
+865
+00:23:28,640 --> 00:23:31,840
+and send it alongside metrics and traces.
+
+866
+00:23:28,640 --> 00:23:31,840
+<font color="#c7c7c7">메트릭 및 추적과 함께 전송할 수 있습니다.</font>
+
+867
+00:23:31,840 --> 00:23:33,160
+That's the first priority.
+
+868
+00:23:31,840 --> 00:23:33,160
+<font color="#c7c7c7">그게 최우선입니다.</font>
+
+869
+00:23:33,160 --> 00:23:37,040
+But then following up as a holistic framework,
+
+870
+00:23:33,160 --> 00:23:37,040
+<font color="#c7c7c7">그 다음에는 전체적인 프레임워크로서 후속 조치를 취해야 합니다,</font>
+
+871
+00:23:37,040 --> 00:23:39,960
+as we talked about the mission statement,
+
+872
+00:23:37,040 --> 00:23:39,960
+<font color="#c7c7c7">사명 선언문에 대해 이야기했습니다,</font>
+
+873
+00:23:39,960 --> 00:23:44,960
+we're working to build a new strongly typed and machine
+
+874
+00:23:39,960 --> 00:23:44,960
+<font color="#c7c7c7">우리는 새로운 강력한 타이핑과 기계를 구축하기 위해 노력하고 있습니다.</font>
+
+875
+00:23:44,960 --> 00:23:47,320
+readable format also for logs.
+
+876
+00:23:44,960 --> 00:23:47,320
+<font color="#c7c7c7">로그에도 읽을 수 있는 형식을 만들려고 합니다.</font>
+
+877
+00:23:47,320 --> 00:23:48,280
+So it's not discarded.
+
+878
+00:23:47,320 --> 00:23:48,280
+<font color="#c7c7c7">그래서 버려지지 않습니다.</font>
+
+879
+00:23:48,280 --> 00:23:50,960
+It's definitely the end goal, and to try and converge
+
+880
+00:23:48,280 --> 00:23:50,960
+<font color="#c7c7c7">확실히 최종 목표이며, 수렴을 시도하는 것입니다.</font>
+
+881
+00:23:50,960 --> 00:23:52,520
+the industry also around that.
+
+882
+00:23:50,960 --> 00:23:52,520
+<font color="#c7c7c7">산업을 중심으로요.</font>
+
+883
+00:23:52,520 --> 00:23:55,480
+And I think the most, if you look at the components,
+
+884
+00:23:52,520 --> 00:23:55,480
+<font color="#c7c7c7">그리고 구성 요소를 보면 가장 많은 것 같아요,</font>
+
+885
+00:23:55,480 --> 00:23:58,840
+that for example, you see that the protocol is stable
+
+886
+00:23:55,480 --> 00:23:58,840
+<font color="#c7c7c7">예를 들어 프로토콜이 안정적이라는 것을 알 수 있습니다.</font>
+
+887
+00:23:58,840 --> 00:24:00,000
+and can send.
+
+888
+00:23:58,840 --> 00:24:00,000
+<font color="#c7c7c7">전송할 수 있습니다.</font>
+
+889
+00:24:00,000 --> 00:24:02,400
+That's actually also relatively new news,
+
+890
+00:24:00,000 --> 00:24:02,400
+<font color="#c7c7c7">이것도 사실 비교적 새로운 소식입니다,</font>
+
+891
+00:24:02,400 --> 00:24:03,840
+I think less than a week ago.
+
+892
+00:24:02,400 --> 00:24:03,840
+<font color="#c7c7c7">일주일도 안 된 것 같아요.</font>
+
+893
+00:24:03,840 --> 00:24:07,400
+We've announced that the OTLP protocol for logs
+
+894
+00:24:03,840 --> 00:24:07,400
+<font color="#c7c7c7">로그에 대한 OTLP 프로토콜을 발표했습니다.</font>
+
+895
+00:24:07,400 --> 00:24:09,480
+is already stable and supports the data model that
+
+896
+00:24:07,400 --> 00:24:09,480
+<font color="#c7c7c7">은 이미 안정적이며 다음과 같은 데이터 모델을 지원합니다.</font>
+
+897
+00:24:09,480 --> 00:24:12,960
+has been agreed, I think, a month or two ago.
+
+898
+00:24:09,480 --> 00:24:12,960
+<font color="#c7c7c7">이 한두 달 전에 합의된 것 같습니다.</font>
+
+899
+00:24:12,960 --> 00:24:17,920
+And the SDK is experimental and can already
+
+900
+00:24:12,960 --> 00:24:17,920
+<font color="#c7c7c7">그리고 SDK는 실험 중이며 이미</font>
+
+901
+00:24:17,920 --> 00:24:21,120
+transmit over OTLP.
+
+902
+00:24:17,920 --> 00:24:21,120
+<font color="#c7c7c7">전송할 수 있습니다.</font>
+
+903
+00:24:21,120 --> 00:24:25,520
+One thing that is important is that the API, for example,
+
+904
+00:24:21,120 --> 00:24:25,520
+<font color="#c7c7c7">한 가지 중요한 것은 예를 들어 API입니다,</font>
+
+905
+00:24:25,520 --> 00:24:26,720
+is left to last.
+
+906
+00:24:25,520 --> 00:24:26,720
+<font color="#c7c7c7">가 마지막에 남는다는 것입니다.</font>
+
+907
+00:24:26,720 --> 00:24:28,800
+It's still draft because, again, we
+
+908
+00:24:26,720 --> 00:24:28,800
+<font color="#c7c7c7">아직 초안이기 때문입니다.</font>
+
+909
+00:24:28,800 --> 00:24:33,000
+haven't prioritized inventing new APIs for that.
+
+910
+00:24:28,800 --> 00:24:33,000
+<font color="#c7c7c7">새로운 API를 개발하는 데 우선순위를 두지 않았기 때문입니다.</font>
+
+911
+00:24:33,000 --> 00:24:34,920
+However, there is now the shift to focus
+
+912
+00:24:33,000 --> 00:24:34,920
+<font color="#c7c7c7">하지만 이제는 집중하는 방향으로 바뀌고 있습니다.</font>
+
+913
+00:24:34,920 --> 00:24:37,360
+or adding the focus on the specification side,
+
+914
+00:24:34,920 --> 00:24:37,360
+<font color="#c7c7c7">또는 사양 쪽에 포커스를 추가합니다,</font>
+
+915
+00:24:37,360 --> 00:24:38,480
+getting a specification.
+
+916
+00:24:37,360 --> 00:24:38,480
+<font color="#c7c7c7">사양을 얻습니다.</font>
+
+917
+00:24:38,480 --> 00:24:42,000
+What does a log, what should the structured, well structured,
+
+918
+00:24:38,480 --> 00:24:42,000
+<font color="#c7c7c7">로그는 무엇을 구조화해야 하는가?</font>
+
+919
+00:24:42,000 --> 00:24:44,800
+strongly typed log look like?
+
+920
+00:24:42,000 --> 00:24:44,800
+<font color="#c7c7c7">강력하게 입력된 로그는 어떤 모습일까요?</font>
+
+921
+00:24:44,800 --> 00:24:48,040
+And for that, also exciting news from the recent months
+
+922
+00:24:44,800 --> 00:24:48,040
+<font color="#c7c7c7">그리고 최근 몇 달 동안의 흥미로운 소식도 알려드립니다.</font>
+
+923
+00:24:48,040 --> 00:24:52,920
+is the collaboration with ECS, Elastic Common Schema,
+
+924
+00:24:48,040 --> 00:24:52,920
+<font color="#c7c7c7">바로 ECS, Elastic Common Schema와의 협업입니다,</font>
+
+925
+00:24:52,920 --> 00:24:53,920
+for those who know that.
+
+926
+00:24:52,920 --> 00:24:53,920
+<font color="#c7c7c7">알고 계신 분들을 위해.</font>
+
+927
+00:24:53,920 --> 00:24:56,840
+So collaboration between the communities,
+
+928
+00:24:53,920 --> 00:24:56,840
+<font color="#c7c7c7">커뮤니티 간의 협업,</font>
+
+929
+00:24:56,840 --> 00:24:58,600
+essentially the open source communities,
+
+930
+00:24:56,840 --> 00:24:58,600
+<font color="#c7c7c7">본질적으로 오픈소스 커뮤니티입니다,</font>
+
+931
+00:24:58,600 --> 00:25:02,760
+to get all the aggregated knowledge and work that's
+
+932
+00:24:58,600 --> 00:25:02,760
+<font color="#c7c7c7">모든 통합된 지식과 작업을 얻을 수 있습니다.</font>
+
+933
+00:25:02,760 --> 00:25:05,400
+been done around the Elastic Common Schema
+
+934
+00:25:02,760 --> 00:25:05,400
+<font color="#c7c7c7">Elastic 공통 스키마를 중심으로 수행되었습니다.</font>
+
+935
+00:25:05,400 --> 00:25:07,920
+and merge it together with open telemetry
+
+936
+00:25:05,400 --> 00:25:07,920
+<font color="#c7c7c7">오픈 텔레메트리와 함께 병합합니다.</font>
+
+937
+00:25:07,920 --> 00:25:09,880
+and join forces around that.
+
+938
+00:25:07,920 --> 00:25:09,880
+<font color="#c7c7c7">이를 중심으로 힘을 합칩니다.</font>
+
+939
+00:25:09,880 --> 00:25:13,760
+So really exciting news about that as well.
+
+940
+00:25:09,880 --> 00:25:13,760
+<font color="#c7c7c7">그것도 정말 흥미로운 소식입니다.</font>
+
+941
+00:25:13,760 --> 00:25:15,880
+So this is about the state.
+
+942
+00:25:13,760 --> 00:25:15,880
+<font color="#c7c7c7">이건 국가에 관한 것이군요.</font>
+
+943
+00:25:15,880 --> 00:25:19,460
+And in the bit of time that I have left,
+
+944
+00:25:15,880 --> 00:25:19,460
+<font color="#c7c7c7">그리고 내게 남은 시간 동안,</font>
+
+945
+00:25:19,460 --> 00:25:22,640
+I want to first applaud the main achievement here.
+
+946
+00:25:19,460 --> 00:25:22,640
+<font color="#c7c7c7">우선 여기서 주요 성과에 박수를 보내고 싶습니다.</font>
+
+947
+00:25:22,640 --> 00:25:26,200
+So let's give her a big round of applause to everyone here.
+
+948
+00:25:22,640 --> 00:25:26,200
+<font color="#c7c7c7">여기 계신 모든 분들께 큰 박수를 보내주세요.</font>
+
+949
+00:25:26,700 --> 00:25:30,560
+A lot of hard work.
+
+950
+00:25:26,700 --> 00:25:30,560
+<font color="#c7c7c7">정말 고생 많았어요.</font>
+
+951
+00:25:30,560 --> 00:25:32,480
+We have some maintainers here at the audience.
+
+952
+00:25:30,560 --> 00:25:32,480
+<font color="#c7c7c7">여기 청중석에 관리자가 있습니다.</font>
+
+953
+00:25:32,480 --> 00:25:35,560
+So we owe them a great deal of gratitude
+
+954
+00:25:32,480 --> 00:25:35,560
+<font color="#c7c7c7">그래서 우리는 그들에게 큰 빚을 졌습니다.</font>
+
+955
+00:25:35,560 --> 00:25:37,440
+for achieving this very important milestone.
+
+956
+00:25:35,560 --> 00:25:37,440
+<font color="#c7c7c7">이 중요한 이정표를 달성한 것에 대해.</font>
+
+957
+00:25:37,440 --> 00:25:39,280
+Also for those who worked on the logging,
+
+958
+00:25:37,440 --> 00:25:39,280
+<font color="#c7c7c7">로깅을 위해 애써주신 분들께도 감사드립니다,</font>
+
+959
+00:25:39,280 --> 00:25:44,840
+as I said, for getting the data and protocol stable.
+
+960
+00:25:39,280 --> 00:25:44,840
+<font color="#c7c7c7">앞서 말했듯이 데이터와 프로토콜을 안정화하기 위해서입니다.</font>
+
+961
+00:25:44,840 --> 00:25:47,640
+And for those who are interested in more about the roadmap
+
+962
+00:25:44,840 --> 00:25:47,640
+<font color="#c7c7c7">그리고 로드맵에 대해 더 궁금하신 분들을 위해</font>
+
+963
+00:25:47,640 --> 00:25:50,520
+and the future path, it's less the scope of this short talk.
+
+964
+00:25:47,640 --> 00:25:50,520
+<font color="#c7c7c7">이 짧은 강연에서는 다루지 않겠습니다.</font>
+
+965
+00:25:50,520 --> 00:25:54,960
+But there was a very interesting maintainers track talk
+
+966
+00:25:50,520 --> 00:25:54,960
+<font color="#c7c7c7">하지만 매우 흥미로운 메인테이너 트랙 강연이 있었습니다.</font>
+
+967
+00:25:55,000 --> 00:25:59,080
+by the open telemetry community sharing what's up next,
+
+968
+00:25:55,000 --> 00:25:59,080
+<font color="#c7c7c7">오픈 텔레메트리 커뮤니티에서 다음 계획을 공유했습니다,</font>
+
+969
+00:25:59,080 --> 00:26:02,240
+like making the operational side easier,
+
+970
+00:25:59,080 --> 00:26:02,240
+<font color="#c7c7c7">운영 측면을 더 쉽게 만드는 것과 같은 것들,</font>
+
+971
+00:26:02,240 --> 00:26:06,080
+like maybe even adding more signals beyond logs, metrics,
+
+972
+00:26:02,240 --> 00:26:06,080
+<font color="#c7c7c7">로그, 메트릭 외에 더 많은 신호를 추가하는 것과 같은 것들 말이죠,</font>
+
+973
+00:26:06,080 --> 00:26:09,480
+tracing, discussions around continuous profiling.
+
+974
+00:26:06,080 --> 00:26:09,480
+<font color="#c7c7c7">추적, 지속적인 프로파일링에 대한 논의.</font>
+
+975
+00:26:09,480 --> 00:26:11,640
+So if you are interested, do check out
+
+976
+00:26:09,480 --> 00:26:11,640
+<font color="#c7c7c7">관심이 있으시다면 다음을 확인해 보세요.</font>
+
+977
+00:26:11,640 --> 00:26:15,280
+the recording from that session, a fascinating session.
+
+978
+00:26:11,640 --> 00:26:15,280
+<font color="#c7c7c7">그 세션의 녹취록, 아주 흥미로운 세션입니다.</font>
+
+979
+00:26:15,280 --> 00:26:17,360
+But for the last bit of the talk,
+
+980
+00:26:15,280 --> 00:26:17,360
+<font color="#c7c7c7">마지막 강연을 위해,</font>
+
+981
+00:26:17,360 --> 00:26:23,440
+I would like to discuss how to get started with open telemetry.
+
+982
+00:26:17,360 --> 00:26:23,440
+<font color="#c7c7c7">오픈 텔레메트리를 시작하는 방법에 대해 이야기하고 싶습니다.</font>
+
+983
+00:26:23,440 --> 00:26:25,480
+And I'd like to offer my bit of advice.
+
+984
+00:26:23,440 --> 00:26:25,480
+<font color="#c7c7c7">그리고 제 조언을 드리고 싶습니다.</font>
+
+985
+00:26:28,280 --> 00:26:33,200
+And you should start by knowing your stack.
+
+986
+00:26:28,280 --> 00:26:33,200
+<font color="#c7c7c7">먼저 자신의 스택을 파악하는 것부터 시작해야 합니다.</font>
+
+987
+00:26:33,200 --> 00:26:36,120
+You need to figure out the basic four questions.
+
+988
+00:26:33,200 --> 00:26:36,120
+<font color="#c7c7c7">기본적인 네 가지 질문을 파악해야 합니다.</font>
+
+989
+00:26:36,120 --> 00:26:39,680
+First, which programming languages
+
+990
+00:26:36,120 --> 00:26:39,680
+<font color="#c7c7c7">첫째, 어떤 프로그래밍 언어가</font>
+
+991
+00:26:39,680 --> 00:26:41,440
+does your organization use, especially
+
+992
+00:26:39,680 --> 00:26:41,440
+<font color="#c7c7c7">조직에서 특히</font>
+
+993
+00:26:41,440 --> 00:26:43,720
+if you're a polyglot organization, so front end,
+
+994
+00:26:41,440 --> 00:26:43,720
+<font color="#c7c7c7">다국어 조직인 경우 프런트 엔드입니다,</font>
+
+995
+00:26:43,720 --> 00:26:44,440
+back end?
+
+996
+00:26:43,720 --> 00:26:44,440
+<font color="#c7c7c7">백엔드?</font>
+
+997
+00:26:44,440 --> 00:26:47,000
+Also, which frameworks you use for these?
+
+998
+00:26:44,440 --> 00:26:47,000
+<font color="#c7c7c7">또한, 어떤 프레임워크를 사용하시나요?</font>
+
+999
+00:26:47,000 --> 00:26:50,560
+For example, we use Java with Spring,
+
+1000
+00:26:47,000 --> 00:26:50,560
+<font color="#c7c7c7">예를 들어, 우리는 Spring과 함께 Java를 사용합니다,</font>
+
+1001
+00:26:50,720 --> 00:26:54,080
+and we use front end Node.js with Happy and Express.
+
+1002
+00:26:50,720 --> 00:26:54,080
+<font color="#c7c7c7">그리고 Happy 및 Express와 함께 프런트엔드 Node.js를 사용합니다.</font>
+
+1003
+00:26:54,080 --> 00:26:55,680
+So it's important because that will
+
+1004
+00:26:54,080 --> 00:26:55,680
+<font color="#c7c7c7">이것이 중요한 이유는</font>
+
+1005
+00:26:55,680 --> 00:27:01,840
+help you determine which SDKs and agents you can use
+
+1006
+00:26:55,680 --> 00:27:01,840
+<font color="#c7c7c7">사용할 수 있는 SDK와 에이전트를 결정하는 데 도움이 됩니다.</font>
+
+1007
+00:27:01,840 --> 00:27:04,960
+and need to use for your application.
+
+1008
+00:27:01,840 --> 00:27:04,960
+<font color="#c7c7c7">애플리케이션에 사용해야 합니다.</font>
+
+1009
+00:27:04,960 --> 00:27:09,400
+Then, which signals you intend to collect from your system
+
+1010
+00:27:04,960 --> 00:27:09,400
+<font color="#c7c7c7">그런 다음 시스템에서 수집하려는 신호는 다음과 같습니다.</font>
+
+1011
+00:27:09,400 --> 00:27:12,960
+and logs, metrics, traces, and also in which formats, which
+
+1012
+00:27:09,400 --> 00:27:12,960
+<font color="#c7c7c7">로그, 메트릭, 트레이스, 그리고 어떤 형식으로 수집할 것인지도 알려주세요.</font>
+
+1013
+00:27:12,960 --> 00:27:16,120
+is particularly important if it's a brownfield project.
+
+1014
+00:27:12,960 --> 00:27:16,120
+<font color="#c7c7c7">는 재개발 프로젝트의 경우 특히 중요합니다.</font>
+
+1015
+00:27:16,120 --> 00:27:17,880
+You already have components out there
+
+1016
+00:27:16,120 --> 00:27:17,880
+<font color="#c7c7c7">이미 구성 요소가 있습니다.</font>
+
+1017
+00:27:17,880 --> 00:27:21,600
+emitting telemetry traces in Zipkin format,
+
+1018
+00:27:17,880 --> 00:27:21,600
+<font color="#c7c7c7">집킨 형식의 텔레메트리 추적을 방출합니다,</font>
+
+1019
+00:27:21,600 --> 00:27:24,520
+or I don't know what, and you need to adhere to that.
+
+1020
+00:27:21,600 --> 00:27:24,520
+<font color="#c7c7c7">아니면 뭔지 모르겠지만, 그걸 준수해야 합니다.</font>
+
+1021
+00:27:24,520 --> 00:27:26,160
+That will determine the receivers
+
+1022
+00:27:24,520 --> 00:27:26,160
+<font color="#c7c7c7">그러면 수신자가 결정됩니다.</font>
+
+1023
+00:27:26,160 --> 00:27:29,920
+that you will use in the open telemetry collector.
+
+1024
+00:27:26,160 --> 00:27:29,920
+<font color="#c7c7c7">오픈 텔레메트리 수집기에서 사용할 수신기를 결정합니다.</font>
+
+1025
+00:27:29,920 --> 00:27:32,040
+And then, which analytics tools you're
+
+1026
+00:27:29,920 --> 00:27:32,040
+<font color="#c7c7c7">그리고 어떤 분석 도구를 사용 중이신가요?</font>
+
+1027
+00:27:32,040 --> 00:27:34,520
+going to send to in the back end, which will determine,
+
+1028
+00:27:32,040 --> 00:27:34,520
+<font color="#c7c7c7">백엔드에서 어떤 분석 도구로 전송할지 결정합니다,</font>
+
+1029
+00:27:34,520 --> 00:27:38,640
+of course, the exporters that you may want to use.
+
+1030
+00:27:34,520 --> 00:27:38,640
+<font color="#c7c7c7">물론 사용할 수 있는 내보내기가 결정됩니다.</font>
+
+1031
+00:27:38,640 --> 00:27:40,200
+And once you analyze and figure out
+
+1032
+00:27:38,640 --> 00:27:40,200
+<font color="#c7c7c7">그리고 분석하고 파악한 후에는</font>
+
+1033
+00:27:40,200 --> 00:27:44,000
+the stack, your vertical stack that is relevant for you,
+
+1034
+00:27:40,200 --> 00:27:44,000
+<font color="#c7c7c7">스택, 즉 자신과 관련된 수직 스택을 파악합니다,</font>
+
+1035
+00:27:44,000 --> 00:27:47,880
+then just go and check the status
+
+1036
+00:27:44,000 --> 00:27:47,880
+<font color="#c7c7c7">그런 다음 상태를 확인합니다.</font>
+
+1037
+00:27:47,880 --> 00:27:51,160
+of the relevant components and follow the guide.
+
+1038
+00:27:47,880 --> 00:27:51,160
+<font color="#c7c7c7">의 상태를 확인하고 가이드를 따르세요.</font>
+
+1039
+00:27:51,160 --> 00:27:52,920
+And for that, there is a very useful page
+
+1040
+00:27:51,160 --> 00:27:52,920
+<font color="#c7c7c7">이를 위해 매우 유용한 페이지가 있습니다.</font>
+
+1041
+00:27:52,920 --> 00:27:55,120
+that we've set up as part of moving from the sandbox
+
+1042
+00:27:52,920 --> 00:27:55,120
+<font color="#c7c7c7">샌드박스에서 이동하는 과정의 일부로 설정한 페이지가 있습니다.</font>
+
+1043
+00:27:55,120 --> 00:27:58,720
+to the incubation under the CNCF, the opentelemtree.io
+
+1044
+00:27:55,120 --> 00:27:58,720
+<font color="#c7c7c7">CNCF의 인큐베이션으로 이동하기 위해 설정한 오픈스트리트.io를</font>
+
+1045
+00:27:58,720 --> 00:27:59,440
+slash status.
+
+1046
+00:27:58,720 --> 00:27:59,440
+<font color="#c7c7c7">슬래시 상태.</font>
+
+1047
+00:27:59,440 --> 00:28:00,960
+That's a very good starting point
+
+1048
+00:27:59,440 --> 00:28:00,960
+<font color="#c7c7c7">아주 좋은 출발점입니다.</font>
+
+1049
+00:28:00,960 --> 00:28:03,920
+to see the high level status overview.
+
+1050
+00:28:00,960 --> 00:28:03,920
+<font color="#c7c7c7">를 클릭해 높은 수준의 상태 개요를 확인하세요.</font>
+
+1051
+00:28:03,920 --> 00:28:06,800
+There are many other useful resources on that site,
+
+1052
+00:28:03,920 --> 00:28:06,800
+<font color="#c7c7c7">이 사이트에는 다른 유용한 리소스도 많이 있습니다,</font>
+
+1053
+00:28:06,800 --> 00:28:10,520
+like the docs, obviously, and there's also
+
+1054
+00:28:06,800 --> 00:28:10,520
+<font color="#c7c7c7">물론 문서 같은 것도 있고요.</font>
+
+1055
+00:28:10,520 --> 00:28:12,320
+relatively new registry that you can actually
+
+1056
+00:28:10,520 --> 00:28:12,320
+<font color="#c7c7c7">실제로 사용할 수 있는 비교적 새로운 레지스트리</font>
+
+1057
+00:28:12,320 --> 00:28:13,280
+search for your stack.
+
+1058
+00:28:12,320 --> 00:28:13,280
+<font color="#c7c7c7">스택을 검색합니다.</font>
+
+1059
+00:28:13,280 --> 00:28:15,520
+So you realize that you need .net.
+
+1060
+00:28:13,280 --> 00:28:15,520
+<font color="#c7c7c7">.net이 필요하다는 것을 깨닫습니다.</font>
+
+1061
+00:28:15,520 --> 00:28:17,840
+You search .net, and then it will
+
+1062
+00:28:15,520 --> 00:28:17,840
+<font color="#c7c7c7">.net을 검색하면</font>
+
+1063
+00:28:17,840 --> 00:28:22,240
+take you to the specific links on the GitHub repo that
+
+1064
+00:28:17,840 --> 00:28:22,240
+<font color="#c7c7c7">GitHub 리포지토리의 특정 링크로 이동합니다.</font>
+
+1065
+00:28:22,240 --> 00:28:23,160
+pertain to that.
+
+1066
+00:28:22,240 --> 00:28:23,160
+<font color="#c7c7c7">과 관련된 링크입니다.</font>
+
+1067
+00:28:23,160 --> 00:28:25,560
+So it's a really helpful way to navigating
+
+1068
+00:28:23,160 --> 00:28:25,560
+<font color="#c7c7c7">따라서 탐색하는 데 정말 유용한 방법입니다.</font>
+
+1069
+00:28:25,560 --> 00:28:29,480
+around the massive GitHub repo there.
+
+1070
+00:28:25,560 --> 00:28:29,480
+<font color="#c7c7c7">거대한 깃허브 리포지토리를 탐색할 수 있습니다.</font>
+
+1071
+00:28:29,480 --> 00:28:33,920
+I'd also like to invite you to check out the Beginner's Guide
+
+1072
+00:28:29,480 --> 00:28:33,920
+<font color="#c7c7c7">초보자 가이드도 확인해 보세요.</font>
+
+1073
+00:28:33,920 --> 00:28:36,080
+to Open Telemetry that I wrote.
+
+1074
+00:28:33,920 --> 00:28:36,080
+<font color="#c7c7c7">제가 작성한 텔레메트리 열기 가이드도 참고하세요.</font>
+
+1075
+00:28:36,080 --> 00:28:38,040
+It doesn't replace any of what I've shown.
+
+1076
+00:28:36,080 --> 00:28:38,040
+<font color="#c7c7c7">내가 보여준 것을 대체하지 않습니다.</font>
+
+1077
+00:28:38,040 --> 00:28:41,960
+It's just maybe a higher level Beginner's Hello World.
+
+1078
+00:28:38,040 --> 00:28:41,960
+<font color="#c7c7c7">더 높은 수준의 초보자용 헬로 월드일지도 모르겠네요.</font>
+
+1079
+00:28:41,960 --> 00:28:44,420
+So I created a short link so that it's
+
+1080
+00:28:41,960 --> 00:28:44,420
+<font color="#c7c7c7">그래서 짧은 링크를 만들었습니다.</font>
+
+1081
+00:28:44,420 --> 00:28:49,520
+easy to remember, bit.ly-otl-cubecon.
+
+1082
+00:28:44,420 --> 00:28:49,520
+<font color="#c7c7c7">기억하기 쉽도록, bit.ly-otl-cubecon.</font>
+
+1083
+00:28:49,520 --> 00:28:51,400
+And you have the explanation that I
+
+1084
+00:28:49,520 --> 00:28:51,400
+<font color="#c7c7c7">그리고 당신은 내가</font>
+
+1085
+00:28:51,400 --> 00:28:54,160
+said in greater detail about the different components.
+
+1086
+00:28:51,400 --> 00:28:54,160
+<font color="#c7c7c7">다른 구성 요소에 대해 더 자세히 설명했습니다.</font>
+
+1087
+00:28:54,160 --> 00:28:56,600
+It has subguides for different programming languages.
+
+1088
+00:28:54,160 --> 00:28:56,600
+<font color="#c7c7c7">다양한 프로그래밍 언어에 대한 하위 가이드가 있습니다.</font>
+
+1089
+00:28:56,600 --> 00:28:58,520
+Again, just the Hello World, not the deep dive.
+
+1090
+00:28:56,600 --> 00:28:58,520
+<font color="#c7c7c7">다시 말하지만, 헬로 월드만 있고 심층적인 내용은 없습니다.</font>
+
+1091
+00:28:58,520 --> 00:29:00,520
+And also the links to get the deep dive
+
+1092
+00:28:58,520 --> 00:29:00,520
+<font color="#c7c7c7">그리고 심층 분석에 대한 링크도 있습니다.</font>
+
+1093
+00:29:00,520 --> 00:29:04,960
+into the massive data that you have within the open telemetry
+
+1094
+00:29:00,520 --> 00:29:04,960
+<font color="#c7c7c7">오픈 텔레메트리에 있는 방대한 데이터에 대해 자세히 알아보세요.</font>
+
+1095
+00:29:04,960 --> 00:29:07,720
+community.
+
+1096
+00:29:04,960 --> 00:29:07,720
+<font color="#c7c7c7">커뮤니티</font>
+
+1097
+00:29:07,720 --> 00:29:09,680
+So I hope that you find it useful.
+
+1098
+00:29:07,720 --> 00:29:09,680
+<font color="#c7c7c7">도움이 되셨기를 바랍니다.</font>
+
+1099
+00:29:09,680 --> 00:29:14,720
+By the way, if you do have feedback on the guide,
+
+1100
+00:29:09,680 --> 00:29:14,720
+<font color="#c7c7c7">참고로 가이드에 대한 피드백이 있으시다면,</font>
+
+1101
+00:29:14,720 --> 00:29:16,120
+or if you have feedback on this talk,
+
+1102
+00:29:14,720 --> 00:29:16,120
+<font color="#c7c7c7">또는 이 강연에 대한 피드백이 있으시면</font>
+
+1103
+00:29:16,120 --> 00:29:17,800
+or if you have any questions, we're
+
+1104
+00:29:16,120 --> 00:29:17,800
+<font color="#c7c7c7">또는 질문이 있으시다면, 저희는</font>
+
+1105
+00:29:17,800 --> 00:29:21,440
+now going to have a Q&A. So don't go.
+
+1106
+00:29:17,800 --> 00:29:21,440
+<font color="#c7c7c7">이제 Q&A 시간을 갖겠습니다. 그러니 가지 마세요.</font>
+
+1107
+00:29:21,440 --> 00:29:23,480
+We have time for you to ask, and also for the people
+
+1108
+00:29:21,440 --> 00:29:23,480
+<font color="#c7c7c7">여러분도 질문할 시간이 있습니다.</font>
+
+1109
+00:29:23,480 --> 00:29:25,880
+from the virtual platform.
+
+1110
+00:29:23,480 --> 00:29:25,880
+<font color="#c7c7c7">가상 플랫폼에서.</font>
+
+1111
+00:29:25,880 --> 00:29:29,200
+Then feel free to reach out to me also after at Horvitz.
+
+1112
+00:29:25,880 --> 00:29:29,200
+<font color="#c7c7c7">그럼 호르비츠 이후에도 저에게 연락주세요.</font>
+
+1113
+00:29:29,200 --> 00:29:31,200
+And with that, thank you very much.
+
+1114
+00:29:29,200 --> 00:29:31,200
+<font color="#c7c7c7">이것으로 감사합니다.</font>
+
+1115
+00:29:31,200 --> 00:29:32,400
+And don't go.
+
+1116
+00:29:31,200 --> 00:29:32,400
+<font color="#c7c7c7">그리고 가지 마.</font>
+
+1117
+00:29:32,400 --> 00:29:35,080
+Thank you.
+
+1118
+00:29:32,400 --> 00:29:35,080
+<font color="#c7c7c7">고마워요.</font>
+
+1119
+00:29:35,080 --> 00:29:35,580
+Thank you.
+
+1120
+00:29:35,080 --> 00:29:35,580
+<font color="#c7c7c7">고마워요.</font>
+
+1121
+00:29:39,580 --> 00:29:42,240
+If you just raise your hands, we'll pass the microphone
+
+1122
+00:29:39,580 --> 00:29:42,240
+<font color="#c7c7c7">손만 들어주시면 마이크를 넘겨드리겠습니다.</font>
+
+1123
+00:29:42,240 --> 00:29:44,000
+so you can ask questions.
+
+1124
+00:29:42,240 --> 00:29:44,000
+<font color="#c7c7c7">질문하실 수 있습니다.</font>
+
+1125
+00:29:44,000 --> 00:29:47,640
+And for the virtual audience, please
+
+1126
+00:29:44,000 --> 00:29:47,640
+<font color="#c7c7c7">그리고 가상 청중을 위해</font>
+
+1127
+00:29:47,640 --> 00:29:50,160
+write down in the Q&A box in the platform.
+
+1128
+00:29:47,640 --> 00:29:50,160
+<font color="#c7c7c7">플랫폼의 Q&A 상자에 적어주세요.</font>
+
+1129
+00:29:50,160 --> 00:29:51,920
+And we'll also take some questions
+
+1130
+00:29:50,160 --> 00:29:51,920
+<font color="#c7c7c7">그리고 몇 가지 질문도 받겠습니다.</font>
+
+1131
+00:29:51,920 --> 00:29:54,340
+from the virtual platform.
+
+1132
+00:29:51,920 --> 00:29:54,340
+<font color="#c7c7c7">가상 플랫폼에서.</font>
+
+1133
+00:29:54,340 --> 00:29:55,040
+Any question?
+
+1134
+00:29:54,340 --> 00:29:55,040
+<font color="#c7c7c7">질문 있습니까?</font>
+
+1135
+00:29:55,040 --> 00:29:55,840
+Now is the time.
+
+1136
+00:29:55,040 --> 00:29:55,840
+<font color="#c7c7c7">지금이 시간입니다.</font>
+
+1137
+00:29:59,160 --> 00:30:00,800
+We have also maintainers, I think.
+
+1138
+00:29:59,160 --> 00:30:00,800
+<font color="#c7c7c7">우리도 관리자가 있는 것 같아요.</font>
+
+1139
+00:30:00,800 --> 00:30:02,560
+I have spotted a few familiar faces.
+
+1140
+00:30:00,800 --> 00:30:02,560
+<font color="#c7c7c7">낯익은 얼굴들을 몇 명 발견했어.</font>
+
+1141
+00:30:02,560 --> 00:30:06,000
+So you may have the authorities far greater than me.
+
+1142
+00:30:02,560 --> 00:30:06,000
+<font color="#c7c7c7">나보다 훨씬 더 큰 권력을 가지고 있는 것 같군.</font>
+
+1143
+00:30:06,000 --> 00:30:08,640
+If you have specific questions, how is it in Go?
+
+1144
+00:30:06,000 --> 00:30:08,640
+<font color="#c7c7c7">구체적인 질문이 있다면 바둑은 어떤가요?</font>
+
+1145
+00:30:08,640 --> 00:30:10,240
+How is it in .NET?
+
+1146
+00:30:08,640 --> 00:30:10,240
+<font color="#c7c7c7">.NET에서는 어떤가요?</font>
+
+1147
+00:30:10,240 --> 00:30:11,680
+How is that in this exporter, that?
+
+1148
+00:30:10,240 --> 00:30:11,680
+<font color="#c7c7c7">이 내보내기는 어때요?</font>
+
+1149
+00:30:11,680 --> 00:30:16,200
+So you have the right people hanging around here.
+
+1150
+00:30:11,680 --> 00:30:16,200
+<font color="#c7c7c7">여기 제대로 된 사람들이 있군.</font>
+
+1151
+00:30:16,200 --> 00:30:18,120
+Hi.
+
+1152
+00:30:16,200 --> 00:30:18,120
+<font color="#c7c7c7">안녕.</font>
+
+1153
+00:30:18,120 --> 00:30:19,520
+Sorry.
+
+1154
+00:30:18,120 --> 00:30:19,520
+<font color="#c7c7c7">죄송합니다.</font>
+
+1155
+00:30:19,520 --> 00:30:20,200
+On your left.
+
+1156
+00:30:19,520 --> 00:30:20,200
+<font color="#c7c7c7">왼쪽에.</font>
+
+1157
+00:30:23,640 --> 00:30:24,480
+Is there any plans?
+
+1158
+00:30:23,640 --> 00:30:24,480
+<font color="#c7c7c7">계획이 있나요?</font>
+
+1159
+00:30:24,480 --> 00:30:25,680
+Can you stand up?
+
+1160
+00:30:24,480 --> 00:30:25,680
+<font color="#c7c7c7">일어날 수 있겠어?</font>
+
+1161
+00:30:25,680 --> 00:30:27,720
+Sorry, it's difficult to see with the lights.
+
+1162
+00:30:25,680 --> 00:30:27,720
+<font color="#c7c7c7">죄송해요, 불빛 때문에 잘 안 보여요.</font>
+
+1163
+00:30:27,720 --> 00:30:30,480
+Is there any plans to support error tracking as well?
+
+1164
+00:30:27,720 --> 00:30:30,480
+<font color="#c7c7c7">오류 추적 기능도 지원할 계획이 있나요?</font>
+
+1165
+00:30:30,480 --> 00:30:33,680
+Something like Sentry?
+
+1166
+00:30:30,480 --> 00:30:33,680
+<font color="#c7c7c7">센트리 같은 거요?</font>
+
+1167
+00:30:33,680 --> 00:30:36,640
+Error tracking is an interesting part.
+
+1168
+00:30:33,680 --> 00:30:36,640
+<font color="#c7c7c7">오류 추적은 흥미로운 부분입니다.</font>
+
+1169
+00:30:36,640 --> 00:30:40,080
+As I said, currently it's logs, metrics, and traces.
+
+1170
+00:30:36,640 --> 00:30:40,080
+<font color="#c7c7c7">앞서 말했듯이 현재는 로그, 메트릭, 트레이스입니다.</font>
+
+1171
+00:30:40,080 --> 00:30:42,320
+And the next signal that is intended to be,
+
+1172
+00:30:40,080 --> 00:30:42,320
+<font color="#c7c7c7">그리고 다음 신호는 다음과 같습니다,</font>
+
+1173
+00:30:42,320 --> 00:30:44,840
+or now the discussions in early phases of discussion,
+
+1174
+00:30:42,320 --> 00:30:44,840
+<font color="#c7c7c7">또는 이제 논의의 초기 단계에 있습니다,</font>
+
+1175
+00:30:44,840 --> 00:30:46,320
+is the continuous profiling.
+
+1176
+00:30:44,840 --> 00:30:46,320
+<font color="#c7c7c7">은 지속적인 프로파일링입니다.</font>
+
+1177
+00:30:46,320 --> 00:30:48,560
+Things such as ParkHi open source,
+
+1178
+00:30:46,320 --> 00:30:48,560
+<font color="#c7c7c7">파크하이 오픈소스 같은 것들,</font>
+
+1179
+00:30:48,560 --> 00:30:51,520
+if you're familiar with others.
+
+1180
+00:30:48,560 --> 00:30:51,520
+<font color="#c7c7c7">다른 사람들에게 친숙한 경우.</font>
+
+1181
+00:30:51,520 --> 00:30:53,080
+Sentry actually doesn't work that way.
+
+1182
+00:30:51,520 --> 00:30:53,080
+<font color="#c7c7c7">센트리는 실제로 그런 식으로 작동하지 않습니다.</font>
+
+1183
+00:30:53,080 --> 00:30:57,560
+It's based on, how do you call it, snapshots.
+
+1184
+00:30:53,080 --> 00:30:57,560
+<font color="#c7c7c7">스냅샷을 기반으로 합니다.</font>
+
+1185
+00:30:57,560 --> 00:31:01,600
+But ones that are based on, that can be modeled after,
+
+1186
+00:30:57,560 --> 00:31:01,600
+<font color="#c7c7c7">하지만 그 기반이 되는 것들은 모델링할 수 있습니다,</font>
+
+1187
+00:31:01,600 --> 00:31:06,760
+as events similar to logs, it can be converted and then
+
+1188
+00:31:01,600 --> 00:31:06,760
+<font color="#c7c7c7">을 로그와 유사한 이벤트로 변환할 수 있습니다.</font>
+
+1189
+00:31:06,760 --> 00:31:10,760
+relayed over the same mechanism that is built for logs.
+
+1190
+00:31:06,760 --> 00:31:10,760
+<font color="#c7c7c7">로 변환되어 로그와 동일한 메커니즘을 통해 릴레이됩니다.</font>
+
+1191
+00:31:10,760 --> 00:31:13,000
+So it's interesting maybe to explore adapters that
+
+1192
+00:31:10,760 --> 00:31:13,000
+<font color="#c7c7c7">따라서 다음과 같은 어댑터를 살펴보는 것이 흥미로울 수 있습니다.</font>
+
+1193
+00:31:13,000 --> 00:31:15,640
+can actually transform that.
+
+1194
+00:31:13,000 --> 00:31:15,640
+<font color="#c7c7c7">변환할 수 있는 어댑터를 살펴보는 것도 흥미롭습니다.</font>
+
+1195
+00:31:15,640 --> 00:31:19,040
+But I don't know of any specific goal to adhere specifically
+
+1196
+00:31:15,640 --> 00:31:19,040
+<font color="#c7c7c7">하지만 구체적으로 준수해야 할 목표가 있는지는 모르겠습니다.</font>
+
+1197
+00:31:19,040 --> 00:31:20,480
+to these formats.
+
+1198
+00:31:19,040 --> 00:31:20,480
+<font color="#c7c7c7">이 형식에 맞춰야 합니다.</font>
+
+1199
+00:31:20,480 --> 00:31:22,480
+Again, if we have one of the maintainers
+
+1200
+00:31:20,480 --> 00:31:22,480
+<font color="#c7c7c7">다시 말하지만, 메인터너 중 하나에</font>
+
+1201
+00:31:22,480 --> 00:31:26,000
+wanting to have any more detailed information,
+
+1202
+00:31:22,480 --> 00:31:26,000
+<font color="#c7c7c7">더 자세한 정보를 원합니다,</font>
+
+1203
+00:31:26,000 --> 00:31:27,760
+feel free to jump in.
+
+1204
+00:31:26,000 --> 00:31:27,760
+<font color="#c7c7c7">자유롭게 참여하세요.</font>
+
+1205
+00:31:27,760 --> 00:31:29,120
+I hope I answered the question.
+
+1206
+00:31:27,760 --> 00:31:29,120
+<font color="#c7c7c7">질문에 답했으면 좋겠네요.</font>
+
+1207
+00:31:29,120 --> 00:31:31,520
+Thanks.
+
+1208
+00:31:29,120 --> 00:31:31,520
+<font color="#c7c7c7">고마워요.</font>
+
+1209
+00:31:31,520 --> 00:31:33,600
+We've got an online question with a few upvotes,
+
+1210
+00:31:31,520 --> 00:31:33,600
+<font color="#c7c7c7">몇 개의 찬성표를 받은 온라인 질문이 있습니다,</font>
+
+1211
+00:31:33,600 --> 00:31:36,880
+which is, how do things like synthetic monitoring, real user
+
+1212
+00:31:33,600 --> 00:31:36,880
+<font color="#c7c7c7">즉, 어떻게 합성 모니터링, 실제 사용자</font>
+
+1213
+00:31:36,880 --> 00:31:39,080
+monitoring, and application performance monitoring
+
+1214
+00:31:36,880 --> 00:31:39,080
+<font color="#c7c7c7">모니터링, 애플리케이션 성능 모니터링</font>
+
+1215
+00:31:39,080 --> 00:31:41,040
+fit into OpenTelemetry?
+
+1216
+00:31:39,080 --> 00:31:41,040
+<font color="#c7c7c7">오픈텔레메트리에 적합할까요?</font>
+
+1217
+00:31:41,040 --> 00:31:42,360
+So that's an amazing question.
+
+1218
+00:31:41,040 --> 00:31:42,360
+<font color="#c7c7c7">정말 놀라운 질문이네요.</font>
+
+1219
+00:31:42,360 --> 00:31:44,680
+I actually didn't know if I have the time for this talk.
+
+1220
+00:31:42,360 --> 00:31:44,680
+<font color="#c7c7c7">사실 제가 이 이야기를 할 시간이 있는지 몰랐어요.</font>
+
+1221
+00:31:44,680 --> 00:31:46,480
+But if we get it in the Q&A, it's great.
+
+1222
+00:31:44,680 --> 00:31:46,480
+<font color="#c7c7c7">하지만 질의응답을 할 수 있다면 좋겠네요.</font>
+
+1223
+00:31:46,480 --> 00:31:50,600
+Because one of the work that has been started in OpenTelemetry
+
+1224
+00:31:46,480 --> 00:31:50,600
+<font color="#c7c7c7">오픈텔레메트리에서 시작된 작업 중 하나이기 때문입니다.</font>
+
+1225
+00:31:50,600 --> 00:31:52,520
+is a new working group that is dedicated
+
+1226
+00:31:50,600 --> 00:31:52,520
+<font color="#c7c7c7">를 전담하는 새로운 작업 그룹입니다.</font>
+
+1227
+00:31:52,520 --> 00:31:55,760
+to client instrumentation.
+
+1228
+00:31:52,520 --> 00:31:55,760
+<font color="#c7c7c7">클라이언트 계측을 전담하는 새로운 워킹 그룹입니다.</font>
+
+1229
+00:31:55,760 --> 00:31:57,920
+So most of what you see and what you've seen
+
+1230
+00:31:55,760 --> 00:31:57,920
+<font color="#c7c7c7">그래서 당신이 보는 것과 당신이 본 것의 대부분은</font>
+
+1231
+00:31:57,920 --> 00:31:59,960
+is really back end based.
+
+1232
+00:31:57,920 --> 00:31:59,960
+<font color="#c7c7c7">는 실제로 백엔드 기반입니다.</font>
+
+1233
+00:31:59,960 --> 00:32:03,920
+Of course, you can take the existing JavaScript, SDKs,
+
+1234
+00:31:59,960 --> 00:32:03,920
+<font color="#c7c7c7">물론 기존 자바스크립트, SDK를 사용할 수도 있습니다,</font>
+
+1235
+00:32:03,920 --> 00:32:06,000
+and APIs, and you can work it also with client side.
+
+1236
+00:32:03,920 --> 00:32:06,000
+<font color="#c7c7c7">및 API를 사용하여 클라이언트 측에서도 작업할 수 있습니다.</font>
+
+1237
+00:32:06,000 --> 00:32:08,640
+But client side does have its own constraints.
+
+1238
+00:32:06,000 --> 00:32:08,640
+<font color="#c7c7c7">하지만 클라이언트 측에는 고유한 제약이 있습니다.</font>
+
+1239
+00:32:08,640 --> 00:32:10,120
+You need the session ID propagated,
+
+1240
+00:32:08,640 --> 00:32:10,120
+<font color="#c7c7c7">세션 ID가 전파되어야 합니다,</font>
+
+1241
+00:32:10,120 --> 00:32:12,280
+and things like that haven't been
+
+1242
+00:32:10,120 --> 00:32:12,280
+<font color="#c7c7c7">그리고 그런 것들은</font>
+
+1243
+00:32:12,280 --> 00:32:14,800
+modeled into the specification.
+
+1244
+00:32:12,280 --> 00:32:14,800
+<font color="#c7c7c7">사양에 모델링되지 않았습니다.</font>
+
+1245
+00:32:14,800 --> 00:32:18,200
+So there is a new working group for the client instrumentation
+
+1246
+00:32:14,800 --> 00:32:18,200
+<font color="#c7c7c7">클라이언트 계측을 위한 새로운 워킹 그룹이 생겼습니다.</font>
+
+1247
+00:32:18,200 --> 00:32:21,400
+that aims strictly squarely at these use
+
+1248
+00:32:18,200 --> 00:32:21,400
+<font color="#c7c7c7">이러한 용도를 엄격하게 목표로 하는 새로운 워킹 그룹이 있습니다.</font>
+
+1249
+00:32:21,920 --> 00:32:26,920
+instrumenting web pages, web apps, mobile apps, and so on.
+
+1250
+00:32:21,920 --> 00:32:26,920
+<font color="#c7c7c7">웹 페이지, 웹 앱, 모바일 앱 등을 계측합니다.</font>
+
+1251
+00:32:26,920 --> 00:32:29,440
+And so I think this would fit perfectly
+
+1252
+00:32:26,920 --> 00:32:29,440
+<font color="#c7c7c7">그래서 이게 딱 맞는 것 같아요</font>
+
+1253
+00:32:29,440 --> 00:32:34,800
+into both synthetic monitoring and real user monitoring,
+
+1254
+00:32:29,440 --> 00:32:34,800
+<font color="#c7c7c7">합성 모니터링과 실제 사용자 모니터링에 모두 적합합니다,</font>
+
+1255
+00:32:34,800 --> 00:32:38,720
+things that look at your system from outside as a black box.
+
+1256
+00:32:34,800 --> 00:32:38,720
+<font color="#c7c7c7">외부에서 시스템을 블랙박스로 보는 것들.</font>
+
+1257
+00:32:38,720 --> 00:32:41,240
+So if you are interested in that, do get involved.
+
+1258
+00:32:38,720 --> 00:32:41,240
+<font color="#c7c7c7">그러니 관심이 있으시다면 참여해보세요.</font>
+
+1259
+00:32:41,240 --> 00:32:42,560
+Check out this new working group.
+
+1260
+00:32:41,240 --> 00:32:42,560
+<font color="#c7c7c7">이 새로운 워킹 그룹을 확인해 보세요.</font>
+
+1261
+00:32:42,560 --> 00:32:45,040
+It's really in the early phases, so you can actually
+
+1262
+00:32:42,560 --> 00:32:45,040
+<font color="#c7c7c7">아직 초기 단계이므로 실제로는</font>
+
+1263
+00:32:45,040 --> 00:32:48,880
+get involved and influence.
+
+1264
+00:32:45,040 --> 00:32:48,880
+<font color="#c7c7c7">참여하고 영향력을 행사할 수 있습니다.</font>
+
+1265
+00:32:48,920 --> 00:32:52,800
+Do you have more questions from the virtual audience?
+
+1266
+00:32:48,920 --> 00:32:52,800
+<font color="#c7c7c7">가상 청중의 질문이 더 있으신가요?</font>
+
+1267
+00:32:52,800 --> 00:32:54,040
+From the audience here?
+
+1268
+00:32:52,800 --> 00:32:54,040
+<font color="#c7c7c7">여기 방청석에서?</font>
+
+1269
+00:32:54,040 --> 00:32:58,320
+Yeah, another one here is, if we already use Prometheus exporter,
+
+1270
+00:32:54,040 --> 00:32:58,320
+<font color="#c7c7c7">네, 또 하나는 이미 Prometheus 내보내기를 사용하는 경우입니다,</font>
+
+1271
+00:32:58,320 --> 00:33:04,760
+is there a convenient migration path for OpenTelemetry?
+
+1272
+00:32:58,320 --> 00:33:04,760
+<font color="#c7c7c7">오픈텔레메트리를 위한 편리한 마이그레이션 경로가 있나요?</font>
+
+1273
+00:33:04,760 --> 00:33:06,640
+Prometheus exported from the application.
+
+1274
+00:33:04,760 --> 00:33:06,640
+<font color="#c7c7c7">프로메테우스를 애플리케이션에서 내보냈습니다.</font>
+
+1275
+00:33:06,640 --> 00:33:09,920
+So as I said, the OpenTelemetry collector
+
+1276
+00:33:06,640 --> 00:33:09,920
+<font color="#c7c7c7">앞서 말했듯이, OpenTelemetry 수집기가</font>
+
+1277
+00:33:09,920 --> 00:33:11,400
+supports the Prometheus format.
+
+1278
+00:33:09,920 --> 00:33:11,400
+<font color="#c7c7c7">은 프로메테우스 형식을 지원합니다.</font>
+
+1279
+00:33:11,400 --> 00:33:14,720
+So you can actually collect it with the OTL collector,
+
+1280
+00:33:11,400 --> 00:33:14,720
+<font color="#c7c7c7">따라서 실제로 OTL 수집기로 수집할 수 있습니다,</font>
+
+1281
+00:33:14,720 --> 00:33:18,200
+and you can relay that over OTLP.
+
+1282
+00:33:14,720 --> 00:33:18,200
+<font color="#c7c7c7">그리고 OTLP를 통해 전달할 수 있습니다.</font>
+
+1283
+00:33:18,200 --> 00:33:21,200
+So there is a collaboration that
+
+1284
+00:33:18,200 --> 00:33:21,200
+<font color="#c7c7c7">따라서 다음과 같은 협업이 있습니다.</font>
+
+1285
+00:33:21,200 --> 00:33:23,040
+has been done to support Prometheus
+
+1286
+00:33:21,200 --> 00:33:23,040
+<font color="#c7c7c7">프로메테우스를 지원하기 위해 수행되었습니다.</font>
+
+1287
+00:33:23,040 --> 00:33:24,080
+on the collection side.
+
+1288
+00:33:23,040 --> 00:33:24,080
+<font color="#c7c7c7">컬렉션 쪽에서.</font>
+
+1289
+00:33:24,080 --> 00:33:26,320
+As I said, you can also use Prometheus as a back end.
+
+1290
+00:33:24,080 --> 00:33:26,320
+<font color="#c7c7c7">앞서 말했듯이 Prometheus를 백엔드로 사용할 수도 있습니다.</font>
+
+1291
+00:33:26,320 --> 00:33:29,040
+So you can also use a remote write exporter
+
+1292
+00:33:26,320 --> 00:33:29,040
+<font color="#c7c7c7">따라서 원격 쓰기 내보내기를 사용할 수도 있습니다.</font>
+
+1293
+00:33:29,040 --> 00:33:31,120
+to send it to Prometheus as a back end.
+
+1294
+00:33:29,040 --> 00:33:31,120
+<font color="#c7c7c7">를 사용하여 백엔드로 Prometheus로 보낼 수 있습니다.</font>
+
+1295
+00:33:31,120 --> 00:33:33,720
+So you're supported both ways.
+
+1296
+00:33:31,120 --> 00:33:33,720
+<font color="#c7c7c7">양방향으로 지원됩니다.</font>
+
+1297
+00:33:36,240 --> 00:33:40,640
+Any other questions about the future,
+
+1298
+00:33:36,240 --> 00:33:40,640
+<font color="#c7c7c7">미래에 대한 다른 질문이 있으신가요?</font>
+
+1299
+00:33:40,640 --> 00:33:42,440
+where we're heading, ideas?
+
+1300
+00:33:40,640 --> 00:33:42,440
+<font color="#c7c7c7">우리가 나아갈 방향, 아이디어?</font>
+
+1301
+00:33:44,880 --> 00:33:48,120
+So I'm Dutan Horvitz, and thank you very much
+
+1302
+00:33:44,880 --> 00:33:48,120
+<font color="#c7c7c7">저는 두탄 호르비츠입니다, 감사합니다.</font>
+
+1303
+00:33:48,120 --> 00:33:50,800
+for listening, and see you in Kuba.
+
+1304
+00:33:48,120 --> 00:33:50,800
+<font color="#c7c7c7">쿠바에서 뵙겠습니다.</font>
+
+1305
+00:33:50,800 --> 00:33:52,360
+Thank you.
+
+1306
+00:33:50,800 --> 00:33:52,360
+<font color="#c7c7c7">감사합니다.</font>
