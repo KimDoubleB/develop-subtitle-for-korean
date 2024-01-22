@@ -1,0 +1,3355 @@
+﻿1
+00:00:00,000 --> 00:00:07,200
+Hello and welcome. In the previous episode we discussed container networking interface or CNI
+
+2
+00:00:00,000 --> 00:00:07,200
+<font color="#ffff54">안녕하세요, 환영합니다. 이전 에피소드에서는 컨테이너 네트워킹 인터페이스 또는 CNI에 대해 설명했습니다.</font>
+
+3
+00:00:08,160 --> 00:00:17,199
+and pod networking. We also discussed flannel CNI in the context of Kubernetes in some details.
+
+4
+00:00:08,160 --> 00:00:17,199
+<font color="#ffff54">와 파드 네트워킹에 대해 알아보았다. 또한 쿠버네티스의 맥락에서 플란넬 CNI에 대해 자세히 설명했습니다.</font>
+
+5
+00:00:17,920 --> 00:00:24,560
+We'll continue that trend and today we'll discuss another popular CNI provider called Calico.
+
+6
+00:00:17,920 --> 00:00:24,560
+<font color="#ffff54">이러한 추세를 이어가면서 오늘은 또 다른 인기 있는 CNI 제공업체인 Calico에 대해 알아보겠습니다.</font>
+
+7
+00:00:25,520 --> 00:00:32,000
+We'll gain detailed level understanding of how Calico works and how operationally it differs
+
+8
+00:00:25,520 --> 00:00:32,000
+<font color="#ffff54">Calico의 작동 방식과 운영상의 차이점에 대해 자세히 알아보겠습니다.</font>
+
+9
+00:00:32,000 --> 00:00:39,520
+from flannel. In case you missed my previous presentation on CNI, I'm going to discuss this
+
+10
+00:00:32,000 --> 00:00:39,520
+<font color="#ffff54">플란넬에서. CNI에 대한 이전 프레젠테이션을 놓치신 분들을 위해 이에 대해 다시 설명하겠습니다.</font>
+
+11
+00:00:39,520 --> 00:00:46,079
+in some overview in the next couple of screens. So basically CNI is really an open source
+
+12
+00:00:39,520 --> 00:00:46,079
+<font color="#ffff54">다음 두 화면에서 간략하게 설명하겠습니다. 기본적으로 CNI는 오픈 소스입니다.</font>
+
+13
+00:00:46,800 --> 00:00:53,280
+software that provides network plumbing for containers. As containers becomes popular
+
+14
+00:00:46,800 --> 00:00:53,280
+<font color="#ffff54">컨테이너를 위한 네트워크 배관을 제공하는 소프트웨어입니다. 컨테이너가 대중화됨에 따라</font>
+
+15
+00:00:54,240 --> 00:00:59,439
+then it becomes evident that you know every software has to do the same thing to set up
+
+16
+00:00:54,240 --> 00:00:59,439
+<font color="#ffff54">모든 소프트웨어가 설정을 위해 동일한 작업을 수행해야 한다는 것이 분명해졌습니다.</font>
+
+17
+00:01:00,640 --> 00:01:06,560
+networking, assign IP addresses and so on and that becomes really tedious and repetitive.
+
+18
+00:01:00,640 --> 00:01:06,560
+<font color="#ffff54">네트워킹, IP 주소 할당 등 모든 소프트웨어가 동일한 작업을 수행해야 한다는 것을 알게 되면 정말 지루하고 반복적인 작업이 됩니다.</font>
+
+19
+00:01:07,439 --> 00:01:15,840
+And this project basically creates provides a service to containers so any software that deals
+
+20
+00:01:07,439 --> 00:01:15,840
+<font color="#ffff54">그리고 이 프로젝트는 기본적으로 컨테이너에 서비스를 제공하기 때문에 컨테이너를 다루는 모든 소프트웨어는</font>
+
+21
+00:01:15,840 --> 00:01:22,560
+with containers such as Kubernetes, Cloud Foundry, Podman and etc can take advantage of
+
+22
+00:01:15,840 --> 00:01:22,560
+<font color="#ffff54">쿠버네티스, 클라우드 파운드리, 팟맨 등과 같은 컨테이너를 다루는 모든 소프트웨어가 활용할 수 있다.</font>
+
+23
+00:01:23,359 --> 00:01:30,879
+the CNI interface that they provide. So let's see quickly and graphically how CNI works.
+
+24
+00:01:23,359 --> 00:01:30,879
+<font color="#ffff54">이 제공하는 CNI 인터페이스를 활용할 수 있습니다. 그럼 이제 CNI가 어떻게 작동하는지 그래픽으로 빠르게 살펴보겠습니다.</font>
+
+25
+00:01:31,439 --> 00:01:37,680
+So what I'm showing here is we have a server. This is a node, a Kubernetes node and the entire
+
+26
+00:01:31,439 --> 00:01:37,680
+<font color="#ffff54">여기서 보여드리는 것은 서버가 있다는 것입니다. 이것은 노드, 쿠버네티스 노드, 그리고 전체</font>
+
+27
+00:01:37,680 --> 00:01:45,359
+thing is one server and we have API Kubernetes services installed and we also have a network
+
+28
+00:01:37,680 --> 00:01:45,359
+<font color="#ffff54">는 하나의 서버이며, API 쿠버네티스 서비스가 설치되어 있고 네트워크도 있습니다.</font>
+
+29
+00:01:45,359 --> 00:01:53,120
+namespace. So the network namespace really anytime you create a Linux host it actually
+
+30
+00:01:45,359 --> 00:01:53,120
+<font color="#ffff54">네임스페이스도 있습니다. 따라서 네트워크 네임스페이스는 실제로 리눅스 호스트를 생성할 때마다</font>
+
+31
+00:01:54,239 --> 00:02:00,879
+what is called a default network namespace. Network space is basically a container and
+
+32
+00:01:54,239 --> 00:02:00,879
+<font color="#ffff54">를 기본 네트워크 네임스페이스라고 합니다. 네트워크 공간은 기본적으로 컨테이너이며</font>
+
+33
+00:02:00,879 --> 00:02:07,120
+that anything or everything just had anything to do with the network such as the IP address,
+
+34
+00:02:00,879 --> 00:02:07,120
+<font color="#ffff54">IP 주소 등 네트워크와 관련된 모든 것을 저장할 수 있습니다,</font>
+
+35
+00:02:08,080 --> 00:02:15,120
+the interface, the ethernet interface, the firewall rules, the routes, everything. So
+
+36
+00:02:08,080 --> 00:02:15,120
+<font color="#ffff54">인터페이스, 이더넷 인터페이스, 방화벽 규칙, 경로, 모든 것이요. 그래서</font>
+
+37
+00:02:15,120 --> 00:02:21,199
+those are really containing what is called a network namespace. So once we want to create,
+
+38
+00:02:15,120 --> 00:02:21,199
+<font color="#ffff54">이것들은 실제로 네트워크 네임스페이스라고 불리는 것을 포함하고 있습니다. 따라서 일단 생성하고 싶으면</font>
+
+39
+00:02:21,200 --> 00:02:28,240
+we want to deploy a Kubernetes pod. So the API server calls into kubelet service.
+
+40
+00:02:21,200 --> 00:02:28,240
+<font color="#ffff54">를 생성한 후, 쿠버네티스 파드를 배포하려고 합니다. 그래서 API 서버가 kubelet 서비스를 호출합니다.</font>
+
+41
+00:02:29,280 --> 00:02:36,160
+kubelet service then calls into CNI plugin and that's where it creates a pod network namespace
+
+42
+00:02:29,280 --> 00:02:36,160
+<font color="#ffff54">그런 다음 kubelet 서비스가 CNI 플러그인을 호출하고 여기에서 파드 네트워크 네임스페이스를 생성한다.</font>
+
+43
+00:02:36,160 --> 00:02:43,360
+like the one that we have here. Now the pod has its own name namespace. Then it installs
+
+44
+00:02:36,160 --> 00:02:43,360
+<font color="#ffff54">와 같은 네임스페이스를 생성합니다. 이제 파드에 고유한 네임스페이스가 생겼습니다. 그런 다음 설치한다.</font>
+
+45
+00:02:43,920 --> 00:02:54,000
+a virtual ethernet interface that comes in pairs. So one pair would be one side of the pair would be
+
+46
+00:02:43,920 --> 00:02:54,000
+<font color="#ffff54">쌍으로 제공되는 가상 이더넷 인터페이스를 설치합니다. 따라서 한 쌍의 한쪽은 다음과 같다.</font>
+
+47
+00:02:54,000 --> 00:02:58,880
+inside the namespace and the other part is actually created and attached to the host.
+
+48
+00:02:54,000 --> 00:02:58,880
+<font color="#ffff54">에 있고 다른 한쪽은 실제로 생성되어 호스트에 연결됩니다.</font>
+
+49
+00:02:59,440 --> 00:03:06,320
+And that is a pipeline that provides communication between the host and the pod.
+
+50
+00:02:59,440 --> 00:03:06,320
+<font color="#ffff54">그리고 이것이 호스트와 파드 간의 통신을 제공하는 파이프라인이다.</font>
+
+51
+00:03:06,959 --> 00:03:15,519
+It all then assigns an IP address to that pod. It also sets the default route and that is how
+
+52
+00:03:06,959 --> 00:03:15,519
+<font color="#ffff54">그런 다음 해당 파드에 IP 주소를 할당한다. 또한 기본 경로를 설정하며 다음과 같이 한다.</font>
+
+53
+00:03:16,159 --> 00:03:22,639
+the communication with the outside world needs to go, what routes it will need to take. It also
+
+54
+00:03:16,159 --> 00:03:22,639
+<font color="#ffff54">외부 세계와의 통신이 어떤 경로를 통해 이루어져야 하는지를 결정합니다. 또한</font>
+
+55
+00:03:22,639 --> 00:03:28,400
+does the same thing on the host and it adds the routes to the container. So now we have
+
+56
+00:03:22,639 --> 00:03:28,400
+<font color="#ffff54">은 호스트에서 동일한 작업을 수행하여 컨테이너에 경로를 추가합니다. 이제 우리는</font>
+
+57
+00:03:29,120 --> 00:03:34,960
+established a communication between the host and the container.
+
+58
+00:03:29,120 --> 00:03:34,960
+<font color="#ffff54">호스트와 컨테이너 간의 통신이 설정되었습니다.</font>
+
+59
+00:03:37,200 --> 00:03:42,319
+Now that we have some understanding of how CNI plugins work, let's talk about Calico,
+
+60
+00:03:37,200 --> 00:03:42,319
+<font color="#ffff54">이제 CNI 플러그인의 작동 방식을 어느 정도 이해했으니, Calico에 대해 이야기해 보겠습니다,</font>
+
+61
+00:03:42,879 --> 00:03:49,599
+which is a very popular CNI plugin provider. In the previous episode, we discussed Flannel.
+
+62
+00:03:42,879 --> 00:03:49,599
+<font color="#ffff54">에 대해 알아보겠습니다. 이전 에피소드에서는 플란넬에 대해 설명했습니다.</font>
+
+63
+00:03:51,360 --> 00:03:58,159
+So to install Calico, once you set up your initial Kubernetes cluster, then you can run
+
+64
+00:03:51,360 --> 00:03:58,159
+<font color="#ffff54">따라서 캘리코를 설치하려면, 초기 쿠버네티스 클러스터를 설정한 다음</font>
+
+65
+00:03:58,799 --> 00:04:06,879
+kubectl apply minus f and this is the URL to where the installation package is.
+
+66
+00:03:58,799 --> 00:04:06,879
+<font color="#ffff54">kubectl apply에서 f를 빼면 설치 패키지가 있는 곳의 URL이 나온다.</font>
+
+67
+00:04:07,759 --> 00:04:14,639
+If you haven't done any Kubernetes deployment, no worries. I have a full course on installing
+
+68
+00:04:07,759 --> 00:04:14,639
+<font color="#ffff54">쿠버네티스 배포를 해본 적이 없더라도 걱정하지 않아도 된다. 설치에 대한 전체 과정이 있습니다.</font>
+
+69
+00:04:15,280 --> 00:04:23,839
+Kubernetes on CentOS. I provide great detail information including the scripts so you can set
+
+70
+00:04:15,280 --> 00:04:23,839
+<font color="#ffff54">CentOS에서 쿠버네티스 설치. 스크립트를 포함한 훌륭한 세부 정보를 제공하므로 설정할 수 있습니다.</font>
+
+71
+00:04:23,840 --> 00:04:26,480
+your cluster up quickly if you follow that course.
+
+72
+00:04:23,840 --> 00:04:26,480
+<font color="#ffff54">이 과정을 따라하면 클러스터를 빠르게 설정할 수 있습니다.</font>
+
+73
+00:04:28,640 --> 00:04:36,720
+So Calico uses a dynamic subnet allocation scheme. It basically uses the Kubernetes API
+
+74
+00:04:28,640 --> 00:04:36,720
+<font color="#ffff54">따라서 캘리코는 동적 서브넷 할당 체계를 사용합니다. 기본적으로 쿠버네티스 API를 사용한다.</font>
+
+75
+00:04:37,280 --> 00:04:45,840
+server HCD or set up its own HCD if you want to do that that way. So that basically provides,
+
+76
+00:04:37,280 --> 00:04:45,840
+<font color="#ffff54">서버 HCD를 사용하거나 원하는 경우 자체 HCD를 설정할 수 있습니다. 따라서 기본적으로 제공됩니다,</font>
+
+77
+00:04:46,480 --> 00:04:54,880
+has the reference of what APIs will need to assign to each node. And once Calico is installed,
+
+78
+00:04:46,480 --> 00:04:54,880
+<font color="#ffff54">에는 각 노드에 할당해야 할 API에 대한 참조가 있습니다. 그리고 Calico가 설치되면</font>
+
+79
+00:04:54,880 --> 00:05:02,240
+then it assigns a block of those IPs to each node and each node is become then responsible
+
+80
+00:04:54,880 --> 00:05:02,240
+<font color="#ffff54">이 되면 각 노드에 해당 IP 블록을 할당하고 각 노드는 그 다음부터</font>
+
+81
+00:05:02,240 --> 00:05:13,280
+for assigning the IPs to the pods that it creates inside it. The default encapsulation for Calico
+
+82
+00:05:02,240 --> 00:05:13,280
+<font color="#ffff54">내부에 생성하는 파드에 IP를 할당한다. 캘리코의 기본 캡슐화</font>
+
+83
+00:05:14,080 --> 00:05:21,200
+is IP and IP protocol which basically involves wrapping a layer 3 IP packet inside an extra
+
+84
+00:05:14,080 --> 00:05:21,200
+<font color="#ffff54">는 기본적으로 레이어 3 IP 패킷을 여분의</font>
+
+85
+00:05:22,000 --> 00:05:29,120
+IP header. Let's see how that kind of really works. So this is an Ethernet frame which consists of
+
+86
+00:05:22,000 --> 00:05:29,120
+<font color="#ffff54">IP 헤더로 감싸는 것입니다. 실제로 어떻게 작동하는지 살펴봅시다. 이더넷 프레임은 다음과 같이 구성됩니다.</font>
+
+87
+00:05:29,120 --> 00:05:39,280
+the MAC information, the MAC header and the data and the CRC checksum. So these are kind of routine.
+
+88
+00:05:29,120 --> 00:05:39,280
+<font color="#ffff54">MAC 정보, MAC 헤더, 데이터, CRC 체크섬으로 구성되어 있습니다. 따라서 이것들은 일종의 루틴입니다.</font>
+
+89
+00:05:39,280 --> 00:05:45,760
+It has a MAC address of the server, the originating server and this is the MAC
+
+90
+00:05:39,280 --> 00:05:45,760
+<font color="#ffff54">서버의 MAC 주소, 발신 서버, 그리고 이것이 바로 MAC입니다.</font>
+
+91
+00:05:45,760 --> 00:05:51,920
+address of the destination server. And then inside that it creates a kind of other shell,
+
+92
+00:05:45,760 --> 00:05:51,920
+<font color="#ffff54">대상 서버의 주소입니다. 그리고 그 안에 일종의 다른 셸을 생성합니다,</font>
+
+93
+00:05:52,800 --> 00:05:59,200
+an other layer of IP header which really doesn't have anything in it except if we wrap
+
+94
+00:05:52,800 --> 00:05:59,200
+<font color="#ffff54">실제로는 아무것도 들어 있지 않은 다른 계층의 IP 헤더입니다.</font>
+
+95
+00:06:00,240 --> 00:06:09,120
+the actual data which is again is an IP data. It has an IP source IP, destination IP. So these
+
+96
+00:06:00,240 --> 00:06:09,120
+<font color="#ffff54">실제 데이터는 다시 IP 데이터입니다. 여기에는 소스 IP, 목적지 IP가 있습니다. 따라서 이</font>
+
+97
+00:06:09,120 --> 00:06:16,959
+are the source and IP address of the pod. So we're talking about pods here and that's how
+
+98
+00:06:09,120 --> 00:06:16,959
+<font color="#ffff54">는 파드의 소스 및 IP 주소입니다. 여기서 우리는 파드에 대해 이야기하고 있으며, 다음과 같이</font>
+
+99
+00:06:17,519 --> 00:06:23,920
+it knows how to, so basically kind of this information piggybacks on the other layer IP
+
+100
+00:06:17,519 --> 00:06:23,920
+<font color="#ffff54">어떻게 하는지 알고 있기 때문에 기본적으로 이 정보는 다른 레이어 IP에 피기백됩니다.</font>
+
+101
+00:06:24,639 --> 00:06:34,800
+which has the IP address of the destination server pod. The destination node that has the pod that
+
+102
+00:06:24,639 --> 00:06:34,800
+<font color="#ffff54">대상 서버 파드의 IP 주소가 있다. 파드가 있는 대상 노드는</font>
+
+103
+00:06:34,800 --> 00:06:43,920
+we are reaching to. So again you're talking about calling one pod from one server to another pod on
+
+104
+00:06:34,800 --> 00:06:43,920
+<font color="#ffff54">를 가진 대상 노드이다. 다시 말해서, 한 서버에서 다른 서버의 파드로 한 파드를 호출하는 것은</font>
+
+105
+00:06:43,920 --> 00:06:50,720
+a different server. If you are if your pods are communicating on the same server we don't need
+
+106
+00:06:43,920 --> 00:06:50,720
+<font color="#ffff54">다른 서버로 호출하는 것이다. 만약 파드가 동일한 서버에서 통신하고 있다면, 우리는 필요하지 않다.</font>
+
+107
+00:06:50,720 --> 00:06:57,840
+that. This really only is used by default again. This scheme is used when you're communicating
+
+108
+00:06:50,720 --> 00:06:57,840
+<font color="#ffff54">가 필요하지 않다. 이것은 실제로 다시 기본적으로만 사용된다. 이 체계는 통신할 때 사용된다.</font>
+
+109
+00:06:57,840 --> 00:07:06,880
+across nodes. So once this packet then is sent it knows how to send that. It has everything that
+
+110
+00:06:57,840 --> 00:07:06,880
+<font color="#ffff54">노드 간에 통신할 때 사용됩니다. 따라서 이 패킷이 전송되면 노드는 이 패킷을 전송하는 방법을 알고 있습니다. 이 패킷에는</font>
+
+111
+00:07:06,880 --> 00:07:14,640
+needs the MAC addresses, the IP addresses of the servers and then once this frame gets to the
+
+112
+00:07:06,880 --> 00:07:14,640
+<font color="#ffff54">이 프레임이 서버의 MAC 주소와 IP 주소가 필요하고, 일단 이 프레임이</font>
+
+113
+00:07:14,640 --> 00:07:22,960
+destination server it unpacks it and then it knows where this to which pod it needs to be sending.
+
+114
+00:07:14,640 --> 00:07:22,960
+<font color="#ffff54">대상 서버에 도착하면 압축을 풀고 이 프레임을 어느 파드로 보내야 하는지 알 수 있습니다.</font>
+
+115
+00:07:23,040 --> 00:07:28,160
+So kind of hide this information, piggybacks it inside another IP header.
+
+116
+00:07:23,040 --> 00:07:28,160
+<font color="#ffff54">따라서 이 정보를 숨기고 다른 IP 헤더 안에 피기백합니다.</font>
+
+117
+00:07:30,000 --> 00:07:37,680
+And finally Calico uses a border protocol gateway or BGP to share and exchange
+
+118
+00:07:30,000 --> 00:07:37,680
+<font color="#ffff54">마지막으로 Calico는 보더 프로토콜 게이트웨이 또는 BGP를 사용하여 공유 및 교환합니다.</font>
+
+119
+00:07:37,680 --> 00:07:43,120
+ROPs info between nodes and that that's how it facilitates pod network communication.
+
+120
+00:07:37,680 --> 00:07:43,120
+<font color="#ffff54">ROP는 노드 간 정보를 교환하여 파드 네트워크 통신을 용이하게 합니다.</font>
+
+121
+00:07:43,360 --> 00:07:51,840
+To demo and explore how Calico works on a Kubernetes environment I'll set up two servers.
+
+122
+00:07:43,360 --> 00:07:51,840
+<font color="#ffff54">칼리코가 쿠버네티스 환경에서 어떻게 작동하는지 데모하고 살펴보기 위해 두 대의 서버를 설정해 보겠습니다.</font>
+
+123
+00:07:51,840 --> 00:08:01,199
+So I have a Kubernetes cluster. It has two nodes, the master node and node one. And I have pre-installed
+
+124
+00:07:51,840 --> 00:08:01,199
+<font color="#ffff54">Kubernetes 클러스터가 있습니다. 여기에는 마스터 노드와 노드 1이라는 두 개의 노드가 있습니다. 그리고 미리 설치한</font>
+
+125
+00:08:03,439 --> 00:08:09,360
+a very simple hello world application. It's got four pods as you can see there are two on each node.
+
+126
+00:08:03,439 --> 00:08:09,360
+<font color="#ffff54">아주 간단한 헬로월드 애플리케이션을 사전 설치했습니다. 보시다시피 각 노드에 두 개씩 총 4개의 파드가 있습니다.</font>
+
+127
+00:08:09,360 --> 00:08:19,199
+And as you can see when CNI actually installs or configures the pod network it also
+
+128
+00:08:09,360 --> 00:08:19,199
+<font color="#ffff54">그리고 CNI가 실제로 파드 네트워크를 설치하거나 구성할 때 볼 수 있듯이</font>
+
+129
+00:08:19,840 --> 00:08:29,280
+creates the VET part. So it comes in pair. One pair is installed, one part of the pair is installed
+
+130
+00:08:19,840 --> 00:08:29,280
+<font color="#ffff54">VET 파트를 생성한다. 따라서 쌍으로 제공된다. 한 쌍이 설치되고, 한 쌍의 일부가 설치된다.</font>
+
+131
+00:08:30,319 --> 00:08:36,720
+on the Kubernetes itself, on the pod itself and then the other part the other part of the
+
+132
+00:08:30,319 --> 00:08:36,720
+<font color="#ffff54">쿠버네티스 자체에, 파드 자체에 설치되고, 다른 한 부분은</font>
+
+133
+00:08:37,680 --> 00:08:44,480
+VET is actually installed on the server so on the host. So as you can see all of these four pods
+
+134
+00:08:37,680 --> 00:08:44,480
+<font color="#ffff54">VET는 실제로 서버에 설치되므로 호스트에 설치됩니다. 보시다시피 이 네 개의 파드는 모두</font>
+
+135
+00:08:45,440 --> 00:08:51,120
+have four interfaces of IP addresses and each one of those you can see the IP addresses.
+
+136
+00:08:45,440 --> 00:08:51,120
+<font color="#ffff54">에는 네 개의 IP 주소 인터페이스가 있으며 각 인터페이스에서 IP 주소를 볼 수 있습니다.</font>
+
+137
+00:08:51,840 --> 00:09:01,440
+And also each VET has its counterpart on the server. So next we'll go to the command line
+
+138
+00:08:51,840 --> 00:09:01,440
+<font color="#ffff54">또한 각 VET는 서버에 대응하는 서버가 있습니다. 이제 명령줄로 이동해 보겠습니다.</font>
+
+139
+00:09:01,440 --> 00:09:07,520
+and kind of explore what this is not a full story of course. Calico has done a lot more and we are
+
+140
+00:09:01,440 --> 00:09:07,520
+<font color="#ffff54">를 실행하고, 물론 이것이 전체 이야기는 아닙니다. Calico는 훨씬 더 많은 일을 해왔고 우리는</font>
+
+141
+00:09:07,520 --> 00:09:14,880
+going to explore other features of Calico. So I'll be using Visual Studio Code and so we are
+
+142
+00:09:07,520 --> 00:09:14,880
+<font color="#ffff54">Calico의 다른 기능들을 살펴볼 것입니다. 비주얼 스튜디오 코드를 사용할 예정이니까요.</font>
+
+143
+00:09:14,880 --> 00:09:23,760
+inside Visual Studio Code and I'm already SSH into node one. So as you saw in the previous diagram
+
+144
+00:09:14,880 --> 00:09:23,760
+<font color="#ffff54">에 있고 이미 1번 노드에 SSH로 접속했습니다. 이전 다이어그램에서 보셨듯이</font>
+
+145
+00:09:23,760 --> 00:09:29,360
+we have two nodes one is master and the other one node one. So I'm running everything from node
+
+146
+00:09:23,760 --> 00:09:29,360
+<font color="#ffff54">두 개의 노드가 있는데 하나는 마스터 노드이고 다른 하나는 1번 노드입니다. 그래서 저는 노드 1에서 모든 것을 실행하고 있습니다.</font>
+
+147
+00:09:30,000 --> 00:09:39,360
+one. So let's run the first command ip addr or give me all the interfaces on this basically that
+
+148
+00:09:30,000 --> 00:09:39,360
+<font color="#ffff54">하나. 이제 첫 번째 명령인 ip addr을 실행하거나 기본적으로 다음과 같은 모든 인터페이스를 제공하겠습니다.</font>
+
+149
+00:09:39,360 --> 00:09:47,039
+what it says give me all the interfaces on this machine. So as you can see quite a number of them
+
+150
+00:09:39,360 --> 00:09:47,039
+<font color="#ffff54">이 명령은 이 컴퓨터의 모든 인터페이스를 알려준다는 뜻입니다. 보시다시피 꽤 많은 수의 인터페이스가 있습니다.</font>
+
+151
+00:09:50,720 --> 00:09:56,800
+it's got a loopback at zero so that is the default interface for the server itself.
+
+152
+00:09:50,720 --> 00:09:56,800
+<font color="#ffff54">루프백이 0으로 설정되어 있으므로 서버 자체의 기본 인터페이스입니다.</font>
+
+153
+00:09:57,760 --> 00:10:03,200
+And then we see a number of other ones such as Vibro and Docker they're not being used
+
+154
+00:09:57,760 --> 00:10:03,200
+<font color="#ffff54">그리고 사용되지 않는 Vibro 및 Docker와 같은 다른 여러 인터페이스도 볼 수 있습니다.</font>
+
+155
+00:10:04,480 --> 00:10:15,760
+by Calicker. But Calicker has a number of entries here one is Calico and this GUI and the other one
+
+156
+00:10:04,480 --> 00:10:15,760
+<font color="#ffff54">Calicker에 의해. 하지만 Calicker는 여기에 여러 항목이 있습니다. 하나는 Calico이고 다른 하나는 이 GUI입니다.</font>
+
+157
+00:10:15,760 --> 00:10:23,760
+is so that is one one of the virtual Ethernet that we saw in the first diagram that connects
+
+158
+00:10:15,760 --> 00:10:23,760
+<font color="#ffff54">는 첫 번째 다이어그램에서 보았던 가상 이더넷 중 하나로서</font>
+
+159
+00:10:24,559 --> 00:10:36,559
+the server to the pod and this is the other one. So that on this on node one we have two pods
+
+160
+00:10:24,559 --> 00:10:36,559
+<font color="#ffff54">서버와 파드를 연결하고 이것이 다른 하나이다. 따라서 노드 1에는 두 개의 파드가 있다.</font>
+
+161
+00:10:36,559 --> 00:10:44,720
+each one of those has an interface that connects it to the pod. There's also tunnel zero
+
+162
+00:10:36,559 --> 00:10:44,720
+<font color="#ffff54">각각의 파드에는 파드에 연결하는 인터페이스가 있습니다. 터널 0도 있습니다.</font>
+
+163
+00:10:46,000 --> 00:10:50,319
+and it's got an ip address. By the way these are these don't have any ip addresses because
+
+164
+00:10:46,000 --> 00:10:50,319
+<font color="#ffff54">그리고 IP 주소가 있습니다. 그런데 이것들은 다음과 같은 이유로 IP 주소가 없습니다.</font>
+
+165
+00:10:50,320 --> 00:10:59,840
+those are just basically these are the pipeline that connect to servers to connect the server to
+
+166
+00:10:50,320 --> 00:10:59,840
+<font color="#ffff54">이것들은 기본적으로 서버에 연결하기 위해 서버에 연결하는 파이프라인입니다.</font>
+
+167
+00:11:00,879 --> 00:11:07,680
+the pod. However we also have what is called a tunnel and as you can see is something to do
+
+168
+00:11:00,879 --> 00:11:07,680
+<font color="#ffff54">파드입니다. 그러나 터널이라는 것도 있는데, 보시다시피 터널은</font>
+
+169
+00:11:07,680 --> 00:11:15,760
+with ip ip. We'll discuss that later but keep in mind that this Calico also creates this interface
+
+170
+00:11:07,680 --> 00:11:15,760
+<font color="#ffff54">와 관련이 있습니다. 이에 대해서는 나중에 설명하겠지만, 이 Calico는 다음과 같은 인터페이스도 생성한다는 점을 기억하세요.</font>
+
+171
+00:11:16,319 --> 00:11:22,559
+called tunnel zero and it has an ip address. Okay so that's as far as
+
+172
+00:11:16,319 --> 00:11:22,559
+<font color="#ffff54">터널 제로라고 불리는 인터페이스를 생성하며, 이 인터페이스에는 IP 주소가 있습니다. 자, 여기까지입니다.</font>
+
+173
+00:11:24,319 --> 00:11:30,960
+interface is concerned. Now the next command ip link show type vet. So I'm just going to verify
+
+174
+00:11:24,319 --> 00:11:30,960
+<font color="#ffff54">인터페이스에 관한 것입니다. 이제 다음 명령은 ip link show type vet입니다. 이제 다음을 확인하겠습니다.</font>
+
+175
+00:11:30,960 --> 00:11:38,879
+again to see how many virtual Ethernet interfaces created. And again no surprise we have two of them
+
+176
+00:11:30,960 --> 00:11:38,879
+<font color="#ffff54">를 다시 입력하여 얼마나 많은 가상 이더넷 인터페이스가 생성되었는지 확인합니다. 역시 놀랍지 않게도 두 개가 있습니다.</font>
+
+177
+00:11:39,840 --> 00:11:47,120
+is are the one that we show up here so they're kind of verifying that we have the same one
+
+178
+00:11:39,840 --> 00:11:47,120
+<font color="#ffff54">여기에 표시된 것과 동일한 인터페이스가 있다는 것을 확인합니다.</font>
+
+179
+00:11:47,120 --> 00:11:57,600
+showing up when we run that command. Okay and we can also do ip link show type ip ip so we want
+
+180
+00:11:47,120 --> 00:11:57,600
+<font color="#ffff54">이 명령을 실행할 때 표시됩니다. 좋아, 그리고 우리는 또한 ip link show type ip를 할 수 있습니다.</font>
+
+181
+00:11:57,600 --> 00:12:04,080
+to verify this guy. We can also do that independently so if you run that we'll see that
+
+182
+00:11:57,600 --> 00:12:04,080
+<font color="#ffff54">를 확인합니다. 독립적으로 실행할 수도 있으므로 이 명령을 실행하면 다음과 같이 표시됩니다.</font>
+
+183
+00:12:04,160 --> 00:12:10,879
+we'll see that it shows as a tunnel zero and then ip ip.
+
+184
+00:12:04,160 --> 00:12:10,879
+<font color="#ffff54">터널 0으로 표시된 다음 IP로 표시되는 것을 볼 수 있습니다.</font>
+
+185
+00:12:12,560 --> 00:12:19,440
+So this is as far as the the the tunnel that we'll discuss a little bit later and the vet for
+
+186
+00:12:12,560 --> 00:12:19,440
+<font color="#ffff54">여기까지가 우리가 잠시 후에 논의할 터널에 대한 설명이며</font>
+
+187
+00:12:21,440 --> 00:12:30,080
+for our pods. Now let's do a kubectl get pods minus o y they want just kind of display
+
+188
+00:12:21,440 --> 00:12:30,080
+<font color="#ffff54">를 찾았습니다. 이제 쿠벡툴이 파드를 빼고 디스플레이만 표시하도록 해보자.</font>
+
+189
+00:12:30,080 --> 00:12:36,080
+all the pods that we have. And again this is very similar to what I'll show you in that
+
+190
+00:12:30,080 --> 00:12:36,080
+<font color="#ffff54">우리가 가지고 있는 모든 파드를 출력한다. 그리고 이것은 다시 내가 보여줄 것과 매우 유사하다.</font>
+
+191
+00:12:36,080 --> 00:12:43,600
+diagram before page before. So there are four pods that I installed as part of one
+
+192
+00:12:36,080 --> 00:12:43,600
+<font color="#ffff54">다이어그램과 유사합니다. 그래서 제가 하나의 일부로 설치한 4개의 파드가 있습니다.</font>
+
+193
+00:12:43,600 --> 00:12:50,879
+hello world application. As you can see two of them are running on node one and the other two
+
+194
+00:12:43,600 --> 00:12:50,879
+<font color="#ffff54">헬로 월드 애플리케이션. 보시다시피, 그 중 두 개는 1번 노드에서, 나머지 두 개는 2번 노드에서 실행되고 있습니다.</font>
+
+195
+00:12:50,879 --> 00:13:02,480
+are running on master. Okay so far so good. Now let's see how to get to one of those so ip
+
+196
+00:12:50,879 --> 00:13:02,480
+<font color="#ffff54">은 마스터에서 실행 중입니다. 지금까지는 괜찮습니다. 이제 그 중 하나에 도달하는 방법을 살펴봅시다.</font>
+
+197
+00:13:02,480 --> 00:13:13,279
+route get and the ip address. So basically I'm saying I want to go to this pod 172.16.4.94.5
+
+198
+00:13:02,480 --> 00:13:13,279
+<font color="#ffff54">경로 가져 오기와 IP 주소. 기본적으로 저는 이 포드 172.16.4.94.5로 가고 싶다고 말합니다.</font>
+
+199
+00:13:14,000 --> 00:13:21,199
+that is this guy. So if I want to go from node one where I am I want to go to that
+
+200
+00:13:14,000 --> 00:13:21,199
+<font color="#ffff54">이 사람이에요. 따라서 내가 있는 1번 노드에서 저 노드로 이동하려면</font>
+
+201
+00:13:22,079 --> 00:13:30,720
+hit that pod. What are the routes that I need to go through? And this is the results which tells me
+
+202
+00:13:22,079 --> 00:13:30,720
+<font color="#ffff54">그 포드를 누르세요. 어떤 경로를 거쳐야 할까요? 결과는 다음과 같습니다.</font>
+
+203
+00:13:31,439 --> 00:13:37,679
+in order to go hit that pod from the server itself from the node itself you have to go through that
+
+204
+00:13:31,439 --> 00:13:37,679
+<font color="#ffff54">노드 자체에서 서버 자체에서 해당 파드를 공격하려면 다음을 거쳐야 한다.</font>
+
+205
+00:13:38,240 --> 00:13:46,080
+interface. Again this is the interface of the vet that connects the server to the pod.
+
+206
+00:13:38,240 --> 00:13:46,080
+<font color="#ffff54">인터페이스를 통과해야 한다. 다시 말하지만 이것은 서버와 파드를 연결하는 베트의 인터페이스이다.</font>
+
+207
+00:13:46,080 --> 00:13:55,440
+So again that's what we show up here this guy here. So in order for any communication that
+
+208
+00:13:46,080 --> 00:13:55,440
+<font color="#ffff54">그래서 다시 여기에 이 사람이 나타납니다. 따라서 모든 통신을 위해서는</font>
+
+209
+00:13:56,000 --> 00:14:02,880
+hits that pod will need to go through that interface. If we do the same thing for
+
+210
+00:13:56,000 --> 00:14:02,880
+<font color="#ffff54">해당 파드에 도달하려면 해당 인터페이스를 통과해야 합니다. 만약 우리가</font>
+
+211
+00:14:02,879 --> 00:14:10,879
+the next pod 06 this guy here around that. Again very similarly in order to go from
+
+212
+00:14:02,879 --> 00:14:10,879
+<font color="#ffff54">다음 포드 06이 그 주위에 있습니다. 다시 매우 유사하게</font>
+
+213
+00:14:11,519 --> 00:14:21,200
+pod one I'm sorry from node one hit that pod we need to go to this interface again that we saw
+
+214
+00:14:11,519 --> 00:14:21,200
+<font color="#ffff54">노드 1에서 미안하지만 그 파드에 도달하려면 다시 이 인터페이스로 이동해야 합니다.</font>
+
+215
+00:14:21,200 --> 00:14:30,159
+earlier. So there are no bridges here. Every time that you install a pod and install a pod is
+
+216
+00:14:21,200 --> 00:14:30,159
+<font color="#ffff54">를 보았습니다. 그래서 여기에는 브리지가 없다. 파드를 설치하고 파드를 설치할 때마다</font>
+
+217
+00:14:30,879 --> 00:14:41,279
+installed on a server Calico creates a route for it. Now let's say we want to hit
+
+218
+00:14:30,879 --> 00:14:41,279
+<font color="#ffff54">서버에 설치될 때마다 캘리코가 경로를 생성한다. 이제 우리가</font>
+
+219
+00:14:42,879 --> 00:14:49,839
+a different pod this one or six is actually on a different server on master.
+
+220
+00:14:42,879 --> 00:14:49,839
+<font color="#ffff54">이 1~6번 파드는 실제로 마스터의 다른 서버에 있습니다.</font>
+
+221
+00:14:50,480 --> 00:14:59,279
+So how do we get there? So we run that we'll see that in order to hit 206 we need to go
+
+222
+00:14:50,480 --> 00:14:59,279
+<font color="#ffff54">그럼 어떻게 해야 할까? 실행해보면 206에 도달하려면 다음과 같이 해야 한다는 것을 알 수 있다.</font>
+
+223
+00:15:00,240 --> 00:15:10,319
+through the ip of my92.168.40 that is master so it's on the other server. However we need to go
+
+224
+00:15:00,240 --> 00:15:10,319
+<font color="#ffff54">마스터인 my92.168.40의 IP를 통해 다른 서버에 접속해야 합니다. 하지만 다음과 같이 해야 합니다.</font>
+
+225
+00:15:10,319 --> 00:15:20,079
+through the tunnel zero and with the ip that is 172.16.94.0 and that was the tunnel that we saw up
+
+226
+00:15:10,319 --> 00:15:20,079
+<font color="#ffff54">터널 0을 통해 172.16.94.0의 IP로 터널을 통과해야 하며, 이것이 우리가 본 터널인</font>
+
+227
+00:15:20,079 --> 00:15:27,679
+here. So we need to go through that. So that tunnel does the magic. So that tunnel basically
+
+228
+00:15:20,079 --> 00:15:27,679
+<font color="#ffff54">여기요. 그래서 우리는 그것을 통과해야 합니다. 저 터널이 마법을 부립니다. 저 터널은 기본적으로</font>
+
+229
+00:15:27,680 --> 00:15:36,800
+facilitates the communication between pods on one server and pods on the other server.
+
+230
+00:15:27,680 --> 00:15:36,800
+<font color="#ffff54">한 서버의 파드와 다른 서버의 파드 간의 통신을 용이하게 한다.</font>
+
+231
+00:15:37,760 --> 00:15:46,400
+Now let's next we'll kind of show you graphically what we discovered from this demo right now.
+
+232
+00:15:37,760 --> 00:15:46,400
+<font color="#ffff54">이제 이 데모에서 발견한 것을 지금 바로 그래픽으로 보여드리겠습니다.</font>
+
+233
+00:15:48,160 --> 00:15:53,440
+So here's a view of our environment again. We have two servers and then the four pods that we
+
+234
+00:15:48,160 --> 00:15:53,440
+<font color="#ffff54">우리 환경을 다시 한 번 살펴보겠습니다. 두 개의 서버와 네 개의 파드가 있습니다.</font>
+
+235
+00:15:53,440 --> 00:16:01,360
+saw earlier. And as we saw any communication that on the same server goes to any of these pods
+
+236
+00:15:53,440 --> 00:16:01,360
+<font color="#ffff54">네 개의 파드가 있습니다. 그리고 동일한 서버에서 이 파드 중 어느 한 곳으로 통신이 가는 것을 보았듯이</font>
+
+237
+00:16:02,000 --> 00:16:09,680
+it has to go through the vet piece on the server side. So again these are connected together. The
+
+238
+00:16:02,000 --> 00:16:09,680
+<font color="#ffff54">서버 측에 있는 검증 부분을 거쳐야 합니다. 그래서 이것들은 다시 서로 연결되어 있습니다. 그리고</font>
+
+239
+00:16:09,680 --> 00:16:18,720
+interface on the pod is really a kind of one side of the same pair. So you have a pair here and pair
+
+240
+00:16:09,680 --> 00:16:18,720
+<font color="#ffff54">인터페이스는 실제로 같은 쌍의 한 쪽입니다. 따라서 여기에 한 쌍이 있고</font>
+
+241
+00:16:18,720 --> 00:16:25,040
+and that's how you connect it. So all communication on from the same server going to the pod goes
+
+242
+00:16:18,720 --> 00:16:25,040
+<font color="#ffff54">이렇게 연결하면 됩니다. 따라서 동일한 서버에서 파드로 가는 모든 통신은 다음과 같이 진행됩니다.</font>
+
+243
+00:16:25,040 --> 00:16:31,920
+through these interfaces. It doesn't matter where they are. However if this one pod wants to
+
+244
+00:16:25,040 --> 00:16:31,920
+<font color="#ffff54">이 인터페이스를 통해 이루어집니다. 어디에 있는지는 중요하지 않습니다. 그러나 이 하나의 파드가</font>
+
+245
+00:16:31,920 --> 00:16:38,000
+communicate to with another pod on a different server then as we saw it has to go through the
+
+246
+00:16:31,920 --> 00:16:38,000
+<font color="#ffff54">다른 서버의 다른 파드와 통신하려면 앞서 살펴본 것처럼</font>
+
+247
+00:16:38,000 --> 00:16:47,279
+tunnel. And the tunnel this is where the ip in ip transformation occurs. That is it sticks it
+
+248
+00:16:38,000 --> 00:16:47,279
+<font color="#ffff54">터널을 통과해야 한다. 그리고 이 터널이 바로 아이피 인 아이피 변환이 일어나는 곳입니다. 바로 여기에</font>
+
+249
+00:16:47,279 --> 00:16:55,279
+creates a an ip header and then encapsulate everything and the ip part of this communication
+
+250
+00:16:47,279 --> 00:16:55,279
+<font color="#ffff54">IP 헤더를 생성한 다음 이 통신의 모든 것과 IP 부분을 캡슐화합니다.</font>
+
+251
+00:16:56,480 --> 00:17:05,519
+inside that ip. And then it uses its ip address as a source so it kind of masquerades this ip address
+
+252
+00:16:56,480 --> 00:17:05,519
+<font color="#ffff54">를 캡슐화합니다. 그런 다음 해당 IP 주소를 소스로 사용하여 이 IP 주소를 가장합니다.</font>
+
+253
+00:17:06,240 --> 00:17:14,240
+and then sends it through this interface of the node and then it goes
+
+254
+00:17:06,240 --> 00:17:14,240
+<font color="#ffff54">그런 다음 이 노드의 인터페이스를 통해 전송한 다음</font>
+
+255
+00:17:15,200 --> 00:17:24,960
+to the other node and then over here it disassembles this that ip information
+
+256
+00:17:15,200 --> 00:17:24,960
+<font color="#ffff54">다른 노드로 보낸 다음 이쪽에서 이 IP 정보를 분해합니다.</font>
+
+257
+00:17:24,960 --> 00:17:32,400
+and unpacks everything and then sends the information directly to that pod. And so this
+
+258
+00:17:24,960 --> 00:17:32,400
+<font color="#ffff54">모든 압축을 풀고 그 정보를 해당 파드로 직접 보냅니다. 그래서 이</font>
+
+259
+00:17:32,400 --> 00:17:38,559
+is kind of overview. Next we are going to kind of explore what happens as information that stands
+
+260
+00:17:32,400 --> 00:17:38,559
+<font color="#ffff54">는 일종의 개요입니다. 다음에는 이 정보가 어떤 식으로 저장되는지 살펴보겠습니다.</font>
+
+261
+00:17:38,559 --> 00:17:46,559
+between you and how ip in ip and the whole encapsulation works. We'll do that next.
+
+262
+00:17:38,559 --> 00:17:46,559
+<font color="#ffff54">사이에 어떤 일이 일어나는지, 그리고 아이피 인 아이피와 전체 캡슐화가 어떻게 작동하는지 살펴보겠습니다. 이 부분은 다음에 하도록 하겠습니다.</font>
+
+263
+00:17:48,000 --> 00:17:57,200
+In this part of the demo we are going to capture some network traffic and see how ip in ip works
+
+264
+00:17:48,000 --> 00:17:57,200
+<font color="#ffff54">데모의 이 부분에서는 일부 네트워크 트래픽을 캡처하여 ip in ip가 어떻게 작동하는지 살펴보겠습니다.</font>
+
+265
+00:17:57,200 --> 00:18:04,799
+in action. So first thing let's just run this command kubectl get services to see what
+
+266
+00:17:57,200 --> 00:18:04,799
+<font color="#ffff54">실제로 작동합니다. 먼저, 이 명령어를 실행하여 kubectl get services를 실행하고</font>
+
+267
+00:18:04,960 --> 00:18:10,799
+get services to see what services we have available for use. And I have this hello world
+
+268
+00:18:04,960 --> 00:18:10,799
+<font color="#ffff54">get services를 실행하여 사용 가능한 서비스를 확인한다. 그리고 이 헬로 월드가 있다.</font>
+
+269
+00:18:10,799 --> 00:18:16,879
+that we are going to use for this demo. It's a very simple application as you can see the type
+
+270
+00:18:10,799 --> 00:18:16,879
+<font color="#ffff54">이 데모에 사용할 것입니다. 유형에서 볼 수 있듯이 매우 간단한 애플리케이션입니다.</font>
+
+271
+00:18:16,879 --> 00:18:22,000
+is node port that is we cannot we can actually get to that service from outside the cluster.
+
+272
+00:18:16,879 --> 00:18:22,000
+<font color="#ffff54">은 클러스터 외부에서 실제로 해당 서비스에 접속할 수 없는 노드 포트입니다.</font>
+
+273
+00:18:22,720 --> 00:18:34,000
+That is the cluster ip and this is the node port port number. So if we do curl http and using
+
+274
+00:18:22,720 --> 00:18:34,000
+<font color="#ffff54">이것이 클러스터 IP이고 이것이 노드 포트 포트 번호입니다. 따라서 http를 curl하고 다음을 사용하여</font>
+
+275
+00:18:34,079 --> 00:18:40,960
+the ip address of one of the services and the node port ip then we will be able to call the service.
+
+276
+00:18:34,079 --> 00:18:40,960
+<font color="#ffff54">서비스 중 하나의 IP 주소와 노드 포트 IP를 사용하면 서비스를 호출할 수 있습니다.</font>
+
+277
+00:18:40,960 --> 00:18:47,279
+And we can see the result hello world version number and host name. So very simple
+
+278
+00:18:40,960 --> 00:18:47,279
+<font color="#ffff54">그리고 헬로 월드 버전 번호와 호스트 이름을 확인할 수 있습니다. 매우 간단합니다.</font>
+
+279
+00:18:48,240 --> 00:18:53,519
+application indeed. So let's again take a look at the pods that we have.
+
+280
+00:18:48,240 --> 00:18:53,519
+<font color="#ffff54">애플리케이션입니다. 이제 우리가 가지고 있는 파드를 다시 살펴봅시다.</font>
+
+281
+00:18:55,599 --> 00:19:03,119
+And as you recall we have four pods two on each node and these are pod names
+
+282
+00:18:55,599 --> 00:19:03,119
+<font color="#ffff54">기억하시겠지만, 각 노드에 2개씩 4개의 파드가 있으며, 파드 이름은 다음과 같습니다.</font>
+
+283
+00:19:04,000 --> 00:19:09,920
+the ip addresses are here and those are the nodes. So we have four different pods two on each node.
+
+284
+00:19:04,000 --> 00:19:09,920
+<font color="#ffff54">IP 주소는 여기, 노드는 여기입니다. 따라서 각 노드에 2개씩 4개의 서로 다른 파드가 있습니다.</font>
+
+285
+00:19:10,880 --> 00:19:17,920
+So let's then we're going to access into one of the nodes so sorry pods so we're going to
+
+286
+00:19:10,880 --> 00:19:17,920
+<font color="#ffff54">이제 노드 중 하나에 접속해서 미안하지만 파드에 접속해 보겠습니다.</font>
+
+287
+00:19:17,920 --> 00:19:25,279
+access to this guy let's do that and then from here we're going to
+
+288
+00:19:17,920 --> 00:19:25,279
+<font color="#ffff54">이 사람에 대한 액세스를 하고 여기서부터 우리는</font>
+
+289
+00:19:26,240 --> 00:19:33,359
+call a service on the other node. So one pod on one node is going to make a service call
+
+290
+00:19:26,240 --> 00:19:33,359
+<font color="#ffff54">다른 노드에 있는 서비스를 호출합니다. 따라서 한 노드에 있는 하나의 파드가 서비스 호출을 할 것이다.</font>
+
+291
+00:19:34,000 --> 00:19:40,880
+to a different pod on a different server. So we're going across the server and to see what's
+
+292
+00:19:34,000 --> 00:19:40,880
+<font color="#ffff54">서비스 호출을 할 것이다. 그래서 우리는 서버를 가로질러서 무엇이 있는지 확인한다.</font>
+
+293
+00:19:40,880 --> 00:19:48,640
+what's happening. So before running the that curl command let's go ahead and start our capture.
+
+294
+00:19:40,880 --> 00:19:48,640
+<font color="#ffff54">무슨 일이 일어나고 있는지. 따라서 해당 curl 명령을 실행하기 전에 먼저 캡처를 시작하겠습니다.</font>
+
+295
+00:19:48,640 --> 00:19:58,400
+So I'm using t shark this is the command line version of wireshark so t shark minus i
+
+296
+00:19:48,640 --> 00:19:58,400
+<font color="#ffff54">와이어샤크의 명령줄 버전인 t shark를 사용하고 있으므로 t shark에서 i를 빼고</font>
+
+297
+00:19:59,280 --> 00:20:06,400
+that is what interface we're going to listen on at zero that is the interface the default interface
+
+298
+00:19:59,280 --> 00:20:06,400
+<font color="#ffff54">이것이 우리가 0에서 수신할 인터페이스이며, 기본 인터페이스인</font>
+
+299
+00:20:06,400 --> 00:20:14,480
+on node one so we're running from node one minus v means make it verbose print all information
+
+300
+00:20:06,400 --> 00:20:14,480
+<font color="#ffff54">노드 1에서 실행하므로 노드 1에서 v를 빼면 모든 정보를 장황하게 인쇄합니다.</font>
+
+301
+00:20:15,360 --> 00:20:22,800
+minus y http we are telling wireshark we are interested in http so please listen for http
+
+302
+00:20:15,360 --> 00:20:22,800
+<font color="#ffff54">마이너스 Y HTTP 우리는 와이어샤크에게 HTTP에 관심이 있으니 HTTP를 들어보라고 말하고 있습니다.</font>
+
+303
+00:20:22,799 --> 00:20:28,799
+traffic so the next thing about wireshark t shark is the understand http so let's run that
+
+304
+00:20:22,799 --> 00:20:28,799
+<font color="#ffff54">트래픽이 있으므로 와이어샤크 티샤크의 다음 작업은 http 이해이므로 실행해 보겠습니다.</font>
+
+305
+00:20:29,839 --> 00:20:36,879
+so that is ready for us so over here we're going to run that command and that curl and again you
+
+306
+00:20:29,839 --> 00:20:36,879
+<font color="#ffff54">이제 준비가 되었으니 여기에 해당 명령과 컬을 실행하고 다시 한 번</font>
+
+307
+00:20:36,879 --> 00:20:43,440
+can see the results coming back exactly the same way and over here we'll see that it captures a lot
+
+308
+00:20:36,879 --> 00:20:43,440
+<font color="#ffff54">결과가 정확히 같은 방식으로 돌아오는 것을 볼 수 있으며 여기에서는 많은 것을 캡처하는 것을 볼 수 있습니다.</font>
+
+309
+00:20:43,440 --> 00:20:54,000
+of stuff so let's scroll up here and see what's going on so the capture started from here the
+
+310
+00:20:43,440 --> 00:20:54,000
+<font color="#ffff54">따라서 여기를 위로 스크롤하여 무슨 일이 일어나고 있는지 확인하여 여기에서 캡처를 시작하여</font>
+
+311
+00:20:54,000 --> 00:21:02,640
+first part is the frame so as you can if you recall the the frame the internet frame contains
+
+312
+00:20:54,000 --> 00:21:02,640
+<font color="#ffff54">첫 번째 부분은 프레임이므로 인터넷 프레임에 포함 된 프레임을 기억할 수 있습니다.</font>
+
+313
+00:21:02,640 --> 00:21:09,200
+everything so that's the kind of exterior that kind of other part of the whole traffic then
+
+314
+00:21:02,640 --> 00:21:09,200
+<font color="#ffff54">모든 것이 전체 트래픽의 다른 부분과 같은 종류의 외부입니다.</font>
+
+315
+00:21:09,200 --> 00:21:17,920
+inside that we'll see that we have internet protocol ip and then we'll see the the source
+
+316
+00:21:09,200 --> 00:21:17,920
+<font color="#ffff54">그 안에는 인터넷 프로토콜 IP가 있고 그 다음에는 소스가 표시됩니다.</font>
+
+317
+00:21:19,680 --> 00:21:29,120
+of our server which is we are going from node one which is 192.168.0.41 and the destination
+
+318
+00:21:19,680 --> 00:21:29,120
+<font color="#ffff54">서버의 노드 1번인 192.168.0.41과 목적지인</font>
+
+319
+00:21:29,840 --> 00:21:38,640
+is 192.168.0.4 so this is the exterior this is the ip header that it creates
+
+320
+00:21:29,840 --> 00:21:38,640
+<font color="#ffff54">은 192.168.0.4이므로 이것이 외부에 생성되는 IP 헤더입니다.</font>
+
+321
+00:21:39,200 --> 00:21:45,600
+and then puts everything inside so that's the kind of other shell ip and within that we'll
+
+322
+00:21:39,200 --> 00:21:45,600
+<font color="#ffff54">그리고 모든 것을 내부에 넣어서 다른 쉘 IP를 만들고 그 안에</font>
+
+323
+00:21:45,600 --> 00:21:52,720
+see there is another and as you can see here it says protocol ip ip so the first ip header
+
+324
+00:21:45,600 --> 00:21:52,720
+<font color="#ffff54">또 다른 셸이 있고 여기서 볼 수 있듯이 프로토콜 아이피 아이피라고 표시되어 있으므로 첫 번째 아이피 헤더는</font>
+
+325
+00:21:53,519 --> 00:22:03,600
+is of the type ip ip protocol and inside that is actually the again the ip header but this is the
+
+326
+00:21:53,519 --> 00:22:03,600
+<font color="#ffff54">는 ip ip 프로토콜 유형이고 그 안에는 실제로 다시 ip 헤더가 있지만 이것은</font>
+
+327
+00:22:03,600 --> 00:22:11,840
+ip header of actual communication that one pod is trying to send to the other and the source for this
+
+328
+00:22:03,600 --> 00:22:11,840
+<font color="#ffff54">한 파드가 다른 파드로 보내려는 실제 통신의 IP 헤더와 이에 대한 소스이다.</font>
+
+329
+00:22:12,800 --> 00:22:22,480
+is 172.168.194.0 if you recall that is the ip address of the tunnel so the tunnel on
+
+330
+00:22:12,800 --> 00:22:22,480
+<font color="#ffff54">는 172.168.194.0이며, 이는 터널의 IP 주소이므로 터널의</font>
+
+331
+00:22:24,160 --> 00:22:30,560
+node one is actually masquerading the ip address of the the pod itself so
+
+332
+00:22:24,160 --> 00:22:30,560
+<font color="#ffff54">노드 1은 실제로는 파드 자체의 IP 주소를 가장하고 있기 때문에</font>
+
+333
+00:22:31,359 --> 00:22:38,799
+our and then the destination is 206 so this is the the service that we are going we're calling
+
+334
+00:22:31,359 --> 00:22:38,799
+<font color="#ffff54">그리고 목적지는 206이므로 우리가 호출하는 서비스는 다음과 같다.</font>
+
+335
+00:22:38,799 --> 00:22:46,559
+on one and one is to 168.60 so again that's the ip address the destination ip address
+
+336
+00:22:38,799 --> 00:22:46,559
+<font color="#ffff54">하나는 168.60으로 연결되므로 다시 한 번 목적지 IP 주소입니다.</font>
+
+337
+00:22:46,559 --> 00:22:54,639
+and within that we'll see that let's just scroll down this is the the tcp part as you know http is
+
+338
+00:22:46,559 --> 00:22:54,639
+<font color="#ffff54">그리고 그 안에서 아래로 스크롤을 내리면 여러분이 알고있는 것처럼 이것이 http 부분이라는 것을 알 수 있습니다.</font>
+
+339
+00:22:55,440 --> 00:23:01,120
+tcp basically and then the destination port is 8080 that's exactly what we are calling
+
+340
+00:22:55,440 --> 00:23:01,120
+<font color="#ffff54">기본적으로 tcp이고 대상 포트는 정확히 우리가 호출하는 8080입니다.</font>
+
+341
+00:23:02,320 --> 00:23:09,360
+and then there are some handshake going on here and then a little bit later it starts packing
+
+342
+00:23:02,320 --> 00:23:09,360
+<font color="#ffff54">그리고 여기서 핸드셰이크가 진행되고 잠시 후 패킹이 시작됩니다.</font>
+
+343
+00:23:09,360 --> 00:23:14,480
+and kind of getting everything together and it starts creating the the ethernet so this is going
+
+344
+00:23:09,360 --> 00:23:14,480
+<font color="#ffff54">그리고 모든 것을 모아서 이더넷을 생성하기 시작합니다.</font>
+
+345
+00:23:14,480 --> 00:23:24,880
+reverse now we're going from the the master that's what the service was on the service
+
+346
+00:23:14,480 --> 00:23:24,880
+<font color="#ffff54">반대로 이제 우리는 서비스에서 서비스가 있던 마스터에서 가고 있습니다.</font>
+
+347
+00:23:24,880 --> 00:23:31,680
+starts responding and starts creating the ethernet so that's the ethernet frame
+
+348
+00:23:24,880 --> 00:23:31,680
+<font color="#ffff54">응답을 시작하고 이더넷을 생성하기 시작하여 이더넷 프레임이 됩니다.</font>
+
+349
+00:23:33,759 --> 00:23:40,799
+and then inside that again it creates another ethernet
+
+350
+00:23:33,759 --> 00:23:40,799
+<font color="#ffff54">그리고 그 안에 또 다른 이더넷을 생성합니다.</font>
+
+351
+00:23:41,119 --> 00:23:50,559
+frame header again the destination now is reversed the source would be 40 we're going from
+
+352
+00:23:41,119 --> 00:23:50,559
+<font color="#ffff54">프레임 헤더가 다시 목적지가 뒤바뀌고 소스는 40이 됩니다.</font>
+
+353
+00:23:50,559 --> 00:23:56,240
+the second server back to our server where we started everything else and then you can see
+
+354
+00:23:50,559 --> 00:23:56,240
+<font color="#ffff54">두 번째 서버는 다른 모든 것을 시작한 서버로 돌아가서 다음을 볼 수 있습니다.</font>
+
+355
+00:23:56,240 --> 00:24:02,480
+it's exactly the same as it kind of reverse fast packet packets everything all the information and
+
+356
+00:23:56,240 --> 00:24:02,480
+<font color="#ffff54">모든 정보를 역방향으로 빠른 패킷으로 전송하는 것과 똑같습니다.</font>
+
+357
+00:24:02,559 --> 00:24:11,120
+sends it back to the to the server to the caller to the pod that was calling it and this is the
+
+358
+00:24:02,559 --> 00:24:11,120
+<font color="#ffff54">를 호출한 파드의 호출자에게 서버로 다시 전송하고, 이것이 바로</font>
+
+359
+00:24:14,240 --> 00:24:19,279
+the package the information that is sending it back again is exactly a hello world version so
+
+360
+00:24:14,240 --> 00:24:19,279
+<font color="#ffff54">다시 보내는 패키지의 정보는 정확히 헬로 월드 버전이므로</font>
+
+361
+00:24:19,839 --> 00:24:26,960
+this is how ip in ip happens it's kind of like magic is very simple and very powerful
+
+362
+00:24:19,839 --> 00:24:26,960
+<font color="#ffff54">이것이 IP에서 IP가 발생하는 방식입니다. 마술은 매우 간단하면서도 매우 강력합니다.</font>
+
+363
+00:24:26,960 --> 00:24:35,120
+especially if servers are on different like they're not maybe a different subnet so that
+
+364
+00:24:26,960 --> 00:24:35,120
+<font color="#ffff54">특히 서버가 다른 서브넷에 있는 것처럼 다른 서버에 있는 경우, 그래서</font>
+
+365
+00:24:35,120 --> 00:24:43,600
+makes it things very easy to to manage so this that is the demo for the default when we install
+
+366
+00:24:35,120 --> 00:24:43,600
+<font color="#ffff54">을 사용하면 관리가 매우 쉬워지므로 설치 시 기본값으로 제공되는 데모는 다음과 같습니다.</font>
+
+367
+00:24:44,400 --> 00:24:53,200
+calico and we use its default ip in ip encapsulation so hopefully by now you have
+
+368
+00:24:44,400 --> 00:24:53,200
+<font color="#ffff54">옥양목 그리고 우리는 IP 캡슐화에서 기본 IP를 사용하므로 지금 쯤이면 다음과 같을 것입니다.</font>
+
+369
+00:24:53,200 --> 00:25:02,160
+some understanding of how cni providers work and also you have some understanding of understanding
+
+370
+00:24:53,200 --> 00:25:02,160
+<font color="#ffff54">CNI 공급자가 어떻게 작동하는지에 대해 어느 정도 이해하셨을 것입니다.</font>
+
+371
+00:25:02,160 --> 00:25:09,360
+of how calico using the default settings work but there is a lot more into calico
+
+372
+00:25:02,160 --> 00:25:09,360
+<font color="#ffff54">기본 설정을 사용하는 옥양목의 작동 방식에 대한 이해가 있지만 옥양목에는 훨씬 더 많은 것이 있습니다.</font>
+
+373
+00:25:10,000 --> 00:25:15,120
+and we don't have to discuss everything in this session but i'm going to talk about a couple of
+
+374
+00:25:10,000 --> 00:25:15,120
+<font color="#ffff54">이 세션에서 모든 것을 논의할 필요는 없지만 몇 가지에 대해 이야기하겠습니다.</font>
+
+375
+00:25:15,120 --> 00:25:23,760
+things here first we will just explore how calico shares route information amongst its nodes and
+
+376
+00:25:15,120 --> 00:25:23,760
+<font color="#ffff54">먼저 캘리코가 노드들 간에 경로 정보를 공유하는 방법과</font>
+
+377
+00:25:23,760 --> 00:25:30,080
+you're going to talk about the protocol called border gateway protocol or bgp and that is
+
+378
+00:25:23,760 --> 00:25:30,080
+<font color="#ffff54">보더 게이트웨이 프로토콜 또는 BGP라는 프로토콜에 대해 이야기 할 것입니다.</font>
+
+379
+00:25:30,080 --> 00:25:37,680
+something that calico leverages in order for it to share routing information between nodes
+
+380
+00:25:30,080 --> 00:25:37,680
+<font color="#ffff54">캘리코가 노드 간 라우팅 정보를 공유하기 위해 활용하는 프로토콜입니다.</font>
+
+381
+00:25:37,680 --> 00:25:46,160
+and then following that we will discuss non-ip and ip routing so ip and ip is the default mode
+
+382
+00:25:37,680 --> 00:25:46,160
+<font color="#ffff54">그 다음에는 비-IP 및 IP 라우팅에 대해 설명할 것이므로 기본 모드는 IP 및 IP입니다.</font>
+
+383
+00:25:46,160 --> 00:25:51,920
+and that is something that we kind of all examples up to this point have been using ip and ip so if
+
+384
+00:25:46,160 --> 00:25:51,920
+<font color="#ffff54">지금까지의 모든 예제들이 ip와 ip를 사용했기 때문에 만약</font>
+
+385
+00:25:51,920 --> 00:26:00,080
+you don't make any changes into calico settings when you install it by default it uses ip and ip
+
+386
+00:25:51,920 --> 00:26:00,080
+<font color="#ffff54">설치 시 캘리코 설정을 변경하지 않으면 기본적으로 IP와 IP를 사용합니다.</font>
+
+387
+00:26:01,039 --> 00:26:09,279
+it has some over overhead but it's not much but still there is an overhead so if there are
+
+388
+00:26:01,039 --> 00:26:09,279
+<font color="#ffff54">약간의 오버 헤드가 있지만 그다지 많지는 않지만 여전히 오버 헤드가 있으므로 다음과 같은 경우</font>
+
+389
+00:26:09,279 --> 00:26:16,639
+situations that you don't really need ip and ip and we go through some of those situations it's better
+
+390
+00:26:09,279 --> 00:26:16,639
+<font color="#ffff54">IP와 IP가 실제로 필요하지 않은 상황이 있고 그러한 상황을 겪는 것이 더 좋습니다.</font>
+
+391
+00:26:16,639 --> 00:26:24,000
+to actually not use any encapsulation that makes it actually faster and we call it direct there's
+
+392
+00:26:16,639 --> 00:26:24,000
+<font color="#ffff54">실제로 더 빠르게 만드는 캡슐화를 사용하지 않고 직접 호출하는 것이 더 낫습니다.</font>
+
+393
+00:26:24,000 --> 00:26:30,000
+also another option for bxlan if there is there are situations which you can use direct communication
+
+394
+00:26:24,000 --> 00:26:30,000
+<font color="#ffff54">또한 직접 통신을 사용할 수 있는 상황이 있는 경우 bxlan의 또 다른 옵션이 있습니다.</font>
+
+395
+00:26:30,799 --> 00:26:35,919
+or you can't use ip and ip routing then bxlan is another option it's kind of similar to
+
+396
+00:26:30,799 --> 00:26:35,919
+<font color="#ffff54">또는 IP 및 IP 라우팅을 사용할 수 없는 경우 bxlan은 다음과 유사한 또 다른 옵션입니다.</font>
+
+397
+00:26:37,039 --> 00:26:40,240
+flannel that we've discussed in the previous presentation
+
+398
+00:26:37,039 --> 00:26:40,240
+<font color="#ffff54">이전 프레젠테이션에서 설명한 플란넬을 사용합니다.</font>
+
+399
+00:26:43,199 --> 00:26:50,159
+bgp is a standardized exterior gateway protocol which is designed to exchange routing and
+
+400
+00:26:43,199 --> 00:26:50,159
+<font color="#ffff54">bgp는 라우팅을 교환하도록 설계된 표준화된 외부 게이트웨이 프로토콜입니다.</font>
+
+401
+00:26:50,159 --> 00:26:57,919
+reachability information among autonomous systems on the internet so internet is really is run by
+
+402
+00:26:50,159 --> 00:26:57,919
+<font color="#ffff54">인터넷의 자율 시스템 간의 도달 가능성 정보를 교환하도록 설계된 표준 외부 게이트웨이 프로토콜입니다.</font>
+
+403
+00:26:58,320 --> 00:27:07,840
+bgp bgp has really two functions kind of overview one is who on the internet i can send packet to
+
+404
+00:26:58,320 --> 00:27:07,840
+<font color="#ffff54">인터넷에서 누구에게 패킷을 보낼 수 있는지를 알려주는 두 가지 기능이 있다.</font>
+
+405
+00:27:09,440 --> 00:27:17,519
+i in this case means a router so rather then we'll know how who on the internet i can send
+
+406
+00:27:09,440 --> 00:27:17,519
+<font color="#ffff54">이 경우 i는 라우터를 의미하므로 인터넷에서 누구에게 보낼 수 있는지 알 수 있습니다.</font>
+
+407
+00:27:17,519 --> 00:27:25,279
+the packet to and the second is make a decision which route should the packet take so let's kind
+
+408
+00:27:17,519 --> 00:27:25,279
+<font color="#ffff54">패킷을 보내고 두 번째는 패킷이 어떤 경로로 갈지 결정하는 것입니다.</font>
+
+409
+00:27:25,599 --> 00:27:32,399
+so let's kind of this is very general overview of what bgp is obviously in depth this is very
+
+410
+00:27:25,599 --> 00:27:32,399
+<font color="#ffff54">그래서 이것은 BGP가 분명히 깊이 있는 것에 대한 매우 일반적인 개요입니다.</font>
+
+411
+00:27:32,399 --> 00:27:39,359
+complicated system but just for our understanding in the context of kubernetes and calico so let's
+
+412
+00:27:32,399 --> 00:27:39,359
+<font color="#ffff54">복잡한 시스템이지만 쿠버네티스와 캘리코의 맥락에서 우리의 이해를 돕기 위해</font>
+
+413
+00:27:39,359 --> 00:27:48,559
+say we have there are four networks that they are not connected together yet through bgp and each
+
+414
+00:27:39,359 --> 00:27:48,559
+<font color="#ffff54">네 개의 네트워크가 있는데 아직 bgp를 통해 서로 연결되어 있지 않고 각각</font>
+
+415
+00:27:48,559 --> 00:27:55,759
+network only knows about its own route so a only knows about a co only knows about c and so on
+
+416
+00:27:48,559 --> 00:27:55,759
+<font color="#ffff54">네트워크는 자신의 경로에 대해서만 알고 있으므로 A는 A에 대해서만 알고 있고, B는 B에 대해서만 알고 있고, C는 C에 대해서만 알고 있습니다.</font>
+
+417
+00:27:56,480 --> 00:28:03,519
+and let's say administrators in these two networks configure their systems to then communicate with
+
+418
+00:27:56,480 --> 00:28:03,519
+<font color="#ffff54">이 두 네트워크의 관리자가 다음 네트워크와 통신하도록 시스템을 구성한다고 가정해 보겠습니다.</font>
+
+419
+00:28:03,519 --> 00:28:11,839
+each other as far as through bgp and as you can see then b update is routing information because
+
+420
+00:28:03,519 --> 00:28:11,839
+<font color="#ffff54">를 통해 서로 통신하도록 구성했다고 가정하면, 보시다시피 B 업데이트는 라우팅 정보입니다.</font>
+
+421
+00:28:12,800 --> 00:28:19,680
+by just connecting to the a it knows that the how to get to network a and there's only
+
+422
+00:28:12,800 --> 00:28:19,680
+<font color="#ffff54">A에 연결하기만 하면 A 네트워크에 도달하는 방법을 알 수 있습니다.</font>
+
+423
+00:28:19,680 --> 00:28:27,280
+one route between itself and a same thing a knows about b now that they kind of handshake
+
+424
+00:28:19,680 --> 00:28:27,280
+<font color="#ffff54">자신과 A 사이에 하나의 경로가 있다는 것을 A가 B에 대해 알고 있기 때문에 이제 그들은 일종의 악수를 합니다.</font>
+
+425
+00:28:27,280 --> 00:28:36,320
+they have a handshake here and so then let's say a and c are connected set up to communicate each
+
+426
+00:28:27,280 --> 00:28:36,320
+<font color="#ffff54">여기서 핸드셰이크를 한 다음 A와 C가 각각 통신하도록 설정된 상태로 연결되어 있다고 가정해 봅시다.</font>
+
+427
+00:28:36,319 --> 00:28:44,799
+other through bgp the same thing here c knows about a and the number of hops is one and again
+
+428
+00:28:36,319 --> 00:28:44,799
+<font color="#ffff54">다른 하나는 bgp를 통해 c가 a에 대해 알고 있고 홉 수는 하나이고 다시 한 번</font>
+
+429
+00:28:45,519 --> 00:28:56,000
+same thing between c and d and now again and so on so now we have these four networks that
+
+430
+00:28:45,519 --> 00:28:56,000
+<font color="#ffff54">C와 D 사이에서도 마찬가지입니다. 이제 우리는 다음과 같은 네 개의 네트워크를 갖게 되었습니다.</font>
+
+431
+00:28:56,000 --> 00:29:01,919
+know a little bit about each other but periodically they also exchange information for
+
+432
+00:28:56,000 --> 00:29:01,919
+<font color="#ffff54">서로에 대해 조금 알고 있지만 주기적으로 정보를 교환합니다.</font>
+
+433
+00:29:01,920 --> 00:29:08,880
+instance network a can enforce share information with network b and tells b these are the routes
+
+434
+00:29:01,920 --> 00:29:08,880
+<font color="#ffff54">인스턴스 네트워크 A는 네트워크 B와 정보 공유를 강제할 수 있으며, B에게 다음 경로를 알려줍니다.</font>
+
+435
+00:29:08,880 --> 00:29:15,519
+that i know about so when it does that then network b take a look say hey interesting
+
+436
+00:29:08,880 --> 00:29:15,519
+<font color="#ffff54">내가 알고 있는 정보이므로 네트워크 B는 이걸 보고 흥미롭다고 말합니다.</font>
+
+437
+00:29:16,160 --> 00:29:21,680
+well of course i know about myself and i already connected with you so i know about you but i did
+
+438
+00:29:16,160 --> 00:29:21,680
+<font color="#ffff54">물론 나는 나 자신에 대해 알고 있고 이미 당신과 연결되어 있으므로 당신에 대해 알고 있습니다.</font>
+
+439
+00:29:21,680 --> 00:29:32,720
+not know how to get to c now i know so it updates its routing table here and now it has it knows how
+
+440
+00:29:21,680 --> 00:29:32,720
+<font color="#ffff54">이제 C에가는 방법을 모르기 때문에 여기에서 라우팅 테이블을 업데이트하고 이제 방법을 알고 있습니다.</font>
+
+441
+00:29:32,720 --> 00:29:39,519
+to get c to see so in order to get to see it has to go through a so and the number of hops is two
+
+442
+00:29:32,720 --> 00:29:39,519
+<font color="#ffff54">C로 가기 위해서는 A를 거쳐야 하고 홉 수는 두 개입니다.</font>
+
+443
+00:29:39,519 --> 00:29:52,960
+so b to c goes to a and then c and b also shares the same information with d and then d also now
+
+444
+00:29:39,519 --> 00:29:52,960
+<font color="#ffff54">따라서 B에서 C로 이동한 다음 C와 B도 D와 동일한 정보를 공유하고 이제 D도 동일한 정보를 공유합니다.</font>
+
+445
+00:29:52,960 --> 00:30:00,639
+updates its information at now d knows how to get to a it knows it needs to go through b and
+
+446
+00:29:52,960 --> 00:30:00,639
+<font color="#ffff54">정보를 업데이트합니다. 이제 D는 A에 도달하는 방법을 알고 있으며 B를 거쳐야 한다는 것을 알고 있습니다.</font>
+
+447
+00:30:00,639 --> 00:30:06,799
+it's the number of hops is two and finally after all this handshake is done then every
+
+448
+00:30:00,639 --> 00:30:06,799
+<font color="#ffff54">홉의 수는 두 개이고 마지막으로 이 모든 핸드셰이크가 완료된 후 모든</font>
+
+449
+00:30:06,799 --> 00:30:14,720
+kind of network knows about at least how to get to other networks so this is the essence of how
+
+450
+00:30:06,799 --> 00:30:14,720
+<font color="#ffff54">종류의 네트워크는 적어도 다른 네트워크에 도달하는 방법을 알고 있으므로 이것이 바로 어떻게</font>
+
+451
+00:30:14,720 --> 00:30:23,440
+bgp works and calico takes advantage of this protocol in order to share routes among its nodes
+
+452
+00:30:14,720 --> 00:30:23,440
+<font color="#ffff54">BGP가 작동하고 캘리코는 이 프로토콜을 활용하여 노드 간에 경로를 공유합니다.</font>
+
+453
+00:30:24,720 --> 00:30:32,399
+now let's see how calico actually leverages bgp when we install calico by default it creates a
+
+454
+00:30:24,720 --> 00:30:32,399
+<font color="#ffff54">이제 캘리코를 설치할 때 기본적으로 캘리코가 어떻게 bgp를 활용하는지 살펴보자.</font>
+
+455
+00:30:32,400 --> 00:30:39,840
+full measure of internal bgp connections and that way it does it every it peers every node with
+
+456
+00:30:32,400 --> 00:30:39,840
+<font color="#ffff54">내부 bgp 연결의 전체 측정값을 생성하고 모든 노드를 피어링할 때 마다</font>
+
+457
+00:30:39,840 --> 00:30:46,400
+every other node and that's how we have a full mesh so any rod change rod changes happening on
+
+458
+00:30:39,840 --> 00:30:46,400
+<font color="#ffff54">다른 모든 노드를 피어링하는 방식으로 전체 메시를 가지므로 모든 로드 변경 로드 변경은</font>
+
+459
+00:30:46,400 --> 00:30:53,519
+one node that is reflected immediately in every other node so they will be aware of that if we
+
+460
+00:30:46,400 --> 00:30:53,519
+<font color="#ffff54">한 노드에서 발생하는 로드 변경은 다른 모든 노드에 즉시 반영되므로, 다른 노드에서 이를 인지할 수 있습니다.</font>
+
+461
+00:30:53,519 --> 00:30:59,360
+have a l2 network that is if we have all our network on the same sub and we have all our
+
+462
+00:30:53,519 --> 00:30:59,360
+<font color="#ffff54">모든 네트워크가 동일한 서브에 있고 우리의 모든</font>
+
+463
+00:30:59,360 --> 00:31:09,280
+servers kubernetes endpoints notes on the same subnet then calico can leverage l2
+
+464
+00:30:59,360 --> 00:31:09,280
+<font color="#ffff54">서버 쿠버네티스 엔드포인트 노트가 동일한 서브넷에 있다면 캘리코는 L2를 활용할 수 있다.</font>
+
+465
+00:31:09,280 --> 00:31:17,360
+otherwise if we have maybe some of our servers on a different node on a different subnet then we can
+
+466
+00:31:09,280 --> 00:31:17,360
+<font color="#ffff54">그렇지 않으면 다른 서브넷의 다른 노드에 서버 중 일부가 있다면</font>
+
+467
+00:31:17,360 --> 00:31:24,560
+configure to use ip and ip instead as long as ip and ip traffic is not blocked then full
+
+468
+00:31:17,360 --> 00:31:24,560
+<font color="#ffff54">IP 및 IP 트래픽이 차단되지 않는 한 대신 IP 및 IP를 사용하도록 구성합니다.</font>
+
+469
+00:31:24,559 --> 00:31:30,960
+range can be established using layer 3 network note that if we choose to use bxlan instead
+
+470
+00:31:24,559 --> 00:31:30,960
+<font color="#ffff54">레이어 3 네트워크를 사용하여 범위를 설정할 수 있습니다. 대신 bxlan을 사용하도록 선택하면 다음과 같습니다.</font>
+
+471
+00:31:31,679 --> 00:31:39,440
+that is not bhp is not supported in that scenario now let's say we have a kubernetes cluster we have
+
+472
+00:31:31,679 --> 00:31:39,440
+<font color="#ffff54">이 시나리오에서는 bhp가 지원되지 않습니다. 이제 우리가 가지고 있는 쿠버네티스 클러스터가 있다고 가정해 보겠습니다.</font>
+
+473
+00:31:39,440 --> 00:31:46,799
+four nodes as you can see here the next step for us would be to install calico and that is how we
+
+474
+00:31:39,440 --> 00:31:46,799
+<font color="#ffff54">여기서 볼 수 있듯이 네 개의 노드가 있다. 다음 단계는 캘리코를 설치하는 것이고, 이렇게 하면 된다.</font>
+
+475
+00:31:46,799 --> 00:31:53,200
+install calico when we run that calico starts installing some software and kind of in
+
+476
+00:31:46,799 --> 00:31:53,200
+<font color="#ffff54">캘리코를 실행하면 캘리코가 일부 소프트웨어를 설치하기 시작합니다.</font>
+
+477
+00:31:54,080 --> 00:32:01,279
+can think of it as installing a virtual router on each of the node and then that becomes really
+
+478
+00:31:54,080 --> 00:32:01,279
+<font color="#ffff54">각 노드에 가상 라우터를 설치하는 것으로 생각할 수 있으며, 그러면 실제로는</font>
+
+479
+00:32:01,279 --> 00:32:11,840
+each node becomes an independent network and then establishes full mesh that is every node is paired
+
+480
+00:32:01,279 --> 00:32:11,840
+<font color="#ffff54">각 노드는 독립적인 네트워크가 되고 모든 노드가 쌍을 이루는 풀 메시를 설정합니다.</font>
+
+481
+00:32:11,840 --> 00:32:21,600
+directly with every other node and that is how the full mesh is realized and this really works great
+
+482
+00:32:11,840 --> 00:32:21,600
+<font color="#ffff54">다른 모든 노드와 직접 연결되어 풀 메시가 실현되는 방식이며 이는 정말 훌륭하게 작동합니다.</font>
+
+483
+00:32:21,600 --> 00:32:31,200
+and it is really fast if we have maybe not too many kubernetes nodes but if we start adding you
+
+484
+00:32:21,600 --> 00:32:31,200
+<font color="#ffff54">그리고 쿠버네티스 노드가 너무 많지 않다면 정말 빠르지만, 우리가 당신을 추가하기 시작하면</font>
+
+485
+00:32:31,200 --> 00:32:37,440
+know our networks become bigger and you know demand for network or kubernetes cluster becomes
+
+486
+00:32:31,200 --> 00:32:37,440
+<font color="#ffff54">네트워크가 커지고 네트워크 또는 쿠버네티스 클러스터에 대한 수요가 증가한다는 것을 알고 있다.</font>
+
+487
+00:32:37,440 --> 00:32:44,720
+bigger maybe we add a lot more nodes and as you can see in the long run this kind of full mesh
+
+488
+00:32:37,440 --> 00:32:44,720
+<font color="#ffff54">더 커지면 더 많은 노드를 추가할 수 있고, 장기적으로는 이런 종류의 풀 메시가 필요할 수도 있습니다.</font>
+
+489
+00:32:44,720 --> 00:32:53,120
+is not going to work out so fortunately calico supports raw reflectors basically what it means
+
+490
+00:32:44,720 --> 00:32:53,120
+<font color="#ffff54">는 작동하지 않을 것이므로 다행히도 캘리코는 기본적으로 원시 리플렉터를 지원합니다.</font>
+
+491
+00:32:53,120 --> 00:33:00,880
+is we can select a few number of nodes and then establish full mesh among those nodes and then
+
+492
+00:32:53,120 --> 00:33:00,880
+<font color="#ffff54">는 몇 개의 노드를 선택한 다음 그 노드들 사이에 풀 메시를 설정한 다음</font>
+
+493
+00:33:00,880 --> 00:33:10,079
+have other nodes appear with those nodes and that if there are then any changes that happens in a
+
+494
+00:33:00,880 --> 00:33:10,079
+<font color="#ffff54">에 다른 노드가 그 노드와 함께 나타나도록 하고, 그 후 어떤 변화가 생기면</font>
+
+495
+00:33:10,080 --> 00:33:20,400
+sub bgp let's say this node has a number of nodes that are connected to it then any changes in any
+
+496
+00:33:10,080 --> 00:33:20,400
+<font color="#ffff54">서브 BGP 이 노드에 연결된 노드가 여러 개 있다고 가정하면, 이 노드에 연결된 노드 중</font>
+
+497
+00:33:20,400 --> 00:33:27,600
+of those nodes any rots information it sends to this node a and then that's node a and then it
+
+498
+00:33:20,400 --> 00:33:27,600
+<font color="#ffff54">그 노드들 중 어떤 노드에서 어떤 로트 정보를 이 노드 A로 보내면 노드 A가</font>
+
+499
+00:33:27,600 --> 00:33:36,800
+also reflects those changes it changes to the nodes that are directly appeared with it inside
+
+500
+00:33:27,600 --> 00:33:36,800
+<font color="#ffff54">또한 내부에 직접 나타나는 노드에 변경된 변경 사항을 반영합니다.</font>
+
+501
+00:33:36,799 --> 00:33:43,839
+that group and then start doing the same thing with other leaders of the nodes and then over time
+
+502
+00:33:36,799 --> 00:33:43,839
+<font color="#ffff54">해당 그룹의 다른 노드 리더들에게도 동일한 작업을 시작하고 시간이 지남에 따라</font>
+
+503
+00:33:43,839 --> 00:33:51,119
+those changes are reflected and then every any changes that happens in one node as far as rots
+
+504
+00:33:43,839 --> 00:33:51,119
+<font color="#ffff54">이러한 변경 사항이 반영되고 한 노드에서 발생하는 모든 변경 사항이 로트까지 반영됩니다.</font>
+
+505
+00:33:51,119 --> 00:33:57,680
+concerned are reflected in other nodes and that really works great in works great in a larger
+
+506
+00:33:51,119 --> 00:33:57,680
+<font color="#ffff54">관련된 다른 노드에 반영되며, 이는 더 큰 노드에서 잘 작동한다.</font>
+
+507
+00:33:58,160 --> 00:34:07,600
+kubernetes cluster if we set up kubernetes on our premise on our
+
+508
+00:33:58,160 --> 00:34:07,600
+<font color="#ffff54">클러스터에 쿠버네티스를 설치하는 경우 쿠버네티스 클러스터에서</font>
+
+509
+00:34:09,360 --> 00:34:15,920
+you know cloud maybe internal cloud we have full control we can configure calico to peer directly
+
+510
+00:34:09,360 --> 00:34:15,920
+<font color="#ffff54">클라우드가 내부 클라우드일 수도 있고, 우리가 모든 권한을 가지고 있으며, 캘리코가 직접 피어링하도록 구성할 수 있다.</font>
+
+511
+00:34:15,920 --> 00:34:23,280
+with our physical network infrastructure what it means really typically we disable calico's full
+
+512
+00:34:15,920 --> 00:34:23,280
+<font color="#ffff54">우리의 물리적 네트워크 인프라를 사용하면 일반적으로 캘리코를 완전히 비활성화합니다.</font>
+
+513
+00:34:23,280 --> 00:34:34,000
+mesh if a full mesh behavior and instead we peer calico with our lta uh l3 um top of the rack
+
+514
+00:34:23,280 --> 00:34:34,000
+<font color="#ffff54">메시 동작을 비활성화하고 대신 랙 상단의 LTA L3 음으로 캘리코를 피어링합니다.</font>
+
+515
+00:34:34,000 --> 00:34:40,480
+rather so we have a number of options if you have a small network then we can use full mesh as is
+
+516
+00:34:34,000 --> 00:34:40,480
+<font color="#ffff54">오히려 네트워크가 작은 경우 풀 메시를 그대로 사용할 수 있는 다양한 옵션이 있습니다.</font>
+
+517
+00:34:41,120 --> 00:34:47,760
+as it grows we can then choose to have rod reflectors and the best option is if you have
+
+518
+00:34:41,120 --> 00:34:47,760
+<font color="#ffff54">네트워크가 커지면 로드 리플렉터를 선택할 수 있으며 가장 좋은 옵션은 다음과 같은 경우입니다.</font>
+
+519
+00:34:47,760 --> 00:34:52,880
+full control over our environment and we have a hardware that supports off of the rack then we can
+
+520
+00:34:47,760 --> 00:34:52,880
+<font color="#ffff54">환경을 완전히 제어하고 랙에서 벗어난 하드웨어를 지원하는 하드웨어가 있으면 다음을 수행 할 수 있습니다.</font>
+
+521
+00:34:52,880 --> 00:35:04,960
+actually configure our network to use top of the rack and set up mesh full bgp in that way so in
+
+522
+00:34:52,880 --> 00:35:04,960
+<font color="#ffff54">실제로 랙 상단을 사용하도록 네트워크를 구성하고 그런 방식으로 메쉬 풀 BGP를 설정하여</font>
+
+523
+00:35:04,960 --> 00:35:14,400
+the previous two slides we saw how bgp works in general and we saw how calico implements bgp as
+
+524
+00:35:04,960 --> 00:35:14,400
+<font color="#ffff54">앞의 두 슬라이드에서 우리는 일반적으로 bgp가 어떻게 작동하는지 보았고, 캘리코가 어떻게 bgp를 구현하는지 보았습니다.</font>
+
+525
+00:35:14,400 --> 00:35:22,400
+a full mesh by default now let's dig a little bit deeper into what happens actually when we set up
+
+526
+00:35:14,400 --> 00:35:22,400
+<font color="#ffff54">이제 풀 메시를 기본으로 설정했을 때 실제로 어떤 일이 일어나는지 조금 더 자세히 살펴보겠습니다.</font>
+
+527
+00:35:22,480 --> 00:35:29,519
+calico and what processes are involved and what services are involved let's say we have our cluster
+
+528
+00:35:22,480 --> 00:35:29,519
+<font color="#ffff54">옥양목과 어떤 프로세스가 관련되어 있고 어떤 서비스가 관련되어 있는지 살펴보자.</font>
+
+529
+00:35:29,519 --> 00:35:39,039
+again we have two servers and consisting of our cluster and we are using isa ip in ip as a default
+
+530
+00:35:29,519 --> 00:35:39,039
+<font color="#ffff54">다시 두 대의 서버가 있고 클러스터를 구성하고 있으며 기본값으로 isa ip in ip를 사용하고 있습니다.</font>
+
+531
+00:35:40,079 --> 00:35:46,800
+encapsulation method and as you can see each node has its own network namespace has a default
+
+532
+00:35:40,079 --> 00:35:46,800
+<font color="#ffff54">캡슐화 방법을 사용하고 있으며, 보시다시피 각 노드마다 고유한 네트워크 네임스페이스가 기본값인</font>
+
+533
+00:35:47,200 --> 00:35:52,400
+and then we've got that there with an ip address on each side there's also because you're using ip
+
+534
+00:35:47,200 --> 00:35:52,400
+<font color="#ffff54">그리고 양쪽에 IP 주소가 있는데, 그 이유는 당신이 IP</font>
+
+535
+00:35:52,400 --> 00:35:57,600
+and ip there's a tunnel that is set up on each node i haven't shown this over here i'm just
+
+536
+00:35:52,400 --> 00:35:57,600
+<font color="#ffff54">그리고 각 노드에 설정된 터널이 있습니다. 여기에는 표시하지 않았습니다.</font>
+
+537
+00:35:57,600 --> 00:36:02,720
+showing it over here so but there'll be a tunnel over here as well so any communication that
+
+538
+00:35:57,600 --> 00:36:02,720
+<font color="#ffff54">여기에 표시했지만 여기에도 터널이 있으므로 모든 통신은 다음과 같습니다.</font>
+
+539
+00:36:02,720 --> 00:36:11,840
+happens across the service between services and pods and go across the the node that goes through
+
+540
+00:36:02,720 --> 00:36:11,840
+<font color="#ffff54">서비스와 파드 사이에서 발생하는 모든 통신은 서비스와 파드 사이를 통과하는 노드를 통과한다.</font>
+
+541
+00:36:11,840 --> 00:36:18,240
+the node it goes through a tunnel let's see what happens when we install a service which has used
+
+542
+00:36:11,840 --> 00:36:18,240
+<font color="#ffff54">터널을 통과하는 노드에 서비스를 설치하면 어떤 일이 발생하는지 살펴보자.</font>
+
+543
+00:36:18,240 --> 00:36:29,360
+install deploys a single pod so as we saw earlier what happens is the api server calls into cubelet
+
+544
+00:36:18,240 --> 00:36:29,360
+<font color="#ffff54">설치는 단일 파드를 배포하므로 앞서 살펴본 것처럼 API 서버가 큐블렛으로 호출한다.</font>
+
+545
+00:36:30,160 --> 00:36:36,880
+cubelet calls into cni plugin the plugin creates the pod name or network namespace
+
+546
+00:36:30,160 --> 00:36:36,880
+<font color="#ffff54">cubelet이 CNI 플러그인을 호출하면 플러그인이 파드 이름 또는 네트워크 네임스페이스를 생성한다.</font>
+
+547
+00:36:37,200 --> 00:36:44,480
+and then it creates the vets that is a virtual ethernet on both sides so we have one side this
+
+548
+00:36:37,200 --> 00:36:44,480
+<font color="#ffff54">그리고 양쪽에 가상 이더넷인 vets를 생성하여 한쪽에는 다음과 같이 만든다.</font>
+
+549
+00:36:44,480 --> 00:36:49,280
+has an ip address the other side is not it just basically a pipe that connects these two
+
+550
+00:36:44,480 --> 00:36:49,280
+<font color="#ffff54">다른 쪽은 기본적으로 이 둘을 연결하는 파이프가 아닌가요?</font>
+
+551
+00:36:49,920 --> 00:36:57,840
+and also sets the default route for the new pod next thing that it does it calls into a daemon
+
+552
+00:36:49,920 --> 00:36:57,840
+<font color="#ffff54">그리고 새로운 파드의 기본 경로를 설정하고 다음에 데몬으로 호출한다.</font>
+
+553
+00:36:57,840 --> 00:37:05,440
+called felix that is installed by calico when we saw calico its primary role is to manage the routes
+
+554
+00:36:57,840 --> 00:37:05,440
+<font color="#ffff54">캘리코가 설치한 펠릭스는 경로를 관리하는 것이 주된 역할이다.</font>
+
+555
+00:37:05,599 --> 00:37:12,639
+so now that we have a new route it actually programs the route table and it adds the ip
+
+556
+00:37:05,599 --> 00:37:12,639
+<font color="#ffff54">이제 새 경로가 생겼으므로 실제로 경로 테이블을 프로그래밍하고 IP를 추가합니다.</font>
+
+557
+00:37:12,639 --> 00:37:19,599
+address the destination of this pod and how do we get to that in order to get to that pod because
+
+558
+00:37:12,639 --> 00:37:19,599
+<font color="#ffff54">이 파드의 목적지를 주소로 지정하고 해당 파드에 도달하기 위해 어떻게 해야 하는지 알려준다.</font>
+
+559
+00:37:19,599 --> 00:37:24,240
+it's on the same server we just simply go through this calico
+
+560
+00:37:19,599 --> 00:37:24,240
+<font color="#ffff54">같은 서버에 있기 때문에 우리는 그냥 이 옥양목을 통과하면 된다.</font>
+
+561
+00:37:27,840 --> 00:37:34,240
+interface here so that's that's what it does and the next thing that it does it calls the
+
+562
+00:37:27,840 --> 00:37:34,240
+<font color="#ffff54">인터페이스를 호출하여 이 작업을 수행하고 그 다음에는</font>
+
+563
+00:37:34,240 --> 00:37:42,800
+it calls another a service called bird this is basically a bgp agent and that bgp agent passes
+
+564
+00:37:34,240 --> 00:37:42,800
+<font color="#ffff54">새라는 다른 서비스를 호출합니다. 이것은 기본적으로 BGP 에이전트이고 그 BGP 에이전트는 다음을 전달합니다.</font>
+
+565
+00:37:42,800 --> 00:37:51,680
+that information the route that just we created it passed through the bgp agent from one node
+
+566
+00:37:42,800 --> 00:37:51,680
+<font color="#ffff54">방금 생성한 경로가 한 노드에서 BGP 에이전트를 통과한 정보입니다.</font>
+
+567
+00:37:51,680 --> 00:37:57,760
+it talks to the bgp agent or bird on the other node it also then talks to its own felix passes
+
+568
+00:37:51,680 --> 00:37:57,760
+<font color="#ffff54">다른 노드의 BGP 에이전트 또는 버드와 대화한 다음 자체 펠릭스 패스와도 대화합니다.</font>
+
+569
+00:37:58,560 --> 00:38:06,960
+the information about the new route and then the felix on the second node also program is route
+
+570
+00:37:58,560 --> 00:38:06,960
+<font color="#ffff54">새 경로에 대한 정보를 전달하고 두 번째 노드의 펠릭스도 경로를 프로그램합니다.</font>
+
+571
+00:38:06,960 --> 00:38:14,320
+table is the destination again is the same however because this is going through across
+
+572
+00:38:06,960 --> 00:38:14,320
+<font color="#ffff54">테이블은 목적지가 다시 동일하지만, 이것은 가로질러 가기 때문에</font>
+
+573
+00:38:16,880 --> 00:38:22,960
+the nodes you'll see that it goes through the tunnel zero so any communication that
+
+574
+00:38:16,880 --> 00:38:22,960
+<font color="#ffff54">노드에서 터널 0을 통과하는 것을 볼 수 있으므로 모든 통신이</font>
+
+575
+00:38:23,519 --> 00:38:30,960
+is destined for this ip address for this pod will need to go through tunnel zero so in summary
+
+576
+00:38:23,519 --> 00:38:30,960
+<font color="#ffff54">이 파드의 이 IP 주소로 향하는 모든 통신은 터널 0을 통과해야 하므로 요약하면 다음과 같다.</font>
+
+577
+00:38:30,960 --> 00:38:37,840
+when you install calico it installs two important um demons one is called felix that manages
+
+578
+00:38:30,960 --> 00:38:37,840
+<font color="#ffff54">캘리코를 설치하면 두 개의 중요한 음 악마가 설치되는데, 하나는 펠릭스라는 이름으로 관리한다.</font>
+
+579
+00:38:37,840 --> 00:38:44,880
+and programs the route table and then the bird which is the bgp agent and that's how the different
+
+580
+00:38:37,840 --> 00:38:44,880
+<font color="#ffff54">그리고 경로 테이블을 프로그래밍하고 그 다음에는 BGP 에이전트인 새를 프로그래밍합니다.</font>
+
+581
+00:38:44,880 --> 00:38:52,559
+nodes talk to each other the the bgp agents talk to each other and that's how when and a new rod
+
+582
+00:38:44,880 --> 00:38:52,559
+<font color="#ffff54">노드들이 서로 대화하는 방식입니다. 그래서 언제 그리고 새로운 로드인</font>
+
+583
+00:38:52,719 --> 00:38:59,599
+is added on one node is reflected on every other node so the last thing i wanted to talk about was
+
+584
+00:38:52,719 --> 00:38:59,599
+<font color="#ffff54">가 한 노드에 추가되면 다른 모든 노드에 반영되므로 마지막으로 이야기하고 싶었던 것은</font>
+
+585
+00:38:59,599 --> 00:39:08,799
+calico networking options so so far in our sample cluster we had two nodes and we were we have been
+
+586
+00:38:59,599 --> 00:39:08,799
+<font color="#ffff54">옥양목 네트워킹 옵션으로 지금까지 샘플 클러스터에는 두 개의 노드가 있었고, 우리는</font>
+
+587
+00:39:08,799 --> 00:39:19,119
+using ip and ip overlay network and that may not be the best option in our prim is actually not the
+
+588
+00:39:08,799 --> 00:39:19,119
+<font color="#ffff54">IP 및 IP 오버레이 네트워크를 사용하고 있으며 이는 우리의 프라임에서 최선의 옵션이 아닐 수 있습니다.</font>
+
+589
+00:39:19,199 --> 00:39:25,839
+good the best option at all so we'll talk about some other options that provide better performance
+
+590
+00:39:19,199 --> 00:39:25,839
+<font color="#ffff54">좋은 옵션이 아니므로 더 나은 성능을 제공하는 다른 옵션에 대해 이야기하겠습니다.</font>
+
+591
+00:39:26,559 --> 00:39:32,639
+first one is non-overlay network and this is the most performer performant option as there is no
+
+592
+00:39:26,559 --> 00:39:32,639
+<font color="#ffff54">첫 번째는 비 오버레이 네트워크이며 가장 성능이 좋은 옵션입니다.</font>
+
+593
+00:39:33,199 --> 00:39:38,960
+encapsulation and decapsulation because that will take cpu time in order to do that
+
+594
+00:39:33,199 --> 00:39:38,960
+<font color="#ffff54">캡슐화 및 디캡슐레이션을 수행하는 데 CPU 시간이 걸리기 때문입니다.</font>
+
+595
+00:39:40,719 --> 00:39:48,079
+we have a couple of options if you have control over our hardware and our hardware supports
+
+596
+00:39:40,719 --> 00:39:48,079
+<font color="#ffff54">하드웨어와 하드웨어 지원을 제어할 수 있는 경우 몇 가지 옵션이 있습니다.</font>
+
+597
+00:39:48,079 --> 00:39:57,759
+top of rack then you can simply use bgp to peer with top of rack routers and the benefit of this
+
+598
+00:39:48,079 --> 00:39:57,759
+<font color="#ffff54">랙 상단에 있는 경우 BGP를 사용하여 랙 상단에 있는 라우터와 피어링할 수 있으며 다음과 같은 이점이 있습니다.</font>
+
+599
+00:39:57,759 --> 00:40:03,360
+first of all there is no encapsulation and the second benefit that we get is that our ip
+
+600
+00:39:57,759 --> 00:40:03,360
+<font color="#ffff54">우선 캡슐화가 없고, 두 번째 이점은 우리의 IP가</font>
+
+601
+00:40:04,639 --> 00:40:12,480
+pod ips will be routable from outside the cluster so that's very nice if that's not possible but we
+
+602
+00:40:04,639 --> 00:40:12,480
+<font color="#ffff54">파드 아이피를 클러스터 외부에서 라우팅할 수 있다는 것인데, 이것이 가능하지 않다면 매우 좋지만</font>
+
+603
+00:40:12,480 --> 00:40:21,280
+have all our our nodes on the same subnet l2 subnet then we can simply use calico for bgp
+
+604
+00:40:12,480 --> 00:40:21,280
+<font color="#ffff54">모든 노드가 동일한 서브넷 L2 서브넷에 있다면, 우리는 간단히 BGP에 캘리코를 사용할 수 있다.</font>
+
+605
+00:40:21,280 --> 00:40:29,760
+peering you know among nodes and then basically use it that way in that in that case we will not
+
+606
+00:40:21,280 --> 00:40:29,760
+<font color="#ffff54">노드 간에 피어링을 하고 기본적으로 이 경우엔</font>
+
+607
+00:40:29,760 --> 00:40:38,400
+we will not be using any encapsulation although we are not those uh pod ips will not be routable
+
+608
+00:40:29,760 --> 00:40:38,400
+<font color="#ffff54">우리는 캡슐화를 사용하지 않을 것이지만, 어, 파드 아이피는 라우팅할 수 없다.</font>
+
+609
+00:40:38,400 --> 00:40:42,000
+from outside the cluster that's the only disadvantage of that but
+
+610
+00:40:38,400 --> 00:40:42,000
+<font color="#ffff54">클러스터 외부에서 접근하는 것이 유일한 단점이지만</font>
+
+611
+00:40:42,000 --> 00:40:46,160
+other that other than that it gives you the performance of the first option
+
+612
+00:40:42,000 --> 00:40:46,160
+<font color="#ffff54">그 외에는 첫 번째 옵션의 성능을 제공한다.</font>
+
+613
+00:40:48,320 --> 00:40:55,280
+if you are in a situation where we have our nodes on multiple subnets then there's another option
+
+614
+00:40:48,320 --> 00:40:55,280
+<font color="#ffff54">여러 서브넷에 노드가 있는 상황이라면 다른 옵션이 있습니다.</font>
+
+615
+00:40:55,280 --> 00:41:04,480
+called cross subnets overlay and basically the way it works it among the uh it configures in a way
+
+616
+00:40:55,280 --> 00:41:04,480
+<font color="#ffff54">크로스 서브넷 오버레이라고 불리며 기본적으로 다음과 같은 방식으로 구성됩니다.</font>
+
+617
+00:41:04,480 --> 00:41:12,960
+that for the nodes that are on the same subnets it won't use any encapsulation however if you
+
+618
+00:41:04,480 --> 00:41:12,960
+<font color="#ffff54">동일한 서브넷에 있는 노드에 대해서는 캡슐화를 사용하지 않지만 다음과 같은 경우에는 캡슐화를 사용하지 않습니다.</font>
+
+619
+00:41:12,960 --> 00:41:19,280
+are crossing going you know one you're calling one pod is calling a service on a different
+
+620
+00:41:12,960 --> 00:41:19,280
+<font color="#ffff54">이 교차하는 경우, 한 파드를 호출하는 파드가 다른 파드의 서비스를 호출하고 있다는 것을 알 수 있다.</font>
+
+621
+00:41:20,079 --> 00:41:26,079
+node which is on a different subnet then you can configure calico to either use ip and ip
+
+622
+00:41:20,079 --> 00:41:26,079
+<font color="#ffff54">노드가 다른 서브넷에 있다면, 캘리코가 IP와 IP 중 하나를 사용하도록 구성할 수 있다.</font>
+
+623
+00:41:26,639 --> 00:41:33,840
+or vxlan as we cross the boundary so that's that's really good option to get the best of both worlds
+
+624
+00:41:26,639 --> 00:41:33,840
+<font color="#ffff54">또는 경계를 넘을 때 vxlan을 사용하도록 설정하면 두 가지 장점을 모두 얻을 수 있는 좋은 옵션입니다.</font>
+
+625
+00:41:33,840 --> 00:41:42,079
+one is um you get the benefit of no overlay we are if you're on the same l2 network and also it
+
+626
+00:41:33,840 --> 00:41:42,079
+<font color="#ffff54">하나는 동일한 L2 네트워크에 있는 경우 오버레이가 없다는 이점을 얻을 수 있습니다.</font>
+
+627
+00:41:42,079 --> 00:41:50,559
+provides overlay uh if for the situations where we are crossing the subnet and the last one of course
+
+628
+00:41:42,079 --> 00:41:50,559
+<font color="#ffff54">오버레이를 제공합니다 물론 우리가 서브넷과 마지막 서브넷을 교차하는 상황에 대비하여</font>
+
+629
+00:41:50,559 --> 00:41:58,720
+is using a full overlay network and that's what we've been using up to this point and this is a
+
+630
+00:41:50,559 --> 00:41:58,720
+<font color="#ffff54">는 전체 오버레이 네트워크를 사용하고 있으며 이것이 지금까지 우리가 사용했던 것이고 이것은</font>
+
+631
+00:41:58,720 --> 00:42:06,160
+situation where in none of this is possible so we can use either ip and ip which i've used for
+
+632
+00:41:58,720 --> 00:42:06,160
+<font color="#ffff54">이 중 어느 것도 가능하지 않은 상황에서 우리는 내가 사용했던 IP와 IP를 사용할 수 있습니다.</font>
+
+633
+00:42:06,160 --> 00:42:11,760
+this demo or you can use vxlan so that's kind of up to you so this is these are the options as far
+
+634
+00:42:06,160 --> 00:42:11,760
+<font color="#ffff54">이 데모를 사용하거나 vxlan을 사용할 수 있으므로 이는 귀하에게 달려 있으므로 지금까지 옵션은 다음과 같습니다.</font>
+
+635
+00:42:11,760 --> 00:42:18,000
+as the on-prem is concerned these are very similar if you're running you want to decide if you decide
+
+636
+00:42:11,760 --> 00:42:18,000
+<font color="#ffff54">온-프레미스와 관련하여 실행중인 경우 매우 유사합니다.</font>
+
+637
+00:42:18,000 --> 00:42:30,800
+to run your cluster on a either azure or google or amazon mostly the same things apply although
+
+638
+00:42:30,800 --> 00:42:36,320
+there are some differences for instance it's coming to be aware of if you're running in azure
+
+639
+00:42:30,800 --> 00:42:36,320
+<font color="#ffff54">몇 가지 차이점이 있는데, 예를 들어 azure에서 실행하는 경우 알아두어야 할 사항이 있습니다.</font>
+
+640
+00:42:36,320 --> 00:42:42,480
+for instance azure does not support ip and ip so if you are in a situation which you can't use a
+
+641
+00:42:36,320 --> 00:42:42,480
+<font color="#ffff54">예를 들어 azure는 IP와 IP를 지원하지 않으므로 사용할 수없는 상황에 처한 경우</font>
+
+642
+00:42:42,559 --> 00:42:49,519
+non-overlay within azure and you have to use overlay then you have to use vxlan
+
+643
+00:42:42,559 --> 00:42:49,519
+<font color="#ffff54">오버레이를 사용할 수 없는 상황이고 오버레이를 사용해야 하는 경우 VXLAN을 사용해야 합니다.</font>
+
+644
+00:42:50,400 --> 00:42:58,000
+also there are some differences between them so if you are running in in the in the cloud then i
+
+645
+00:42:50,400 --> 00:42:58,000
+<font color="#ffff54">또한 그들 사이에는 약간의 차이가 있으므로 클라우드에서 실행하는 경우 i</font>
+
+646
+00:42:58,000 --> 00:43:04,000
+encourage you to read the documentation calico documentation i'll provide the link in the
+
+647
+00:42:58,000 --> 00:43:04,000
+<font color="#ffff54">문서를 읽어보시길 권장합니다. 옥양목 문서에 링크를 제공하겠습니다.</font>
+
+648
+00:43:04,000 --> 00:43:11,679
+description next i'll show you how to make these uh configuration changes obviously ideally
+
+649
+00:43:04,000 --> 00:43:11,679
+<font color="#ffff54">설명 다음에는 이러한 설정을 이상적으로 변경하는 방법을 보여드리겠습니다.</font>
+
+650
+00:43:11,679 --> 00:43:16,319
+you want to make the decision before you set up your cluster because you don't want to you know
+
+651
+00:43:11,679 --> 00:43:16,319
+<font color="#ffff54">클러스터를 설정하기 전에 결정을 내리고 싶지 않으니까요.</font>
+
+652
+00:43:16,319 --> 00:43:22,399
+make these fundamental changes as your you have you know clients and your workload running on it
+
+653
+00:43:16,319 --> 00:43:22,399
+<font color="#ffff54">클라이언트와 그 위에서 실행되는 워크로드를 알고 있으므로 이러한 근본적인 변경을 수행한다.</font>
+
+654
+00:43:22,399 --> 00:43:30,239
+so i'll that i'll show you next so in order to change the network setting calico network setting
+
+655
+00:43:22,399 --> 00:43:30,239
+<font color="#ffff54">그래서 다음에 보여드리겠습니다. 네트워크 설정을 변경하기 위해 옥양목 네트워크 설정을 변경합니다.</font>
+
+656
+00:43:30,239 --> 00:43:40,480
+after is installed we need to install a command line cfi called calico ctl i'll put a link in the
+
+657
+00:43:30,239 --> 00:43:40,480
+<font color="#ffff54">설치가 완료되면 옥양목 ctl이라는 명령 줄 cfi를 설치해야합니다.</font>
+
+658
+00:43:40,480 --> 00:43:45,280
+description so you can go you guys can go ahead and install it yourself if you want to interact
+
+659
+00:43:40,480 --> 00:43:45,280
+<font color="#ffff54">설명에 링크를 넣을 테니 상호작용을 원한다면 직접 설치하세요.</font>
+
+660
+00:43:45,280 --> 00:43:51,840
+with calico and learn more about how it works so the first command we're going to look at the
+
+661
+00:43:45,280 --> 00:43:51,840
+<font color="#ffff54">옥양목과 어떻게 작동하는지 더 자세히 알아보기 위해 첫 번째 명령어는</font>
+
+662
+00:43:52,719 --> 00:43:59,280
+calico note status so let's run that i'll put in my password
+
+663
+00:43:52,719 --> 00:43:59,280
+<font color="#ffff54">캘리코 노트 상태이므로 비밀번호를 입력해 보겠습니다.</font>
+
+664
+00:44:00,160 --> 00:44:11,120
+and this shows us the bgps status of our cluster so right now this is the peer address so i'm
+
+665
+00:44:00,160 --> 00:44:11,120
+<font color="#ffff54">그리고 이것은 클러스터의 BGPS 상태를 보여 주므로 지금은 이것이 피어 주소이므로</font>
+
+666
+00:44:11,120 --> 00:44:18,400
+looking at this is i'm running these commands on the master node and i have only one more node so
+
+667
+00:44:11,120 --> 00:44:18,400
+<font color="#ffff54">이걸 보면 마스터 노드에서 이 명령을 실행 중이고 노드가 하나만 더 있으므로</font>
+
+668
+00:44:18,400 --> 00:44:23,680
+you'll see that this is the other node so we are looking at what server we're peering with and
+
+669
+00:44:18,400 --> 00:44:23,680
+<font color="#ffff54">이것이 다른 노드임을 알 수 있으므로 어떤 서버를 피어링하고 있는지 살펴보고 있습니다.</font>
+
+670
+00:44:23,679 --> 00:44:29,839
+that's the other node that is node one and peer type is node to node and is mesh so this is the
+
+671
+00:44:23,679 --> 00:44:29,839
+<font color="#ffff54">이 다른 노드는 노드 1이고 피어 유형은 노드 대 노드이며 메시이므로 이것은</font>
+
+672
+00:44:29,839 --> 00:44:38,000
+default behavior and status is up which is a good thing and already established so this is how you
+
+673
+00:44:29,839 --> 00:44:38,000
+<font color="#ffff54">기본 동작과 상태는 올라간 상태이며, 이는 좋은 일이고 이미 설정되었으므로 다음과 같습니다.</font>
+
+674
+00:44:38,000 --> 00:44:44,079
+get the the status of your bgp once you install calico if you want to see if everything is running
+
+675
+00:44:38,000 --> 00:44:44,079
+<font color="#ffff54">모든 것이 실행 중인지 확인하려면 캘리코를 설치한 후 BGP의 상태를 확인합니다.</font>
+
+676
+00:44:44,079 --> 00:44:51,279
+correctly and the peers are you know um interacting with each other and it's up then just run it
+
+677
+00:44:44,079 --> 00:44:51,279
+<font color="#ffff54">올바르게 그리고 동료들이 서로 상호 작용하고 있다는 것을 알고 있다면 그냥 실행하십시오.</font>
+
+678
+00:44:51,280 --> 00:45:00,400
+command um pseudo calico node status so in order to make changes to our network setting the
+
+679
+00:44:51,280 --> 00:45:00,400
+<font color="#ffff54">명령으로 가짜 옥양목 노드 상태를 변경하여 네트워크 설정을 변경하기 위해</font>
+
+680
+00:45:01,200 --> 00:45:09,600
+first we need to look at what's called ip pool so let's run that command and so in calico you can
+
+681
+00:45:01,200 --> 00:45:09,600
+<font color="#ffff54">먼저 IP 풀이라는 것을 살펴볼 필요가 있으므로 해당 명령을 실행하여 옥양목에서 다음과 같이 할 수 있습니다.</font>
+
+682
+00:45:09,600 --> 00:45:15,840
+have set multiple ip pools by default there's only one so this is the only it is the pool that
+
+683
+00:45:09,600 --> 00:45:15,840
+<font color="#ffff54">기본적으로 여러 개의 IP 풀이 설정되어 있으므로 이것이 유일한 풀입니다.</font>
+
+684
+00:45:15,840 --> 00:45:23,280
+all the um the pods on all nodes get their ip addresses from so this is the complete
+
+685
+00:45:15,840 --> 00:45:23,280
+<font color="#ffff54">모든 노드의 모든 파드가 IP 주소를 얻으므로 이것이 완전한</font>
+
+686
+00:45:24,720 --> 00:45:36,559
+ip so it's 172.16.0.0.0-16 so this is where um obviously each node gets its own block so it kind
+
+687
+00:45:24,720 --> 00:45:36,559
+<font color="#ffff54">172.16.0.0.0.0-16이므로 각 노드가 자체 블록을 가져와서</font>
+
+688
+00:45:36,559 --> 00:45:44,159
+of sub uh creates subnets within this full range of ip's and so everything starts with 172.16
+
+689
+00:45:36,559 --> 00:45:44,159
+<font color="#ffff54">이 전체 IP 범위 내에서 서브넷을 생성하므로 모든 것이 172.16으로 시작됩니다.</font>
+
+690
+00:45:45,039 --> 00:45:52,480
+and then on one node is i believe 16 on the other dot 94 so about everything starts with 172.16
+
+691
+00:45:45,039 --> 00:45:52,480
+<font color="#ffff54">그리고 한 노드에 16이 있고 다른 노드에 94가 있어서 거의 모든 것이 172.16으로 시작됩니다.</font>
+
+692
+00:45:52,480 --> 00:45:59,840
+and that's how the uh the the pods get their ip addresses from now we need to actually
+
+693
+00:45:52,480 --> 00:45:59,840
+<font color="#ffff54">그리고 그게 바로 지금부터 파드가 IP 주소를 얻는 방법입니다.</font>
+
+694
+00:45:59,840 --> 00:46:08,960
+download this uh file so calico ctl get ip pool and this is the name of the file that we need to
+
+695
+00:45:59,840 --> 00:46:08,960
+<font color="#ffff54">이 파일을 다운로드하여 캘리코가 IP 풀을 가져오고 이것이 우리가 필요로하는 파일 이름입니다.</font>
+
+696
+00:46:08,960 --> 00:46:19,120
+get ip default dash ipv4 pool and then i'm just downloading it downloading inside a yaml file
+
+697
+00:46:08,960 --> 00:46:19,120
+<font color="#ffff54">get ip 기본 대시 IPv4 풀을 다운로드 한 다음 yaml 파일 내에서 다운로드하는 중입니다.</font>
+
+698
+00:46:19,840 --> 00:46:24,800
+so we can modify that so let's go ahead run that and that's done but we can open that
+
+699
+00:46:19,840 --> 00:46:24,800
+<font color="#ffff54">그래서 우리는 그것을 수정할 수 있으므로 계속해서 실행하고 완료되었지만 그것을 열 수 있습니다.</font>
+
+700
+00:46:24,800 --> 00:46:31,280
+in nano and take a look at the file and modify that so this is the setting um so let's just go
+
+701
+00:46:24,800 --> 00:46:31,280
+<font color="#ffff54">나노에서 파일을 살펴보고 수정할 수 있으므로 이것이 설정이므로 음, 그냥 가자.</font>
+
+702
+00:46:31,280 --> 00:46:37,519
+through that quickly again the kind is ip pool ip and then um the create time and so this is a
+
+703
+00:46:31,280 --> 00:46:37,519
+<font color="#ffff54">그것을 통해 다시 빨리 종류는 아이피 풀 아이피 그리고 음 생성 시간 그래서 이것은</font>
+
+704
+00:46:37,519 --> 00:46:45,519
+meta data information and this is the name of the file i've just opened so and then some information
+
+705
+00:46:37,519 --> 00:46:45,519
+<font color="#ffff54">메타 데이터 정보이고 이것은 방금 열었던 파일의 이름입니다.</font>
+
+706
+00:46:45,519 --> 00:46:52,800
+so this is the name of the file that i've just opened so and then some information so this is
+
+707
+00:46:45,519 --> 00:46:52,800
+<font color="#ffff54">그래서 이것은 내가 방금 열었던 파일의 이름과 일부 정보이므로 이것은 다음과 같습니다.</font>
+
+708
+00:46:52,800 --> 00:47:00,640
+the block size it's 26 and the side there as we looked at is 172.16.00 again same information that
+
+709
+00:46:52,800 --> 00:47:00,640
+<font color="#ffff54">블록 크기는 26이고 우리가 보았던 측면은 172.16.00이고 다시 동일한 정보입니다.</font>
+
+710
+00:47:00,640 --> 00:47:08,560
+we saw and this is the important part so it says ip mode always so this is by default this is if we
+
+711
+00:47:00,640 --> 00:47:08,560
+<font color="#ffff54">우리가 보았고 이것이 중요한 부분이므로 항상 IP 모드라고 표시되므로 기본적으로 이것은 다음과 같은 경우입니다.</font>
+
+712
+00:47:08,560 --> 00:47:15,840
+just download the yaml file from calico and install calico it by default it says to always
+
+713
+00:47:08,560 --> 00:47:15,840
+<font color="#ffff54">옥양목에서 yaml 파일을 다운로드하고 옥양목을 설치하면 기본적으로 항상 다음과 같이 표시됩니다.</font>
+
+714
+00:47:16,400 --> 00:47:24,880
+and then um at the at the bottom you'll see that um vxlan mode is never because we are not using
+
+715
+00:47:16,400 --> 00:47:24,880
+<font color="#ffff54">그리고 맨 아래에는 우리가 사용하지 않기 때문에 VXLAN 모드가 아닌</font>
+
+716
+00:47:24,880 --> 00:47:34,480
+vxlan so let's go ahead and make a change here and let's in order to make calico not to use ip and ip
+
+717
+00:47:24,880 --> 00:47:34,480
+<font color="#ffff54">vxlan을 사용하지 않기 때문이므로 여기서 변경하여 옥양목에 IP와 IP</font>
+
+718
+00:47:34,480 --> 00:47:40,400
+all we need to do is just make a change here and change this to never oops
+
+719
+00:47:34,480 --> 00:47:40,400
+<font color="#ffff54">우리가 해야 할 일은 여기서 변경을 하고 이것을 never oops로 변경하는 것뿐입니다.</font>
+
+720
+00:47:40,400 --> 00:47:47,119
+changes to never oops i should be looking where i'm typing
+
+721
+00:47:40,400 --> 00:47:47,119
+<font color="#ffff54">내가 입력하는 곳을 찾아야 합니다.</font>
+
+722
+00:47:49,840 --> 00:47:51,039
+so like a change here
+
+723
+00:47:49,840 --> 00:47:51,039
+<font color="#ffff54">그래서 여기처럼 변경</font>
+
+724
+00:47:54,800 --> 00:48:03,599
+never so that's all the change that we need to make and if we remember that if we have if you're
+
+725
+00:47:54,800 --> 00:48:03,599
+<font color="#ffff54">결코 그래서 우리가해야 할 모든 변화와 우리가 그것을 기억한다면 당신이 있다면</font>
+
+726
+00:48:03,599 --> 00:48:11,920
+in a situation where you have some nodes um on you know on one subnet and others um on the other
+
+727
+00:48:03,599 --> 00:48:11,920
+<font color="#ffff54">어떤 노드는 한 서브넷에 있고 다른 노드는 다른 서브넷에 있는 상황입니다.</font>
+
+728
+00:48:11,920 --> 00:48:17,519
+then we need to use a cross mode but right now we just want to say we don't want to use ip mode
+
+729
+00:48:11,920 --> 00:48:17,519
+<font color="#ffff54">그렇다면 크로스 모드를 사용해야 하지만 지금은 IP 모드를 사용하고 싶지 않다고 말하고 싶습니다.</font>
+
+730
+00:48:18,159 --> 00:48:23,759
+i keep uh ip and ip mode so that's why we don't want to change what we need to make here is just
+
+731
+00:48:18,159 --> 00:48:23,759
+<font color="#ffff54">나는 IP와 IP 모드를 유지하므로 여기서 우리가 만들어야하는 것을 변경하고 싶지 않은 이유는 다음과 같습니다.</font>
+
+732
+00:48:23,760 --> 00:48:29,280
+make uh set that to never okay let's go ahead and save that
+
+733
+00:48:23,760 --> 00:48:29,280
+<font color="#ffff54">어, 그거 절대 안돼로 설정하고 저장합시다.</font>
+
+734
+00:48:33,600 --> 00:48:44,080
+okay and then all we need to do then run calico apply next line number nine apply minus f and
+
+735
+00:48:33,600 --> 00:48:44,080
+<font color="#ffff54">좋아, 이제 옥양목을 실행하고 다음 줄에 9번을 적용하고 F를 빼고</font>
+
+736
+00:48:44,080 --> 00:48:50,880
+the yaml file we just created so before doing that let's go ahead and take a look at the route
+
+737
+00:48:44,080 --> 00:48:50,880
+<font color="#ffff54">이 작업을 수행하기 전에 방금 만든 yaml 파일을 통해 경로를 살펴봅시다.</font>
+
+738
+00:48:50,880 --> 00:48:59,119
+so i'm going to run watch rod minus n so this shows the current route and pay attention here
+
+739
+00:48:50,880 --> 00:48:59,119
+<font color="#ffff54">시계 막대 마이너스 N을 실행하여 현재 경로를 표시하고 여기에주의를 기울일 것입니다.</font>
+
+740
+00:48:59,119 --> 00:49:05,760
+on this line where we are going across we're going across from one node to the other
+
+741
+00:48:59,119 --> 00:49:05,760
+<font color="#ffff54">우리가 건너가는 이 선에서 우리는 한 노드에서 다른 노드로 건너가고 있습니다.</font>
+
+742
+00:49:07,840 --> 00:49:14,400
+like we have a pod that's making a service call from one node to the other as
+
+743
+00:49:07,840 --> 00:49:14,400
+<font color="#ffff54">한 노드에서 다른 노드로 서비스 호출을 하는 파드가 있는 것처럼.</font>
+
+744
+00:49:15,200 --> 00:49:21,599
+if you remember we're going through the tunnel because that's i be using ip and ip mode
+
+745
+00:49:15,200 --> 00:49:21,599
+<font color="#ffff54">우리가 터널을 통과하고 있다는 것을 기억한다면, 나는 IP와 IP 모드를 사용하고 있기 때문이다.</font>
+
+746
+00:49:23,119 --> 00:49:27,840
+so if we now go ahead and run this just make sure and then we see
+
+747
+00:49:23,119 --> 00:49:27,840
+<font color="#ffff54">이제 이것을 실행하면 다음과 같이 표시됩니다.</font>
+
+748
+00:49:27,840 --> 00:49:32,240
+how the route changes here for this line so let's let's go ahead and run that
+
+749
+00:49:27,840 --> 00:49:32,240
+<font color="#ffff54">이 라인의 경로가 어떻게 바뀌는지 확인해 보겠습니다.</font>
+
+750
+00:49:36,720 --> 00:49:43,840
+and then you'll see the changed now it changed from uh the tunnel into at zero so it's actually
+
+751
+00:49:36,720 --> 00:49:43,840
+<font color="#ffff54">그러면 이제 터널에서 0으로 변경된 것을 볼 수 있으므로 실제로는 다음과 같습니다.</font>
+
+752
+00:49:43,920 --> 00:49:49,360
+everything now is going through the regular interface so you're not going through the tunnel
+
+753
+00:49:43,920 --> 00:49:49,360
+<font color="#ffff54">이제 모든 것이 일반 인터페이스를 통과하므로 터널을 통과하지 않습니다.</font>
+
+754
+00:49:50,000 --> 00:49:57,600
+and that's the change that we just made so we made that from ip full ip and ip to regular because
+
+755
+00:49:50,000 --> 00:49:57,600
+<font color="#ffff54">이것이 우리가 방금 변경 한 것이므로 전체 IP 및 IP에서 일반 IP로 변경했습니다.</font>
+
+756
+00:49:57,600 --> 00:50:02,400
+um the the reason for this because both these servers are on the same subnet so there is no
+
+757
+00:49:57,600 --> 00:50:02,400
+<font color="#ffff54">그 이유는이 두 서버가 동일한 서브넷에 있기 때문에</font>
+
+758
+00:50:02,400 --> 00:50:09,039
+reason for us to be using the ip and ip so make this a lot faster so if you are in a situation
+
+759
+00:50:02,400 --> 00:50:09,039
+<font color="#ffff54">우리가 IP와 IP를 사용하는 이유 그래서 이것을 훨씬 더 빠르게 만들 수 있으므로 상황에 처한 경우</font>
+
+760
+00:50:09,039 --> 00:50:15,599
+where you have all your servers running on the same subnet then just you can go ahead and change
+
+761
+00:50:09,039 --> 00:50:15,599
+<font color="#ffff54">모든 서버가 동일한 서브넷에서 실행되는 경우 계속해서 변경할 수 있습니다.</font>
+
+762
+00:50:15,599 --> 00:50:20,559
+that from ip in ip into direct basically so you're not going through ip and ip mode
+
+763
+00:50:15,599 --> 00:50:20,559
+<font color="#ffff54">기본적으로 IP에서 IP로 직접 연결하므로 IP와 IP 모드를 거치지 않아도 됩니다.</font>
+
+764
+00:50:22,639 --> 00:50:29,440
+so now let's verify that we don't see ip and ip at all in the packet so we're gonna do another
+
+765
+00:50:22,639 --> 00:50:29,440
+<font color="#ffff54">이제 패킷에 IP와 IP가 전혀 표시되지 않는지 확인해 보겠습니다.</font>
+
+766
+00:50:29,440 --> 00:50:37,599
+uh packet capturing and then we'll see verify that we don't see ip and ip so i'm here in the visual
+
+767
+00:50:29,440 --> 00:50:37,599
+<font color="#ffff54">패킷을 캡처한 다음 IP와 IP가 보이지 않는지 확인해 보겠습니다.</font>
+
+768
+00:50:37,599 --> 00:50:44,079
+city command line so let's go ahead and run take a look at the pods again and see um so we have
+
+769
+00:50:37,599 --> 00:50:44,079
+<font color="#ffff54">도시 명령줄을 실행해서 파드를 다시 한번 살펴보자.</font>
+
+770
+00:50:44,079 --> 00:50:50,480
+four parts if you recall we have two of them running on master this guy and this guy
+
+771
+00:50:44,079 --> 00:50:50,480
+<font color="#ffff54">네 부분으로 나뉘어져 있고, 그 중 두 개는 마스터 이 녀석과 이 녀석에서 실행 중입니다.</font>
+
+772
+00:50:51,679 --> 00:50:58,559
+and these two in between they're running on node one so i'm going to
+
+773
+00:50:51,679 --> 00:50:58,559
+<font color="#ffff54">그리고 그 사이에 있는 이 두 개는 1번 노드에서 실행 중이므로</font>
+
+774
+00:50:58,719 --> 00:51:08,719
+go inside sh inside one of these uh pods on the master node so i'm going to sh in here
+
+775
+00:50:58,719 --> 00:51:08,719
+<font color="#ffff54">마스터 노드에 있는 이 파드들 중 하나에 들어가서 여기에 들어가겠습니다.</font>
+
+776
+00:51:08,719 --> 00:51:11,440
+and then i'm going to call a service
+
+777
+00:51:08,719 --> 00:51:11,440
+<font color="#ffff54">그리고 나서 서비스를 호출할거야.</font>
+
+778
+00:51:13,759 --> 00:51:18,960
+which is on the other node so and then we can then capture the the packets and see
+
+779
+00:51:13,759 --> 00:51:18,960
+<font color="#ffff54">다른 노드에 있으므로 패킷을 캡처하여 다음을 확인할 수 있습니다.</font>
+
+780
+00:51:18,960 --> 00:51:25,199
+how it's going let's go ahead and let's search into that okay and before running
+
+781
+00:51:18,960 --> 00:51:25,199
+<font color="#ffff54">어떻게 진행 중인지 살펴보고 실행하기 전에</font>
+
+782
+00:51:25,200 --> 00:51:31,920
+calling the service that is go ahead and do the run the capture command and let's go ahead and
+
+783
+00:51:25,200 --> 00:51:31,920
+<font color="#ffff54">서비스를 호출하는 서비스를 호출하고 캡처 명령을 실행하고 계속해서</font>
+
+784
+00:51:31,920 --> 00:51:48,320
+now call this service and as you can see the the packets have been captured let's go out and let me
+
+785
+00:51:31,920 --> 00:51:48,320
+<font color="#ffff54">이제 이 서비스를 호출하고 보시다시피 패킷이 캡처되었습니다.</font>
+
+786
+00:51:48,960 --> 00:51:56,000
+exit all of that and then maximize this let's go ahead up and verify the package from the beginning
+
+787
+00:51:48,960 --> 00:51:56,000
+<font color="#ffff54">이 모든 것을 종료한 다음 최대화해서 처음부터 패키지를 확인하겠습니다.</font>
+
+788
+00:51:56,640 --> 00:52:07,120
+and do a kind of comparison like we had before so again the the packets always include the internet
+
+789
+00:51:56,640 --> 00:52:07,120
+<font color="#ffff54">그리고 아까 했던 것처럼 일종의 비교를 해서 다시 한번 패킷에 항상 인터넷이 포함되어 있는지 확인합니다.</font>
+
+790
+00:52:08,800 --> 00:52:16,400
+packet which includes everything uh its ip and other information inside that so this is the
+
+791
+00:52:08,800 --> 00:52:16,400
+<font color="#ffff54">모든 것을 포함하는 패킷과 그 안의 IP 및 기타 정보를 포함하므로 이것이 바로</font>
+
+792
+00:52:17,360 --> 00:52:22,320
+ethernet frame nothing is shared there as before
+
+793
+00:52:17,360 --> 00:52:22,320
+<font color="#ffff54">이더넷 프레임 이전처럼 아무것도 공유되지 않습니다.</font>
+
+794
+00:52:24,320 --> 00:52:33,599
+however in here we'll see that now the source is this the server itself calling into so going from
+
+795
+00:52:24,320 --> 00:52:33,599
+<font color="#ffff54">그러나 여기서는 이제 소스가 서버 자체에서 호출하는 것이므로</font>
+
+796
+00:52:33,599 --> 00:52:38,480
+the server because you're going through the regular interface so this service called directly
+
+797
+00:52:33,599 --> 00:52:38,480
+<font color="#ffff54">일반 인터페이스를 통해 서버를 호출하기 때문에 이 서비스는 직접 호출합니다.</font>
+
+798
+00:52:39,039 --> 00:52:46,480
+into the ip address of the uh of the pod previously this first the other
+
+799
+00:52:39,039 --> 00:52:46,480
+<font color="#ffff54">이전에는 파드의 어의 IP 주소로 먼저 다른</font>
+
+800
+00:52:48,320 --> 00:52:56,079
+packet ip packet had the source as one server calling the other server and then inside that
+
+801
+00:52:48,320 --> 00:52:56,079
+<font color="#ffff54">패킷 IP 패킷의 소스가 한 서버가 다른 서버를 호출하고 그 내부에서</font>
+
+802
+00:52:56,719 --> 00:53:03,039
+if you recall this saw and there was an ip in ip but that doesn't exist anymore so this is actually
+
+803
+00:52:56,719 --> 00:53:03,039
+<font color="#ffff54">만약 당신이 이것을 기억한다면 IP에 IP가 있었지만 더 이상 존재하지 않으므로 실제로 이것은</font>
+
+804
+00:53:03,039 --> 00:53:10,000
+there of just only one ethernet packet and everything else there's no ip in ip anymore
+
+805
+00:53:03,039 --> 00:53:10,000
+<font color="#ffff54">이더넷 패킷이 하나만 있고 다른 모든 것은 더 이상 IP에 IP가 없습니다.</font>
+
+806
+00:53:10,800 --> 00:53:18,800
+and then the next step is basically uh the tcp so there is no uh ip in ip packet that
+
+807
+00:53:10,800 --> 00:53:18,800
+<font color="#ffff54">그리고 다음 단계는 기본적으로 어, tcp이므로 어, IP 패킷에 IP가 없습니다.</font>
+
+808
+00:53:19,759 --> 00:53:23,440
+we saw previously in the previous capture we'll see it doesn't exist anymore because
+
+809
+00:53:19,759 --> 00:53:23,440
+<font color="#ffff54">이전 캡처에서 보았듯이 더 이상 존재하지 않는 것을 볼 수 있습니다.</font>
+
+810
+00:53:23,440 --> 00:53:30,639
+we are not using ip in ip anymore so basically this is regular um ip and then this is a destination
+
+811
+00:53:23,440 --> 00:53:30,639
+<font color="#ffff54">우리는 더 이상 IP에서 IP를 사용하지 않으므로 기본적으로 이것은 일반 음 IP이고 이것은 목적지입니다.</font>
+
+812
+00:53:30,639 --> 00:53:38,480
+of the uh the pod that you're calling the service that you're calling um so that's that's it so um
+
+813
+00:53:30,639 --> 00:53:38,480
+<font color="#ffff54">당신이 호출하고있는 서비스를 호출하는 파드의 음이므로 그게 다입니다.</font>
+
+814
+00:53:38,480 --> 00:53:46,480
+i hope you enjoyed this um presentation i'm going to summarize next and then we go from there
+
+815
+00:53:38,480 --> 00:53:46,480
+<font color="#ffff54">이 음 프레젠테이션을 즐기 셨기를 바랍니다. 다음에 요약하고 거기서부터 시작하겠습니다.</font>
+
+816
+00:53:47,839 --> 00:53:54,559
+so in this video we covered the following topics we started with take a look we took a look at
+
+817
+00:53:47,839 --> 00:53:54,559
+<font color="#ffff54">이 비디오에서 우리는 다음과 같은 주제를 다루었습니다. 우리가 살펴본 것을 살펴보십시오.</font>
+
+818
+00:53:54,559 --> 00:54:01,279
+container network interface i covered this in extensively in my first and second
+
+819
+00:53:54,559 --> 00:54:01,279
+<font color="#ffff54">컨테이너 네트워크 인터페이스 1편과 2편에서 광범위하게 다루었습니다.</font>
+
+820
+00:54:01,840 --> 00:54:05,599
+series of this course so if you want more information go ahead and check those
+
+821
+00:54:01,840 --> 00:54:05,599
+<font color="#ffff54">시리즈에서 자세히 다루었으니, 더 자세한 정보를 원하신다면</font>
+
+822
+00:54:07,679 --> 00:54:13,519
+we also introduced project calico which is a cni it's one of the choices that you can make as far
+
+823
+00:54:07,679 --> 00:54:13,519
+<font color="#ffff54">우리는 또한 당신이 지금까지 할 수있는 선택 중 하나 인 CNI 인 프로젝트 캘리코를 소개했습니다.</font>
+
+824
+00:54:13,519 --> 00:54:22,799
+as selecting a cni provider for for your project we looked at ip and ip protocol what it is and how
+
+825
+00:54:13,519 --> 00:54:22,799
+<font color="#ffff54">프로젝트에 대한 CNI 제공 업체를 선택함에 따라 IP 및 IP 프로토콜이 무엇이며 어떻게 사용되는지 살펴 보았습니다.</font>
+
+826
+00:54:22,800 --> 00:54:30,880
+calico uses it we learned about border gate protocol which is an important topic in using
+
+827
+00:54:22,800 --> 00:54:30,880
+<font color="#ffff54">캘리코는 이를 사용하여 보더 게이트 프로토콜을 사용하는 데 중요한 주제인 보더 게이트 프로토콜에 대해 배웠습니다.</font>
+
+828
+00:54:30,880 --> 00:54:38,160
+when you use calico and how it's been leveraging calico we also discussed various network choices
+
+829
+00:54:30,880 --> 00:54:38,160
+<font color="#ffff54">캘리코를 사용할 때와 캘리코를 어떻게 활용했는지, 그리고 다양한 네트워크 선택에 대해서도 논의했습니다.</font>
+
+830
+00:54:38,160 --> 00:54:45,120
+and when to use which we also learned how to make a network change after calico is installed
+
+831
+00:54:38,160 --> 00:54:45,120
+<font color="#ffff54">그리고 언제 사용하는지, 그리고 캘리코를 설치한 후 네트워크를 변경하는 방법도 배웠습니다.</font>
+
+832
+00:54:46,800 --> 00:54:52,480
+and the last thing thank you so much for your time if you like it please give it a like and
+
+833
+00:54:46,800 --> 00:54:52,480
+<font color="#ffff54">그리고 마지막으로 시간 내 주셔서 감사합니다 마음에 드시면 좋아요를 눌러주세요.</font>
+
+834
+00:54:52,480 --> 00:54:58,480
+consider subscribing i have the other courses that you might be interested especially in networking
+
+835
+00:54:52,480 --> 00:54:58,480
+<font color="#ffff54">구독을 고려하십시오 특히 네트워킹에 관심이있을 수있는 다른 과정이 있습니다.</font>
+
+836
+00:54:58,480 --> 00:55:07,360
+i have two more courses i'll include these courses um names and a link in the description below
+
+837
+00:54:58,480 --> 00:55:07,360
+<font color="#ffff54">두 개의 강좌가 더 있습니다. 아래 설명에 이 강좌의 이름과 링크를 포함하겠습니다.</font>
+
+838
+00:55:07,360 --> 00:55:09,840
+so again thank you so much and please take care
+
+839
+00:55:07,360 --> 00:55:09,840
+<font color="#ffff54">다시 한번 감사드리며 조심하세요.</font>
