@@ -1,0 +1,4464 @@
+﻿1
+00:00:00,000 --> 00:00:08,800
+Hello everyone.
+<font color="#ffff54">안녕하세요, 여러분.</font>
+
+2
+00:00:08,800 --> 00:00:13,480
+I hope you all had a good DevOps and that you still have some energy left for the last
+<font color="#ffff54">여러분 모두 좋은 데브옵스를 보냈기를 바라며, 마지막까지 에너지가 남아 있기를 바랍니다.</font>
+
+3
+00:00:13,480 --> 00:00:14,480
+talk.
+<font color="#ffff54">이야기.</font>
+
+4
+00:00:14,480 --> 00:00:15,480
+I do.
+<font color="#ffff54">I do.</font>
+
+5
+00:00:15,480 --> 00:00:23,359
+I want a better way to start off a talk than with a little story, a tale, an anecdote.
+<font color="#ffff54">작은 이야기나 일화, 일화로 강연을 시작하는 것보다 더 좋은 방법은 없습니다.</font>
+
+6
+00:00:23,359 --> 00:00:29,160
+Some years ago I joined a new company and with that I joined a new team.
+<font color="#ffff54">몇 년 전 저는 새로운 회사에 입사했고 그와 함께 새로운 팀에 합류했습니다.</font>
+
+7
+00:00:29,160 --> 00:00:34,759
+And the team itself was a newly formed team within that company.
+<font color="#ffff54">그리고 그 팀 자체도 그 회사 내에서 새로 구성된 팀이었습니다.</font>
+
+8
+00:00:34,759 --> 00:00:36,880
+And we received a new project.
+<font color="#ffff54">그리고 새로운 프로젝트를 받았습니다.</font>
+
+9
+00:00:36,880 --> 00:00:41,280
+Although the project itself was not a new project, it was actually an existing project
+<font color="#ffff54">프로젝트 자체는 새 프로젝트가 아니었지만 실제로는 기존 프로젝트였습니다.</font>
+
+10
+00:00:41,280 --> 00:00:48,519
+that was actively developed on by another team in another country even.
+<font color="#ffff54">심지어 다른 나라의 다른 팀에서 활발히 개발 중이던 프로젝트였습니다.</font>
+
+11
+00:00:48,519 --> 00:00:53,920
+And the project itself just received its first production release.
+<font color="#ffff54">그리고 프로젝트 자체는 이제 막 첫 번째 프로덕션 릴리스를 받았습니다.</font>
+
+12
+00:00:53,920 --> 00:00:57,200
+So actual customers could use it in production.
+<font color="#ffff54">그래서 실제 고객이 프로덕션에서 사용할 수 있게 되었습니다.</font>
+
+13
+00:00:57,200 --> 00:01:00,000
+And to ease over the transition, they...
+<font color="#ffff54">그리고 전환을 쉽게 하기 위해...</font>
+
+14
+00:01:00,000 --> 00:01:01,079
+Oh, sorry.
+<font color="#ffff54">오, 죄송합니다.</font>
+
+15
+00:01:01,079 --> 00:01:07,240
+So the management decided that the project should move from one team abroad to the newly
+<font color="#ffff54">그래서 경영진은 프로젝트를 해외의 한 팀에서 새로 온 팀으로 옮기기로 결정했습니다.</font>
+
+16
+00:01:07,240 --> 00:01:08,240
+formed team.
+<font color="#ffff54">팀을 구성했습니다.</font>
+
+17
+00:01:08,240 --> 00:01:12,480
+And to ease over the transition, they decided to install some handover days.
+<font color="#ffff54">인수인계 기간을 설정하여 인수인계가 원활하게 이루어지도록 했습니다.</font>
+
+18
+00:01:12,480 --> 00:01:18,840
+So both teams got together and we learned about the application, the domain, the technical
+<font color="#ffff54">그래서 두 팀이 함께 모여 애플리케이션, 도메인, 기술에 대해 배웠습니다.</font>
+
+19
+00:01:18,840 --> 00:01:20,280
+side of things.
+<font color="#ffff54">측면에 대해 배웠죠.</font>
+
+20
+00:01:20,280 --> 00:01:22,799
+And we quickly noticed something.
+<font color="#ffff54">그리고 우리는 금방 뭔가를 알아챘습니다.</font>
+
+21
+00:01:23,439 --> 00:01:25,560
+We couldn't find any tests.
+<font color="#ffff54">어떤 테스트도 찾을 수 없었습니다.</font>
+
+22
+00:01:25,560 --> 00:01:30,200
+So naturally we went to the other team and asked, like, where are the tests?
+<font color="#ffff54">그래서 자연스럽게 다른 팀에 가서 테스트가 어디 있냐고 물었습니다.</font>
+
+23
+00:01:30,200 --> 00:01:34,200
+And they responded by saying, well, there are no tests.
+<font color="#ffff54">그러자 그들은 테스트가 없다고 대답했습니다.</font>
+
+24
+00:01:34,200 --> 00:01:36,399
+We don't write tests.
+<font color="#ffff54">우리는 테스트를 작성하지 않습니다.</font>
+
+25
+00:01:36,399 --> 00:01:37,399
+That's weird, right?
+<font color="#ffff54">이상하지 않나요?</font>
+
+26
+00:01:37,399 --> 00:01:40,400
+Why wouldn't you write tests?
+<font color="#ffff54">왜 테스트를 작성하지 않죠?</font>
+
+27
+00:01:40,400 --> 00:01:46,359
+And they answered by saying, well, we don't write tests because we don't write bugs.
+<font color="#ffff54">그리고 그들은 버그를 작성하지 않기 때문에 테스트를 작성하지 않는다고 대답했습니다.</font>
+
+28
+00:01:46,359 --> 00:01:50,000
+And this is exactly what this talk is about.
+<font color="#ffff54">그리고 이것이 바로 이 강연의 주제입니다.</font>
+
+29
+00:01:50,000 --> 00:01:51,879
+Why would you write tests?
+<font color="#ffff54">왜 테스트를 작성하나요?</font>
+
+30
+00:01:51,959 --> 00:01:55,000
+How do you test that?
+<font color="#ffff54">어떻게 테스트하나요?</font>
+
+31
+00:01:55,000 --> 00:01:59,000
+And I can assure you that the answer to the first question, why do you write tests, is
+<font color="#ffff54">그리고 첫 번째 질문인 왜 테스트를 작성하는지에 대한 답은 다음과 같다고 확신할 수 있습니다.</font>
+
+32
+00:01:59,000 --> 00:02:03,959
+not simply because we all write bugs.
+<font color="#ffff54">단순히 우리 모두가 버그를 작성하기 때문이 아닙니다.</font>
+
+33
+00:02:03,959 --> 00:02:10,840
+In a way, this story is a bit sad, a bit arrogant, and marginally funny.
+<font color="#ffff54">어떻게 보면 이 이야기는 약간 슬프고, 약간 오만하고, 약간 웃기기도 합니다.</font>
+
+34
+00:02:10,840 --> 00:02:16,439
+But if I reflect upon myself and my own ideas and concepts around testing, I can't say that
+<font color="#ffff54">하지만 테스트에 대한 제 자신과 제 생각과 개념을 되돌아보면, 저는 이렇게 말할 수 없습니다.</font>
+
+35
+00:02:16,439 --> 00:02:21,599
+they've been that great either all the time.
+<font color="#ffff54">항상 그렇게 훌륭했다고 말할 수는 없습니다.</font>
+
+36
+00:02:22,319 --> 00:02:25,280
+And to illustrate that, I would like to go back in time yet again.
+<font color="#ffff54">이를 설명하기 위해 다시 한 번 시간을 거슬러 올라가 보겠습니다.</font>
+
+37
+00:02:25,280 --> 00:02:26,960
+And this time to the beginning of time.
+<font color="#ffff54">이번에는 태초로 돌아갑니다.</font>
+
+38
+00:02:26,960 --> 00:02:30,680
+To that moment I first started working as a developer.
+<font color="#ffff54">제가 처음 개발자로 일하기 시작한 그 순간까지.</font>
+
+39
+00:02:30,680 --> 00:02:34,840
+I don't know for you guys, but for me, it was quite daunting.
+<font color="#ffff54">여러분은 어떨지 모르겠지만 저에게는 꽤나 벅찬 순간이었습니다.</font>
+
+40
+00:02:34,840 --> 00:02:38,159
+You have to imagine, this was a world without Spring Boot.
+<font color="#ffff54">스프링 부트가 없는 세상이었다고 상상해 보세요.</font>
+
+41
+00:02:38,159 --> 00:02:40,599
+If you had a Spring project, you were lucky.
+<font color="#ffff54">스프링 프로젝트가 있었다면 운이 좋았습니다.</font>
+
+42
+00:02:40,599 --> 00:02:47,560
+Because else you had to fight off dragons like EGB and kill monsters like OSGI, struts.
+<font color="#ffff54">그렇지 않으면 EGB와 같은 드래곤과 싸우고 OSGI, 스트럿츠와 같은 괴물을 죽여야 했으니까요.</font>
+
+43
+00:02:47,560 --> 00:02:50,000
+But in any case, I managed.
+<font color="#ffff54">어쨌든 난 해냈어.</font>
+
+44
+00:02:50,000 --> 00:02:56,599
+But unlike that other team, I was introduced to a team back then that wrote tests.
+<font color="#ffff54">하지만 다른 팀과 달리 저는 그때 테스트를 작성하는 팀을 소개받았습니다.</font>
+
+45
+00:02:56,599 --> 00:03:01,120
+So from day one, I was exposed to testing.
+<font color="#ffff54">그래서 첫날부터 저는 테스트에 노출되었습니다.</font>
+
+46
+00:03:01,120 --> 00:03:05,400
+But to be honest, my focus was not really on writing tests.
+<font color="#ffff54">하지만 솔직히 말해서 저는 테스트 작성에 집중하지 않았습니다.</font>
+
+47
+00:03:05,400 --> 00:03:09,759
+I was very much focused on writing production code.
+<font color="#ffff54">저는 프로덕션 코드를 작성하는 데 매우 집중했습니다.</font>
+
+48
+00:03:09,759 --> 00:03:15,479
+The young developer that I was, was already happy if the code just worked.
+<font color="#ffff54">젊은 개발자였던 저는 코드가 작동하기만 하면 이미 행복했습니다.</font>
+
+49
+00:03:15,479 --> 00:03:18,960
+And naturally, I wrote the tests because I had to.
+<font color="#ffff54">당연히 테스트를 작성해야 했기 때문에 테스트를 작성했습니다.</font>
+
+50
+00:03:19,360 --> 00:03:20,719
+Like I said, it was not my focus.
+<font color="#ffff54">말씀드렸듯이 제 초점은 그게 아니었습니다.</font>
+
+51
+00:03:20,719 --> 00:03:26,920
+So in that moment in time, I kind of assumed that I had to write tests
+<font color="#ffff54">그래서 그 순간 저는 테스트를 작성해야 한다고 생각했습니다.</font>
+
+52
+00:03:26,920 --> 00:03:30,200
+simply to verify the correctness of the code.
+<font color="#ffff54">단순히 코드의 정확성을 확인하기 위해서요.</font>
+
+53
+00:03:30,200 --> 00:03:33,840
+In the moment, at the moment you're writing your test, in that little window.
+<font color="#ffff54">지금 이 순간, 여러분이 테스트를 작성하는 순간, 그 작은 창에서.</font>
+
+54
+00:03:36,719 --> 00:03:39,800
+But then time goes on and you grow as a developer, right?
+<font color="#ffff54">하지만 시간이 흐르고 개발자로서 성장하게 되죠?</font>
+
+55
+00:03:39,800 --> 00:03:42,400
+You go to conferences, read books.
+<font color="#ffff54">컨퍼런스에 참석하고 책을 읽어요.</font>
+
+56
+00:03:42,400 --> 00:03:47,560
+And you start to realize there's actually much more to testing than simply verifying correctness.
+<font color="#ffff54">그리고 테스트에는 단순히 정확성을 확인하는 것 이상의 의미가 있다는 것을 깨닫기 시작합니다.</font>
+
+57
+00:03:49,120 --> 00:03:53,000
+For one, it helps you prevent regression.
+<font color="#ffff54">우선, 회귀를 방지하는 데 도움이 됩니다.</font>
+
+58
+00:03:53,000 --> 00:03:55,600
+We all know what it is, right?
+<font color="#ffff54">우리 모두 그게 뭔지 아시죠?</font>
+
+59
+00:03:55,600 --> 00:03:59,439
+Now, one project, we were constantly battling regression.
+<font color="#ffff54">한 프로젝트에서 우리는 끊임없이 회귀와 싸웠습니다.</font>
+
+60
+00:03:59,439 --> 00:04:02,719
+Why? Because we were unable to refactor our code.
+<font color="#ffff54">왜 그랬을까요? 코드를 리팩터링할 수 없었기 때문입니다.</font>
+
+61
+00:04:02,719 --> 00:04:03,680
+You know how it goes, right?
+<font color="#ffff54">어떻게 되는지 아시죠?</font>
+
+62
+00:04:03,680 --> 00:04:06,600
+You receive a project, a completely new one.
+<font color="#ffff54">완전히 새로운 프로젝트를 받습니다.</font>
+
+63
+00:04:06,600 --> 00:04:11,439
+And every developer, every team has certain ideas on style or how to do things.
+<font color="#ffff54">모든 개발자, 모든 팀은 스타일이나 작업 방식에 대한 특정 아이디어를 가지고 있습니다.</font>
+
+64
+00:04:11,439 --> 00:04:15,159
+So we wanted to apply our style to that project.
+<font color="#ffff54">그래서 저희는 그 프로젝트에 저희 스타일을 적용하고 싶었습니다.</font>
+
+65
+00:04:15,159 --> 00:04:16,879
+We wanted to do things our way.
+<font color="#ffff54">우리 방식대로 하고 싶었어요.</font>
+
+66
+00:04:16,879 --> 00:04:20,399
+We quickly halted that because, yeah, we were causing regression.
+<font color="#ffff54">우리는 퇴보를 일으키고 있었기 때문에 재빨리 중단했습니다.</font>
+
+67
+00:04:20,399 --> 00:04:23,000
+We were unable to refactor freely in a safe way.
+<font color="#ffff54">안전한 방법으로 자유롭게 리팩터링할 수 없었습니다.</font>
+
+68
+00:04:27,120 --> 00:04:31,360
+Tests allow us to evolve our system at a steady pace.
+<font color="#ffff54">테스트를 통해 꾸준한 속도로 시스템을 발전시킬 수 있습니다.</font>
+
+69
+00:04:31,360 --> 00:04:36,719
+And that is so much more than simply verifying the correctness of code.
+<font color="#ffff54">테스트는 단순히 코드의 정확성을 검증하는 것 이상의 의미가 있습니다.</font>
+
+70
+00:04:36,719 --> 00:04:42,759
+Now, one system we received was unable to evolve, was hard to evolve.
+<font color="#ffff54">이제 우리가 받은 한 시스템은 진화할 수 없었고, 진화하기 어려웠습니다.</font>
+
+71
+00:04:42,759 --> 00:04:45,639
+Even to the point that management started to ask questions like,
+<font color="#ffff54">심지어 경영진이 다음과 같은 질문을 하기 시작할 정도였습니다,</font>
+
+72
+00:04:45,639 --> 00:04:47,120
+what is going on, guys?
+<font color="#ffff54">무슨 일이야, 얘들아?</font>
+
+73
+00:04:47,120 --> 00:04:49,560
+Now, one team never had any issues with them.
+<font color="#ffff54">한 팀은 아무런 문제가 없었습니다.</font>
+
+74
+00:04:49,560 --> 00:04:55,000
+And you guys, if you ship anything, you break things constantly.
+<font color="#ffff54">그리고 너희들은 뭐든 배송하면 끊임없이 물건을 망가뜨리잖아.</font>
+
+75
+00:04:55,000 --> 00:05:00,240
+What management didn't realize, for one, is that, yeah, the project just went live.
+<font color="#ffff54">경영진이 깨닫지 못한 것은 프로젝트가 방금 시작되었다는 사실입니다.</font>
+
+76
+00:05:00,240 --> 00:05:08,279
+So the time that the other team had to develop it, the project was not really used.
+<font color="#ffff54">그래서 다른 팀이 개발해야 하는 시간 동안 프로젝트는 실제로 사용되지 않았습니다.</font>
+
+77
+00:05:08,279 --> 00:05:11,319
+And another thing was, they didn't write tests.
+<font color="#ffff54">그리고 또 한 가지, 그들은 테스트를 작성하지 않았습니다.</font>
+
+78
+00:05:11,360 --> 00:05:16,959
+So, yeah, naturally, when you don't write tests, your speed, your velocity will be high.
+<font color="#ffff54">테스트를 작성하지 않으면 당연히 속도가 빨라지겠죠.</font>
+
+79
+00:05:16,959 --> 00:05:20,560
+What will happen inevitably is it will plummet down.
+<font color="#ffff54">필연적으로 일어날 일은 급락하는 것입니다.</font>
+
+80
+00:05:20,560 --> 00:05:22,360
+You will have to fight regression.
+<font color="#ffff54">퇴행과 싸워야 할 것입니다.</font>
+
+81
+00:05:22,360 --> 00:05:25,800
+You will be unable to evolve your system.
+<font color="#ffff54">시스템을 진화시킬 수 없게 됩니다.</font>
+
+82
+00:05:25,800 --> 00:05:30,639
+What tests give you is the evolvability at a steady pace.
+<font color="#ffff54">테스트 결과 꾸준한 속도로 진화할 수 있습니다.</font>
+
+83
+00:05:30,639 --> 00:05:35,879
+It allows us to go forward indefinitely.
+<font color="#ffff54">무한히 앞으로 나아갈 수 있습니다.</font>
+
+84
+00:05:35,879 --> 00:05:38,879
+Yes, that initial curve will be a bit steeper.
+<font color="#ffff54">예, 초기 곡선이 조금 더 가파르게 됩니다.</font>
+
+85
+00:05:42,040 --> 00:05:46,439
+When we received the project, it didn't come with any kind of documentation.
+<font color="#ffff54">프로젝트를 받았을 때 어떤 종류의 문서도 함께 제공되지 않았습니다.</font>
+
+86
+00:05:46,439 --> 00:05:52,279
+And those few days of handover weren't merely enough to really grasp the system itself.
+<font color="#ffff54">며칠간의 인수인계만으로는 시스템 자체를 파악하기에 충분하지 않았습니다.</font>
+
+87
+00:05:52,279 --> 00:05:56,240
+And afterwards, the other team was also not really...
+<font color="#ffff54">그리고 그 후, 다른 팀도 정말...</font>
+
+88
+00:05:56,240 --> 00:05:58,319
+was quite reluctant to answer our questions.
+<font color="#ffff54">우리의 질문에 대답하기를 꺼려했습니다.</font>
+
+89
+00:05:58,319 --> 00:06:01,279
+So we were left in the dark a bit sometimes.
+<font color="#ffff54">그래서 우리는 가끔 어둠 속에 남겨졌습니다.</font>
+
+90
+00:06:01,279 --> 00:06:03,560
+And there were no tests.
+<font color="#ffff54">그리고 테스트가 없었습니다.</font>
+
+91
+00:06:03,560 --> 00:06:06,639
+Because if there were tests, we could start reading them.
+<font color="#ffff54">테스트가 있었다면 읽을 수 있었을 테니까요.</font>
+
+92
+00:06:06,639 --> 00:06:10,079
+Because tests actually define the boundaries of our system, right?
+<font color="#ffff54">테스트는 실제로 우리 시스템의 경계를 정의하기 때문이죠?</font>
+
+93
+00:06:10,079 --> 00:06:14,399
+They tell us what falls in and what falls out.
+<font color="#ffff54">테스트는 무엇이 들어가고 무엇이 나가는지 알려주죠.</font>
+
+94
+00:06:14,399 --> 00:06:18,959
+And they're actually much more than those stale pieces of documentation
+<font color="#ffff54">그리고 그들은 실제로 오래된 문서 조각보다 훨씬 더 많습니다.</font>
+
+95
+00:06:18,959 --> 00:06:23,120
+we sometimes have to write on wikis, which start to drift from our code.
+<font color="#ffff54">가끔은 위키에 글을 써야 할 때가 있는데, 코드에서 벗어나기 시작하죠.</font>
+
+96
+00:06:23,120 --> 00:06:25,519
+They're living pieces of documentation.
+<font color="#ffff54">위키야말로 살아있는 문서입니다.</font>
+
+97
+00:06:25,519 --> 00:06:29,519
+Because if I have to write a feature, I write a test for that.
+<font color="#ffff54">기능을 작성해야 한다면 그에 대한 테스트를 작성하기 때문이죠.</font>
+
+98
+00:06:29,519 --> 00:06:35,799
+If I alter that feature, and I don't alter that test, in theory, my build should fail.
+<font color="#ffff54">만약 내가 그 기능을 변경하고 테스트를 변경하지 않는다면 이론적으로 내 빌드는 실패해야 한다.</font>
+
+99
+00:06:35,840 --> 00:06:37,439
+So we're forced to update our tests.
+<font color="#ffff54">그래서 테스트를 업데이트해야 합니다.</font>
+
+100
+00:06:37,439 --> 00:06:40,680
+They're executable pieces of documentation.
+<font color="#ffff54">실행 가능한 문서입니다.</font>
+
+101
+00:06:40,680 --> 00:06:46,000
+Again, much more than simply verifying correctness.
+<font color="#ffff54">다시 말하지만, 단순히 정확성을 확인하는 것 이상입니다.</font>
+
+102
+00:06:46,000 --> 00:06:47,920
+They guide our design.
+<font color="#ffff54">디자인에 지침이 됩니다.</font>
+
+103
+00:06:47,920 --> 00:06:49,000
+TDD, right?
+<font color="#ffff54">TDD 맞죠?</font>
+
+104
+00:06:49,000 --> 00:06:53,960
+It's very much at the forefront of this, where you first write your test,
+<font color="#ffff54">테스트를 처음 작성할 때 가장 중요한 부분입니다,</font>
+
+105
+00:06:53,960 --> 00:06:56,840
+then you write the simplest implementation possible,
+<font color="#ffff54">그리고 나서 가능한 가장 간단한 구현을 작성합니다,</font>
+
+106
+00:06:56,840 --> 00:07:01,759
+and then you refactor over it until the design is good enough for you, beautiful.
+<font color="#ffff54">그런 다음 디자인이 마음에 들 때까지 리팩터링합니다.</font>
+
+107
+00:07:01,759 --> 00:07:06,240
+We all know that code that is hard to test is often smelly.
+<font color="#ffff54">테스트하기 어려운 코드는 종종 냄새가 난다는 것을 우리 모두 알고 있습니다.</font>
+
+108
+00:07:06,240 --> 00:07:08,120
+There's something wrong with the design, right?
+<font color="#ffff54">디자인에 뭔가 문제가 있는 거죠?</font>
+
+109
+00:07:08,120 --> 00:07:10,279
+Code should be easy to test.
+<font color="#ffff54">코드는 테스트하기 쉬워야 합니다.</font>
+
+110
+00:07:10,279 --> 00:07:13,279
+Let tests guide you.
+<font color="#ffff54">테스트가 여러분을 안내합니다.</font>
+
+111
+00:07:13,279 --> 00:07:16,599
+And all these traits, these good traits of tests together,
+<font color="#ffff54">그리고 이 모든 특성들, 테스트의 좋은 특성들을 함께,</font>
+
+112
+00:07:16,599 --> 00:07:19,879
+allow us to continuously release with confidence.
+<font color="#ffff54">자신감을 가지고 지속적으로 출시할 수 있습니다.</font>
+
+113
+00:07:19,879 --> 00:07:22,199
+Because that's what I want to be as a developer.
+<font color="#ffff54">그것이 제가 개발자로서 원하는 것이기 때문입니다.</font>
+
+114
+00:07:22,199 --> 00:07:23,560
+I want to feel safe.
+<font color="#ffff54">안전하다고 느끼고 싶어요.</font>
+
+115
+00:07:23,560 --> 00:07:28,480
+I want to be able to ship my product on a Friday evening and go home.
+<font color="#ffff54">금요일 저녁에 제품을 배송하고 집에 갈 수 있기를 원합니다.</font>
+
+116
+00:07:29,000 --> 00:07:35,120
+And then time goes on, and when I learned all these things,
+<font color="#ffff54">그리고 시간이 지나고 이 모든 것을 알게 되었을 때,</font>
+
+117
+00:07:35,120 --> 00:07:38,520
+I thought that testing is great.
+<font color="#ffff54">테스트는 정말 대단하다고 생각했어요.</font>
+
+118
+00:07:38,520 --> 00:07:41,560
+But when I looked around, I found that the reality of tests
+<font color="#ffff54">하지만 주위를 둘러보니 테스트의 현실은 다음과 같았습니다.</font>
+
+119
+00:07:41,560 --> 00:07:43,879
+was sometimes a bit different.
+<font color="#ffff54">는 때때로 조금 달랐습니다.</font>
+
+120
+00:07:43,879 --> 00:07:46,960
+I found tests to be brittle sometimes.
+<font color="#ffff54">가끔 테스트가 깨지는 경우가 있습니다.</font>
+
+121
+00:07:46,960 --> 00:07:50,520
+Simply adding a dependency, changing a parameter,
+<font color="#ffff54">종속성을 추가하고 매개변수를 변경하기만 하면 됩니다,</font>
+
+122
+00:07:50,520 --> 00:07:54,879
+just reshaping the code, not really changing the behavior,
+<font color="#ffff54">코드를 재구성하는 것일 뿐, 동작을 변경하는 것은 아닙니다,</font>
+
+123
+00:07:54,879 --> 00:07:58,400
+but just the shape of the code would break tests.
+<font color="#ffff54">코드의 모양만 바꾸면 테스트가 중단됩니다.</font>
+
+124
+00:07:58,440 --> 00:08:01,560
+Sometimes in remote places of the code base.
+<font color="#ffff54">코드 베이스의 외진 곳에 있을 때도 있습니다.</font>
+
+125
+00:08:01,560 --> 00:08:04,800
+Sometimes I found tests to be really, really complex
+<font color="#ffff54">가끔 테스트가 정말, 정말 복잡하다는 것을 알았습니다.</font>
+
+126
+00:08:04,800 --> 00:08:09,400
+for relatively simple production code.
+<font color="#ffff54">비교적 간단한 프로덕션 코드의 경우.</font>
+
+127
+00:08:09,400 --> 00:08:11,920
+Hence they were hard to maintain.
+<font color="#ffff54">따라서 유지 관리가 어려웠습니다.</font>
+
+128
+00:08:11,920 --> 00:08:15,720
+They did not guide.
+<font color="#ffff54">그들은 안내하지 않았다.</font>
+
+129
+00:08:15,720 --> 00:08:17,560
+TDD is a bit like teenage sex.
+<font color="#ffff54">TDD는 십대 섹스와 비슷하다.</font>
+
+130
+00:08:17,560 --> 00:08:23,200
+Everyone's talking about it, but who's actually doing it?
+<font color="#ffff54">다들 얘기하지만 실제로 하는 사람은 누구일까요?</font>
+
+131
+00:08:23,200 --> 00:08:27,000
+Sometimes I found tests to be cryptic.
+<font color="#ffff54">가끔은 테스트가 모호하다는 걸 알았어요.</font>
+
+132
+00:08:27,000 --> 00:08:30,399
+I encountered tests and I had no clue
+<font color="#ffff54">테스트를 만났는데 전혀 알 수 없었습니다.</font>
+
+133
+00:08:30,399 --> 00:08:33,799
+by the test method name what was being actually tested.
+<font color="#ffff54">테스트 방법 이름으로 실제로 무엇을 테스트하고 있는지 알 수 없었습니다.</font>
+
+134
+00:08:33,799 --> 00:08:36,039
+Not only if I read the body of the method,
+<font color="#ffff54">메서드 본문을 읽었을 때뿐만 아니라,</font>
+
+135
+00:08:36,039 --> 00:08:39,360
+and sometimes even worse, the test method said one thing,
+<font color="#ffff54">그리고 때로는 테스트 방법에서 한 가지를 더 나쁘게 말했습니다,</font>
+
+136
+00:08:39,360 --> 00:08:42,320
+okay, great, you read the body and it said something else.
+<font color="#ffff54">좋아, 좋아, 본문을 읽었는데 다른 걸 말했어.</font>
+
+137
+00:08:42,320 --> 00:08:48,279
+So either one of the two is lying or we need two tests.
+<font color="#ffff54">둘 중 하나가 거짓말이거나 두 가지 테스트가 필요해.</font>
+
+138
+00:08:48,279 --> 00:08:50,679
+And sometimes they were horrendously slow.
+<font color="#ffff54">그리고 가끔은 끔찍하게 느렸어요.</font>
+
+139
+00:08:50,679 --> 00:08:53,919
+I worked once in a team and they found it completely normal
+<font color="#ffff54">한 팀에서 일한 적이 있는데 완전히 정상이라고 하더군요.</font>
+
+140
+00:08:53,919 --> 00:09:00,319
+that the test time was one hour for a rather small application.
+<font color="#ffff54">테스트 시간이 다소 작은 애플리케이션의 경우 한 시간이었습니다.</font>
+
+141
+00:09:00,319 --> 00:09:06,039
+And the worst of all, like that one team, skipping testing.
+<font color="#ffff54">그리고 최악의 경우, 저 팀처럼 테스트를 건너뛰는 경우도 있었습니다.</font>
+
+142
+00:09:06,039 --> 00:09:09,959
+So surely the benefits of writing tests,
+<font color="#ffff54">테스트 작성의 이점은 분명합니다,</font>
+
+143
+00:09:09,959 --> 00:09:15,279
+running and maintaining them should outweigh the cost.
+<font color="#ffff54">테스트를 실행하고 유지하는 데 드는 비용보다 더 큰 이점이 있을 겁니다.</font>
+
+144
+00:09:15,279 --> 00:09:17,799
+And I think there's a kind of paradox going on here
+<font color="#ffff54">그리고 여기에는 일종의 역설이 있다고 생각합니다.</font>
+
+145
+00:09:17,799 --> 00:09:22,919
+because at one hand, most developers really value testing.
+<font color="#ffff54">한편으로는 대부분의 개발자가 테스트를 정말 중요하게 생각하기 때문이죠.</font>
+
+146
+00:09:22,919 --> 00:09:25,120
+They really think testing is important,
+<font color="#ffff54">개발자들은 테스트가 정말 중요하다고 생각합니다,</font>
+
+147
+00:09:25,120 --> 00:09:29,919
+but that is seldom reflected in the test code.
+<font color="#ffff54">하지만 테스트 코드에는 거의 반영되지 않습니다.</font>
+
+148
+00:09:29,919 --> 00:09:34,679
+And there's another paradox going on here, on a code level,
+<font color="#ffff54">그리고 코드 수준에서 또 다른 역설이 벌어지고 있습니다,</font>
+
+149
+00:09:34,679 --> 00:09:37,799
+because most developers really care about the code,
+<font color="#ffff54">대부분의 개발자는 코드에 정말 관심이 많기 때문입니다,</font>
+
+150
+00:09:37,799 --> 00:09:39,240
+they're meticulous about it.
+<font color="#ffff54">꼼꼼하기 때문이죠.</font>
+
+151
+00:09:39,240 --> 00:09:41,399
+We're all about clean code, right?
+<font color="#ffff54">우리 모두 깔끔한 코드가 중요하죠?</font>
+
+152
+00:09:41,399 --> 00:09:44,719
+At least that's for the production code.
+<font color="#ffff54">적어도 프로덕션 코드에 대해서는요.</font>
+
+153
+00:09:44,719 --> 00:09:47,959
+The test code seems to be different.
+<font color="#ffff54">테스트 코드가 다른 것 같습니다.</font>
+
+154
+00:09:47,959 --> 00:09:49,360
+I find that a paradox.
+<font color="#ffff54">역설적이네요.</font>
+
+155
+00:09:49,360 --> 00:09:55,000
+And the last paradox I identified was on an architectural level,
+<font color="#ffff54">그리고 제가 마지막으로 발견한 역설은 건축 수준에서 발견했습니다,</font>
+
+156
+00:09:55,000 --> 00:09:57,519
+because architecture is all around us, right?
+<font color="#ffff54">건축은 우리 주변에 있잖아요, 그렇죠?</font>
+
+157
+00:09:57,519 --> 00:10:02,120
+No application is designed without considering architecture somehow.
+<font color="#ffff54">아키텍처를 고려하지 않고 설계된 애플리케이션은 없습니다.</font>
+
+158
+00:10:02,120 --> 00:10:08,200
+We create diagrams, C4, architectural decision records.
+<font color="#ffff54">다이어그램, C4, 아키텍처 결정 기록을 작성합니다.</font>
+
+159
+00:10:08,200 --> 00:10:11,759
+We have people walking around in the office calling themselves an architect,
+<font color="#ffff54">사무실에서 스스로를 건축가라고 칭하며 돌아다니는 사람들이 있습니다,</font>
+
+160
+00:10:11,759 --> 00:10:12,720
+and it doesn't stop there.
+<font color="#ffff54">그리고 거기서 멈추지 않습니다.</font>
+
+161
+00:10:12,720 --> 00:10:16,639
+We have different types of architects,
+<font color="#ffff54">우리에게는 다양한 유형의 건축가가 있습니다,</font>
+
+162
+00:10:16,639 --> 00:10:19,919
+solution, enterprise, application architects.
+<font color="#ffff54">솔루션, 엔터프라이즈, 애플리케이션 아키텍트.</font>
+
+163
+00:10:19,919 --> 00:10:25,240
+But all of this architecture we do is for our production code.
+<font color="#ffff54">하지만 우리가 하는 이 모든 아키텍처는 프로덕션 코드를 위한 것입니다.</font>
+
+164
+00:10:25,240 --> 00:10:30,480
+Seldom, rarely we turn around and look at the test code.
+<font color="#ffff54">뒤돌아서서 테스트 코드를 살펴보는 경우는 거의 없습니다.</font>
+
+165
+00:10:30,480 --> 00:10:32,360
+Because then I question myself,
+<font color="#ffff54">그러면 스스로에게 의문이 들기 때문입니다,</font>
+
+166
+00:10:32,360 --> 00:10:35,919
+like, don't we find our test important to be considered?
+<font color="#ffff54">우리 테스트가 중요하다고 생각하지 않나요?</font>
+
+167
+00:10:35,919 --> 00:10:38,519
+Because that is for me what architecture is about,
+<font color="#ffff54">그게 바로 아키텍처의 본질이니까요,</font>
+
+168
+00:10:38,519 --> 00:10:40,600
+the important stuff.
+<font color="#ffff54">중요한 것들.</font>
+
+169
+00:10:40,600 --> 00:10:43,080
+Also our tests.
+<font color="#ffff54">테스트도요.</font>
+
+170
+00:10:43,080 --> 00:10:48,879
+And when we're doing architecture, we're constantly making trade-offs.
+<font color="#ffff54">아키텍처를 만들 때는 끊임없이 절충점을 찾아야 합니다.</font>
+
+171
+00:10:48,879 --> 00:10:54,360
+When our tests are slow, when our tests are brittle,
+<font color="#ffff54">테스트가 느릴 때, 테스트가 취약할 때,</font>
+
+172
+00:10:54,360 --> 00:10:58,639
+or hard to maintain, there were trade-offs there that we didn't make.
+<font color="#ffff54">유지 관리가 어려울 때는 우리가 생각하지 못한 트레이드오프가 있었습니다.</font>
+
+173
+00:10:58,639 --> 00:11:03,520
+And we constantly make them in our production code.
+<font color="#ffff54">그리고 저희는 프로덕션 코드에서 지속적으로 이를 개선하고 있습니다.</font>
+
+174
+00:11:03,520 --> 00:11:05,800
+Architecture guides us.
+<font color="#ffff54">아키텍처가 우리를 안내합니다.</font>
+
+175
+00:11:05,800 --> 00:11:10,640
+If I start working on an existing project that I don't know,
+<font color="#ffff54">내가 모르는 기존 프로젝트에서 작업을 시작하면,</font>
+
+176
+00:11:11,240 --> 00:11:15,240
+I often reside to the architectural diagrams, the ADRs, stuff like that,
+<font color="#ffff54">저는 종종 아키텍처 다이어그램이나 ADR 같은 것들에 상주합니다,</font>
+
+177
+00:11:15,240 --> 00:11:18,319
+to really understand what is the meaning of the architecture.
+<font color="#ffff54">아키텍처의 의미를 제대로 이해하기 위해요.</font>
+
+178
+00:11:18,319 --> 00:11:19,960
+But that's always for the production code.
+<font color="#ffff54">하지만 이는 항상 프로덕션 코드에 대한 것입니다.</font>
+
+179
+00:11:19,960 --> 00:11:24,759
+The test code, there's nothing.
+<font color="#ffff54">테스트 코드에는 아무것도 없습니다.</font>
+
+180
+00:11:24,759 --> 00:11:28,399
+So I start to wonder, like, how did we end up here?
+<font color="#ffff54">그래서 어떻게 여기까지 왔을까 궁금해지기 시작합니다.</font>
+
+181
+00:11:28,399 --> 00:11:33,319
+Why is this happening?
+<font color="#ffff54">왜 이런 일이 벌어지는 거지?</font>
+
+182
+00:11:33,319 --> 00:11:37,120
+And I think a lot of it stems from that initial premise I said
+<font color="#ffff54">그리고 많은 부분이 제가 처음에 말한 전제에서 비롯된 것 같아요.</font>
+
+183
+00:11:37,120 --> 00:11:39,960
+at the beginning of my career.
+<font color="#ffff54">제 경력을 시작할 때요.</font>
+
+184
+00:11:39,960 --> 00:11:44,200
+That we're so focused in the moment, when you're writing production code,
+<font color="#ffff54">프로덕션 코드를 작성하는 순간에 집중할 수 있습니다,</font>
+
+185
+00:11:44,200 --> 00:11:45,840
+because that's the task at hand, right?
+<font color="#ffff54">당면한 일이니까요, 그렇죠?</font>
+
+186
+00:11:45,840 --> 00:11:48,040
+That's what you get paid for.
+<font color="#ffff54">그게 바로 돈을 받는 이유죠.</font>
+
+187
+00:11:48,040 --> 00:11:50,560
+It's very hard to leave that moment.
+<font color="#ffff54">그 순간을 떠나기가 정말 힘들어요.</font>
+
+188
+00:11:50,560 --> 00:11:53,519
+And you do not only write a test in the current moment,
+<font color="#ffff54">그리고 지금 이 순간에만 테스트를 작성하는 것이 아닙니다,</font>
+
+189
+00:11:53,519 --> 00:11:56,840
+for the current moment, simply to verify correctness.
+<font color="#ffff54">현재 순간에 대한 테스트를 단순히 정확성을 확인하기 위해 작성하는 것이 아닙니다.</font>
+
+190
+00:11:56,840 --> 00:12:02,400
+That's only part of the story.
+<font color="#ffff54">이것은 이야기의 일부일 뿐입니다.</font>
+
+191
+00:12:02,400 --> 00:12:05,200
+So let's try to answer the three W's.
+<font color="#ffff54">이제 세 가지 W에 대해 대답해 봅시다.</font>
+
+192
+00:12:05,200 --> 00:12:09,200
+And let's start with, why do we write tests?
+<font color="#ffff54">먼저 왜 테스트를 작성할까요?</font>
+
+193
+00:12:09,200 --> 00:12:13,879
+Well, I think we write tests to cope with change.
+<font color="#ffff54">글쎄요, 변화에 대처하기 위해 테스트를 작성하는 것 같아요.</font>
+
+194
+00:12:13,879 --> 00:12:16,640
+Because requirements change.
+<font color="#ffff54">요구사항이 변하기 때문이죠.</font>
+
+195
+00:12:16,640 --> 00:12:18,840
+Integrations change.
+<font color="#ffff54">통합이 변경되었습니다.</font>
+
+196
+00:12:18,840 --> 00:12:24,520
+Security, technology, data formats, deployment methods,
+<font color="#ffff54">보안, 기술, 데이터 형식, 배포 방법,</font>
+
+197
+00:12:24,520 --> 00:12:29,720
+people and organizations themselves change.
+<font color="#ffff54">사람과 조직 자체가 변화합니다.</font>
+
+198
+00:12:29,720 --> 00:12:34,480
+And let me give you an example of change.
+<font color="#ffff54">변화의 예를 들어보겠습니다.</font>
+
+199
+00:12:34,480 --> 00:12:38,520
+I once had to work on a system, and it was an existing system.
+<font color="#ffff54">한 번은 시스템 작업을 해야 했는데, 기존 시스템이었어요.</font>
+
+200
+00:12:38,519 --> 00:12:43,039
+And it was actually developed a decade ago.
+<font color="#ffff54">사실 10년 전에 개발되었죠.</font>
+
+201
+00:12:43,039 --> 00:12:45,199
+And the task was very simple.
+<font color="#ffff54">그리고 작업은 매우 간단했습니다.</font>
+
+202
+00:12:45,199 --> 00:12:48,960
+They finally decided to kick out that COBOL mainframe.
+<font color="#ffff54">마침내 COBOL 메인프레임을 쫓아내기로 결정했습니다.</font>
+
+203
+00:12:48,960 --> 00:12:51,559
+And everybody who was talking to that COBOL mainframe
+<font color="#ffff54">그리고 그 COBOL 메인프레임과 대화하던 모든 사람들은</font>
+
+204
+00:12:51,559 --> 00:12:53,519
+had to now talk to the cloud.
+<font color="#ffff54">이제 클라우드와 대화해야 했습니다.</font>
+
+205
+00:12:53,519 --> 00:12:57,000
+So they found a cloud solution to replace COBOL.
+<font color="#ffff54">그래서 그들은 COBOL을 대체할 클라우드 솔루션을 찾았습니다.</font>
+
+206
+00:12:57,000 --> 00:13:01,279
+And my job was simply to not change the requirements in this case,
+<font color="#ffff54">그리고 제 임무는 이 경우 요구 사항을 변경하지 않는 것이었습니다,</font>
+
+207
+00:13:01,279 --> 00:13:04,079
+but change the integration.
+<font color="#ffff54">통합을 변경하는 것입니다.</font>
+
+208
+00:13:04,080 --> 00:13:10,200
+I had to make sure that that system was able to talk to the cloud.
+<font color="#ffff54">해당 시스템이 클라우드와 통신할 수 있는지 확인해야 했습니다.</font>
+
+209
+00:13:10,200 --> 00:13:14,160
+And when I went along implementing this,
+<font color="#ffff54">그리고 구현을 진행하면서</font>
+
+210
+00:13:14,160 --> 00:13:18,680
+I looked at the commit logs, and I found interesting things.
+<font color="#ffff54">커밋 로그를 살펴보니 흥미로운 것을 발견했습니다.</font>
+
+211
+00:13:18,680 --> 00:13:22,000
+Yes, the first two years, there were a lot of requirements
+<font color="#ffff54">네, 처음 2년 동안은 많은 요구사항이 있었습니다.</font>
+
+212
+00:13:22,000 --> 00:13:23,440
+being built and added.
+<font color="#ffff54">구축되고 추가되었습니다.</font>
+
+213
+00:13:23,440 --> 00:13:26,400
+But then it kind of halted, and it was like a void.
+<font color="#ffff54">그런데 갑자기 멈춰버렸어요. 마치 공허한 느낌이었죠.</font>
+
+214
+00:13:26,400 --> 00:13:29,040
+And then I found security patches.
+<font color="#ffff54">그러다 보안 패치를 찾았어요.</font>
+
+215
+00:13:29,040 --> 00:13:33,000
+I found that people, I found that they were deploying the application
+<font color="#ffff54">사람들이 애플리케이션을 배포하는 것을 발견했습니다.</font>
+
+216
+00:13:33,000 --> 00:13:35,840
+as a WAR file first, deployment methods.
+<font color="#ffff54">WAR 파일로 먼저 배포하는 것을 발견했습니다.</font>
+
+217
+00:13:35,840 --> 00:13:41,200
+And then they kind of switched to a JAR, Spring Boot, one, two.
+<font color="#ffff54">그리고 나서 JAR, Spring Boot, 하나, 둘로 전환했습니다.</font>
+
+218
+00:13:41,200 --> 00:13:44,639
+And while I was there, I decided, let's go for three then.
+<font color="#ffff54">거기 있는 동안 저는 세 개로 가자고 결정했습니다.</font>
+
+219
+00:13:44,639 --> 00:13:46,799
+And I also found that, hey, in the beginning,
+<font color="#ffff54">그리고 처음에 이런 것도 발견했어요,</font>
+
+220
+00:13:46,799 --> 00:13:50,480
+they were deploying it as a WAR in an application server.
+<font color="#ffff54">애플리케이션 서버에 WAR로 배포하고 있었습니다.</font>
+
+221
+00:13:50,480 --> 00:13:52,840
+And in this point in time, they were deploying it
+<font color="#ffff54">그리고 이 시점에, 그들은 그것을 배포하고 있었습니다.</font>
+
+222
+00:13:52,840 --> 00:13:54,799
+in the cloud, Kubernetes.
+<font color="#ffff54">클라우드인 쿠버네티스에 배포하고 있었습니다.</font>
+
+223
+00:13:54,799 --> 00:13:58,879
+I also found that throughout that decade, dozens of people
+<font color="#ffff54">또한 그 10년 동안 수십 명의 사람들이</font>
+
+224
+00:13:58,879 --> 00:14:00,679
+have committed and worked on that.
+<font color="#ffff54">헌신하고 노력했습니다.</font>
+
+225
+00:14:00,680 --> 00:14:03,680
+Even people, I asked my colleague, who's Mark?
+<font color="#ffff54">심지어 사람들에게도 마크가 누구냐고 물어봤어요.</font>
+
+226
+00:14:03,680 --> 00:14:06,800
+He said, I have never met Mark here.
+<font color="#ffff54">그는 말하길, 나는 여기서 마크를 만난 적이 없다고 했다.</font>
+
+227
+00:14:06,800 --> 00:14:09,800
+Things constantly change, and that is why we test.
+<font color="#ffff54">상황은 끊임없이 변하기 때문에 우리는 테스트한다.</font>
+
+228
+00:14:09,800 --> 00:14:13,840
+And that's the key characteristic of software, change.
+<font color="#ffff54">이것이 바로 소프트웨어의 핵심 특성인 변화입니다.</font>
+
+229
+00:14:13,840 --> 00:14:16,960
+And tests allow us to change things.
+<font color="#ffff54">그리고 테스트를 통해 우리는 무언가를 바꿀 수 있습니다.</font>
+
+230
+00:14:16,960 --> 00:14:20,520
+Tests are change enablers.
+<font color="#ffff54">테스트는 변화를 가능하게 합니다.</font>
+
+231
+00:14:20,520 --> 00:14:24,360
+Other things in software are obviously also important.
+<font color="#ffff54">소프트웨어의 다른 것들도 분명히 중요합니다.</font>
+
+232
+00:14:24,360 --> 00:14:26,640
+But if you're unable to change a thing,
+<font color="#ffff54">하지만 하나도 바꿀 수 없다면,</font>
+
+233
+00:14:26,640 --> 00:14:29,600
+you will never make it faster, more secure, resilient,
+<font color="#ffff54">더 빠르고, 더 안전하고, 더 탄력적으로 만들 수 없습니다,</font>
+
+234
+00:14:29,600 --> 00:14:31,320
+whatever you want it to be.
+<font color="#ffff54">당신이 원하는 대로.</font>
+
+235
+00:14:31,320 --> 00:14:34,680
+And tests gave us that ability.
+<font color="#ffff54">그리고 테스트를 통해 그 능력을 얻었습니다.</font>
+
+236
+00:14:34,680 --> 00:14:39,680
+And that is so much more than simply verifying correctness.
+<font color="#ffff54">그리고 그것은 단순히 정확성을 검증하는 것 이상의 의미가 있습니다.</font>
+
+237
+00:14:39,680 --> 00:14:43,399
+So the reason for writing tests is change, adaptability,
+<font color="#ffff54">그래서 테스트를 작성하는 이유는 변화와 적응력입니다,</font>
+
+238
+00:14:43,399 --> 00:14:46,159
+to evolve.
+<font color="#ffff54">진화하기 위해서죠.</font>
+
+239
+00:14:46,159 --> 00:14:48,440
+What do we actually test?
+<font color="#ffff54">실제로 무엇을 테스트하나요?</font>
+
+240
+00:14:48,440 --> 00:14:51,399
+What is the system under test?
+<font color="#ffff54">테스트 중인 시스템은 무엇인가요?</font>
+
+241
+00:14:51,399 --> 00:14:53,840
+And let's go back again in time to that younger version
+<font color="#ffff54">다시 시간을 거슬러 더 어린 버전으로 돌아가 봅시다.</font>
+
+242
+00:14:53,840 --> 00:14:55,759
+of myself and ask this question.
+<font color="#ffff54">나 자신의 모습을 떠올리며 이 질문을 해보죠.</font>
+
+243
+00:14:55,759 --> 00:14:58,279
+I think I would have answered something in the lines of,
+<font color="#ffff54">저는 이런 식으로 대답했을 것 같아요,</font>
+
+244
+00:14:58,279 --> 00:15:01,839
+well, you asked me to write production code.
+<font color="#ffff54">프로덕션 코드를 작성하라고 하셨잖아요.</font>
+
+245
+00:15:01,839 --> 00:15:03,360
+That's the job at hand, right?
+<font color="#ffff54">그게 지금 할 일이지?</font>
+
+246
+00:15:03,360 --> 00:15:05,919
+So I write code, and I write test code to test the code.
+<font color="#ffff54">그래서 코드를 작성하고, 코드를 테스트하기 위해 테스트 코드를 작성합니다.</font>
+
+247
+00:15:05,919 --> 00:15:07,919
+So I'm kind of testing the code.
+<font color="#ffff54">그래서 코드를 테스트하고 있습니다.</font>
+
+248
+00:15:07,919 --> 00:15:10,319
+That's what I'm testing, obviously.
+<font color="#ffff54">물론 제가 테스트하고 있는 것은 이것입니다.</font>
+
+249
+00:15:10,319 --> 00:15:11,799
+And that's true.
+<font color="#ffff54">그리고 그건 사실입니다.</font>
+
+250
+00:15:11,799 --> 00:15:13,319
+You can't say it's not right.
+<font color="#ffff54">옳지 않다고 할 수는 없지.</font>
+
+251
+00:15:13,319 --> 00:15:15,439
+You are testing the code.
+<font color="#ffff54">코드를 테스트하고 있습니다.</font>
+
+252
+00:15:15,439 --> 00:15:19,879
+But you are testing that implicitly.
+<font color="#ffff54">하지만 암시적으로 테스트하고 있습니다.</font>
+
+253
+00:15:19,879 --> 00:15:24,399
+What you want to test explicitly is something else.
+<font color="#ffff54">명시적으로 테스트하고 싶은 것은 다른 것입니다.</font>
+
+254
+00:15:24,399 --> 00:15:27,240
+So let's answer the following question first.
+<font color="#ffff54">그럼 먼저 다음 질문에 답해봅시다.</font>
+
+255
+00:15:27,240 --> 00:15:29,680
+What do we actually write code for?
+<font color="#ffff54">우리는 실제로 무엇을 위해 코드를 작성할까요?</font>
+
+256
+00:15:29,680 --> 00:15:30,680
+And I'm a bit of a geek.
+<font color="#ffff54">그리고 난 좀 괴짜거든.</font>
+
+257
+00:15:30,680 --> 00:15:33,759
+I really don't need any reasons to write code.
+<font color="#ffff54">저는 코드를 작성할 이유가 정말 필요 없어요.</font>
+
+258
+00:15:33,759 --> 00:15:36,440
+I just love solving puzzles.
+<font color="#ffff54">난 그냥 퍼즐을 푸는 게 좋아.</font>
+
+259
+00:15:36,440 --> 00:15:37,600
+I don't need business value.
+<font color="#ffff54">난 사업적 가치는 필요없어.</font>
+
+260
+00:15:37,600 --> 00:15:39,240
+But surely that's not the case, right?
+<font color="#ffff54">하지만 그렇지 않죠?</font>
+
+261
+00:15:39,240 --> 00:15:41,639
+Why do we all write code?
+<font color="#ffff54">우리 모두는 왜 코드를 작성할까요?</font>
+
+262
+00:15:41,639 --> 00:15:44,240
+We write code because there's someone who has a pack of money.
+<font color="#ffff54">우리는 돈을 많이 가진 사람이 있기 때문에 코드를 작성합니다.</font>
+
+263
+00:15:44,240 --> 00:15:45,240
+Let's be honest.
+<font color="#ffff54">솔직해지자.</font>
+
+264
+00:15:45,240 --> 00:15:49,360
+And that someone wants a system to behave in a certain way.
+<font color="#ffff54">그리고 누군가는 시스템이 특정 방식으로 작동하기를 원합니다.</font>
+
+265
+00:15:49,360 --> 00:15:52,200
+He has a requirement for a system to behave.
+<font color="#ffff54">그는 시스템 작동에 대한 요구 사항을 가지고 있다.</font>
+
+266
+00:15:52,200 --> 00:15:54,960
+That's why we write code.
+<font color="#ffff54">그래서 코드를 작성합니다.</font>
+
+267
+00:15:54,960 --> 00:16:00,400
+We don't write code for code.
+<font color="#ffff54">우리는 코드를 위한 코드를 작성하지 않습니다.</font>
+
+268
+00:16:00,400 --> 00:16:03,240
+When I was young, in the beginning of my career,
+<font color="#ffff54">어렸을 때, 경력 초기에,</font>
+
+269
+00:16:03,240 --> 00:16:05,480
+I often had this false assumption.
+<font color="#ffff54">저는 종종 이런 잘못된 가정을 했었습니다.</font>
+
+270
+00:16:05,480 --> 00:16:07,600
+That was my trigger for writing tests.
+<font color="#ffff54">이것이 제가 테스트를 작성하게 된 계기가 되었습니다.</font>
+
+271
+00:16:07,600 --> 00:16:11,519
+This comes from a really good talk by Ian Cooper.
+<font color="#ffff54">이 말은 이안 쿠퍼의 훌륭한 강연에서 따왔어요.</font>
+
+272
+00:16:11,519 --> 00:16:15,560
+But the trigger for writing a test is not a new class.
+<font color="#ffff54">하지만 테스트를 작성하는 트리거는 새로운 클래스가 아닙니다.</font>
+
+273
+00:16:15,560 --> 00:16:18,519
+Not a new public method.
+<font color="#ffff54">새로운 공용 메서드가 아닙니다.</font>
+
+274
+00:16:18,519 --> 00:16:20,000
+That was something I was constantly doing.
+<font color="#ffff54">제가 계속 하던 일이었습니다.</font>
+
+275
+00:16:20,000 --> 00:16:21,759
+I was writing a new public method.
+<font color="#ffff54">새로운 공개 메서드를 작성하고 있었다.</font>
+
+276
+00:16:21,759 --> 00:16:24,639
+And I thought, like, let's write a class for that.
+<font color="#ffff54">그래서 저는 이를 위한 클래스를 작성해보자고 생각했습니다.</font>
+
+277
+00:16:25,319 --> 00:16:27,600
+I was very much driven by this idea of code coverage.
+<font color="#ffff54">저는 코드 커버리지에 대한 아이디어에 이끌렸습니다.</font>
+
+278
+00:16:27,600 --> 00:16:28,639
+I thought I was doing good.
+<font color="#ffff54">잘하고 있다고 생각했어요.</font>
+
+279
+00:16:28,639 --> 00:16:29,559
+And I was doing good.
+<font color="#ffff54">난 잘하고 있었다.</font>
+
+280
+00:16:29,559 --> 00:16:31,039
+But I think we can do better.
+<font color="#ffff54">하지만 더 잘할 수 있을 것 같아.</font>
+
+281
+00:16:33,799 --> 00:16:35,360
+So what is the trigger then?
+<font color="#ffff54">그럼 트리거가 뭐죠?</font>
+
+282
+00:16:35,360 --> 00:16:37,159
+Well, the trigger is behavior.
+<font color="#ffff54">트리거는 행동입니다.</font>
+
+283
+00:16:39,600 --> 00:16:42,319
+And to a lesser extent, the code, as we'll see later.
+<font color="#ffff54">그리고 그보다 덜 중요한 것은 나중에 살펴보겠지만 코드입니다.</font>
+
+284
+00:16:42,319 --> 00:16:44,360
+But the main trigger for most people,
+<font color="#ffff54">하지만 대부분의 사람들에게 주요 트리거는</font>
+
+285
+00:16:44,360 --> 00:16:47,639
+for most business application, oriented application,
+<font color="#ffff54">대부분의 비즈니스 응용 프로그램, 지향 응용 프로그램의 경우,</font>
+
+286
+00:16:47,639 --> 00:16:49,559
+is the behavior, not the code.
+<font color="#ffff54">는 코드가 아니라 동작입니다.</font>
+
+287
+00:16:49,920 --> 00:16:53,120
+And you should test your behavioral contract,
+<font color="#ffff54">그리고 행동 계약을 테스트해야 합니다,</font>
+
+288
+00:16:53,120 --> 00:16:54,520
+whatever that means technically.
+<font color="#ffff54">기술적으로 무슨 뜻인지 모르겠지만.</font>
+
+289
+00:16:54,520 --> 00:16:56,520
+And the last sentence is quite important.
+<font color="#ffff54">그리고 마지막 문장이 아주 중요합니다.</font>
+
+290
+00:16:59,320 --> 00:17:02,760
+Because when I'm in the office and talking
+<font color="#ffff54">왜냐면 제가 사무실에서 얘기할 때</font>
+
+291
+00:17:02,760 --> 00:17:05,279
+about this behavioral stuff, sometimes colleagues come to me
+<font color="#ffff54">이런 행동에 대해 동료들이 가끔 저에게 찾아와서</font>
+
+292
+00:17:05,279 --> 00:17:09,519
+and they tell me, you probably only want
+<font color="#ffff54">그리고 그들은 나에게 말하죠, 당신은 아마</font>
+
+293
+00:17:09,519 --> 00:17:10,920
+us to write integration tests.
+<font color="#ffff54">통합 테스트를 작성하라고 합니다.</font>
+
+294
+00:17:10,920 --> 00:17:14,120
+And then we'll just capture the behavior.
+<font color="#ffff54">그리고 나서 동작을 캡처합니다.</font>
+
+295
+00:17:14,120 --> 00:17:15,799
+No.
+<font color="#ffff54">아니요.</font>
+
+296
+00:17:15,799 --> 00:17:17,080
+I didn't imply that.
+<font color="#ffff54">그런 뜻은 아니었어.</font>
+
+297
+00:17:20,200 --> 00:17:21,720
+When I'm saying test the behavior,
+<font color="#ffff54">내가 동작을 테스트하라고 했을 때,</font>
+
+298
+00:17:21,720 --> 00:17:25,119
+I don't imply any type of test.
+<font color="#ffff54">나는 어떤 유형의 테스트를 암시하지 않습니다.</font>
+
+299
+00:17:25,119 --> 00:17:26,359
+That's a different thing.
+<font color="#ffff54">그건 다른 문제입니다.</font>
+
+300
+00:17:26,359 --> 00:17:29,720
+You should not confuse that.
+<font color="#ffff54">혼동하지 마세요.</font>
+
+301
+00:17:29,720 --> 00:17:32,559
+And when we're talking about the different types of tests,
+<font color="#ffff54">그리고 다른 유형의 테스트에 대해 이야기할 때,</font>
+
+302
+00:17:32,559 --> 00:17:35,599
+integration tests, or unit tests,
+<font color="#ffff54">통합 테스트 또는 단위 테스트,</font>
+
+303
+00:17:35,599 --> 00:17:38,960
+it's interesting to take a look at the ancient pyramid.
+<font color="#ffff54">고대 피라미드를 살펴보는 것은 흥미롭습니다.</font>
+
+304
+00:17:42,559 --> 00:17:44,200
+And I question, is this still relevant?
+<font color="#ffff54">이게 아직도 의미가 있을까?</font>
+
+305
+00:17:47,440 --> 00:17:49,159
+And what are the alternatives?
+<font color="#ffff54">대안은 무엇인가요?</font>
+
+306
+00:17:49,919 --> 00:17:51,200
+We all know this pyramid, right?
+<font color="#ffff54">우리 모두 이 피라미드를 알고 있죠?</font>
+
+307
+00:17:51,200 --> 00:17:53,559
+Like at the bottom, we write lots and lots
+<font color="#ffff54">아래에서와 같이, 우리는 로트와 로트를 씁니다.</font>
+
+308
+00:17:53,559 --> 00:17:55,839
+of fast and cheap unit tests.
+<font color="#ffff54">빠르고 저렴한 단위 테스트의</font>
+
+309
+00:17:55,839 --> 00:17:58,599
+And above that, layer above, we write
+<font color="#ffff54">그리고 그 위에 다음과 같이 작성합니다.</font>
+
+310
+00:17:58,599 --> 00:18:01,679
+lesser, fewer integration tests, which
+<font color="#ffff54">더 적은 수의 통합 테스트, 즉</font>
+
+311
+00:18:01,679 --> 00:18:03,399
+are a bit more slow and expensive,
+<font color="#ffff54">는 조금 더 느리고 비용이 많이 듭니다,</font>
+
+312
+00:18:03,399 --> 00:18:08,519
+and as less as possible, slow and expensive end-to-end tests.
+<font color="#ffff54">그리고 가능한 한 느리고 비용이 많이 드는 종단 간 테스트를 줄입니다.</font>
+
+313
+00:18:08,519 --> 00:18:11,079
+I don't think this is really relevant.
+<font color="#ffff54">이건 별로 관련이 없는 것 같아요.</font>
+
+314
+00:18:11,079 --> 00:18:14,720
+Because if I would have asked 10 people in this room,
+<font color="#ffff54">이 방에 있는 10명에게 물어봤으면,</font>
+
+315
+00:18:14,720 --> 00:18:16,960
+give me a definition of a unit test,
+<font color="#ffff54">단위 테스트의 정의를 알려주세요,</font>
+
+316
+00:18:16,960 --> 00:18:20,840
+I'd probably receive eight different ones.
+<font color="#ffff54">아마 여덟 가지를 받을 것입니다.</font>
+
+317
+00:18:20,840 --> 00:18:25,360
+Because we simply can't agree on what a unit test is.
+<font color="#ffff54">단위 테스트가 무엇인지에 대해 동의할 수 없기 때문입니다.</font>
+
+318
+00:18:25,360 --> 00:18:28,360
+And I don't want to be bogged down by conversations
+<font color="#ffff54">그리고 대화에 얽매이고 싶지 않아요.</font>
+
+319
+00:18:28,360 --> 00:18:30,840
+like, Jonas, you know, you just named this thing
+<font color="#ffff54">조나스, 네가 방금 이걸 이름 지었잖아.</font>
+
+320
+00:18:30,840 --> 00:18:34,559
+an integration test, but actually it's a component test.
+<font color="#ffff54">통합 테스트라고 하지만 사실은 컴포넌트 테스트입니다.</font>
+
+321
+00:18:34,559 --> 00:18:35,400
+Is that relevant?
+<font color="#ffff54">관련이 있나요?</font>
+
+322
+00:18:35,400 --> 00:18:37,000
+Does that help us?
+<font color="#ffff54">도움이 되나요?</font>
+
+323
+00:18:37,000 --> 00:18:38,920
+I don't think so.
+<font color="#ffff54">아닌 것 같아.</font>
+
+324
+00:18:38,920 --> 00:18:41,079
+Because the type of test is how you're doing things.
+<font color="#ffff54">시험의 유형은 당신이 일을 하는 방식이니까.</font>
+
+325
+00:18:41,079 --> 00:18:42,279
+It's technical detail.
+<font color="#ffff54">기술적인 세부 사항입니다.</font>
+
+326
+00:18:42,279 --> 00:18:45,000
+It's seldom really relevant.
+<font color="#ffff54">실제 관련성이 거의 없습니다.</font>
+
+327
+00:18:45,000 --> 00:18:46,720
+And we should try to step away from that
+<font color="#ffff54">그리고 우리는 그것에서 벗어나려고 노력해야 합니다.</font>
+
+328
+00:18:47,480 --> 00:18:51,720
+and try to step away from the classical pyramid.
+<font color="#ffff54">고전적인 피라미드에서 벗어나려고 노력해야 합니다.</font>
+
+329
+00:18:51,720 --> 00:18:57,360
+What you want to test is an integration, a behavior,
+<font color="#ffff54">테스트하려는 것은 통합, 즉 동작입니다,</font>
+
+330
+00:18:57,360 --> 00:18:59,440
+or an implementation detail.
+<font color="#ffff54">또는 구현 세부 사항입니다.</font>
+
+331
+00:18:59,440 --> 00:19:01,400
+And that's much more relevant.
+<font color="#ffff54">훨씬 더 관련성이 높습니다.</font>
+
+332
+00:19:01,400 --> 00:19:06,319
+And they also make shapes for that, the testing honeycomb.
+<font color="#ffff54">그리고 그들은 또한 그것을 위한 모양, 테스트 벌집을 만듭니다.</font>
+
+333
+00:19:06,319 --> 00:19:09,400
+Online, you'll find a different version of this thing.
+<font color="#ffff54">온라인에서 다른 버전을 찾을 수 있어요.</font>
+
+334
+00:19:09,400 --> 00:19:15,000
+And this is a slightly altered, my own custom interpretation.
+<font color="#ffff54">그리고 이것은 약간 변형된 제 나름대로의 해석입니다.</font>
+
+335
+00:19:15,000 --> 00:19:16,240
+So let's start.
+<font color="#ffff54">그럼 시작해보죠.</font>
+
+336
+00:19:16,240 --> 00:19:19,599
+For one, you can see there four layers.
+<font color="#ffff54">우선 네 개의 레이어가 있는 것을 볼 수 있습니다.</font>
+
+337
+00:19:19,599 --> 00:19:23,759
+At the bottom, we find the static triangle.
+<font color="#ffff54">맨 아래에는 정적 삼각형이 있습니다.</font>
+
+338
+00:19:23,759 --> 00:19:24,680
+Now, what is static?
+<font color="#ffff54">이제 정적이란 무엇일까요?</font>
+
+339
+00:19:24,680 --> 00:19:27,400
+Static is your static code analyzers,
+<font color="#ffff54">스태틱은 정적 코드 분석기입니다,</font>
+
+340
+00:19:27,400 --> 00:19:30,680
+like Sonar in the Java world.
+<font color="#ffff54">자바 세계의 소나처럼.</font>
+
+341
+00:19:30,680 --> 00:19:34,319
+Then you have fewer, at the bottom,
+<font color="#ffff54">그 다음에는 하단에 더 적습니다,</font>
+
+342
+00:19:34,319 --> 00:19:36,799
+implementation detail tests.
+<font color="#ffff54">구현 세부 테스트.</font>
+
+343
+00:19:36,799 --> 00:19:39,720
+I will delve into that later.
+<font color="#ffff54">나중에 자세히 설명하겠습니다.</font>
+
+344
+00:19:39,720 --> 00:19:42,240
+And then you want to have lots of behavior tests, feature
+<font color="#ffff54">그리고 많은 동작 테스트를 하고 싶으시겠죠.</font>
+
+345
+00:19:42,240 --> 00:19:44,400
+tests, use case tests.
+<font color="#ffff54">테스트, 사용 사례 테스트.</font>
+
+346
+00:19:44,400 --> 00:19:48,440
+And that does not imply any type of test.
+<font color="#ffff54">그리고 이것은 어떤 유형의 테스트도 의미하지 않습니다.</font>
+
+347
+00:19:48,440 --> 00:19:50,320
+Also, implementation detail tests,
+<font color="#ffff54">또한 구현 세부 테스트,</font>
+
+348
+00:19:50,320 --> 00:19:53,160
+that does not imply unit tests, integration tests.
+<font color="#ffff54">단위 테스트, 통합 테스트를 의미하지 않습니다.</font>
+
+349
+00:19:53,160 --> 00:19:55,120
+It can be anything.
+<font color="#ffff54">무엇이든 될 수 있습니다.</font>
+
+350
+00:19:55,120 --> 00:19:59,160
+You can have a unit test that is an implementation detail test.
+<font color="#ffff54">구현 세부 테스트인 단위 테스트가 있을 수 있습니다.</font>
+
+351
+00:19:59,160 --> 00:20:01,080
+But you can also test an implementation detail
+<font color="#ffff54">하지만 구현 세부 사항을 테스트할 수도 있습니다.</font>
+
+352
+00:20:01,080 --> 00:20:02,720
+to an integration test.
+<font color="#ffff54">를 통합 테스트에 추가합니다.</font>
+
+353
+00:20:02,720 --> 00:20:05,440
+And the same goes for your behavior.
+<font color="#ffff54">행동도 마찬가지입니다.</font>
+
+354
+00:20:05,440 --> 00:20:07,120
+You should focus on that.
+<font color="#ffff54">거기에 집중해야 해.</font>
+
+355
+00:20:07,120 --> 00:20:11,280
+And at the top, we have integrated tests.
+<font color="#ffff54">그리고 맨 위에는 통합 테스트가 있습니다.</font>
+
+356
+00:20:11,280 --> 00:20:13,680
+Don't get confused by integration tests.
+<font color="#ffff54">통합 테스트에 혼동하지 마세요.</font>
+
+357
+00:20:13,680 --> 00:20:15,560
+An integrated test.
+<font color="#ffff54">통합 테스트입니다.</font>
+
+358
+00:20:15,560 --> 00:20:17,840
+And what is an integrated test?
+<font color="#ffff54">통합 시험이란 무엇인가요?</font>
+
+359
+00:20:17,840 --> 00:20:19,519
+An integrated test is simply a test
+<font color="#ffff54">통합 테스트는 단순히 테스트입니다.</font>
+
+360
+00:20:19,519 --> 00:20:22,000
+that runs against a real environment.
+<font color="#ffff54">실제 환경에서 실행되는 테스트입니다.</font>
+
+361
+00:20:22,000 --> 00:20:26,120
+Dev can even be production.
+<font color="#ffff54">개발 환경도 프로덕션 환경일 수 있습니다.</font>
+
+362
+00:20:26,120 --> 00:20:28,240
+Let me give you an example of an integrated test.
+<font color="#ffff54">통합 테스트의 예를 들어보겠습니다.</font>
+
+363
+00:20:28,240 --> 00:20:29,840
+In the current project I'm working on,
+<font color="#ffff54">현재 작업 중인 프로젝트에서,</font>
+
+364
+00:20:29,840 --> 00:20:32,880
+we have something called the sanity tester.
+<font color="#ffff54">정신력 테스터라는 것이 있습니다.</font>
+
+365
+00:20:32,880 --> 00:20:35,600
+We call it nicknamed the nun.
+<font color="#ffff54">수녀라는 별명을 붙였어요.</font>
+
+366
+00:20:35,600 --> 00:20:37,200
+And what this thing does, actually,
+<font color="#ffff54">그리고 이게 하는 일은,</font>
+
+367
+00:20:37,200 --> 00:20:41,200
+is when we deploy something, it fires off certain requests
+<font color="#ffff54">우리가 무언가를 배포할 때 특정 요청을 실행합니다.</font>
+
+368
+00:20:41,200 --> 00:20:45,039
+to our API and kind of smoke tests things.
+<font color="#ffff54">를 API에 전송하고 일종의 스모크 테스트를 합니다.</font>
+
+369
+00:20:45,039 --> 00:20:47,360
+And you might wonder, why would you do that?
+<font color="#ffff54">왜 그렇게 하는지 궁금하실 겁니다.</font>
+
+370
+00:20:47,360 --> 00:20:51,000
+Well, because today's world is a bit different than 10 years
+<font color="#ffff54">글쎄요, 오늘날의 세상은 10년 전과는 조금 달라졌으니까요.</font>
+
+371
+00:20:51,000 --> 00:20:51,880
+ago, right?
+<font color="#ffff54">10년 전이죠?</font>
+
+372
+00:20:51,880 --> 00:20:54,279
+In the past, we would write like this big monolithic
+<font color="#ffff54">과거에는 이렇게 큰 모놀리식으로 작성했습니다.</font>
+
+373
+00:20:54,279 --> 00:20:54,920
+applications.
+<font color="#ffff54">응용 프로그램.</font>
+
+374
+00:20:54,920 --> 00:20:58,759
+And next to it, we have like this Oracle database.
+<font color="#ffff54">그리고 그 옆에는 다음과 같은 오라클 데이터베이스가 있습니다.</font>
+
+375
+00:20:58,759 --> 00:21:02,319
+That's not true anymore.
+<font color="#ffff54">더 이상 그렇지 않습니다.</font>
+
+376
+00:21:02,319 --> 00:21:04,680
+Today's world is microservice, right?
+<font color="#ffff54">오늘날의 세상은 마이크로서비스죠?</font>
+
+377
+00:21:04,680 --> 00:21:06,640
+And that's not only it.
+<font color="#ffff54">이뿐만이 아니에요.</font>
+
+378
+00:21:06,640 --> 00:21:09,160
+Next to that, in this microservice landscape,
+<font color="#ffff54">그 다음에는 마이크로서비스 환경에서,</font>
+
+379
+00:21:09,160 --> 00:21:11,759
+we also have lots of tools floating around.
+<font color="#ffff54">우리 주변에는 많은 도구가 떠돌고 있습니다.</font>
+
+380
+00:21:11,759 --> 00:21:13,800
+I don't have the SQL database anymore.
+<font color="#ffff54">더 이상 SQL 데이터베이스가 없습니다.</font>
+
+381
+00:21:13,800 --> 00:21:14,640
+Well, I do.
+<font color="#ffff54">난 있어.</font>
+
+382
+00:21:14,640 --> 00:21:18,519
+But I also have other tools, like we use Elastic for search,
+<font color="#ffff54">하지만 검색에 Elastic을 사용하는 것처럼 다른 도구도 있습니다,</font>
+
+383
+00:21:18,519 --> 00:21:20,720
+because that's a really good tool for that.
+<font color="#ffff54">정말 좋은 도구이기 때문입니다.</font>
+
+384
+00:21:20,720 --> 00:21:22,880
+And for example, in the current project,
+<font color="#ffff54">예를 들어 현재 프로젝트에서</font>
+
+385
+00:21:22,880 --> 00:21:25,360
+we're heavily reliant on Kafka.
+<font color="#ffff54">우리는 카프카에 크게 의존하고 있습니다.</font>
+
+386
+00:21:25,360 --> 00:21:27,080
+And on Kafka, we use Avro.
+<font color="#ffff54">그리고 카프카에서는 Avro를 사용합니다.</font>
+
+387
+00:21:27,080 --> 00:21:29,680
+So we use the schema registry.
+<font color="#ffff54">그래서 스키마 레지스트리를 사용합니다.</font>
+
+388
+00:21:29,680 --> 00:21:32,560
+And what often happens is that, or sometimes, not often,
+<font color="#ffff54">그리고 이런 일이 자주 일어나기도 하고, 자주 일어나지 않을 때도 있습니다,</font>
+
+389
+00:21:32,560 --> 00:21:37,400
+but sometimes it happens, that we forget to actually apply
+<font color="#ffff54">하지만 가끔은 실제로 적용하는 것을 잊어버리는 경우가 있습니다.</font>
+
+390
+00:21:37,440 --> 00:21:40,680
+the Elasticsearch index when we deploy,
+<font color="#ffff54">을 적용하는 것을 잊어버리는 경우가 있습니다,</font>
+
+391
+00:21:40,680 --> 00:21:43,920
+because that is actually living in a separate repository.
+<font color="#ffff54">실제로는 별도의 리포지토리에 있기 때문입니다.</font>
+
+392
+00:21:43,920 --> 00:21:47,160
+It's living in one of our Terraform repositories
+<font color="#ffff54">테라폼 저장소 중 하나에 있습니다.</font>
+
+393
+00:21:47,160 --> 00:21:48,320
+away from the code.
+<font color="#ffff54">코드에서 멀리 떨어져 있습니다.</font>
+
+394
+00:21:48,320 --> 00:21:50,000
+And my code can be green.
+<font color="#ffff54">그리고 내 코드는 녹색이 될 수 있습니다.</font>
+
+395
+00:21:50,000 --> 00:21:52,759
+Like, I can have 100% code coverage.
+<font color="#ffff54">코드 커버리지가 100%가 되는 거죠.</font>
+
+396
+00:21:52,759 --> 00:21:55,320
+But still, if I deploy, things might break,
+<font color="#ffff54">하지만 여전히 배포하면 문제가 생길 수 있습니다,</font>
+
+397
+00:21:55,320 --> 00:21:59,320
+because that Terraform module has a mistake in there,
+<font color="#ffff54">테라폼 모듈에 오류가 있기 때문이죠,</font>
+
+398
+00:21:59,320 --> 00:22:01,800
+or some other services, depending on something
+<font color="#ffff54">또는 다른 서비스에 따라</font>
+
+399
+00:22:01,800 --> 00:22:03,920
+I didn't apply correctly.
+<font color="#ffff54">제대로 신청하지 않았습니다.</font>
+
+400
+00:22:04,000 --> 00:22:06,880
+Well, a sanity test, an integrated test
+<font color="#ffff54">정신력 테스트, 통합 테스트</font>
+
+401
+00:22:06,880 --> 00:22:09,880
+in your environment, might catch these things very early,
+<font color="#ffff54">환경에서는 이런 것들을 아주 일찍 발견할 수 있습니다,</font>
+
+402
+00:22:10,759 --> 00:22:12,920
+without you having to click and suddenly see,
+<font color="#ffff54">클릭해서 갑자기 볼 필요 없이 말이죠,</font>
+
+403
+00:22:12,920 --> 00:22:14,720
+like, oh, this doesn't work anymore.
+<font color="#ffff54">아, 이건 더 이상 작동하지 않네요.</font>
+
+404
+00:22:19,200 --> 00:22:22,200
+On the subject of implementation detail tests,
+<font color="#ffff54">구현 세부 테스트 중입니다,</font>
+
+405
+00:22:22,200 --> 00:22:25,800
+I would like to look at this requirement.
+<font color="#ffff54">이 요구 사항을 살펴보고 싶습니다.</font>
+
+406
+00:22:28,360 --> 00:22:32,480
+An email notification should be sent to the receiver
+<font color="#ffff54">수신자에게 이메일 알림을 보내야 합니다.</font>
+
+407
+00:22:32,480 --> 00:22:34,519
+once an invoice has been paid.
+<font color="#ffff54">인보이스가 결제되면</font>
+
+408
+00:22:34,519 --> 00:22:37,120
+It's a fairly simple requirement, right?
+<font color="#ffff54">꽤 간단한 요구 사항이지 않나요?</font>
+
+409
+00:22:37,120 --> 00:22:42,120
+And that is defined by the email service, Java interface.
+<font color="#ffff54">그리고 그것은 이메일 서비스인 자바 인터페이스에 의해 정의됩니다.</font>
+
+410
+00:22:42,120 --> 00:22:45,400
+And it's implemented by the SCS email service.
+<font color="#ffff54">그리고 이것은 SCS 이메일 서비스에 의해 구현됩니다.</font>
+
+411
+00:22:46,360 --> 00:22:50,240
+SCS, if you don't know, stands for simple email service.
+<font color="#ffff54">SCS는 간단한 이메일 서비스의 약자입니다.</font>
+
+412
+00:22:50,240 --> 00:22:54,440
+It's an AWS component you can use to send emails.
+<font color="#ffff54">이메일을 보내는 데 사용할 수 있는 AWS 구성 요소입니다.</font>
+
+413
+00:22:54,440 --> 00:22:56,000
+So in full, this thing reads, actually,
+<font color="#ffff54">전체 내용을 보면 다음과 같습니다,</font>
+
+414
+00:22:56,000 --> 00:22:58,440
+the simple email service, email service.
+<font color="#ffff54">간단한 이메일 서비스, 이메일 서비스.</font>
+
+415
+00:22:58,440 --> 00:22:59,880
+Okay, we're done.
+<font color="#ffff54">좋아, 끝났어.</font>
+
+416
+00:22:59,880 --> 00:23:01,079
+We've implemented this.
+<font color="#ffff54">구현했습니다.</font>
+
+417
+00:23:01,079 --> 00:23:02,720
+The requirement is working.
+<font color="#ffff54">요구사항이 작동합니다.</font>
+
+418
+00:23:02,720 --> 00:23:03,559
+It's deployed.
+<font color="#ffff54">배포되었습니다.</font>
+
+419
+00:23:03,559 --> 00:23:05,679
+It's being used in production.
+<font color="#ffff54">프로덕션에 사용 중입니다.</font>
+
+420
+00:23:05,679 --> 00:23:08,839
+And after a year, you get some feedback,
+<font color="#ffff54">1년 후, 피드백을 받습니다,</font>
+
+421
+00:23:08,839 --> 00:23:11,000
+and you see, actually, we thought we were gonna send out
+<font color="#ffff54">그리고 사실, 저희는 우리가</font>
+
+422
+00:23:11,000 --> 00:23:14,000
+millions of emails, but that's actually not true.
+<font color="#ffff54">수백만 개의 이메일을 보낼 줄 알았지만 사실은 그렇지 않았습니다.</font>
+
+423
+00:23:14,000 --> 00:23:15,439
+It was a false assumption.
+<font color="#ffff54">잘못된 가정이었습니다.</font>
+
+424
+00:23:15,439 --> 00:23:18,279
+We're only sending out a couple of emails a month.
+<font color="#ffff54">우리는 한 달에 몇 개의 이메일만 발송하고 있습니다.</font>
+
+425
+00:23:18,279 --> 00:23:21,720
+So that SCS service, like the cloud, is not for free, right?
+<font color="#ffff54">클라우드처럼 SCS 서비스도 무료가 아니죠?</font>
+
+426
+00:23:21,720 --> 00:23:23,960
+It's quite expensive.
+<font color="#ffff54">꽤 비싸네요.</font>
+
+427
+00:23:23,960 --> 00:23:27,679
+So maybe we should switch to that old SMTP server
+<font color="#ffff54">그럼 이전 SMTP 서버로 전환해야겠군요.</font>
+
+428
+00:23:27,679 --> 00:23:29,000
+we have here.
+<font color="#ffff54">여기 있습니다.</font>
+
+429
+00:23:29,000 --> 00:23:31,400
+Should be fine, should save us some bucks.
+<font color="#ffff54">괜찮을 거야, 돈을 좀 절약할 수 있을 거야.</font>
+
+430
+00:23:31,400 --> 00:23:32,240
+Let's do that.
+<font color="#ffff54">그렇게 하자.</font>
+
+431
+00:23:33,680 --> 00:23:36,599
+So what we do, obviously, we make an SMTP email service
+<font color="#ffff54">그래서 우리가 하는 일은 당연히 SMTP 이메일 서비스를 만드는 것입니다.</font>
+
+432
+00:23:36,599 --> 00:23:38,119
+implementation, and we switch.
+<font color="#ffff54">구현하고 전환합니다.</font>
+
+433
+00:23:38,119 --> 00:23:39,480
+And now my question goes,
+<font color="#ffff54">이제 질문이 있습니다,</font>
+
+434
+00:23:39,480 --> 00:23:42,839
+should that requirement test fail
+<font color="#ffff54">요구 사항 테스트에 실패하면</font>
+
+435
+00:23:42,839 --> 00:23:45,400
+because I made an implementation detail change?
+<font color="#ffff54">구현 세부 사항을 변경했기 때문인가요?</font>
+
+436
+00:23:45,400 --> 00:23:46,240
+No.
+<font color="#ffff54">아니요.</font>
+
+437
+00:23:46,240 --> 00:23:47,759
+And this is something to think about
+<font color="#ffff54">그리고 이것은 생각해 볼만한 것입니다.</font>
+
+438
+00:23:47,759 --> 00:23:49,359
+when you're designing your test.
+<font color="#ffff54">테스트를 설계할 때 고려해야 할 사항입니다.</font>
+
+439
+00:23:52,000 --> 00:23:54,519
+Sometimes people ask me the question, like,
+<font color="#ffff54">가끔 사람들이 저에게 이런 질문을 합니다,</font>
+
+440
+00:23:54,519 --> 00:23:57,359
+what makes a test an implementation detail test?
+<font color="#ffff54">테스트가 구현 세부 테스트가 되는 이유는 무엇인가요?</font>
+
+441
+00:23:57,360 --> 00:23:59,320
+And what makes a test a behavioral test?
+<font color="#ffff54">무엇이 테스트를 행동 테스트로 만들까요?</font>
+
+442
+00:23:59,320 --> 00:24:01,200
+Sometimes it's bloody obvious, right?
+<font color="#ffff54">가끔은 너무 뻔하지 않나요?</font>
+
+443
+00:24:01,200 --> 00:24:03,040
+But sometimes there's a very thin line,
+<font color="#ffff54">하지만 가끔은 아주 가느다란 선이 있죠,</font>
+
+444
+00:24:03,040 --> 00:24:04,520
+and the world is not black and white.
+<font color="#ffff54">세상은 흑백이 아니에요.</font>
+
+445
+00:24:04,520 --> 00:24:05,840
+It's not that simple.
+<font color="#ffff54">그렇게 간단하지 않아요.</font>
+
+446
+00:24:10,200 --> 00:24:15,200
+Another example or analogy is a little pet project of mine.
+<font color="#ffff54">또 다른 예시 또는 비유는 제 작은 애완동물 프로젝트입니다.</font>
+
+447
+00:24:16,560 --> 00:24:18,000
+Like I said, I love writing code,
+<font color="#ffff54">앞서 말했듯이 저는 코드 작성을 좋아합니다,</font>
+
+448
+00:24:18,000 --> 00:24:22,280
+so I started in the weekend writing an XML mapper.
+<font color="#ffff54">그래서 주말에 XML 매퍼를 작성하기 시작했습니다.</font>
+
+449
+00:24:22,280 --> 00:24:25,600
+Well, I first started with writing a SAX parser,
+<font color="#ffff54">처음에는 SAX 파서를 작성하는 것부터 시작했습니다,</font>
+
+450
+00:24:25,640 --> 00:24:27,440
+and now, based on that SAX parser,
+<font color="#ffff54">그리고 이제 그 SAX 구문 분석기에 기반하여</font>
+
+451
+00:24:27,440 --> 00:24:29,120
+I'm writing an XML mapper.
+<font color="#ffff54">XML 매퍼를 작성 중입니다.</font>
+
+452
+00:24:30,080 --> 00:24:32,360
+The project now is called XJX,
+<font color="#ffff54">이제 프로젝트 이름은 XJX입니다,</font>
+
+453
+00:24:32,360 --> 00:24:36,360
+but the interface, not the Java interface, obviously,
+<font color="#ffff54">하지만 분명히 자바 인터페이스가 아닌 인터페이스입니다,</font>
+
+454
+00:24:36,360 --> 00:24:40,640
+but the application interface, looks like this.
+<font color="#ffff54">하지만 애플리케이션 인터페이스는 다음과 같습니다.</font>
+
+455
+00:24:40,640 --> 00:24:41,920
+It's very simple, right?
+<font color="#ffff54">아주 간단하죠?</font>
+
+456
+00:24:41,920 --> 00:24:45,320
+It looks a bit like our Jackson object mapper,
+<font color="#ffff54">잭슨 오브젝트 매퍼와 비슷해 보입니다,</font>
+
+457
+00:24:45,320 --> 00:24:48,480
+where we give it a XML document,
+<font color="#ffff54">여기서 XML 문서를 제공합니다,</font>
+
+458
+00:24:48,480 --> 00:24:50,480
+and you say I want it to be mapped on this clause,
+<font color="#ffff54">이 절에 매핑되기를 원한다고 말합니다,</font>
+
+459
+00:24:50,480 --> 00:24:51,920
+and I'll give you the clause.
+<font color="#ffff54">그리고 그 절을 줄게요.</font>
+
+460
+00:24:53,240 --> 00:24:54,880
+And I started implementing this thing,
+<font color="#ffff54">그리고 이걸 구현하기 시작했습니다,</font>
+
+461
+00:24:55,200 --> 00:24:58,320
+and writing tests for that, focused on the behavior.
+<font color="#ffff54">그리고 그 동작에 초점을 맞춘 테스트를 작성했습니다.</font>
+
+462
+00:24:58,320 --> 00:25:00,400
+And after a while, I realized,
+<font color="#ffff54">그리고 잠시 후 깨달았습니다,</font>
+
+463
+00:25:00,400 --> 00:25:03,160
+like, nah, this ain't gonna cut it.
+<font color="#ffff54">이건 안 되겠다 싶었죠.</font>
+
+464
+00:25:03,160 --> 00:25:06,200
+I was at like 80% of something of the full implementation.
+<font color="#ffff54">전체 구현의 80% 정도에 도달했습니다.</font>
+
+465
+00:25:06,200 --> 00:25:08,480
+I thought, like, I learned a lot.
+<font color="#ffff54">많이 배웠다고 생각했어요.</font>
+
+466
+00:25:08,480 --> 00:25:09,840
+I would never do it like that,
+<font color="#ffff54">난 절대 저렇게 안 할 거야,</font>
+
+467
+00:25:09,840 --> 00:25:11,000
+and actually, I'm a bit stuck.
+<font color="#ffff54">사실 좀 막혔어요.</font>
+
+468
+00:25:11,000 --> 00:25:13,540
+I don't like this design, so what do you do?
+<font color="#ffff54">이 디자인이 마음에 들지 않는데 어떻게 해야 하나요?</font>
+
+469
+00:25:14,680 --> 00:25:15,520
+Agile way, right?
+<font color="#ffff54">애자일 방식이죠?</font>
+
+470
+00:25:15,520 --> 00:25:19,420
+You take a step back, and you learn from your mistakes.
+<font color="#ffff54">한 발 물러서서 실수로부터 배우는 거죠.</font>
+
+471
+00:25:19,420 --> 00:25:24,420
+So let's just imagine that this application
+<font color="#ffff54">이 애플리케이션이</font>
+
+472
+00:25:25,240 --> 00:25:28,080
+interface is represented by this rectangle,
+<font color="#ffff54">인터페이스가 이 사각형으로 표시된다고 가정해 봅시다,</font>
+
+473
+00:25:28,080 --> 00:25:29,560
+and the behavior is clear, right?
+<font color="#ffff54">그리고 동작은 명확하죠?</font>
+
+474
+00:25:29,560 --> 00:25:32,320
+You have some kind of input, depending on the input.
+<font color="#ffff54">입력에 따라 어떤 종류의 입력이 있습니다.</font>
+
+475
+00:25:32,320 --> 00:25:33,760
+You have some kind of output.
+<font color="#ffff54">어떤 종류의 출력이 있습니다.</font>
+
+476
+00:25:35,760 --> 00:25:39,360
+And I wrote my test against those arrows, basically.
+<font color="#ffff54">그리고 저는 기본적으로 이 화살표에 대해 테스트를 작성했습니다.</font>
+
+477
+00:25:40,280 --> 00:25:42,820
+And then you had my first implementation.
+<font color="#ffff54">그리고 첫 번째 구현을 했죠.</font>
+
+478
+00:25:44,160 --> 00:25:46,840
+And I thought, like, nah, this is not gonna work,
+<font color="#ffff54">그리고는 이건 안 되겠구나 싶었죠,</font>
+
+479
+00:25:46,840 --> 00:25:48,200
+so away with it.
+<font color="#ffff54">그래서 그만뒀죠.</font>
+
+480
+00:25:49,760 --> 00:25:52,200
+I think about 80% of the clauses I just threw away,
+<font color="#ffff54">방금 버린 조항의 80% 정도는 버린 것 같아요,</font>
+
+481
+00:25:52,200 --> 00:25:54,760
+and some 20% I decided to reuse,
+<font color="#ffff54">그리고 약 20%는 재사용하기로 결정했습니다,</font>
+
+482
+00:25:55,640 --> 00:25:58,079
+because they were useful, and I replaced it.
+<font color="#ffff54">유용했기 때문에 교체했습니다.</font>
+
+483
+00:25:58,079 --> 00:25:59,160
+And you know what happened?
+<font color="#ffff54">그리고 무슨 일이 일어났는지 아세요?</font>
+
+484
+00:25:59,160 --> 00:26:02,279
+I'm not gonna say that 100% of my tests were green.
+<font color="#ffff54">내 테스트의 100%가 녹색이었다고 말하진 않겠습니다.</font>
+
+485
+00:26:02,279 --> 00:26:05,200
+No, but 80% of my tests were green.
+<font color="#ffff54">아니, 하지만 내 테스트의 80%가 녹색이었어.</font>
+
+486
+00:26:05,200 --> 00:26:06,160
+Why?
+<font color="#ffff54">왜?</font>
+
+487
+00:26:06,160 --> 00:26:08,759
+Because I was testing against that behavior.
+<font color="#ffff54">그 동작에 대해 테스트하고 있었기 때문입니다.</font>
+
+488
+00:26:08,759 --> 00:26:10,359
+That was the most important thing.
+<font color="#ffff54">그게 가장 중요했어요.</font>
+
+489
+00:26:10,359 --> 00:26:12,799
+I was not constantly focused on testing
+<font color="#ffff54">테스트에 계속 집중하지 못했습니다.</font>
+
+490
+00:26:12,799 --> 00:26:15,359
+these individual clauses and their methods.
+<font color="#ffff54">이러한 개별 조항과 그 방법.</font>
+
+491
+00:26:15,359 --> 00:26:17,500
+They're, in a way, ephemeral.
+<font color="#ffff54">어떤 의미에서는 일시적인 것입니다.</font>
+
+492
+00:26:17,500 --> 00:26:20,759
+And that 20% that failed,
+<font color="#ffff54">그리고 실패한 20%,</font>
+
+493
+00:26:20,759 --> 00:26:24,079
+that was because I was testing some implementation detail
+<font color="#ffff54">구현 세부 사항을 테스트하고 있었기 때문입니다.</font>
+
+494
+00:26:24,119 --> 00:26:25,439
+that changed.
+<font color="#ffff54">변경되었습니다.</font>
+
+495
+00:26:25,439 --> 00:26:27,559
+And also, along the way, I decided to change
+<font color="#ffff54">그리고 그 과정에서 다음과 같이 변경하기로 결정했습니다.</font>
+
+496
+00:26:27,559 --> 00:26:30,559
+the behavior a bit, some annotation that had another meaning.
+<font color="#ffff54">동작을 약간 변경하고 다른 의미를 가진 주석을 달았습니다.</font>
+
+497
+00:26:33,159 --> 00:26:38,159
+Another analogy I like to use is one from Mim Delvois.
+<font color="#ffff54">제가 좋아하는 또 다른 비유는 밈 델보아의 비유입니다.</font>
+
+498
+00:26:39,399 --> 00:26:43,359
+Mim Delvois is an artist, and he makes art installations.
+<font color="#ffff54">밈 델보아는 예술가이며 설치미술을 합니다.</font>
+
+499
+00:26:43,359 --> 00:26:45,919
+And this one is called the cloaca.
+<font color="#ffff54">그리고 이것은 배설물이라고 불립니다.</font>
+
+500
+00:26:45,919 --> 00:26:50,500
+And it's actually the name of the ancient sewer in Rome.
+<font color="#ffff54">사실 로마의 고대 하수도의 이름입니다.</font>
+
+501
+00:26:51,519 --> 00:26:53,539
+And what does the cloaca do?
+<font color="#ffff54">배설물은 무엇을 할까요?</font>
+
+502
+00:26:53,539 --> 00:26:56,339
+Well, there's no other way to put it.
+<font color="#ffff54">글쎄요, 달리 표현할 방법이 없네요.</font>
+
+503
+00:26:56,339 --> 00:26:58,819
+The alternative name is the shit-making machine, basically,
+<font color="#ffff54">다른 이름은 똥 만드는 기계입니다,</font>
+
+504
+00:26:58,819 --> 00:27:01,819
+the poo machine, because the behavior of this thing
+<font color="#ffff54">똥 기계, 왜냐하면 이 물건의 행동이</font>
+
+505
+00:27:01,819 --> 00:27:02,700
+is simple.
+<font color="#ffff54">간단합니다.</font>
+
+506
+00:27:02,700 --> 00:27:07,379
+You put in a sandwich at one end, and at the other end,
+<font color="#ffff54">한쪽 끝과 다른 쪽 끝에 샌드위치를 넣습니다,</font>
+
+507
+00:27:07,379 --> 00:27:09,460
+yeah, shit comes out, feces come out.
+<font color="#ffff54">그래, 똥이 나오고, 똥이 나온다.</font>
+
+508
+00:27:09,460 --> 00:27:10,740
+That's what he made.
+<font color="#ffff54">저렇게 만들었어.</font>
+
+509
+00:27:10,740 --> 00:27:12,339
+He made different versions of this thing,
+<font color="#ffff54">그는 이걸 다른 버전으로 만들었어,</font>
+
+510
+00:27:12,339 --> 00:27:14,819
+some more dark and grim.
+<font color="#ffff54">좀 더 어둡고 암울하게.</font>
+
+511
+00:27:14,819 --> 00:27:17,019
+But the behavior is clear, right?
+<font color="#ffff54">하지만 행동은 분명하죠?</font>
+
+512
+00:27:17,019 --> 00:27:19,740
+He replicated the human digestive system, in a way.
+<font color="#ffff54">어떤 면에서는 인간의 소화기관을 복제했어.</font>
+
+513
+00:27:20,740 --> 00:27:24,980
+But just imagine that you're testing all individual modules,
+<font color="#ffff54">하지만 모든 개별 모듈을 테스트하고 있다고 상상해 보세요,</font>
+
+514
+00:27:24,980 --> 00:27:29,220
+all individual tubes and pumps and whatnot, and connections.
+<font color="#ffff54">모든 개별 튜브와 펌프, 그리고 연결부를 테스트한다고 상상해 보세요.</font>
+
+515
+00:27:29,220 --> 00:27:32,299
+Those would be, in a way, implementation details.
+<font color="#ffff54">어떻게 보면 구현 세부 사항이라고 할 수 있죠.</font>
+
+516
+00:27:32,299 --> 00:27:34,579
+But if one of those pumps breaks down
+<font color="#ffff54">하지만 그 펌프 중 하나가 고장나면</font>
+
+517
+00:27:34,579 --> 00:27:37,660
+because your initial design was not good enough,
+<font color="#ffff54">초기 설계가 충분하지 않았기 때문이죠,</font>
+
+518
+00:27:37,660 --> 00:27:40,259
+and you replace it, what do you want to fail
+<font color="#ffff54">그리고 그것을 교체하면, 무엇을 실패하고 싶습니까?</font>
+
+519
+00:27:40,259 --> 00:27:42,660
+when you replace it with a better version?
+<font color="#ffff54">더 나은 버전으로 교체하면?</font>
+
+520
+00:27:42,660 --> 00:27:44,859
+That behavior is still the same, right?
+<font color="#ffff54">그 동작은 여전히 동일하죠?</font>
+
+521
+00:27:44,860 --> 00:27:49,860
+So how do we put this all into code?
+<font color="#ffff54">그럼 이 모든 것을 어떻게 코드로 표현할까요?</font>
+
+522
+00:27:49,860 --> 00:27:52,460
+We already discussed why we write tests, right?
+<font color="#ffff54">테스트를 작성하는 이유에 대해서는 이미 설명했죠?</font>
+
+523
+00:27:52,460 --> 00:27:55,460
+Change, evolvability.
+<font color="#ffff54">변화, 진화 가능성.</font>
+
+524
+00:27:55,460 --> 00:27:56,820
+What do we test?
+<font color="#ffff54">무엇을 테스트할까요?</font>
+
+525
+00:27:56,820 --> 00:27:59,700
+Behavior, and to a lesser extent, code,
+<font color="#ffff54">행동, 그리고 그보다 더 적은 범위의 코드,</font>
+
+526
+00:27:59,700 --> 00:28:01,820
+implementation details.
+<font color="#ffff54">구현 세부 사항.</font>
+
+527
+00:28:01,820 --> 00:28:03,780
+So how do we put this all into code?
+<font color="#ffff54">이 모든 것을 어떻게 코드에 넣을까요?</font>
+
+528
+00:28:03,780 --> 00:28:10,660
+And the first thing to note is that we're developers, right?
+<font color="#ffff54">가장 먼저 주목해야 할 것은 우리가 개발자라는 사실입니다.</font>
+
+529
+00:28:10,700 --> 00:28:14,420
+And the first thing to note is that tests and production code
+<font color="#ffff54">그리고 가장 먼저 주목해야 할 것은 테스트와 프로덕션 코드가</font>
+
+530
+00:28:14,420 --> 00:28:15,620
+are actually different things.
+<font color="#ffff54">는 실제로 다른 것입니다.</font>
+
+531
+00:28:15,620 --> 00:28:17,019
+They live in different packages,
+<font color="#ffff54">서로 다른 패키지에 살고 있습니다,</font>
+
+532
+00:28:17,019 --> 00:28:20,220
+different contexts, and different rules.
+<font color="#ffff54">다른 상황과 다른 규칙에 살고 있습니다.</font>
+
+533
+00:28:20,220 --> 00:28:23,259
+You should not treat them in a way equal.
+<font color="#ffff54">그들을 동등하게 취급해서는 안 됩니다.</font>
+
+534
+00:28:23,259 --> 00:28:26,740
+To give an example, avoid abstractions.
+<font color="#ffff54">예를 들자면, 추상화를 피하세요.</font>
+
+535
+00:28:26,740 --> 00:28:29,060
+This is something we do for the right reasons
+<font color="#ffff54">이것은 우리가 올바른 이유로 하는 일입니다.</font>
+
+536
+00:28:29,060 --> 00:28:30,500
+in our production code.
+<font color="#ffff54">프로덕션 코드에서.</font>
+
+537
+00:28:30,500 --> 00:28:32,900
+We constantly make abstractions, polymorphism,
+<font color="#ffff54">우리는 끊임없이 추상화, 다형성을 만듭니다,</font>
+
+538
+00:28:32,900 --> 00:28:36,300
+hide things behind interfaces.
+<font color="#ffff54">인터페이스 뒤에 사물을 숨깁니다.</font>
+
+539
+00:28:36,339 --> 00:28:39,379
+But we should not do that too much in our test code
+<font color="#ffff54">하지만 테스트 코드에서 너무 많이 해서는 안 됩니다.</font>
+
+540
+00:28:39,379 --> 00:28:44,379
+if we value the documentation value of our tests.
+<font color="#ffff54">테스트의 문서화 값을 중요하게 생각한다면 말이죠.</font>
+
+541
+00:28:44,379 --> 00:28:48,379
+You want to keep your readers in your method,
+<font color="#ffff54">독자를 메서드에 계속 머물게 하려고 합니다,</font>
+
+542
+00:28:48,379 --> 00:28:51,379
+and you want to minimize the setup and teardown logic
+<font color="#ffff54">그리고 설정 및 해체 로직을 최소화하고 싶습니다.</font>
+
+543
+00:28:51,379 --> 00:28:53,379
+to only the technical.
+<font color="#ffff54">를 기술적인 부분으로만 변경합니다.</font>
+
+544
+00:28:53,379 --> 00:28:55,379
+If I'm reading a test method,
+<font color="#ffff54">테스트 메서드를 읽고 있는 경우,</font>
+
+545
+00:28:55,379 --> 00:28:57,379
+and you force me to jump out of that method
+<font color="#ffff54">그 메서드에서 뛰어내리라고 강요합니다.</font>
+
+546
+00:28:57,379 --> 00:28:59,379
+all the way to the top of the clause,
+<font color="#ffff54">절의 맨 위까지,</font>
+
+547
+00:28:59,379 --> 00:29:01,379
+and then trace it to the bottom of the clause,
+<font color="#ffff54">를 찾은 다음 절의 맨 아래까지 추적합니다,</font>
+
+548
+00:29:01,379 --> 00:29:03,379
+I'm going to be in a bad situation.
+<font color="#ffff54">안 좋은 상황에 처하게 되겠군요.</font>
+
+549
+00:29:03,460 --> 00:29:04,460
+I'm going to jump out of that method
+<font color="#ffff54">그 방법에서 뛰어내릴 거야.</font>
+
+550
+00:29:04,460 --> 00:29:06,460
+all the way to the top of the clause,
+<font color="#ffff54">절의 맨 위까지 이동합니다,</font>
+
+551
+00:29:06,460 --> 00:29:08,460
+and then trace back to that test method.
+<font color="#ffff54">그리고 해당 테스트 메서드로 거슬러 올라갑니다.</font>
+
+552
+00:29:08,460 --> 00:29:10,460
+And if there are 20 tests in that clause,
+<font color="#ffff54">그리고 해당 절에 20개의 테스트가 있는 경우,</font>
+
+553
+00:29:10,460 --> 00:29:12,460
+I already forgot which one it was.
+<font color="#ffff54">어떤 테스트인지 벌써 잊어버렸네요.</font>
+
+554
+00:29:12,460 --> 00:29:14,460
+Or I'm reading a test method,
+<font color="#ffff54">아니면 테스트 방법을 읽고 있어요,</font>
+
+555
+00:29:14,460 --> 00:29:18,460
+and you force me down a trail of method calls
+<font color="#ffff54">메서드 호출의 흔적을 따라가도록 강요합니다.</font>
+
+556
+00:29:18,460 --> 00:29:22,460
+just to find out why a value is being set in a certain way,
+<font color="#ffff54">값이 특정 방식으로 설정되는 이유를 알아내기 위해서입니다,</font>
+
+557
+00:29:22,460 --> 00:29:24,460
+and then have to trace back,
+<font color="#ffff54">그리고 역추적해야 합니다,</font>
+
+558
+00:29:24,460 --> 00:29:26,460
+only to be led in another direction.
+<font color="#ffff54">다른 방향으로 유도됩니다.</font>
+
+559
+00:29:26,460 --> 00:29:28,460
+That doesn't help me.
+<font color="#ffff54">도움이 안 돼요.</font>
+
+560
+00:29:28,460 --> 00:29:30,460
+You want to communicate clearly.
+<font color="#ffff54">명확하게 의사소통하고 싶어요.</font>
+
+561
+00:29:30,460 --> 00:29:31,460
+You want to document.
+<font color="#ffff54">문서화하고 싶습니다.</font>
+
+562
+00:29:31,539 --> 00:29:33,539
+You want to be in that method.
+<font color="#ffff54">그 메서드에 들어가고 싶습니다.</font>
+
+563
+00:29:34,539 --> 00:29:38,539
+The cyclomatic complexity of a test should be one.
+<font color="#ffff54">테스트의 순환 복잡도는 1이어야 합니다.</font>
+
+564
+00:29:40,539 --> 00:29:43,539
+That basically means avoid ifs.
+<font color="#ffff54">이는 기본적으로 if를 피하라는 뜻입니다.</font>
+
+565
+00:29:43,539 --> 00:29:45,539
+I'm pretty sure you can go without ifs.
+<font color="#ffff54">ifs 없이도 갈 수 있을 것 같네요.</font>
+
+566
+00:29:45,539 --> 00:29:46,539
+If you need an if,
+<font color="#ffff54">if가 필요하다면,</font>
+
+567
+00:29:46,539 --> 00:29:48,539
+you probably need two tests.
+<font color="#ffff54">두 개의 테스트가 필요할 것입니다.</font>
+
+568
+00:29:50,539 --> 00:29:52,539
+And avoid loops.
+<font color="#ffff54">그리고 루프를 피하세요.</font>
+
+569
+00:29:52,539 --> 00:29:54,539
+Loops you sometimes need.
+<font color="#ffff54">가끔 필요한 루프.</font>
+
+570
+00:29:54,539 --> 00:29:56,539
+But you really want to avoid them.
+<font color="#ffff54">하지만 정말 피하고 싶을 때.</font>
+
+571
+00:29:56,539 --> 00:29:58,539
+You want to keep it simple in your tests.
+<font color="#ffff54">테스트를 단순하게 유지하고 싶어요.</font>
+
+572
+00:29:58,619 --> 00:30:03,619
+On the subject of test method naming,
+<font color="#ffff54">테스트 방법 명명에 관한 주제,</font>
+
+573
+00:30:03,619 --> 00:30:07,619
+what we often do is we take the clause
+<font color="#ffff54">우리가 종종 하는 것은 우리가 종종 하는 것은</font>
+
+574
+00:30:07,619 --> 00:30:09,619
+and we just put the suffix test behind it.
+<font color="#ffff54">뒤에 접미사 테스트를 넣습니다.</font>
+
+575
+00:30:09,619 --> 00:30:13,619
+That's fine for implementation detail tests
+<font color="#ffff54">구현 세부 테스트에는 괜찮습니다.</font>
+
+576
+00:30:13,619 --> 00:30:15,619
+like the SES email service test.
+<font color="#ffff54">SES 이메일 서비스 테스트처럼.</font>
+
+577
+00:30:15,619 --> 00:30:17,619
+Makes sense, right?
+<font color="#ffff54">말이 되죠?</font>
+
+578
+00:30:17,619 --> 00:30:20,619
+But what if we apply a different pattern here?
+<font color="#ffff54">하지만 여기에 다른 패턴을 적용하면 어떨까요?</font>
+
+579
+00:30:20,619 --> 00:30:22,619
+One that we actually already know.
+<font color="#ffff54">우리가 이미 알고 있는 패턴입니다.</font>
+
+580
+00:30:22,700 --> 00:30:25,700
+One that I learned from the Screaming Architecture ideas.
+<font color="#ffff54">비명을 지르는 건축 아이디어에서 배운 것입니다.</font>
+
+581
+00:30:25,700 --> 00:30:27,700
+Screaming Architecture is about
+<font color="#ffff54">비명을 지르는 건축은</font>
+
+582
+00:30:27,700 --> 00:30:31,700
+that your codebase screams the domain to you.
+<font color="#ffff54">코드베이스가 도메인을 비명을 지르는 시간입니다.</font>
+
+583
+00:30:31,700 --> 00:30:33,700
+Not the technical stuff.
+<font color="#ffff54">기술적인 문제가 아닙니다.</font>
+
+584
+00:30:33,700 --> 00:30:35,700
+In the same way,
+<font color="#ffff54">같은 방식으로,</font>
+
+585
+00:30:35,700 --> 00:30:37,700
+I think it's valuable if our test clauses
+<font color="#ffff54">테스트 절이 다음과 같다면 가치가 있다고 생각합니다.</font>
+
+586
+00:30:37,700 --> 00:30:39,700
+scream the behavior at you.
+<font color="#ffff54">동작을 비명을 지르면</font>
+
+587
+00:30:39,700 --> 00:30:41,700
+If they're behavioral tests, of course.
+<font color="#ffff54">물론 행동 테스트인 경우.</font>
+
+588
+00:30:41,700 --> 00:30:45,700
+Because an invoice service test doesn't tell me much.
+<font color="#ffff54">인보이스 서비스 테스트는 많은 것을 알려주지 않으니까요.</font>
+
+589
+00:30:45,700 --> 00:30:48,700
+I know it's probably backed by a test.
+<font color="#ffff54">아마도 테스트에 의해 뒷받침되고 있다는 것을 알고 있습니다.</font>
+
+590
+00:30:48,700 --> 00:30:50,700
+But it's not a test.
+<font color="#ffff54">하지만 테스트가 아닙니다.</font>
+
+591
+00:30:50,779 --> 00:30:53,779
+I know it's probably backed by an invoice service.
+<font color="#ffff54">아마도 인보이스 서비스에 의해 뒷받침되는 것 같습니다.</font>
+
+592
+00:30:53,779 --> 00:30:55,779
+Hooray.
+<font color="#ffff54">만세!</font>
+
+593
+00:30:55,779 --> 00:30:58,779
+Bad example, a pay invoice feature test.
+<font color="#ffff54">나쁜 예, 결제 인보이스 기능 테스트.</font>
+
+594
+00:30:58,779 --> 00:31:00,779
+Yeah, you can pay an invoice.
+<font color="#ffff54">네, 인보이스를 결제할 수 있습니다.</font>
+
+595
+00:31:00,779 --> 00:31:02,779
+Who would have guessed that, right?
+<font color="#ffff54">누가 상상이나 했겠어요?</font>
+
+596
+00:31:02,779 --> 00:31:04,779
+But if I had something like this
+<font color="#ffff54">하지만 이런 게 있었다면</font>
+
+597
+00:31:04,779 --> 00:31:06,779
+and I was browsing through the test packages
+<font color="#ffff54">테스트 패키지를 살펴보고 있었는데</font>
+
+598
+00:31:06,779 --> 00:31:08,779
+and clicked it open and I saw
+<font color="#ffff54">를 클릭하고 열었더니</font>
+
+599
+00:31:08,779 --> 00:31:11,779
+a list of those things that actually describe the behavior.
+<font color="#ffff54">실제로 동작을 설명하는 목록이 표시됩니다.</font>
+
+600
+00:31:11,779 --> 00:31:13,779
+This tells me so much more.
+<font color="#ffff54">이것은 훨씬 더 많은 것을 말해줍니다.</font>
+
+601
+00:31:13,779 --> 00:31:16,779
+And you may not like the feature test suffix.
+<font color="#ffff54">기능 테스트 접미사가 마음에 들지 않을 수도 있습니다.</font>
+
+602
+00:31:16,779 --> 00:31:18,779
+I know it's quite lengthy and you repeat yourself.
+<font color="#ffff54">꽤 길고 반복하는 거 알아요.</font>
+
+603
+00:31:18,859 --> 00:31:20,859
+But that's not the gist of it.
+<font color="#ffff54">하지만 그게 요점이 아니에요.</font>
+
+604
+00:31:20,859 --> 00:31:24,859
+The thing is that it actually screams the behavior at you.
+<font color="#ffff54">문제는 실제로 당신에게 비명을 지른다는 겁니다.</font>
+
+605
+00:31:26,859 --> 00:31:29,859
+And when we open such a test clause
+<font color="#ffff54">그리고 그런 테스트 절을 열면</font>
+
+606
+00:31:29,859 --> 00:31:31,859
+and look at the test methods,
+<font color="#ffff54">테스트 메서드를 살펴봅시다,</font>
+
+607
+00:31:31,859 --> 00:31:33,859
+what I often find is
+<font color="#ffff54">제가 자주 발견하는 것은</font>
+
+608
+00:31:33,859 --> 00:31:35,859
+and I did it myself constantly,
+<font color="#ffff54">그리고 나는 그것을 계속했다,</font>
+
+609
+00:31:35,859 --> 00:31:37,859
+that I describe what I am testing.
+<font color="#ffff54">내가 테스트하는 것을 설명합니다.</font>
+
+610
+00:31:38,859 --> 00:31:41,859
+Here are two examples of what test.
+<font color="#ffff54">다음은 두 가지 테스트의 예입니다.</font>
+
+611
+00:31:41,859 --> 00:31:43,859
+Test expire invoice.
+<font color="#ffff54">인보이스 만료 테스트.</font>
+
+612
+00:31:43,859 --> 00:31:45,859
+And then I wonder what happens actually
+<font color="#ffff54">그리고 실제로 어떤 일이 일어나는지 궁금합니다.</font>
+
+613
+00:31:45,859 --> 00:31:47,859
+when an invoice expires.
+<font color="#ffff54">인보이스가 만료될 때</font>
+
+614
+00:31:47,940 --> 00:31:49,940
+I really, you force me to read that method
+<font color="#ffff54">정말, 그 방법을 읽으라고 강요하는군요.</font>
+
+615
+00:31:49,940 --> 00:31:51,940
+just to understand the behavior
+<font color="#ffff54">그냥 행동을 이해하려고</font>
+
+616
+00:31:51,940 --> 00:31:53,940
+of an invoice expiring.
+<font color="#ffff54">인보이스 만료 시간</font>
+
+617
+00:31:53,940 --> 00:31:55,940
+Or the last one,
+<font color="#ffff54">또는 마지막 송장,</font>
+
+618
+00:31:55,940 --> 00:31:57,940
+add pineapple topping to pizza test.
+<font color="#ffff54">피자 테스트에 파인애플 토핑을 추가합니다.</font>
+
+619
+00:31:57,940 --> 00:31:59,940
+Now I wonder, I hope it's not allowed.
+<font color="#ffff54">이젠 안 되겠네.</font>
+
+620
+00:31:59,940 --> 00:32:01,940
+I don't know.
+<font color="#ffff54">모르겠어.</font>
+
+621
+00:32:01,940 --> 00:32:03,940
+You force me to read this method.
+<font color="#ffff54">이 방법을 읽으라고 강요하는군요.</font>
+
+622
+00:32:03,940 --> 00:32:05,940
+And yes, in a way they're trivial examples.
+<font color="#ffff54">네, 어떤 면에서는 사소한 예시입니다.</font>
+
+623
+00:32:05,940 --> 00:32:08,940
+But I can't put complex examples on the slides.
+<font color="#ffff54">하지만 슬라이드에 복잡한 예제를 넣을 수는 없죠.</font>
+
+624
+00:32:09,940 --> 00:32:11,940
+But what you want to do is not
+<font color="#ffff54">하지만 당신이 하고 싶은 것은</font>
+
+625
+00:32:11,940 --> 00:32:13,940
+what you're testing.
+<font color="#ffff54">테스트하는 것이 아닙니다.</font>
+
+626
+00:32:13,940 --> 00:32:15,940
+You want to describe why the test is there.
+<font color="#ffff54">테스트의 이유를 설명합니다.</font>
+
+627
+00:32:16,019 --> 00:32:19,019
+Because the why captures the behavior.
+<font color="#ffff54">이유는 동작을 포착하기 때문입니다.</font>
+
+628
+00:32:22,019 --> 00:32:26,019
+So if I would have rewritten those two tests,
+<font color="#ffff54">따라서 이 두 테스트를 다시 작성했다면,</font>
+
+629
+00:32:26,019 --> 00:32:28,019
+I would have written something like
+<font color="#ffff54">다음과 같이 작성했을 것입니다.</font>
+
+630
+00:32:28,019 --> 00:32:31,019
+an unexpired invoice should expire automatically
+<font color="#ffff54">만료되지 않은 인보이스는 자동으로 만료되어야 합니다.</font>
+
+631
+00:32:31,019 --> 00:32:34,019
+after 30 days of the publication date.
+<font color="#ffff54">발행일로부터 30일 후</font>
+
+632
+00:32:35,019 --> 00:32:37,019
+And notice something.
+<font color="#ffff54">그리고 주목하세요.</font>
+
+633
+00:32:37,019 --> 00:32:39,019
+There are underscores there.
+<font color="#ffff54">밑줄이 있습니다.</font>
+
+634
+00:32:39,019 --> 00:32:41,019
+I would never do that in production code.
+<font color="#ffff54">프로덕션 코드에서는 절대 그렇게 하지 않습니다.</font>
+
+635
+00:32:41,019 --> 00:32:43,019
+That's not the Java way.
+<font color="#ffff54">그건 자바 방식이 아닙니다.</font>
+
+636
+00:32:43,019 --> 00:32:45,019
+But I really, I'm a bit dyslexic.
+<font color="#ffff54">근데 나 진짜 난독증이 좀 심해.</font>
+
+637
+00:32:45,099 --> 00:32:47,099
+So it helps me if I
+<font color="#ffff54">그래서 다음과 같이 하면 도움이 됩니다.</font>
+
+638
+00:32:47,099 --> 00:32:49,099
+split things up into logical blocks.
+<font color="#ffff54">논리적 블록으로 나누면 도움이 됩니다.</font>
+
+639
+00:32:49,099 --> 00:32:51,099
+And an underscore really helps.
+<font color="#ffff54">밑줄은 정말 도움이 됩니다.</font>
+
+640
+00:32:51,099 --> 00:32:54,099
+Because this is a rather short test method.
+<font color="#ffff54">이것은 다소 짧은 테스트 방법이기 때문입니다.</font>
+
+641
+00:32:54,099 --> 00:32:56,099
+Sometimes they're even longer
+<font color="#ffff54">때로는 더 길기도 합니다.</font>
+
+642
+00:32:56,099 --> 00:32:58,099
+if I really want to describe it.
+<font color="#ffff54">굳이 설명하자면</font>
+
+643
+00:32:59,099 --> 00:33:01,099
+Or the last one.
+<font color="#ffff54">아니면 마지막 하나.</font>
+
+644
+00:33:01,099 --> 00:33:03,099
+Pineapple is an illegal topping, luckily.
+<font color="#ffff54">다행히 파인애플은 불법 토핑입니다.</font>
+
+645
+00:33:03,099 --> 00:33:05,099
+And should prevent the cook from adding it.
+<font color="#ffff54">그리고 요리사가 파인애플을 넣지 못하게 해야 합니다.</font>
+
+646
+00:33:05,099 --> 00:33:07,099
+I know the behavior.
+<font color="#ffff54">동작을 알아냈습니다.</font>
+
+647
+00:33:07,099 --> 00:33:09,099
+I know what's going on.
+<font color="#ffff54">무슨 일인지 알아.</font>
+
+648
+00:33:09,099 --> 00:33:11,099
+I don't even need to read the contents of the method.
+<font color="#ffff54">메서드의 내용을 읽을 필요도 없어.</font>
+
+649
+00:33:11,180 --> 00:33:13,180
+You want to avoid giving examples
+<font color="#ffff54">예제를 제공하지 않으려는 경우</font>
+
+650
+00:33:13,180 --> 00:33:15,180
+in your test method names.
+<font color="#ffff54">을 테스트 메서드 이름에 포함시키지 않아야 합니다.</font>
+
+651
+00:33:17,180 --> 00:33:19,180
+And here is an example of a test
+<font color="#ffff54">다음은 테스트의 예입니다.</font>
+
+652
+00:33:19,180 --> 00:33:21,180
+or a set of tests that give examples.
+<font color="#ffff54">또는 예제를 제공하는 테스트 집합입니다.</font>
+
+653
+00:33:21,180 --> 00:33:23,180
+Should consider ABC as a weak password.
+<font color="#ffff54">ABC를 약한 비밀번호로 간주해야 합니다.</font>
+
+654
+00:33:23,180 --> 00:33:25,180
+The second one is slightly better
+<font color="#ffff54">두 번째가 조금 더 낫습니다.</font>
+
+655
+00:33:25,180 --> 00:33:27,180
+because I already know why it's weak.
+<font color="#ffff54">왜 약한지 이미 알고 있으니까요.</font>
+
+656
+00:33:27,180 --> 00:33:29,180
+Should consider ABC as a too short password.
+<font color="#ffff54">ABC는 너무 짧은 비밀번호라고 생각해야 합니다.</font>
+
+657
+00:33:29,180 --> 00:33:31,180
+But then I question like,
+<font color="#ffff54">하지만 다음과 같이 질문합니다,</font>
+
+658
+00:33:31,180 --> 00:33:33,180
+OK, is ABC this?
+<font color="#ffff54">좋아, 이게 ABC인가?</font>
+
+659
+00:33:33,180 --> 00:33:35,180
+And then I ask myself,
+<font color="#ffff54">그리고 스스로에게 묻습니다,</font>
+
+660
+00:33:35,180 --> 00:33:37,180
+OK, is ABC this?
+<font color="#ffff54">좋아, 이게 ABC인가?</font>
+
+661
+00:33:37,180 --> 00:33:39,180
+And then I ask myself,
+<font color="#ffff54">그리고 스스로에게 묻습니다,</font>
+
+662
+00:33:39,259 --> 00:33:41,259
+OK, is ABCD then not too short?
+<font color="#ffff54">그렇다면 ABCD는 너무 짧지 않은가?</font>
+
+663
+00:33:41,259 --> 00:33:43,259
+I don't know the rules at play here.
+<font color="#ffff54">여기서 어떤 규칙이 적용되는지 모르겠어요.</font>
+
+664
+00:33:45,259 --> 00:33:47,259
+And this is something we constantly do.
+<font color="#ffff54">그리고 이것은 우리가 끊임없이 하는 일입니다.</font>
+
+665
+00:33:47,259 --> 00:33:49,259
+And I'm doing it myself too.
+<font color="#ffff54">그리고 저도 하고 있습니다.</font>
+
+666
+00:33:49,259 --> 00:33:51,259
+Because you're so focused
+<font color="#ffff54">넌 너무 집중하니까</font>
+
+667
+00:33:51,259 --> 00:33:53,259
+on implementing it
+<font color="#ffff54">구현하는 데에</font>
+
+668
+00:33:53,259 --> 00:33:55,259
+you just quickly write the name down.
+<font color="#ffff54">이름을 빠르게 적으면 됩니다.</font>
+
+669
+00:33:55,259 --> 00:33:57,259
+And we never
+<font color="#ffff54">그리고 우리는 절대</font>
+
+670
+00:33:57,259 --> 00:33:59,259
+step back to the test method name.
+<font color="#ffff54">테스트 메서드 이름으로 돌아갑니다.</font>
+
+671
+00:33:59,259 --> 00:34:01,259
+But sometimes if I look
+<font color="#ffff54">하지만 가끔은</font>
+
+672
+00:34:01,259 --> 00:34:03,259
+at the test method names I wrote a month ago
+<font color="#ffff54">한 달 전에 작성한 테스트 방법 이름을 보면</font>
+
+673
+00:34:03,259 --> 00:34:05,259
+without really being
+<font color="#ffff54">실제로 존재하지 않고</font>
+
+674
+00:34:05,259 --> 00:34:07,259
+attentive to it,
+<font color="#ffff54">주의 깊게,</font>
+
+675
+00:34:07,339 --> 00:34:09,340
+I keep finding myself writing stuff like that.
+<font color="#ffff54">자꾸 이런 글을 쓰게 되네요.</font>
+
+676
+00:34:11,340 --> 00:34:13,340
+What you want to do
+<font color="#ffff54">하고 싶은 일</font>
+
+677
+00:34:13,340 --> 00:34:15,340
+is avoid giving examples.
+<font color="#ffff54">예시를 들지 않는 것입니다.</font>
+
+678
+00:34:15,340 --> 00:34:17,340
+So let's rewrite those two test method names.
+<font color="#ffff54">이제 이 두 테스트 메서드 이름을 다시 작성해 봅시다.</font>
+
+679
+00:34:17,340 --> 00:34:19,340
+You want to, again,
+<font color="#ffff54">다시 한 번</font>
+
+680
+00:34:19,340 --> 00:34:21,340
+focus on the behavior.
+<font color="#ffff54">행동에 집중하세요.</font>
+
+681
+00:34:21,340 --> 00:34:23,340
+Should consider passwords too short
+<font color="#ffff54">비밀번호가 너무 짧은 것을 고려해야 함</font>
+
+682
+00:34:23,340 --> 00:34:25,340
+when having a length, again, underscores
+<font color="#ffff54">길이가 길면 다시 밑줄을 긋습니다.</font>
+
+683
+00:34:25,340 --> 00:34:27,340
+I want to make it clear
+<font color="#ffff54">명확히 하고 싶습니다.</font>
+
+684
+00:34:27,340 --> 00:34:29,340
+of 8 or less.
+<font color="#ffff54">8 이하로</font>
+
+685
+00:34:29,340 --> 00:34:31,340
+And the way I would have written it is the last one.
+<font color="#ffff54">그리고 제가 썼을 방식이 마지막 방식입니다.</font>
+
+686
+00:34:31,340 --> 00:34:33,340
+Just simply, minimum length
+<font color="#ffff54">그냥 간단하게, 최소 길이</font>
+
+687
+00:34:33,340 --> 00:34:35,340
+of a password is 8. That's it.
+<font color="#ffff54">암호의 최소 길이는 8입니다. 그게 다입니다.</font>
+
+688
+00:34:35,420 --> 00:34:37,420
+That's clear.
+<font color="#ffff54">이제 명확해졌습니다.</font>
+
+689
+00:34:39,420 --> 00:34:41,420
+And if you want to document
+<font color="#ffff54">그리고 문서화하려면</font>
+
+690
+00:34:41,420 --> 00:34:43,420
+your code, if you want your
+<font color="#ffff54">코드를 원한다면</font>
+
+691
+00:34:43,420 --> 00:34:45,420
+test code to have any kind of documentation
+<font color="#ffff54">모든 종류의 문서가 있는 테스트 코드</font>
+
+692
+00:34:45,420 --> 00:34:47,420
+value, you really
+<font color="#ffff54">가치, 정말</font>
+
+693
+00:34:47,420 --> 00:34:49,420
+should focus on
+<font color="#ffff54">에 집중해야 합니다.</font>
+
+694
+00:34:49,420 --> 00:34:51,420
+communicating clearly.
+<font color="#ffff54">명확하게 소통해야 합니다.</font>
+
+695
+00:34:51,420 --> 00:34:53,420
+Remember what I said
+<font color="#ffff54">내가 한 말 기억하기</font>
+
+696
+00:34:53,420 --> 00:34:55,420
+in the beginning
+<font color="#ffff54">처음에</font>
+
+697
+00:34:55,420 --> 00:34:57,420
+of this section, avoid abstractions?
+<font color="#ffff54">이 섹션의 추상화를 피하는 방법은?</font>
+
+698
+00:34:57,420 --> 00:34:59,420
+Well, we should
+<font color="#ffff54">글쎄, 그래야지</font>
+
+699
+00:34:59,420 --> 00:35:01,420
+also embrace magic numbers.
+<font color="#ffff54">마법의 숫자도 받아들여야 합니다.</font>
+
+700
+00:35:01,420 --> 00:35:03,420
+I would never
+<font color="#ffff54">나는 절대</font>
+
+701
+00:35:03,500 --> 00:35:05,500
+embrace magic numbers and strings
+<font color="#ffff54">마법의 숫자와 문자열을 포용하다</font>
+
+702
+00:35:05,500 --> 00:35:07,500
+in my production code. You put that in constants, right?
+<font color="#ffff54">를 프로덕션 코드에 넣었습니다. 상수에 넣었죠?</font>
+
+703
+00:35:07,500 --> 00:35:09,500
+High above the class.
+<font color="#ffff54">클래스보다 높습니다.</font>
+
+704
+00:35:09,500 --> 00:35:11,500
+Well, in test codes
+<font color="#ffff54">테스트 코드에서</font>
+
+705
+00:35:11,500 --> 00:35:13,500
+different context, different rules.
+<font color="#ffff54">다른 컨텍스트, 다른 규칙.</font>
+
+706
+00:35:13,500 --> 00:35:15,500
+Let's look at the following
+<font color="#ffff54">다음을 살펴봅시다.</font>
+
+707
+00:35:15,500 --> 00:35:17,500
+test. So we
+<font color="#ffff54">test. 그래서 우리는</font>
+
+708
+00:35:17,500 --> 00:35:19,500
+have a VAT calculator and we
+<font color="#ffff54">부가가치세 계산기가 있고</font>
+
+709
+00:35:19,500 --> 00:35:21,500
+get some VAT amount out of there
+<font color="#ffff54">부가가치세 금액을 계산합니다.</font>
+
+710
+00:35:21,500 --> 00:35:23,500
+or calculate it.
+<font color="#ffff54">또는 계산합니다.</font>
+
+711
+00:35:23,500 --> 00:35:25,500
+But the important thing is the
+<font color="#ffff54">하지만 중요한 것은</font>
+
+712
+00:35:25,500 --> 00:35:27,500
+yellow constants.
+<font color="#ffff54">노란색 상수입니다.</font>
+
+713
+00:35:27,500 --> 00:35:29,500
+I do all this based on a gross
+<font color="#ffff54">이 모든 작업은 총</font>
+
+714
+00:35:29,500 --> 00:35:31,500
+price and a VAT percentage
+<font color="#ffff54">가격 및 부가가치세 비율</font>
+
+715
+00:35:31,579 --> 00:35:33,579
+and I expect some amount out of there.
+<font color="#ffff54">그리고 나는 거기에서 어느 정도 금액을 기대합니다.</font>
+
+716
+00:35:33,579 --> 00:35:35,579
+And then I run the test and suddenly
+<font color="#ffff54">그리고 테스트를 실행하니 갑자기</font>
+
+717
+00:35:35,579 --> 00:35:37,579
+I see something like, expected 21
+<font color="#ffff54">예상 21과 같은 것이 표시됩니다.</font>
+
+718
+00:35:37,579 --> 00:35:39,579
+but was 22.
+<font color="#ffff54">하지만 22였습니다.</font>
+
+719
+00:35:39,579 --> 00:35:41,579
+And I have no idea where these values are coming from.
+<font color="#ffff54">이 값의 출처가 어디인지 전혀 모르겠습니다.</font>
+
+720
+00:35:41,579 --> 00:35:43,579
+If I open the test, you again force me
+<font color="#ffff54">테스트를 열면 다시 강제로</font>
+
+721
+00:35:43,579 --> 00:35:45,579
+away out of the test.
+<font color="#ffff54">테스트에서 벗어납니다.</font>
+
+722
+00:35:45,579 --> 00:35:47,579
+In tests
+<font color="#ffff54">테스트 중</font>
+
+723
+00:35:47,579 --> 00:35:49,579
+you want to embrace magic numbers.
+<font color="#ffff54">마법의 숫자를 받아들이고 싶을 때</font>
+
+724
+00:35:49,579 --> 00:35:51,579
+You want to avoid all kind of, even the simplest
+<font color="#ffff54">당신은 모든 종류의, 심지어 가장 단순한 것조차도 피하고 싶어합니다.</font>
+
+725
+00:35:51,579 --> 00:35:53,579
+layers of abstraction and just put
+<font color="#ffff54">추상화 레이어를 추가하고</font>
+
+726
+00:35:53,579 --> 00:35:55,579
+numbers there.
+<font color="#ffff54">숫자를 넣습니다.</font>
+
+727
+00:35:55,579 --> 00:35:57,579
+Because it's so obvious
+<font color="#ffff54">너무 뻔하니까</font>
+
+728
+00:35:57,579 --> 00:35:59,579
+to immediately spot what this test is about
+<font color="#ffff54">이 테스트가 무엇인지 즉시 알아차리기 위해</font>
+
+729
+00:35:59,659 --> 00:36:01,659
+and undoing. Of course
+<font color="#ffff54">그리고 취소합니다. 물론</font>
+
+730
+00:36:01,659 --> 00:36:03,659
+the
+<font color="#ffff54">그리고</font>
+
+731
+00:36:03,659 --> 00:36:05,659
+tax amount of 121
+<font color="#ffff54">세금 금액 121</font>
+
+732
+00:36:05,659 --> 00:36:07,659
+21% of tax is 21.
+<font color="#ffff54">세금의 21%는 21.</font>
+
+733
+00:36:11,659 --> 00:36:13,659
+For the last
+<font color="#ffff54">마지막</font>
+
+734
+00:36:13,659 --> 00:36:15,659
+section of this talk, I would like us
+<font color="#ffff54">이 강연의 섹션에서, 나는 우리가</font>
+
+735
+00:36:15,659 --> 00:36:17,659
+to look together at the following test.
+<font color="#ffff54">다음 테스트를 함께 살펴보겠습니다.</font>
+
+736
+00:36:17,659 --> 00:36:19,659
+It's again around invoices
+<font color="#ffff54">다시 인보이스 관련 테스트입니다.</font>
+
+737
+00:36:19,659 --> 00:36:21,659
+and
+<font color="#ffff54">그리고</font>
+
+738
+00:36:21,659 --> 00:36:23,659
+first
+<font color="#ffff54">first</font>
+
+739
+00:36:23,659 --> 00:36:25,659
+if we want to test an invoice, we need an invoice.
+<font color="#ffff54">인보이스를 테스트하려면 인보이스가 필요합니다.</font>
+
+740
+00:36:25,659 --> 00:36:27,659
+Right? So to need an invoice
+<font color="#ffff54">그렇죠? 따라서 인보이스가 필요하려면</font>
+
+741
+00:36:27,739 --> 00:36:29,739
+you need to have a billing address apparently
+<font color="#ffff54">청구서 주소가 있어야 합니다.</font>
+
+742
+00:36:29,739 --> 00:36:31,739
+and a shipping address and you need to have some
+<font color="#ffff54">그리고 배송 주소가 있어야 하며</font>
+
+743
+00:36:31,739 --> 00:36:33,739
+kind of items in there and a customer.
+<font color="#ffff54">종류의 품목과 고객이 있어야 합니다.</font>
+
+744
+00:36:33,739 --> 00:36:35,739
+And then we finally have
+<font color="#ffff54">그리고 마침내</font>
+
+745
+00:36:35,739 --> 00:36:37,739
+this invoice.
+<font color="#ffff54">이 인보이스입니다.</font>
+
+746
+00:36:37,739 --> 00:36:39,739
+And then we get the VAT amount out of there
+<font color="#ffff54">그리고 거기서 부가가치세 금액을 가져옵니다.</font>
+
+747
+00:36:39,739 --> 00:36:41,739
+and then we just say it needs to meet
+<font color="#ffff54">그런 다음 다음을 충족해야 한다고 말합니다.</font>
+
+748
+00:36:41,739 --> 00:36:43,739
+42. Well that's fairly simple
+<font color="#ffff54">42. 아주 간단합니다.</font>
+
+749
+00:36:43,739 --> 00:36:45,739
+right? Because if you look again at the yellow numbers
+<font color="#ffff54">맞죠? 노란색 숫자를 다시 보면</font>
+
+750
+00:36:45,739 --> 00:36:47,739
+yeah, 21 plus 21
+<font color="#ffff54">네, 21 더하기 21</font>
+
+751
+00:36:47,739 --> 00:36:49,739
+is 42 right? Simple.
+<font color="#ffff54">42가 맞나요? 간단하죠.</font>
+
+752
+00:36:49,739 --> 00:36:51,739
+But this is a pattern that we're constantly
+<font color="#ffff54">하지만 이것은 우리가 끊임없이 반복하는 패턴입니다.</font>
+
+753
+00:36:51,739 --> 00:36:53,739
+doing.
+<font color="#ffff54">하고 있습니다.</font>
+
+754
+00:36:53,739 --> 00:36:55,739
+It's having big
+<font color="#ffff54">그것은 큰</font>
+
+755
+00:36:55,820 --> 00:36:57,820
+chunks in our given
+<font color="#ffff54">주어진 청크에</font>
+
+756
+00:36:57,820 --> 00:36:59,820
+part. Because if you want
+<font color="#ffff54">부분입니다. 왜냐하면 원한다면</font>
+
+757
+00:36:59,820 --> 00:37:01,820
+to prove this test, the first thing
+<font color="#ffff54">이 테스트를 증명하려면 먼저</font>
+
+758
+00:37:01,820 --> 00:37:03,820
+to note is that a good test exists
+<font color="#ffff54">주목해야 할 것은 좋은 테스트가 존재한다는 것입니다.</font>
+
+759
+00:37:03,820 --> 00:37:05,820
+out of three parts.
+<font color="#ffff54">세 부분 중</font>
+
+760
+00:37:05,820 --> 00:37:07,820
+Given, When, Then. Arrange, Act,
+<font color="#ffff54">주어진, 언제, 그때. 배열, 행동,</font>
+
+761
+00:37:07,820 --> 00:37:09,820
+Assert. That's the first
+<font color="#ffff54">Assert. 이것이 첫 번째</font>
+
+762
+00:37:09,820 --> 00:37:11,820
+thing I think about when writing a test. What is my
+<font color="#ffff54">테스트를 작성할 때 가장 먼저 생각하는 것입니다. 내</font>
+
+763
+00:37:11,820 --> 00:37:13,820
+given? What is my when? What is my then?
+<font color="#ffff54">주어진? 나의 때는 무엇인가요? 내 그때는 무엇입니까?</font>
+
+764
+00:37:13,820 --> 00:37:15,820
+And when I have identified them
+<font color="#ffff54">그리고 내가 그들을 확인했을 때</font>
+
+765
+00:37:15,820 --> 00:37:17,820
+I make
+<font color="#ffff54">나는</font>
+
+766
+00:37:17,820 --> 00:37:19,820
+three blocks in my code. I don't want like this
+<font color="#ffff54">내 코드에 세 블록이 있습니다. 이렇게 하고 싶지 않습니다.</font>
+
+767
+00:37:19,820 --> 00:37:21,820
+big wall of text.
+<font color="#ffff54">텍스트의 큰 벽.</font>
+
+768
+00:37:21,820 --> 00:37:23,820
+Obviously the given part and the assert part
+<font color="#ffff54">분명히 주어진 부분과 어서스트 부분</font>
+
+769
+00:37:23,900 --> 00:37:25,900
+are at the top and the bottom but sometimes
+<font color="#ffff54">는 위와 아래에 있지만 때로는</font>
+
+770
+00:37:25,900 --> 00:37:27,900
+I need to scan what is actually being tested. I need to
+<font color="#ffff54">실제로 테스트 중인 것을 스캔해야 합니다. 나는</font>
+
+771
+00:37:27,900 --> 00:37:29,900
+find that one method.
+<font color="#ffff54">그 방법을 찾아야 합니다.</font>
+
+772
+00:37:29,900 --> 00:37:31,900
+But just visually dividing it
+<font color="#ffff54">하지만 시각적으로 나누기만 하면</font>
+
+773
+00:37:31,900 --> 00:37:33,900
+and adding little comments, that's what I like
+<font color="#ffff54">그리고 작은 주석을 추가하는 것, 그게 제가 좋아하는 것입니다.</font>
+
+774
+00:37:33,900 --> 00:37:35,900
+to do, makes it clear.
+<font color="#ffff54">해야 할 일이 명확해집니다.</font>
+
+775
+00:37:35,900 --> 00:37:37,900
+Well we
+<font color="#ffff54">그럼 우리</font>
+
+776
+00:37:37,900 --> 00:37:39,900
+can even improve on that I think.
+<font color="#ffff54">더 개선할 수 있을 것 같아요.</font>
+
+777
+00:37:39,900 --> 00:37:41,900
+Because that first part
+<font color="#ffff54">왜냐하면 첫 번째 부분</font>
+
+778
+00:37:41,900 --> 00:37:43,900
+is quite lengthy and actually all we
+<font color="#ffff54">꽤 길고 실제로 우리가</font>
+
+779
+00:37:43,900 --> 00:37:45,900
+care about for this test is
+<font color="#ffff54">이 테스트에서 신경쓰는 것은</font>
+
+780
+00:37:45,900 --> 00:37:47,900
+the invoice
+<font color="#ffff54">인보이스</font>
+
+781
+00:37:47,900 --> 00:37:49,900
+items.
+<font color="#ffff54">items.</font>
+
+782
+00:37:49,900 --> 00:37:51,900
+And this is something I
+<font color="#ffff54">그리고 이것은 내가</font>
+
+783
+00:37:51,980 --> 00:37:53,980
+do a lot. Like let's
+<font color="#ffff54">많이 하죠. 예를 들어</font>
+
+784
+00:37:53,980 --> 00:37:55,980
+just imagine this is the first invoice test
+<font color="#ffff54">이것이 첫 번째 인보이스 테스트라고 상상해 보세요.</font>
+
+785
+00:37:55,980 --> 00:37:57,980
+I wrote and this is the first one.
+<font color="#ffff54">내가 썼고 이것이 첫 번째입니다.</font>
+
+786
+00:37:57,980 --> 00:37:59,980
+And I'm done and I need to write my second one.
+<font color="#ffff54">이제 끝났고 두 번째 글을 써야겠어요.</font>
+
+787
+00:37:59,980 --> 00:38:01,980
+What do I do?
+<font color="#ffff54">어떻게 해야 하지?</font>
+
+788
+00:38:01,980 --> 00:38:03,980
+Copy and paste.
+<font color="#ffff54">복사해서 붙여넣으세요.</font>
+
+789
+00:38:03,980 --> 00:38:05,980
+Right? And then I just alter some
+<font color="#ffff54">멋지지 않나요? 그리고 일부만 변경합니다.</font>
+
+790
+00:38:05,980 --> 00:38:07,980
+other values in there and I keep on repeating
+<font color="#ffff54">다른 값을 넣고 계속 반복합니다.</font>
+
+791
+00:38:07,980 --> 00:38:09,980
+and doing that and my colleague will do the same.
+<font color="#ffff54">그렇게 하면 제 동료도 똑같이 할 것입니다.</font>
+
+792
+00:38:09,980 --> 00:38:11,980
+And when I open that
+<font color="#ffff54">그리고 제가 저걸 열면</font>
+
+793
+00:38:11,980 --> 00:38:13,980
+invoice service test class, what do I
+<font color="#ffff54">인보이스 서비스 테스트 클래스, 어떻게 해야 하나요?</font>
+
+794
+00:38:13,980 --> 00:38:15,980
+find? Lots and lots of text.
+<font color="#ffff54">찾았나요? 많은 텍스트가 있습니다.</font>
+
+795
+00:38:15,980 --> 00:38:17,980
+And it's all
+<font color="#ffff54">그리고 이게 다야</font>
+
+796
+00:38:17,980 --> 00:38:19,980
+clutter. What you
+<font color="#ffff54">클러터. 당신</font>
+
+797
+00:38:20,059 --> 00:38:22,059
+want to do is apply
+<font color="#ffff54">하고 싶은 일</font>
+
+798
+00:38:22,059 --> 00:38:24,059
+something like the object model pattern.
+<font color="#ffff54">객체 모델 패턴과 같은 것입니다.</font>
+
+799
+00:38:24,059 --> 00:38:26,059
+I wrote a small blog post about that
+<font color="#ffff54">이에 대한 작은 블로그 포스팅을 작성했습니다.</font>
+
+800
+00:38:26,059 --> 00:38:28,059
+if you want to dive deeper into it.
+<font color="#ffff54">더 자세히 알아보고 싶으시다면요.</font>
+
+801
+00:38:28,059 --> 00:38:30,059
+But what
+<font color="#ffff54">하지만</font>
+
+802
+00:38:30,059 --> 00:38:32,059
+object model allows you to do
+<font color="#ffff54">객체 모델을 사용하면 할 수 있는 작업은</font>
+
+803
+00:38:32,059 --> 00:38:34,059
+and it's a pattern from Martin Fowler so
+<font color="#ffff54">그리고 이것은 마틴 파울러의 패턴이므로</font>
+
+804
+00:38:34,059 --> 00:38:36,059
+it's definitely great.
+<font color="#ffff54">정말 멋지네요.</font>
+
+805
+00:38:36,059 --> 00:38:38,059
+It allows us to
+<font color="#ffff54">다음을 수행할 수 있습니다.</font>
+
+806
+00:38:38,059 --> 00:38:40,059
+emphasize on what matters and hide
+<font color="#ffff54">중요한 것을 강조하고 숨기기</font>
+
+807
+00:38:40,059 --> 00:38:42,059
+all the irrelevant stuff.
+<font color="#ffff54">모든 관련 없는 것들.</font>
+
+808
+00:38:42,059 --> 00:38:44,059
+And that
+<font color="#ffff54">그리고 그</font>
+
+809
+00:38:44,059 --> 00:38:46,059
+previous chunk, that given chunk
+<font color="#ffff54">이전 청크, 주어진 청크</font>
+
+810
+00:38:46,059 --> 00:38:48,059
+now looks like this.
+<font color="#ffff54">이제 이렇게 보입니다.</font>
+
+811
+00:38:48,139 --> 00:38:50,139
+You may not
+<font color="#ffff54">다음과 같이</font>
+
+812
+00:38:50,139 --> 00:38:52,139
+some colleagues say I don't like
+<font color="#ffff54">어떤 동료들은 내가 싫어한다고 한다.</font>
+
+813
+00:38:52,139 --> 00:38:54,139
+mother as a suffix. I don't know. I like my
+<font color="#ffff54">어머니를 접미사로 쓰는 걸 좋아하지 않아요. 모르겠어요. 나는 내</font>
+
+814
+00:38:54,139 --> 00:38:56,139
+mother so I use it.
+<font color="#ffff54">어머니를 좋아해서 사용합니다.</font>
+
+815
+00:38:56,139 --> 00:38:58,139
+So you start with that
+<font color="#ffff54">그래서 그걸로 시작합니다.</font>
+
+816
+00:38:58,139 --> 00:39:00,139
+object that you want to build and me use
+<font color="#ffff54">당신이 만들고 싶은 객체와 내가 사용할</font>
+
+817
+00:39:00,139 --> 00:39:02,139
+mother a lot. So because the pattern
+<font color="#ffff54">어머니를 많이 사용합니다. 따라서 패턴이</font>
+
+818
+00:39:02,139 --> 00:39:04,139
+is called the same way so why not?
+<font color="#ffff54">도 같은 방식으로 호출되므로 왜 안 될까요?</font>
+
+819
+00:39:04,139 --> 00:39:06,139
+And then you give it a static factory method.
+<font color="#ffff54">그리고 정적 팩토리 메서드를 제공합니다.</font>
+
+820
+00:39:06,139 --> 00:39:08,139
+And that does not simply
+<font color="#ffff54">그리고 그것은 단순히</font>
+
+821
+00:39:08,139 --> 00:39:10,139
+return an invoice.
+<font color="#ffff54">인보이스를 반환합니다.</font>
+
+822
+00:39:10,139 --> 00:39:12,139
+It's not something that
+<font color="#ffff54">그것은 무언가가 아닙니다</font>
+
+823
+00:39:12,139 --> 00:39:14,139
+some people call a generator. No.
+<font color="#ffff54">어떤 사람들은 발전기라고 부르죠. 아니요.</font>
+
+824
+00:39:14,139 --> 00:39:16,139
+It returns a builder.
+<font color="#ffff54">빌더를 반환합니다.</font>
+
+825
+00:39:16,219 --> 00:39:18,219
+And it doesn't stop there.
+<font color="#ffff54">그리고 거기서 멈추지 않습니다.</font>
+
+826
+00:39:18,219 --> 00:39:20,219
+It returns a pre-filled
+<font color="#ffff54">미리 채워진</font>
+
+827
+00:39:20,219 --> 00:39:22,219
+builder that allows
+<font color="#ffff54">빌더를 반환합니다.</font>
+
+828
+00:39:22,219 --> 00:39:24,219
+you to overwrite what is
+<font color="#ffff54">를 덮어쓸 수 있는</font>
+
+829
+00:39:24,219 --> 00:39:26,219
+irrelevant. That's very important.
+<font color="#ffff54">무의미합니다. 아주 중요합니다.</font>
+
+830
+00:39:26,219 --> 00:39:28,219
+I'm just saying invoice mother
+<font color="#ffff54">그냥 인보이스 어머니</font>
+
+831
+00:39:28,219 --> 00:39:30,219
+gave me a valid invoice
+<font color="#ffff54">유효한 인보이스를 주었다</font>
+
+832
+00:39:30,219 --> 00:39:32,219
+and I want to just change the invoice
+<font color="#ffff54">인보이스만 변경하고 싶습니다.</font>
+
+833
+00:39:32,219 --> 00:39:34,219
+items because that's relevant for my test.
+<font color="#ffff54">항목이 제 테스트와 관련이 있기 때문입니다.</font>
+
+834
+00:39:34,219 --> 00:39:36,219
+The shipping address, all the
+<font color="#ffff54">배송 주소, 모든</font>
+
+835
+00:39:36,219 --> 00:39:38,219
+other stuff that is like mandatory for your object
+<font color="#ffff54">객체에 필수적인 다른 것들</font>
+
+836
+00:39:38,219 --> 00:39:40,219
+is already default, has default stuff
+<font color="#ffff54">이미 기본값이고, 기본값이 있습니다.</font>
+
+837
+00:39:40,219 --> 00:39:42,219
+you don't need to worry about it.
+<font color="#ffff54">걱정할 필요가 없습니다.</font>
+
+838
+00:39:42,219 --> 00:39:44,219
+And then you can happily copy paste that
+<font color="#ffff54">그런 다음 행복하게 복사하여 붙여넣을 수 있습니다.</font>
+
+839
+00:39:44,300 --> 00:39:46,300
+and remove whatever you need or don't need.
+<font color="#ffff54">그리고 필요하거나 불필요한 부분을 제거하면 됩니다.</font>
+
+840
+00:39:46,300 --> 00:39:48,300
+When I'm applying
+<font color="#ffff54">신청할 때</font>
+
+841
+00:39:48,300 --> 00:39:50,300
+this pattern in codebases what I often see
+<font color="#ffff54">코드베이스에서 자주 볼 수 있는 패턴은 다음과 같습니다.</font>
+
+842
+00:39:50,300 --> 00:39:52,300
+colleagues do is the following.
+<font color="#ffff54">동료들이 하는 일은 다음과 같습니다.</font>
+
+843
+00:39:52,300 --> 00:39:54,300
+And then I realize they didn't
+<font color="#ffff54">그리고 그들이</font>
+
+844
+00:39:54,300 --> 00:39:56,300
+understand it really. They're
+<font color="#ffff54">정말 이해하지 못한다는 걸요. 그들은</font>
+
+845
+00:39:56,300 --> 00:39:58,300
+adding these static factory methods.
+<font color="#ffff54">이 정적 팩토리 메서드를 추가합니다.</font>
+
+846
+00:39:58,300 --> 00:40:00,300
+They call them sometimes in the POS team
+<font color="#ffff54">POS 팀에서 가끔 호출합니다.</font>
+
+847
+00:40:00,300 --> 00:40:02,300
+they call them generators.
+<font color="#ffff54">그들은 그들을 발전기라고 부른다.</font>
+
+848
+00:40:02,300 --> 00:40:04,300
+No, you want to limit it.
+<font color="#ffff54">아니, 제한하고 싶어.</font>
+
+849
+00:40:04,300 --> 00:40:06,300
+You only need a couple of
+<font color="#ffff54">두 개만 필요합니다.</font>
+
+850
+00:40:06,300 --> 00:40:08,300
+static factory methods and then you
+<font color="#ffff54">정적 팩토리 메서드만 있으면 됩니다.</font>
+
+851
+00:40:08,300 --> 00:40:10,300
+just overwrite what you need.
+<font color="#ffff54">필요한 것만 덮어쓰면 됩니다.</font>
+
+852
+00:40:10,300 --> 00:40:12,300
+So for example, the
+<font color="#ffff54">예를 들어</font>
+
+853
+00:40:12,380 --> 00:40:14,380
+second one, valid invoice with
+<font color="#ffff54">두 번째 송장, 유효한 송장</font>
+
+854
+00:40:14,380 --> 00:40:16,380
+US shipping address, if you want that
+<font color="#ffff54">미국 배송 주소, 원하는 경우</font>
+
+855
+00:40:16,380 --> 00:40:18,380
+no, you just start with a valid invoice
+<font color="#ffff54">아니요, 유효한 인보이스로 시작하세요.</font>
+
+856
+00:40:18,380 --> 00:40:20,380
+and you
+<font color="#ffff54">그리고 당신</font>
+
+857
+00:40:20,380 --> 00:40:22,380
+overwrite the shipping address.
+<font color="#ffff54">배송 주소를 덮어씁니다.</font>
+
+858
+00:40:22,380 --> 00:40:24,380
+And there's a neat little trick you
+<font color="#ffff54">그리고 깔끔한 트릭이 하나 있습니다.</font>
+
+859
+00:40:24,380 --> 00:40:26,380
+can do with a
+<font color="#ffff54">할 수 있는</font>
+
+860
+00:40:26,380 --> 00:40:28,380
+Java util consumer
+<font color="#ffff54">자바 활용 소비자</font>
+
+861
+00:40:28,380 --> 00:40:30,380
+but that's in my blog.
+<font color="#ffff54">하지만 그건 제 블로그에 있습니다.</font>
+
+862
+00:40:30,380 --> 00:40:32,380
+But this makes it clear.
+<font color="#ffff54">하지만 이렇게 하면 명확해집니다.</font>
+
+863
+00:40:32,380 --> 00:40:34,380
+So you really avoid
+<font color="#ffff54">그래서 당신은 정말로</font>
+
+864
+00:40:34,380 --> 00:40:36,380
+static factory methods.
+<font color="#ffff54">정적 팩토리 메서드.</font>
+
+865
+00:40:36,380 --> 00:40:38,380
+So that
+<font color="#ffff54">그래서</font>
+
+866
+00:40:38,380 --> 00:40:40,380
+previous test, that
+<font color="#ffff54">이전 테스트, 그</font>
+
+867
+00:40:40,460 --> 00:40:42,460
+junking test now looks like this.
+<font color="#ffff54">정크 테스트는 이제 다음과 같이 보입니다.</font>
+
+868
+00:40:46,460 --> 00:40:48,460
+Change is
+<font color="#ffff54">변경 사항은</font>
+
+869
+00:40:48,460 --> 00:40:50,460
+inevitable and that is why
+<font color="#ffff54">피할 수 없는 이유</font>
+
+870
+00:40:50,460 --> 00:40:52,460
+we test. We want to adapt. We want to
+<font color="#ffff54">우리는 테스트합니다. 우리는 적응하고 싶습니다. 우리는 원한다.</font>
+
+871
+00:40:52,460 --> 00:40:54,460
+evolve our software.
+<font color="#ffff54">소프트웨어를 발전시킵니다.</font>
+
+872
+00:40:54,460 --> 00:40:56,460
+Lots of things change, not only requirements.
+<font color="#ffff54">요구 사항뿐만 아니라 많은 것이 변합니다.</font>
+
+873
+00:40:56,460 --> 00:40:58,460
+And we want
+<font color="#ffff54">그리고 우리는</font>
+
+874
+00:40:58,460 --> 00:41:00,460
+to test behavior and to a lesser
+<font color="#ffff54">동작을 테스트하고</font>
+
+875
+00:41:00,460 --> 00:41:02,460
+extent our code implementation details.
+<font color="#ffff54">범위로 코드 구현 세부 사항을 변경합니다.</font>
+
+876
+00:41:02,460 --> 00:41:04,460
+And we need to accept that
+<font color="#ffff54">그리고 우리는 그것을 받아들여야 합니다.</font>
+
+877
+00:41:04,460 --> 00:41:06,460
+tests live in different contexts and
+<font color="#ffff54">테스트는 서로 다른 컨텍스트에서 실행되고</font>
+
+878
+00:41:06,460 --> 00:41:08,460
+that is how we should test things.
+<font color="#ffff54">이것이 바로 우리가 테스트해야 하는 방식입니다.</font>
+
+879
+00:41:08,539 --> 00:41:10,539
+Test and production
+<font color="#ffff54">테스트 및 생산</font>
+
+880
+00:41:10,539 --> 00:41:12,539
+code should be
+<font color="#ffff54">코드는 다음과 같아야 합니다.</font>
+
+881
+00:41:12,539 --> 00:41:14,539
+equal citizens in your code base.
+<font color="#ffff54">코드베이스에서 동등한 시민.</font>
+
+882
+00:41:14,539 --> 00:41:16,539
+They looked at from
+<font color="#ffff54">다음에서 살펴본</font>
+
+883
+00:41:16,539 --> 00:41:18,539
+different contexts and with
+<font color="#ffff54">다른 컨텍스트와 함께</font>
+
+884
+00:41:18,539 --> 00:41:20,539
+equal architectural rights
+<font color="#ffff54">동등한 건축 권리</font>
+
+885
+00:41:20,539 --> 00:41:22,539
+cared for equally.
+<font color="#ffff54">평등하게 돌봄.</font>
+
+886
+00:41:22,539 --> 00:41:24,539
+Equally important.
+<font color="#ffff54">똑같이 중요.</font>
+
+887
+00:41:24,539 --> 00:41:26,539
+And actually, I don't agree.
+<font color="#ffff54">사실 저는 동의하지 않습니다.</font>
+
+888
+00:41:26,539 --> 00:41:28,539
+Because I think that tests are actually much
+<font color="#ffff54">왜냐하면 저는 테스트가 실제로 훨씬</font>
+
+889
+00:41:28,539 --> 00:41:30,539
+more important than your production code.
+<font color="#ffff54">프로덕션 코드보다 더 중요하다고 생각하기 때문입니다.</font>
+
+890
+00:41:30,539 --> 00:41:32,539
+Without tests you cannot evolve
+<font color="#ffff54">테스트 없이는 진화할 수 없습니다.</font>
+
+891
+00:41:32,539 --> 00:41:34,539
+that production code.
+<font color="#ffff54">그 프로덕션 코드.</font>
+
+892
+00:41:34,539 --> 00:41:36,539
+So our emphasis should be really on the tests.
+<font color="#ffff54">따라서 테스트에 중점을 두어야 합니다.</font>
+
+893
+00:41:38,460 --> 00:41:40,539
+Thanks for listening.
+<font color="#ffff54">들어주셔서 감사합니다.</font>
